@@ -51,4 +51,6 @@ return require('packer').startup(function(use)
 		}
 	}
 
+    use { 'joegesualdo/jsdoc.vim'  }
+
 end)

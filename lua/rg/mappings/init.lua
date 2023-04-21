@@ -6,7 +6,8 @@ vim.keymap.set("n", "<leader>QQ", ":q!<cr>");
 vim.keymap.set("n", "<leader>WW", ":w!<cr>");
 
 -- Auto Indent
-vim.keymap.set("n", "<leader>f",  "mzggVG=`z");
+-- vim.keymap.set("n", "<leader>f",  "mzggVG=`z"); 
+-- /\--- replaced by LSP formating
 
 require "rg.mappings.telescope"
 require "rg.mappings.nvim-tree"
