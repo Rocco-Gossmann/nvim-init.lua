@@ -10,36 +10,34 @@ return require('packer').startup(function(use)
     use { "morhetz/gruvbox" }
 
     -- Better Statusline
-    use { 
-        'itchyny/lightline.vim' ,
-        run = vim.cmd [[
-		let g:lightline = {}
-        let g:lightline.separator = { 'left': '', 'right': '' }
-		let g:lightline.subseparator = { 'left': '', 'right': '' }   
-        ]]
-    }
+    use { 'itchyny/lightline.vim', run = vim.cmd [[
+            let g:lightline = {}
+            let g:lightline.separator = { 'left': '', 'right': '' }
+            let g:lightline.subseparator = { 'left': '', 'right': '' }   
+    ]] }
 
 	-- fuzzy finder
-	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.1',
+	use { 'nvim-telescope/telescope.nvim', 
+        tag = '0.1.1',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
+    use { 'kdheepak/lazygit.nvim', run = vim.cmd [[
+        let g:lazygit_floating_window_scaling_factor = 0.9
+        let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯'] 
+        let g:lazygit_floating_window_use_plenary = 0 
+    ]] }
+
     -- better file explorer
-    use {
-        'nvim-tree/nvim-tree.lua',
+    use { 'nvim-tree/nvim-tree.lua',
         requires = { 'nvim-tree/nvim-web-devicons' },
     }
 
     -- Syntax Highlighting
-	use{
-        "nvim-treesitter/nvim-treesitter",
-        run = ":TSUpdate"
-    }
+	use{ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
     -- Intellisense
-	use {
-		'VonHeikemen/lsp-zero.nvim',
+	use { 'VonHeikemen/lsp-zero.nvim',
 		branch = 'v1.x',
 		requires = {
 			-- LSP Support
@@ -65,5 +63,6 @@ return require('packer').startup(function(use)
 
     -- Debugger
     use { 'puremourning/vimspector' }
+
 
 end)
