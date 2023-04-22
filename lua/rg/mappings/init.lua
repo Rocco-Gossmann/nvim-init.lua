@@ -5,6 +5,8 @@ vim.keymap.set("n", "<leader>ww", ":w<cr>");
 vim.keymap.set("n", "<leader>QQ", ":q!<cr>");
 vim.keymap.set("n", "<leader>WW", ":w!<cr>");
 
+vim.keymap.set("n", "<leader>gt", vim.cmd.LazyGit);
+
 -- Auto Indent
 -- vim.keymap.set("n", "<leader>f",  "mzggVG=`z"); 
 -- /\--- replaced by LSP formating
