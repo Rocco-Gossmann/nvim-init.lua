@@ -1,8 +1,6 @@
 require("rg.packer")
 require("rg.mappings")
 
-vim.opt.guicursor = ""
-
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
