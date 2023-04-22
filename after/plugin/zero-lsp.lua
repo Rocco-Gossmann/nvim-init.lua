@@ -18,6 +18,17 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 	['<C-Space>'] = cmp.mapping.complete(),
 })
 
+local cmp_sources = {
+
+    { name = 'nvim_lsp', priority = 1000,
+        entry_filter = function(entry)
+            return require("cmp").lsp.CompletionItemKind.File ~= entry:get_kind()
+        end },
+    { name = 'path', priority = 950 },
+    { name = 'luasnip' }, -- For luasnip users.
+    { name = 'nvim_lua' },
+}
+
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
@@ -25,7 +36,8 @@ cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({
-	mapping = cmp_mappings
+	mapping = cmp_mappings,
+    sources = cmp_sources
 })
 
 lsp.set_preferences({
