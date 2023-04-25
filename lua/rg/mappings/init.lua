@@ -21,3 +21,4 @@ vim.keymap.set("n", "<leader>f",  "mzggVG=`z");
 require "rg.mappings.telescope"
 require "rg.mappings.nvim-tree"
 require "rg.mappings.harpoon"
+require "rg.mappings.vimspector"
