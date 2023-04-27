@@ -1,9 +1,13 @@
 vim.g.mapleader = " "
 
 vim.keymap.set("n", "<leader>qq", ":q<cr>");
-vim.keymap.set("n", "<leader>ww", ":w<cr>");
 vim.keymap.set("n", "<leader>QQ", ":q!<cr>");
+vim.keymap.set("n", "<leader>qa", ":qa<cr>");
+vim.keymap.set("n", "<leader>QA", ":qa!<cr>");
+vim.keymap.set("n", "<leader>ww", ":w<cr>");
 vim.keymap.set("n", "<leader>WW", ":w!<cr>");
+vim.keymap.set("n", "<leader>wa", ":wa<cr>");
+vim.keymap.set("n", "<leader>WA", ":wa!<cr>");
 
 vim.keymap.set("n", "<leader>gt", vim.cmd.LazyGit);
 vim.keymap.set("i", "jj", "<ESC>");
