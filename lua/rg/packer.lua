@@ -16,11 +16,19 @@ return require('packer').startup(function(use)
             let g:lightline.subseparator = { 'left': '', 'right': '' }   
     ]] }
 
-	-- fuzzy finder
-	use { 'nvim-telescope/telescope.nvim', 
+	-- File managment
+    use { 'nvim-tree/nvim-tree.lua',
+        requires = { 'nvim-tree/nvim-web-devicons' },
+    }
+
+	use { 'nvim-telescope/telescope.nvim',
         tag = '0.1.1',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
+
+    use { "ThePrimeagen/harpoon",
+        requires = { "nvim-lua/plenary.nvim" }
+    }
 
     use { 'kdheepak/lazygit.nvim', run = vim.cmd [[
         let g:lazygit_floating_window_scaling_factor = 0.9
@@ -28,17 +36,16 @@ return require('packer').startup(function(use)
         let g:lazygit_floating_window_use_plenary = 0 
     ]] }
 
-    -- better file explorer
-    use { 'nvim-tree/nvim-tree.lua',
-        requires = { 'nvim-tree/nvim-web-devicons' },
-    }
-
-    use { "ThePrimeagen/harpoon",
-        requires = { "nvim-lua/plenary.nvim" }
-    }
 
     -- Syntax Highlighting
 	use{ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+
+    -- Debuggers / Programming Utils
+    use { 'puremourning/vimspector' }
+
+    use({ "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
 
     -- Intellisense
 	use { 'VonHeikemen/lsp-zero.nvim',
@@ -62,11 +69,5 @@ return require('packer').startup(function(use)
 			{'rafamadriz/friendly-snippets'},
 		}
 	}
-
-    use { 'joegesualdo/jsdoc.vim'  }
-
-    -- Debugger
-    use { 'puremourning/vimspector' }
-
 
 end)
