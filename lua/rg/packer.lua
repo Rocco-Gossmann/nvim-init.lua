@@ -16,6 +16,16 @@ return require('packer').startup(function(use)
             let g:lightline.subseparator = { 'left': '', 'right': '' }   
     ]] }
 
+    use { 'camspiers/lens.vim',
+		requires = { {'camspiers/animate.vim'}, },
+
+        run = vim.cmd [[
+            let g:lens#disabled_filetypes = ['NvimTree', 'nerdtree', 'fzf']
+            let g:lens#width_resize_min = 130
+            let g:lens#width_resize_max = 130
+        ]]
+    }
+
 	-- File managment
     use { 'nvim-tree/nvim-tree.lua',
         requires = { 'nvim-tree/nvim-web-devicons' },
