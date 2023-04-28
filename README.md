@@ -124,11 +124,11 @@ K | Show hover / mouse over |
 ### Vimspector
 | Binding | Effect |
 |---------|--------|
-\<F6>| Toggle Breakpoint |  
-\<F5>| Launch Vimspector |  
-\<F7>| Stop Into |  
-\<F8>| Step Over |  
-\<F9>| Stop Out |  
-\<F10>| Continue to next Breakpoint |
-\<F11>| Stop and Close Vimspector |  
+\<leader>db| Toggle Breakpoint |  
+\<leader>dr| Launch Vimspector |  
+\<leader>dl (vim motion right)| Stop Into |  
+\<leader>dj (vim motion down)| Step Over |  
+\<leader>dh (vim motion left) | Stop Out |  
+\<leader>d\<CR>| Continue to next Breakpoint |
+\<leader>d\<ESC>| Stop and Close Vimspector |  
 
