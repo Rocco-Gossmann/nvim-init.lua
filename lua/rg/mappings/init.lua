@@ -26,3 +26,12 @@ require "rg.mappings.telescope"
 require "rg.mappings.nvim-tree"
 require "rg.mappings.harpoon"
 require "rg.mappings.vimspector"
+
+
+vim.cmd('autocmd FileType markdown lua Markdownkeys()')
+
+-- Filetype Keybinds
+function Markdownkeys()
+    vim.keymap.set("n", "<leader>dr", vim.cmd.MarkdownPreview);
+end
+
