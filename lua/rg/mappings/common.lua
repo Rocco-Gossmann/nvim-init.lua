@@ -56,7 +56,7 @@ return function(wk)
         h  = {
             name = "Harpoone",
             m = {function() mark.add_file() end, "Add file to Harpoone"},
-            h = {function() mark.add_file() end, "View/Edit harpooned files"},
+            h = {function() ui.toggle_quick_menu() end, "View/Edit harpooned files"},
         },
 
         ['1'] = {function() ui.nav_file(1) end, "Load harpoon 1"},
