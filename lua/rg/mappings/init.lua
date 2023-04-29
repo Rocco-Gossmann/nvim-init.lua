@@ -38,7 +38,5 @@ function FiletypeKeyMode()
         require("rg.mappings.filetypes.all")(wk);
     end
 
-    print("mappings for '"..ft.."' loaded")
-
     vim.cmd("cd "..CWD)
 end
