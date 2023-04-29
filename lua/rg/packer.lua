@@ -16,6 +16,7 @@ return require('packer').startup(function(use)
             let g:lightline.subseparator = { 'left': '', 'right': '' }   
     ]] }
 
+    -- autoresizing of panes to a workable size
     use { 'camspiers/lens.vim',
 		requires = { {'camspiers/animate.vim'}, },
 
@@ -26,6 +27,14 @@ return require('packer').startup(function(use)
             let g:lens#height_resize_min = 30 
             let g:lens#height_resize_max = 30 
         ]]
+    }
+
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end
     }
 
 	-- File managment

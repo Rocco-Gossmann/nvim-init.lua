@@ -1,37 +1,41 @@
+local wk = require("which-key");
+local os = require("os");
+
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>qq", ":q<cr>");
-vim.keymap.set("n", "<leader>QQ", ":q!<cr>");
-vim.keymap.set("n", "<leader>qa", ":qa<cr>");
-vim.keymap.set("n", "<leader>QA", ":qa!<cr>");
-vim.keymap.set("n", "<leader>ww", ":w<cr>");
-vim.keymap.set("n", "<leader>WW", ":w!<cr>");
-vim.keymap.set("n", "<leader>wa", ":wa<cr>");
-vim.keymap.set("n", "<leader>WA", ":wa!<cr>");
+local CWD = vim.fn.getcwd()
+local NVIM_APPNAME = os.getenv("NVIM_APPNAME");
+local HOME = os.getenv("HOME");
+if NVIM_APPNAME == nil then NVIM_APPNAME = "nvim" end;
+local CONFPATH = HOME .. "/.config/" .. NVIM_APPNAME
 
-vim.keymap.set("n", "<leader>gt", vim.cmd.LazyGit);
-vim.keymap.set("i", "jj", "<ESC>");
-
--- Yank to Clipboard
-vim.keymap.set("v", '<leader>y', '"+y');
-vim.keymap.set("n", '<leader>y', '"+yy');
-
--- Paste in visual mode without resetting paste buffer content 
-vim.keymap.set("x", "<leader>p", '"_dP')
-
--- Auto Indent
-vim.keymap.set("n", "<leader>f",  "mzggVG=`z");
-
-require "rg.mappings.telescope"
+require("rg.mappings.common")(wk)
 require "rg.mappings.nvim-tree"
-require "rg.mappings.harpoon"
-require "rg.mappings.vimspector"
 
-
-vim.cmd('autocmd FileType markdown lua Markdownkeys()')
+vim.cmd('autocmd BufEnter * lua FiletypeKeyMode()')
 
 -- Filetype Keybinds
-function Markdownkeys()
-    vim.keymap.set("n", "<leader>dr", vim.cmd.MarkdownPreview);
-end
+function FiletypeKeyMode()
+    vim.cmd("cd "..CONFPATH)
 
+    local ft = vim.bo.filetype
+    local done = false;
+
+    if vim.fn.findfile( "./lua/rg/mappings/filetypes/" .. ft .. ".lua") ~= '' then
+        require ("rg.mappings.filetypes." .. ft)(wk);
+        done = true;
+    end
+
+    if vim.fn.findfile( "./lua/custom/mappings/filetypes/" .. ft .. ".lua") ~= '' then
+        require ("custom.mappings.filetypes." .. ft)(wk);
+        done = true;
+    end
+
+    if not(done) then
+        require("rg.mappings.filetypes.all")(wk);
+    end
+
+    print("mappings for '"..ft.."' loaded")
+
+    vim.cmd("cd "..CWD)
+end

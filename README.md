@@ -42,6 +42,7 @@ you can use it to changes the settings to something, that fits your current "Pro
 - **[Packer](https://github.com/wbthomason/packer.nvim)** for package managing
 - **[morhetz/gruvbox](https://github.com/morhetz/gruvbox)** as the colorsheme  
 - **[itchyny/lightline.vim](https://github.com/itchyny/lightline.vim)** to improve the visuals more 
+- **[camspiers/lens.vim](https://github.com/camspiers/lens.vim)** to make better use of small screen spaces
 - **[nvim-tree/nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)** as the file explorer
 - **[nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)** as fuzzy finder
 - **[ThePrimeagen/harpoon](https://github.com/ThePrimeagen/harpoon)** for better bookmarking of files
@@ -49,6 +50,7 @@ you can use it to changes the settings to something, that fits your current "Pro
 - **[nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)** to provide syntax highlighting
 - **[puremourning/vimspector](https://github.com/puremourning/vimspector)** as the Debugger
 - **[iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)** to preview Markdown files
+- **[folke/which-key.nvim](https://github.com/folke/which-key.nvim)** keyboard shortcut cheatsheet and assignments
 
 The following packages will setup the Intellisense via the Language-Server Protokoll  
 Installing of language servers is down via the `Mason` command.
