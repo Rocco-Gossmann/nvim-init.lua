@@ -1,6 +1,6 @@
 # This is my personal NeoVim configuration.
 
-### To make full use of it, install the following packages on your system.
+## To make full use of it, install the following packages on your system.
 - `python-nvim` to make the Vimspector work
 - `lazygit`
 
@@ -13,7 +13,32 @@ curl -L "https://github.com/jesseduffield/lazygit/releases/download/v0.37.0/lazy
 cp /tmp/lazygitinstall/lazygit ~/bin/lazygit
 ```
 
-### it uses the following Package/Plugins
+## How to customize
+You can modify this configuration for your personal needs via using one or more of the 
+following methods.
+
+### creating `~/.config/$NVIM_APPNAME/.nvimínit.lua` 
+The `~/.config/nvim/.nviminit.lua` file is loaded, when ever NeoVim is done booting up.
+It functions regardless of the current WorkingDirectory and thus allows you to 
+change NeoVims configuration, without having to commit the changes to this Repo.
+
+### using the `~/.config/$NVIM_APPNAME/lua/custom` folder
+In addition, you can put more Lua files into `~/.config/$NVIM_APPNAME/lua/custom`.
+Files put there also don't need to be commited to the Repo. Then you can call
+files put there from your `~/.config/$NVIM_APPNAME/.nvimínit.lua` via:
+```lua
+require "custom.[your module name]"
+```
+
+
+### creating a `[WorkingDir]/.nviminit.lua`
+A `[WorkingDir]/.nviminit.lua` is loaded after the `~/.config/nvim/.nvimínit.lua` has finished
+loading. Since it resides in what ever workind directory NeoVim was opened from,
+you can use it to changes the settings to something, that fits your current "Project" best.
+
+
+---
+## This Configuration uses the following Package/Plugins
 - **[Packer](https://github.com/wbthomason/packer.nvim)** for package managing
 - **[morhetz/gruvbox](https://github.com/morhetz/gruvbox)** as the colorsheme  
 - **[itchyny/lightline.vim](https://github.com/itchyny/lightline.vim)** to improve the visuals more 
@@ -45,7 +70,7 @@ Installing of language servers is down via the `Mason` command.
     - **requirements for Snippets**
         - **[l3mon4d3/luasnip](https://github.com/l3mon4d3/luasnip)**
         - **[rafamadriz/friendly-snippets](https://github.com/rafamadriz/friendly-snippets)**
-
+---
 ## Keybindings
 
 Leader = ` <Space> `
@@ -102,7 +127,11 @@ Leader = ` <Space> `
 \<leader>2 | open file at 2. entry on Harpoon list |
 \<leader>3 | open file at 3. entry on Harpoon list |
 \<leader>4 | open file at 4. entry on Harpoon list |
-\<leader>ht | open a terminal session (return when terminal is closed) |
+\<leader>5 | open file at 5. entry on Harpoon list |
+\<leader>6 | open file at 6. entry on Harpoon list |
+\<leader>7 | open file at 7. entry on Harpoon list |
+\<leader>8 | open file at 8. entry on Harpoon list |
+\<leader>9 | open file at 9. entry on Harpoon list |
 
 
 ### Intellisense / LSP
