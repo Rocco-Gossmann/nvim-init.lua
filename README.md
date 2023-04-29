@@ -30,11 +30,47 @@ files put there from your `~/.config/$NVIM_APPNAME/.nvimínit.lua` via:
 require "custom.[your module name]"
 ```
 
-
 ### creating a `[WorkingDir]/.nviminit.lua`
 A `[WorkingDir]/.nviminit.lua` is loaded after the `~/.config/nvim/.nvimínit.lua` has finished
 loading. Since it resides in what ever workind directory NeoVim was opened from,
 you can use it to changes the settings to something, that fits your current "Project" best.
+
+### Custom Keybindings
+First in `~/.config/$NVIM_APPNAME/lua/custom/mappings/` 
+create a `common.lua` file, that looks like this:
+```lua
+return function(wk) 
+    -- wk = which-key plugin
+    wk.register( 
+        -- See which-key.register for reference, what goes here
+        -- ...
+    )
+end
+
+```
+#### Custom Mappings by Filetype
+If you have mappings, that only should apply to certain filetypes, then you can create a 
+`~/.config/$NVIM_APPNAME/lua/custom/mappings/filetypes/[your filetype].lua` File.
+
+Here is an example, on what a `lua/custom/mappings/filetypes/markdown.lua` could look like.
+```lua
+return function(wk)
+--[[============================================================================
+-- Markdown Preview
+--============================================================================]]
+    wk.register({
+        d = {
+            name = "Display Preview",
+            ['r'] = { vim.cmd.MarkdownPreview, "Run/Start" },
+            ['s'] = {vim.cmd.MarkdownPreviewStop, "Stop" },
+        }
+    }, { prefix="<leader>", mode = "n" })
+end
+
+```
+
+
+
 
 
 ---
@@ -161,5 +197,14 @@ K | Show hover / mouse over |
 \<leader>dj (vim motion down)| Step Over |  
 \<leader>dh (vim motion left) | Stop Out |  
 \<leader>d\<CR>| Continue to next Breakpoint |
-\<leader>d\<ESC>| Stop and Close Vimspector |  
+\<leader>ds| Stop and Close Vimspector |  
+
+
+### MarkdownPreview
+| Binding | Effect |
+|---------|--------|
+\<leader>dr| Open Preview |  
+\<leader>ds| End Preview  |
+
+
 
