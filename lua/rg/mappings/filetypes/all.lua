@@ -3,17 +3,19 @@ return function(wk)
 -- VimSpector
 --============================================================================]]
     wk.register({
-        d = {
-            name = "Debug",
-            ['b'] = { function() vim.cmd('call vimspector#ToggleBreakpoint()') end, 'Toggle Breakpoint'},
-            ['r'] = { function() vim.cmd('call vimspector#Launch()') end, 'Run Debug'},
+        ['<f6>'] = { vim.cmd.DapToggleBreakpoint, 'Toggle Breakpoint'},
+        ['<f5>'] = { function()
+            vim.cmd.DapContinue()
+            require("dapui").open()
+        end, 'Run Debug'},
 
-            ['l'] = { function() vim.cmd('call vimspector#StepIInto()') end, 'Step in'},
-            ['j'] = { function() vim.cmd('call vimspector#StepIOver()') end, 'Step Over'},
-            ['h'] = { function() vim.cmd('call vimspector#StepIOut()') end, 'Step Out'},
-            ['<CR>'] = { function() vim.cmd('call vimspector#Continue()') end, 'Continue'},
+        ['<f7>'] = { vim.cmd.DapStepInto , 'Step in'},
+        ['<f8>'] = { vim.cmd.DapStepOver , 'Step Over'},
+        ['<f9>'] = { vim.cmd.DapStepOut , 'Step Out'},
 
-            ['s'] = { function() vim.cmd('call vimspector#Stop():call vimspector#Reset()<CR>') end, 'End and Reset'},
-        }
-    }, { prefix = "<leader>", mode = "n" })
+        ['<f10>'] = { function()
+            require("dapui").close()
+            vim.cmd.DapTerminate()
+        end, 'Stop Debug'},
+    }, {  mode = "n" })
 end

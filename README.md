@@ -1,12 +1,29 @@
 # This is my personal NeoVim configuration.
 
-## To make full use of it, install the following packages on your system.
+
+
+## Requirements.
+1. make sure, that Packer is installed. go to [https://github.com/wbthomason/packer.nvim](https://github.com/wbthomason/packer.nvim) and follow the install instructions.
+
+2. on the first load, you will get a lot of errors. This is normal, since Packer did not download all its required files yet.
+
+3. to fix this run: 
+```vim
+:PackerSync
+```
+You may need to run it more than once if you get errors during the install of some packages.
+If some packages continue to be brocken, than please report them in the Issues section.
+
+
+## Install some additionaly required external programs.
+- `g++`,  so that treesitter can campile any LSPs it may need
 - `python-nvim` to make the Vimspector work
 - `lazygit`
+- `npm` since some of the packages use node
 
 for debian based systems (Debian/Ubuntu/Linux Mint)
 ```shell
-sudo apt install python-nvim 
+sudo apt install python-nvim g++ npm
 
 mkdir -p /tmp/lazygitinstall && cd /tmp/lazygitinstall && \
 curl -L "https://github.com/jesseduffield/lazygit/releases/download/v0.37.0/lazygit_0.37.0_Linux_x86_64.tar.gz" | tar -xzv && \
