@@ -1,3 +1,4 @@
 /plugin
 .nviminit.lua
 /lua/custom
+tools/nvim-dap-adapter-php/node_modules
