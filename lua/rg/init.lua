@@ -1,5 +1,6 @@
 require("rg.packer")
 require("rg.mappings")
+require("rg.dap")
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
