@@ -47,8 +47,7 @@ return function(wk)
     -- Hop
     --============================================================================]]
     wk.register({
-        ['f'] = { vim.cmd.HopWordCurrentLine, "Hop to Word" },
-        ['gl'] = { vim.cmd.HopLine, "Hop to Line" }
+        ['f'] = { vim.cmd.HopChar1, "Hop to Word" },
     }, { mode = {"n", "v"} })
 
     --[[============================================================================
