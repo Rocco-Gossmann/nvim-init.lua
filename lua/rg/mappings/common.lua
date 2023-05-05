@@ -29,7 +29,6 @@ return function(wk)
 
         y = {'"+yy', "Yank to System Clipboard"},
 
---        f = {"mzggVG=`z", "Reindent everything"}
     }, {
         mode = "n",
         prefix="<leader>"
@@ -44,7 +43,13 @@ return function(wk)
         ['<leader>p'] = { '"_dP', "Paste without replacing the clipboard" }
     }, { mode = "x" })
 
-
+    --[[============================================================================
+    -- Hop
+    --============================================================================]]
+    wk.register({
+        ['f'] = { vim.cmd.HopWordCurrentLine, "Hop to Word" },
+        ['gl'] = { vim.cmd.HopLine, "Hop to Line" }
+    }, { mode = {"n", "v"} })
 
     --[[============================================================================
     -- Harpoon
