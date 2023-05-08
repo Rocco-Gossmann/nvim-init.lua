@@ -74,6 +74,8 @@ return require('packer').startup(function(use)
         run = function() vim.fn["mkdp#util#install"]() end,
     })
 
+    use({'EmmaEwert/vim-rgbds' })
+
     -- Intellisense
     use { 'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
