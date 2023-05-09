@@ -202,7 +202,8 @@ K | Show hover / mouse over |
 \<leader>vrr | Show references |
 \<leader>vrn | rename symbol in whole file|
 \<leader>vff | Format accoring to LSP |
-\<C-h> | show function signature / help |
+\K (Normal Mode)| show function signature / help |
+\<C-h> (Insert Mode)| show completion options |
 
 
 ### Vimspector
@@ -215,7 +216,6 @@ K | Show hover / mouse over |
 \<leader>dh (vim motion left) | Stop Out |  
 \<leader>d\<CR>| Continue to next Breakpoint |
 \<leader>ds| Stop and Close Vimspector |  
-
 
 ### MarkdownPreview
 | Binding | Effect |
