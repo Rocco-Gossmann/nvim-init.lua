@@ -28,6 +28,7 @@ return function(wk)
 
         y = { '"+yy', "Yank to System Clipboard" },
 
+        ["cr"] = { ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", "replace word under cursor for document" },
     }, {
         mode = "n",
         prefix = "<leader>"
@@ -38,11 +39,12 @@ return function(wk)
     }, { mode = "n" })
 
     wk.register({
-        ['<leader>y'] = { '"+y', "Yank to System Clipboard" }
+        ['<leader>y'] = { '"+y', "Yank to System Clipboard" },
+        ["<leader>cr"] = { ":s/\\%V//gI<Left><Left><Left><Left>", "replace inside selected text" },
     }, { mode = "v" })
 
     wk.register({
-        ['<leader>p'] = { '"_dP', "Paste without replacing the clipboard" }
+        ['<leader>p'] = { '"_dP', "Paste without replacing the clipboard" },
     }, { mode = "x" })
 
     --[[============================================================================
