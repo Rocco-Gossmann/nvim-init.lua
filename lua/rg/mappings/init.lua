@@ -10,7 +10,6 @@ if NVIM_APPNAME == nil then NVIM_APPNAME = "nvim" end;
 local CONFPATH = HOME .. "/.config/" .. NVIM_APPNAME
 
 require("rg.mappings.common")(wk)
-require "rg.mappings.nvim-tree"
 if vim.fn.findfile( "./lua/custom/mappings/common.lua") ~= '' then
     require ("custom.mappings.common")(wk);
 end

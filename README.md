@@ -96,7 +96,6 @@ end
 - **[morhetz/gruvbox](https://github.com/morhetz/gruvbox)** as the colorsheme  
 - **[itchyny/lightline.vim](https://github.com/itchyny/lightline.vim)** to improve the visuals more 
 - **[camspiers/lens.vim](https://github.com/camspiers/lens.vim)** to make better use of small screen spaces
-- **[nvim-tree/nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)** as the file explorer
 - **[nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)** as fuzzy finder
 - **[ThePrimeagen/harpoon](https://github.com/ThePrimeagen/harpoon)** for better bookmarking of files
 - **[kdheepak/lazygit.nvim](https://github.com/kdheepak/lazygit.nvim)** for handling anything git related
@@ -142,6 +141,8 @@ Leader = ` <Space> `
 \<leader>wa | write / save all |
 \<leader>WA | force write / save all |
 \<leader>f |  Auto reindent content of file |
+\<C-n> | Open Explorer new column
+\<C-N> | Open Explorer new row
 
 ### Clipboard
 | Binding | Effect |
@@ -169,8 +170,6 @@ Leader = ` <Space> `
 ###  Nvim-Tree additions
 | Binding | Effect |
 |---------|--------|
-\<C-n> | Toggle Nvim-Tree
-\<leader> \<CR> | set selected as new CWD
 
 
 ### Harpoon

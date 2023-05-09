@@ -33,6 +33,9 @@ return function(wk)
         prefix = "<leader>"
     })
 
+    wk.register({
+        ['<C-f>'] = { ":Vex<CR>", "Explorer (new column)" },
+    }, { mode = "n" })
 
     wk.register({
         ['<leader>y'] = { '"+y', "Yank to System Clipboard" }
