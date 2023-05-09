@@ -2,6 +2,9 @@ return function(wk)
     --[[============================================================================
     -- Generic
     --============================================================================]]
+    --
+    --#region
+
     wk.register({
         q = {
             name = "Quit",
@@ -36,11 +39,23 @@ return function(wk)
 
     wk.register({
         ['<C-f>'] = { ":Vex<CR>", "Explorer (new column)" },
+
+        ["J"] = { "mzJ`z", "Keep Cursor on Join Line" },
+        ["<C-d>"] = { "<C-d>zz", "Keep Cursor centered when jumping down" },
+        ["<C-u>"] = { "<C-u>zz", "Keep Cursor centered when jumping up" },
+        ["n"] = { "nzzzv", "Keep Cursor centered when searching down" },
+        ["N"] = { "Nzzzv", "Keep Cursor centered when searching up" },
+
     }, { mode = "n" })
 
     wk.register({
         ['<leader>y'] = { '"+y', "Yank to System Clipboard" },
+
         ["<leader>cr"] = { ":s/\\%V//gI<Left><Left><Left><Left>", "replace inside selected text" },
+
+        ["J"] = { ":m '>+1<CR>gv=gv", "Move selected Line Down " },
+        ["K"] = { ":m '<-2<CR>gv=gv", "Move selected Line Up " },
+
     }, { mode = "v" })
 
     wk.register({
