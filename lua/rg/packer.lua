@@ -6,8 +6,8 @@ return require('packer').startup(function(use)
 
     -- Theme
     -- use { 'nanotech/jellybeans.vim' }
-    -- use { "catppuccin/nvim", as = "catppuccin" }
-    use { "morhetz/gruvbox" }
+    use { "catppuccin/nvim", as = "catppuccin" }
+    -- use { "morhetz/gruvbox" }
 
     -- Better Statusline
     use { 'itchyny/lightline.vim', run = vim.cmd [[
