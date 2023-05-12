@@ -40,7 +40,7 @@ return function(wk)
     wk.register({
         ['<C-n>'] = { ":Ex<CR>", "Explorer (same window)" },
 
-        ["J"] = { "mzJ`z", "Keep Cursor on Join Line" },
+        ["J"] = { "MzJmz", "Keep Cursor on Join Line" },
         ["<C-d>"] = { "<C-d>zz", "Keep Cursor centered when jumping down" },
         ["<C-u>"] = { "<C-u>zz", "Keep Cursor centered when jumping up" },
         ["n"] = { "nzzzv", "Keep Cursor centered when searching down" },
