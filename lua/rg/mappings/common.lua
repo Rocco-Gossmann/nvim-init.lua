@@ -38,7 +38,7 @@ return function(wk)
     })
 
     wk.register({
-        ['<C-f>'] = { ":Vex<CR>", "Explorer (new column)" },
+        ['<C-n>'] = { ":Ex<CR>", "Explorer (same window)" },
 
         ["J"] = { "mzJ`z", "Keep Cursor on Join Line" },
         ["<C-d>"] = { "<C-d>zz", "Keep Cursor centered when jumping down" },
