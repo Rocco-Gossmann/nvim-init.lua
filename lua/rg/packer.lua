@@ -82,6 +82,9 @@ return require('packer').startup(function(use)
 
     use({'EmmaEwert/vim-rgbds' })
 
+    use({ 'kkoomen/vim-doge', run=':call doge#install()' })
+
+
     -- Intellisense
     use { 'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
