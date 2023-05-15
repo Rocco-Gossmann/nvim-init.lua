@@ -34,7 +34,7 @@ vim.opt.nrformats:append("alpha")
 
 vim.cmd [[
 
-let g:ranger_open_new_tab = 1
+" let g:ranger_open_new_tab = 1
 let g:ranger_map_keys = 0
 
 nnoremap M m
