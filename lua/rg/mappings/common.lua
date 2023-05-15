@@ -34,26 +34,6 @@ return function(wk)
 
             ["cr"] = { ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", "replace word under cursor for document" },
 
-            h     = {
-                name = "Harpoone",
-                m = { function() harpoonmark.add_file() end, "Add file to Harpoone" },
-                h = { function() harpoonmark.set_current_at(1) end, "Set file at 1" },
-                j = { function() harpoonmark.set_current_at(2) end, "Set file at 2" },
-                k = { function() harpoonmark.set_current_at(3) end, "Set file at 3" },
-                l = { function() harpoonmark.set_current_at(4) end, "Set file at 4" },
-            },
-
-            f = {
-                name = "Find (Telescope)",
-                f = { tele.find_files, "Find Files" },
-                g = { tele.git_files, "Find Git Files" },
-                s = { tele.live_grep, "Find Files with String" },
-                b = { tele.buffers, "Find Buffer" },
-                h = { tele.help_tags, "Find Help Tags" },
-                k = { tele.keymaps, "Find Help Tags" },
-                u = { tele.keymaps, "Usage of String" },
-                c = { tele.resume, "Continue last search" }
-            },
 
             v = {
                 name = "LSP",
@@ -66,7 +46,7 @@ return function(wk)
             }
         },
 
-        ['<C-n>'] = { ":Ex<CR>", "Explorer (same window)" },
+        ['<C-n>'] = { ":RangerCurrentDirectory<CR>", "Explorer (Ranger)" },
 
         ["J"] = { "mzJ`z", "Keep Cursor on Join Line" },
 
@@ -76,6 +56,32 @@ return function(wk)
         ["n"] = { "nzz", "Keep Cursor centered when searching down" },
         ["N"] = { "Nzz", "Keep Cursor centered when searching up" },
 
+    --[[============================================================================
+    -- Telescope
+    --============================================================================]]
+        ['<C-f>'] = {
+            name = "Find (Telescope)",
+            ['<C-f>'] = { tele.find_files, "Find Files" },
+            ['<C-g>'] = { tele.git_files, "Find Git Files" },
+            ['<C-s>'] = { tele.live_grep, "Find Files with String" },
+            ['<C-b>'] = { tele.buffers, "Find Buffer" },
+            ['<C-h>'] = { tele.help_tags, "Find Help Tags" },
+            ['<C-k>'] = { tele.keymaps, "Find Help Tags" },
+            ['<C-u>'] = { tele.keymaps, "Usage of String" },
+            ['<C-c>'] = { tele.resume, "Continue last search" }
+        },
+
+    --[[============================================================================
+    -- Harpoone
+    --============================================================================]]
+        ["<leader>h"] = {
+            name = "Harpoone",
+            m = { function() harpoonmark.add_file() end, "Add file to Harpoone" },
+            h = { function() harpoonmark.set_current_at(1) end, "Set file at 1" },
+            j = { function() harpoonmark.set_current_at(2) end, "Set file at 2" },
+            k = { function() harpoonmark.set_current_at(3) end, "Set file at 3" },
+            l = { function() harpoonmark.set_current_at(4) end, "Set file at 4" },
+        },
         ['<c-h>'] = { function() harpoonui.nav_file(1) end, "Load harpoon 1" },
         ['<c-j>'] = { function() harpoonui.nav_file(2) end, "Load harpoon 2" },
         ['<c-k>'] = { function() harpoonui.nav_file(3) end, "Load harpoon 3" },
