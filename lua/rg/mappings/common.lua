@@ -62,6 +62,7 @@ return function(wk)
         ['<C-f>'] = {
             name = "Find (Telescope)",
             ['<C-f>'] = { tele.find_files, "Find Files" },
+            ['<C-d>'] = { function() vim.cmd[[ Telescope find_files search_dirs=['%:h'] ]] end, "Find Files in current Dir" },
             ['<C-g>'] = { tele.git_files, "Find Git Files" },
             ['<C-s>'] = { tele.live_grep, "Find Files with String" },
             ['<C-b>'] = { tele.buffers, "Find Buffer" },
