@@ -1,6 +1,4 @@
-local dap = require("dap");
-
-dap.configurations.php = {
+require("dap").configurations.php = {
     {
         type = 'php',
         request = 'launch',
