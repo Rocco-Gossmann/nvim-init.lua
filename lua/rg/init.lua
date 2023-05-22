@@ -36,6 +36,7 @@ vim.cmd [[
 
 " let g:ranger_open_new_tab = 1
 let g:ranger_map_keys = 0
+let g:zig_fmt_autosave = 0
 
 nnoremap M m
 nnoremap m `
