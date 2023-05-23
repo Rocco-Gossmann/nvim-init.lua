@@ -16,3 +16,4 @@ vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 vim.api.nvim_set_hl(0, "Comment", {bg = "none", fg="#a0a0a0"})
 vim.api.nvim_set_hl(0, "LineNr", {bg = "black", fg="#a0a0a0"})
 
+vim.api.nvim_set_hl(0, "CursorLine", {bg = "#333333"})

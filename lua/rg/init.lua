@@ -34,6 +34,8 @@ vim.opt.nrformats:append("alpha")
 
 vim.cmd [[
 
+set cursorline
+
 " let g:ranger_open_new_tab = 1
 let g:ranger_map_keys = 0
 let g:zig_fmt_autosave = 0
@@ -43,7 +45,6 @@ nnoremap m `
 
 map q <nop>
 nnoremap Q q
-
 nnoremap gg ggzz
 nnoremap j jzz
 nnoremap k kzz
