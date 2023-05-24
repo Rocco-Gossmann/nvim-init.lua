@@ -95,9 +95,9 @@ return function(wk)
     --============================================================================]]
         ['gd'] = { function() vim.lsp.buf.definition() end, 'Goto Definition' },
         ['K'] = { function() vim.lsp.buf.hover() end, 'Show Hover' },
+        ['<C-h>'] = { function() vim.lsp.buf.hover({ reason = cmp.ContextReason.Auto }) end, "Show Hover" },
         ['[d'] = { function() vim.diagnostic.goto_next() end, 'Goto Next' },
         [']d'] = { function() vim.diagnostic.goto_prev() end, 'Goto Prev' },
-
     }, { mode = "n" })
 
     wk.register({
@@ -114,9 +114,9 @@ return function(wk)
         ['<leader>p'] = { '"_dP', "Paste without replacing the clipboard" },
     }, { mode = "x" })
 
-    
     wk.register({
-        ['<C-h>'] = { function() vim.lsp.buf.completion({ reason = cmp.ContextReason.Auto }) end, "Code complete" }
+        ['<C-k>'] = { function() vim.lsp.buf.completion({ reason = cmp.ContextReason.Auto }) end, "Code complete" },
+        ['<C-h>'] = { function() vim.lsp.buf.signature_help() end, "Signature Help" }
     }, { mode = "i" })
 
 end
