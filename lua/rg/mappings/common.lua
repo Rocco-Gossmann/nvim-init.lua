@@ -116,7 +116,7 @@ return function(wk)
 
     
     wk.register({
-        ['<C-Space>'] = { function() vim.lsp.buf.completion({ reason = cmp.ContextReason.Auto }) end, "Code complete" }
+        ['<C-h>'] = { function() vim.lsp.buf.completion({ reason = cmp.ContextReason.Auto }) end, "Code complete" }
     }, { mode = "i" })
 
 end
