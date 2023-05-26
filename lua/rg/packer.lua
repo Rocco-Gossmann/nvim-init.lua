@@ -24,7 +24,7 @@ return require('packer').startup(function(use)
         requires = { { 'camspiers/animate.vim' }, },
 
         run = vim.cmd [[
-            let g:lens#disabled_filetypes = ['NvimTree', 'nerdtree', 'fzf']
+            let g:lens#disabled_filetypes = ['NvimTree', 'nerdtree', 'fzf', 'tagbar']
             let g:lens#width_resize_min = 130
             let g:lens#width_resize_max = 130
             let g:lens#height_resize_min = 30
@@ -41,7 +41,7 @@ return require('packer').startup(function(use)
     }
 
 
-    use { 'ggandor/lightspeed.nvim' }
+--    use { 'ggandor/lightspeed.nvim' }
 
     -- File managment
 --    use { 'nvim-tree/nvim-tree.lua',
@@ -62,7 +62,7 @@ return require('packer').startup(function(use)
 
     use { 'kdheepak/lazygit.nvim', run = vim.cmd [[
         let g:lazygit_floating_window_scaling_factor = 0.9
-        let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯']
+        let g:lazygit_floating_window_border_chars = ['╭', '╮', '╰', '╯']
         let g:lazygit_floating_window_use_plenary = 0
     ]] }
 
@@ -107,4 +107,8 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' },
         }
     }
+
+    use { 'preservim/tagbar', run = vim.cmd [[
+        let g:tagbar_left = 1 
+    ]]  }
 end)
