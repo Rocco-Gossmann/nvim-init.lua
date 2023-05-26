@@ -121,9 +121,7 @@ return function(wk)
         ["("]  = { "c()<ESC>hmzplv`z", "Surround in braces" },
         ["["]  = { "c[]<ESC>hmzplv`z", "Surround in brackets" },
         ["{"]  = { "c{}<ESC>hmzplv`z", "Surround in squerlies" },
-        ["<"]  = { "c<><ESC>hmzplv`z", "Surround in squerlies" },
-
-
+        ["/"]  = { "c/**/<ESC>hhhmzlpllv`z", "Surround in comment" },
     }, { mode = "v" })
 
     wk.register({
