@@ -121,6 +121,8 @@ return function(wk)
         ["("]  = { "c()<ESC>P"  , "Surround in braces" },
         ["["]  = { "c[]<ESC>P"  , "Surround in brackets" },
         ["{"]  = { "c{}<ESC>P"  , "Surround in squerlies" },
+
+
     }, { mode = "v" })
 
     wk.register({
