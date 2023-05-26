@@ -56,6 +56,14 @@ return function(wk)
         ["n"] = { "nzz", "Keep Cursor centered when searching down" },
         ["N"] = { "Nzz", "Keep Cursor centered when searching up" },
 
+
+    --[[============================================================================
+    -- TagBar
+    --============================================================================]]
+        ['<C-t>'] = { vim.cmd.TagbarToggle, "Open Tagbar" },
+        ['{'] = { vim.cmd.TagbarJumpPrev, "Tagbar: Jump Prev" },
+        ['}'] = { vim.cmd.TagbarJumpNext, "Tagbar: Jump Next" },
+
     --[[============================================================================
     -- Telescope
     --============================================================================]]
@@ -83,12 +91,12 @@ return function(wk)
             K = { function() harpoonmark.set_current_at(3) end, "Set file at 3" },
             L = { function() harpoonmark.set_current_at(4) end, "Set file at 4" },
 
+            m = { function() harpoonui.toggle_quick_menu(4) end, "show harpoon menu" },
             h = { function() harpoonui.nav_file(1) end, "Load harpoon 1" },
             j = { function() harpoonui.nav_file(2) end, "Load harpoon 2" },
             k = { function() harpoonui.nav_file(3) end, "Load harpoon 3" },
             l = { function() harpoonui.nav_file(4) end, "Load harpoon 4" },
         },
-        ['<c-a>'] = { function() harpoonui.toggle_quick_menu(4) end, "Load harpoon 4" },
 
     --[[============================================================================
     -- LSP
@@ -113,7 +121,6 @@ return function(wk)
         ["("]  = { "c()<ESC>P"  , "Surround in braces" },
         ["["]  = { "c[]<ESC>P"  , "Surround in brackets" },
         ["{"]  = { "c{}<ESC>P"  , "Surround in squerlies" },
-
     }, { mode = "v" })
 
     wk.register({
