@@ -7,8 +7,7 @@ return require('packer').startup(function(use)
     -- Theme
     -- use { 'nanotech/jellybeans.vim' }
     -- use { "catppuccin/nvim", as = "catppuccin" }
-    -- use { 'folke/tokyonight.nvim' }
-
+    use { 'folke/tokyonight.nvim' }
     use { "morhetz/gruvbox" }
 
     -- Better Statusline
@@ -16,7 +15,7 @@ return require('packer').startup(function(use)
         let g:lightline = {}
         let g:lightline.separator = { 'left': '', 'right': '' }
         let g:lightline.subseparator = { 'left': '', 'right': '' }
-        let g:lightline.colorscheme='gruvbox' 
+        let g:lightline.colorscheme='tokyonight' 
     ]] }
 
     -- autoresizing of panes to a workable size
