@@ -116,13 +116,12 @@ return function(wk)
         ["J"] = { ":m '>+1<CR>gv=gv", "Move selected Line Down " },
         ["K"] = { ":m '<-2<CR>gv=gv", "Move selected Line Up " },
 
-        ["\""] = { "c\"\"<ESC>P", "Surround in quotes" },
-        ["'"]  = { "c''<ESC>P"  , "Surround in single quotes" },
-        ["("]  = { "c()<ESC>P"  , "Surround in braces" },
-        ["["]  = { "c[]<ESC>P"  , "Surround in brackets" },
-        ["{"]  = { "c{}<ESC>P"  , "Surround in squerlies" },
-
-
+        ["\""] = { 'c""<ESC>hmzplv`z', "Surround in quotes" },
+        ["'"]  = { "c''<ESC>hmzplv`z", "Surround in single quotes" },
+        ["("]  = { "c()<ESC>hmzplv`z", "Surround in braces" },
+        ["["]  = { "c[]<ESC>hmzplv`z", "Surround in brackets" },
+        ["{"]  = { "c{}<ESC>hmzplv`z", "Surround in squerlies" },
+        ["/"]  = { "c/**/<ESC>hhhmzlpllv`z", "Surround in comment" },
     }, { mode = "v" })
 
     wk.register({
