@@ -185,7 +185,6 @@ Leader = ` <Space> `
 \<leader>hJ | set file at 2. entry on Harpoon list |
 \<leader>hK | set file at 3. entry on Harpoon list |
 \<leader>hL | set file at 4. entry on Harpoon list |
-|
 \<leader>hm | show Harpoon list |
 \<leader>hh | open file at 1. entry on Harpoon list |
 \<leader>hj | open file at 2. entry on Harpoon list |
@@ -205,7 +204,6 @@ gd | Goto definition |
 \<leader>vrr | Show references |
 \<leader>vrn | rename symbol in whole file|
 \<leader>vff | Format accoring to LSP |
-|
 \<C-h> (Normal Mode)| Show hover / mouse over |
 \<C-h> (Insert Mode)| show function signature |
 \<C-k> (Insert Mode)| show completion options |
