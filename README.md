@@ -17,13 +17,12 @@ If some packages continue to be brocken, than please report them in the Issues s
 
 ## Install some additionaly required external programs.
 - `g++`,  so that treesitter can campile any LSPs it may need
-- `python-nvim` to make the Vimspector work
 - `lazygit`
 - `npm` since some of the packages use node
 
 for debian based systems (Debian/Ubuntu/Linux Mint)
 ```shell
-sudo apt install python-nvim g++ npm
+sudo apt install g++ npm
 
 mkdir -p /tmp/lazygitinstall && cd /tmp/lazygitinstall && \
 curl -L "https://github.com/jesseduffield/lazygit/releases/download/v0.37.0/lazygit_0.37.0_Linux_x86_64.tar.gz" | tar -xzv && \
@@ -93,16 +92,22 @@ end
 ---
 ## This Configuration uses the following Package/Plugins
 - **[Packer](https://github.com/wbthomason/packer.nvim)** for package managing
-- **[morhetz/gruvbox](https://github.com/morhetz/gruvbox)** as the colorsheme  
+- **[Tokyonight](https://github.com/folke/tokyonight.nvim)** as current colorscheme
+- **[morhetz/gruvbox](https://github.com/morhetz/gruvbox)** as alternate colorscheme  
 - **[itchyny/lightline.vim](https://github.com/itchyny/lightline.vim)** to improve the visuals more 
 - **[camspiers/lens.vim](https://github.com/camspiers/lens.vim)** to make better use of small screen spaces
 - **[nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)** as fuzzy finder
 - **[ThePrimeagen/harpoon](https://github.com/ThePrimeagen/harpoon)** for better bookmarking of files
 - **[kdheepak/lazygit.nvim](https://github.com/kdheepak/lazygit.nvim)** for handling anything git related
+- **[francoiscabrol/ranger.vim](https://github.com/francoiscabrol/ranger.vim)** for a better overview over the project files
 - **[nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)** to provide syntax highlighting
-- **[puremourning/vimspector](https://github.com/puremourning/vimspector)** as the Debugger
+- **[rcarriga/nvim-dap-ui & mfussenegger/nvim-dap](https://github.com/mfussenegger/nvim-dap)** as the Debugger
 - **[iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)** to preview Markdown files
 - **[folke/which-key.nvim](https://github.com/folke/which-key.nvim)** keyboard shortcut cheatsheet and assignments
+- **[kdheepak/lazygit.nvim](https://github.com/kdheepak/lazygit.nvim)** Lazygit integration
+- **[EmmaEwert/vim-rgbds](https://github.com/EmmaEwert/vim-rgbds)** Syntax highlighting for GBZ80 Assembly
+- **[kkoomen/vim-doge](https://github.com/kkoomen/vim-doge)** Docblock generator for functions
+- **[preservim/tagbar](https://github.com/preservim/tagbar)** Open the current taglist
 
 The following packages will setup the Intellisense via the Language-Server Protokoll  
 Installing of language servers is down via the `Mason` command.
@@ -140,9 +145,6 @@ Leader = ` <Space> `
 \<leader>WW | force write / force save |
 \<leader>wa | write / save all |
 \<leader>WA | force write / save all |
-\<leader>f |  Auto reindent content of file |
-\<C-n> | Open Explorer new column
-\<C-N> | Open Explorer new row
 
 ### Clipboard
 | Binding | Effect |
@@ -150,49 +152,51 @@ Leader = ` <Space> `
 \<leader>y | Yank to System Clipboard |      
 \<leader>p | Paste from System Clipboard |      
 
-### Git
+### TagBar
 | Binding | Effect |
 |---------|--------|
-\<leader>gt | Open LazyGIT in current CWD |
+\<C-t> | Open/Close Tagbar 
+{ | Jump to previous Tag
+} | Jump to next Tag
 
 ### Telescope
 | Binding | Effect |
 |---------|--------|
-\<leader> ff | find file in CWD 
-\<leader> fs | find files containing string
-\<leader> fu | like fs, but asks for the string before hand
-\<leader> fg | find file in GIT
-\<leader> fb | find open buffer
-\<leader> fh | find help tag
-\<leader> fk | find key
+\<C-f><C-f> | find file in CWD 
+\<C-f><C-s> | find files containing string
+\<C-f><C-u> | like fs, but asks for the string before hand
+\<C-f><C-g> | find file in GIT
+\<C-f><C-b> | find open buffer
+\<C-f><C-h> | find help tag
+\<C-f><C-k> | find key
 
-
-###  Nvim-Tree additions
+### Utils
 | Binding | Effect |
 |---------|--------|
-
+\<C-n> | Open Ranger |
+\<leader>gt | Open Lazygit |
+\<leader>d (over a function or variable) | Generate JS/PHP/... - DocBlock |
 
 ### Harpoon
 | Binding | Effect |
 |---------|--------|
-\<leader>hm | Add current File too Harpoon list |
-\<leader>hh | show Harpoon list |
-\<leader>1 | open file at 1. entry on Harpoon list |
-\<leader>2 | open file at 2. entry on Harpoon list |
-\<leader>3 | open file at 3. entry on Harpoon list |
-\<leader>4 | open file at 4. entry on Harpoon list |
-\<leader>5 | open file at 5. entry on Harpoon list |
-\<leader>6 | open file at 6. entry on Harpoon list |
-\<leader>7 | open file at 7. entry on Harpoon list |
-\<leader>8 | open file at 8. entry on Harpoon list |
-\<leader>9 | open file at 9. entry on Harpoon list |
+\<leader>hM | Add current File too Harpoon list |
+\<leader>hH | set file at 1. entry on Harpoon list |
+\<leader>hJ | set file at 2. entry on Harpoon list |
+\<leader>hK | set file at 3. entry on Harpoon list |
+\<leader>hL | set file at 4. entry on Harpoon list |
+|
+\<leader>hm | show Harpoon list |
+\<leader>hh | open file at 1. entry on Harpoon list |
+\<leader>hj | open file at 2. entry on Harpoon list |
+\<leader>hk | open file at 3. entry on Harpoon list |
+\<leader>hl | open file at 4. entry on Harpoon list |
 
 
 ### Intellisense / LSP
 | Binding | Effect |
 |---------|--------|
 gd | Goto definition |
-K | Show hover / mouse over |
 \<leader>vws | goto Workspace Symbol|
 \<leader>vd | show diagnostics Floating window|
 \[d | Goto next diagnostics |
@@ -201,26 +205,26 @@ K | Show hover / mouse over |
 \<leader>vrr | Show references |
 \<leader>vrn | rename symbol in whole file|
 \<leader>vff | Format accoring to LSP |
-\K (Normal Mode)| show function signature / help |
-\<C-h> (Insert Mode)| show completion options |
+|
+\<C-h> (Normal Mode)| Show hover / mouse over |
+\<C-h> (Insert Mode)| show function signature |
+\<C-k> (Insert Mode)| show completion options |
 
 
-### Vimspector
+### DAP (Debug adapter Protocol)
 | Binding | Effect |
 |---------|--------|
-\<leader>db| Toggle Breakpoint |  
-\<leader>dr| Launch Vimspector |  
-\<leader>dl (vim motion right)| Stop Into |  
-\<leader>dj (vim motion down)| Step Over |  
-\<leader>dh (vim motion left) | Stop Out |  
-\<leader>d\<CR>| Continue to next Breakpoint |
-\<leader>ds| Stop and Close Vimspector |  
+\<F6> | Toggle Breakpoint |  
+\<F5> | Launch Debugger (define via .nviminit.lua) / Continue running|  
+\<F7> | Step Into |  
+\<F8> | Step Over |  
+\<F9> | Stop Out |  
+\<F10>| Reset Debugger |
+\<F4>| show value of var under cursor |
 
 ### MarkdownPreview
 | Binding | Effect |
 |---------|--------|
 \<leader>dr| Open Preview |  
 \<leader>ds| End Preview  |
-
-
 
