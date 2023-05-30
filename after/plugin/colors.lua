@@ -23,8 +23,10 @@ require("tokyonight").setup({
     }
 })
 vim.api.nvim_set_hl(0, "@keyword", { bg = "none", fg="pink" })
+vim.api.nvim_set_hl(0, "Folded", {bg = "none", fg="#7faaf7" })
 vim.api.nvim_set_hl(0, "Comment", {bg = "none", fg="#a0a0a0"})
 vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#131313" })
+vim.api.nvim_set_hl(0, "CursorLine", {bg = "#131313"})
 --==============================================================================
 -- Common Stuff
 --==============================================================================
@@ -37,4 +39,3 @@ vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
 -- this is a comment just to test the following line
 vim.api.nvim_set_hl(0, "Comment", {bg = "none", fg="#a0a0a0"})
 vim.api.nvim_set_hl(0, "LineNr", {bg = "#333333", fg="#a0a0a0"})
-vim.api.nvim_set_hl(0, "CursorLine", {bg = "#333333"})

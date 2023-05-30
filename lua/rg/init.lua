@@ -47,4 +47,7 @@ map q <nop>
 nnoremap Q q
 nnoremap gg ggzz
 
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+
 ]]
