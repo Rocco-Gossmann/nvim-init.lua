@@ -24,7 +24,7 @@ require("tokyonight").setup({
 })
 vim.api.nvim_set_hl(0, "@keyword", { bg = "none", fg="pink" })
 vim.api.nvim_set_hl(0, "Comment", {bg = "none", fg="#a0a0a0"})
-
+vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#131313" })
 --==============================================================================
 -- Common Stuff
 --==============================================================================
