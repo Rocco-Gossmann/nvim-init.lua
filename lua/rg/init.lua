@@ -47,6 +47,7 @@ map q <nop>
 nnoremap Q q
 nnoremap gg ggzz
 
+set foldlevelstart=99
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
