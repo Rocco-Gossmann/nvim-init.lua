@@ -7,19 +7,19 @@ return function(wk)
 --============================================================================]]
     wk.register({
 
-        ["<f4>"] = { function() dapui.eval() end, "DAP: Eval under Cursor" },
+        ["r<space>"] = { function() dapui.eval() end, "DAP: Eval under Cursor" },
 
-        ['<f6>'] = { vim.cmd.DapToggleBreakpoint, 'Toggle Breakpoint'},
-        ['<f5>'] = { function()
+        ['rb'] = { vim.cmd.DapToggleBreakpoint, 'Toggle Breakpoint'},
+        ['rr'] = { function()
             vim.cmd.DapContinue()
             dapui.open()
         end, 'Run Debug'},
 
-        ['<f7>'] = { vim.cmd.DapStepInto , 'Step in'},
-        ['<f8>'] = { vim.cmd.DapStepOver , 'Step Over'},
-        ['<f9>'] = { vim.cmd.DapStepOut , 'Step Out'},
+        ['rl'] = { vim.cmd.DapStepInto , 'Step in'},
+        ['rj'] = { vim.cmd.DapStepOver , 'Step Over'},
+        ['rh'] = { vim.cmd.DapStepOut , 'Step Out'},
 
-        ['<f10>'] = { function()
+        ['rc'] = { function()
             dapui.close()
             vim.cmd.DapTerminate()
         end, 'Stop Debug'},
