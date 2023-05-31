@@ -6,22 +6,24 @@ return function(wk)
 -- VimSpector
 --============================================================================]]
     wk.register({
+        ['e'] = {
+            name = "Debug/Run",
+            ["<space>"] = { function() dapui.eval() end, "DAP: Eval under Cursor" },
 
-        ["r<space>"] = { function() dapui.eval() end, "DAP: Eval under Cursor" },
+            ['b'] = { vim.cmd.DapToggleBreakpoint, 'Toggle Breakpoint'},
+            ['r'] = { function()
+                vim.cmd.DapContinue()
+                dapui.open()
+            end, 'Run Debug'},
 
-        ['rb'] = { vim.cmd.DapToggleBreakpoint, 'Toggle Breakpoint'},
-        ['rr'] = { function()
-            vim.cmd.DapContinue()
-            dapui.open()
-        end, 'Run Debug'},
+            ['l'] = { vim.cmd.DapStepInto , 'Step in'},
+            ['j'] = { vim.cmd.DapStepOver , 'Step Over'},
+            ['h'] = { vim.cmd.DapStepOut , 'Step Out'},
 
-        ['rl'] = { vim.cmd.DapStepInto , 'Step in'},
-        ['rj'] = { vim.cmd.DapStepOver , 'Step Over'},
-        ['rh'] = { vim.cmd.DapStepOut , 'Step Out'},
-
-        ['rc'] = { function()
-            dapui.close()
-            vim.cmd.DapTerminate()
-        end, 'Stop Debug'},
-    }, {  mode = "n" })
+            ['c'] = { function()
+                dapui.close()
+                vim.cmd.DapTerminate()
+            end, 'Stop Debug'},
+        }
+    }, { mode = "n" })
 end

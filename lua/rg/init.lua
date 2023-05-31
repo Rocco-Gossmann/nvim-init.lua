@@ -43,8 +43,8 @@ let g:zig_fmt_autosave = 0
 nnoremap M m
 nnoremap m `
 
-map q <nop>
-nnoremap Q q
+nnoremap w @
+
 nnoremap gg ggzz
 
 set foldlevelstart=99
