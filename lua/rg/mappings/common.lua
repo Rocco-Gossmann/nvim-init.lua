@@ -46,7 +46,7 @@ return function(wk)
             }
         },
 
-        ['<C-n>'] = { ":RangerCurrentDirectory<CR>", "Explorer (Ranger)" },
+        ['<C-n>'] = { ":NvimTreeToggle<CR>", "Explorer (NvimTree)" },
 
         ["J"] = { "mzJ`z", "Keep Cursor on Join Line" },
 
@@ -77,7 +77,7 @@ return function(wk)
             ['<C-h>'] = { tele.help_tags, "Find Help Tags" },
             ['<C-k>'] = { tele.keymaps, "Find Help Tags" },
             ['<C-u>'] = { tele.keymaps, "Usage of String" },
-            ['<C-c>'] = { tele.resume, "Continue last search" }
+            ['<C-n>'] = { tele.resume, "Continue last search" }
         },
 
     --[[============================================================================
@@ -102,7 +102,6 @@ return function(wk)
     -- LSP
     --============================================================================]]
         ['gd'] = { function() vim.lsp.buf.definition() end, 'Goto Definition' },
-        ['K'] = { function() vim.lsp.buf.hover() end, 'Show Hover' },
         ['<C-h>'] = { function() vim.lsp.buf.hover({ reason = cmp.ContextReason.Auto }) end, "Show Hover" },
         ['[d'] = { function() vim.diagnostic.goto_next() end, 'Goto Next' },
         [']d'] = { function() vim.diagnostic.goto_prev() end, 'Goto Prev' },
@@ -116,6 +115,8 @@ return function(wk)
         ["J"] = { ":m '>+1<CR>gv=gv", "Move selected Line Down " },
         ["K"] = { ":m '<-2<CR>gv=gv", "Move selected Line Up " },
 
+        [" "] = { 'c  <ESC>hmzplv`z', "Surround in space" },
+        ["."] = { 'c..<ESC>hmzplv`z', "Surround in dot" },
         ["\""] = { 'c""<ESC>hmzplv`z', "Surround in quotes" },
         ["'"]  = { "c''<ESC>hmzplv`z", "Surround in single quotes" },
         ["("]  = { "c()<ESC>hmzplv`z", "Surround in braces" },

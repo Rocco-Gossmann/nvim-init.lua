@@ -43,12 +43,12 @@ return require('packer').startup(function(use)
 --    use { 'ggandor/lightspeed.nvim' }
 
     -- File managment
---    use { 'nvim-tree/nvim-tree.lua',
---        requires = { 'nvim-tree/nvim-web-devicons' },
---    }
-    use { 'francoiscabrol/ranger.vim',
-        requires= { { 'rbgrouleff/bclose.vim' } }
+    use { 'nvim-tree/nvim-tree.lua',
+        requires = { 'nvim-tree/nvim-web-devicons' },
     }
+--    use { 'francoiscabrol/ranger.vim',
+--        requires= { { 'rbgrouleff/bclose.vim' } }
+--    }
 
     use { 'nvim-telescope/telescope.nvim',
         tag = '0.1.1',
