@@ -43,6 +43,7 @@ let g:zig_fmt_autosave = 0
 nnoremap M m
 nnoremap m `
 
+map q <nop>
 nnoremap s @
 nnoremap Q q
 
