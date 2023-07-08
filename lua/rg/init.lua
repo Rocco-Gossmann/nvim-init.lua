@@ -37,6 +37,14 @@ vim.cmd [[
 set cursorline
 
 " let g:ranger_open_new_tab = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim Visual Multi
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:VM_maps = {}
+let g:VM_maps["Add Cursor At Pos"]    = '<C-S-v>'   " new cursor down 
+" let g:VM_maps["Add Cursor Up"]      = '<C-S-k>'   " new cursor up 
+
 let g:ranger_map_keys = 0
 let g:zig_fmt_autosave = 0
 

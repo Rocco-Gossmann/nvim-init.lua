@@ -130,7 +130,7 @@ return function(wk)
     }, { mode = "x" })
 
     wk.register({
-        ['<C-k>'] = { function() vim.lsp.buf.completion({ reason = cmp.ContextReason.Auto }) end, "Code complete" },
+        ['<C-u>'] = { function() vim.lsp.buf.completion({ reason = cmp.ContextReason.Auto }) end, "Code complete" },
         ['<C-h>'] = { function() vim.lsp.buf.signature_help() end, "Signature Help" }
     }, { mode = "i" })
 

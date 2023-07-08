@@ -42,6 +42,8 @@ return require('packer').startup(function(use)
 
 --    use { 'ggandor/lightspeed.nvim' }
 
+    use { 'mg979/vim-visual-multi' }
+
     -- File managment
     use { 'nvim-tree/nvim-tree.lua',
         requires = { 'nvim-tree/nvim-web-devicons' },
