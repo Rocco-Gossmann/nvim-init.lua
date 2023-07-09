@@ -43,6 +43,12 @@ return require('packer').startup(function(use)
 --    use { 'ggandor/lightspeed.nvim' }
 
     use { 'mg979/vim-visual-multi' }
+    use { 'jinh0/eyeliner.nvim',
+        config = function()
+            require'eyeliner'.setup { }
+
+        end 
+    }
 
     -- File managment
     use { 'nvim-tree/nvim-tree.lua',
