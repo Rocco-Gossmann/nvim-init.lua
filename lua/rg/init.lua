@@ -41,9 +41,10 @@ set cursorline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Visual Multi
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:VM_default_mappings = 0
+
 let g:VM_maps = {}
-let g:VM_maps["Add Cursor At Pos"]    = '<C-S-v>'   " new cursor down 
-" let g:VM_maps["Add Cursor Up"]      = '<C-S-k>'   " new cursor up 
+let g:VM_maps["Add Cursor At Pos"]  = '<C-S-v>' " new cursor down 
 
 let g:ranger_map_keys = 0
 let g:zig_fmt_autosave = 0
@@ -62,3 +63,4 @@ set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
 ]]
+
