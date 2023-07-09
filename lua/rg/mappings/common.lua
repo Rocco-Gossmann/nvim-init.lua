@@ -6,27 +6,17 @@ return function(wk)
     local cmp = require('cmp')
 
     wk.register({
+    --[[============================================================================
+    -- File Closing
+    --============================================================================]]
+        ['Z'] = {
+            ['Z'] = { ":wq<cr>", "safe close current buffers" },
+            ['W'] = { ":wa<cr>:qa<cr>", "safe close all buffers" },
+            ['Q'] = { ":q!<cr>", "force close current buffer" },
+            ['X'] = { ":qa!<cr>", "foce close all buffers" }
+        },
+
         ['<leader>'] = {
-            q = {
-                name = "Quit",
-                q = { ":q<cr>", "buffer" },
-                a = { ":qa<cr>", "all buffers" }
-            },
-            Q = {
-                name = "Force quit",
-                Q = { ":q!<cr>", "buffer" },
-                A = { ":qa!<cr>", "all buffers" }
-            },
-            w = {
-                name = "Write/Save",
-                w = { ":w<cr>", "buffer" },
-                a = { ":wa<cr>", "all buffers" }
-            },
-            W = {
-                name = "Overwrite/Forcew Save",
-                W = { ":w!<cr>", "buffer" },
-                A = { ":wa!<cr>", "all buffers" }
-            },
 
             ["gt"] = { vim.cmd.LazyGit, "Open Git" },
 
