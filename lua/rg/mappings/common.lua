@@ -24,7 +24,6 @@ return function(wk)
 
             ["cr"] = { ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", "replace word under cursor for document" },
 
-
             v = {
                 name = "LSP",
                 ['ws'] = { function() vim.lsp.buf.workspace_symbol() end, 'Workspace Symbol' },
