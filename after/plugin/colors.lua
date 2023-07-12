@@ -17,7 +17,6 @@ require("tokyonight").setup({
         comments = { italic=true },
 
         on_highlights = function(h, c)
-
             print(h .. " - " .. c);
         end
     }
@@ -39,3 +38,7 @@ vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
 -- this is a comment just to test the following line
 vim.api.nvim_set_hl(0, "Comment", {bg = "none", fg="#a0a0a0"})
 vim.api.nvim_set_hl(0, "LineNr", {bg = "#333333", fg="#a0a0a0"})
+
+-- Highliner 
+vim.api.nvim_set_hl(0, 'EyelinerPrimary', { fg="#a0a0a0", bold = true, underline = true })
+vim.api.nvim_set_hl(0, 'EyelinerSecondary', { fg="#a0a0a0", underline = true })
