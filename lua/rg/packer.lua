@@ -79,15 +79,17 @@ return require('packer').startup(function(use)
         'mfussenegger/nvim-dap',
     } }
 
-    use({
+    use {
         "iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end,
-    })
+    }
 
-    use({'EmmaEwert/vim-rgbds' })
+    use {'EmmaEwert/vim-rgbds' }
 
-    use({ 'kkoomen/vim-doge', run=':call doge#install()' })
+    use { 'kkoomen/vim-doge', run=':call doge#install()' }
 
+    -- Multi Edit
+    -- use { 'hlissner/vim-multiedit' }
 
     -- Intellisense
     use { 'VonHeikemen/lsp-zero.nvim',
