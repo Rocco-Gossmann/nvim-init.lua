@@ -36,6 +36,7 @@ return function(wk)
         },
 
         ['<C-n>'] = { ":NvimTreeToggle<CR>", "Explorer (NvimTree)" },
+        ['<M-n>'] = { "<ESC>", "Escape" },
 
         ["J"] = { "mzJ`z", "Keep Cursor on Join Line" },
 
