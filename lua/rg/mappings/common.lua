@@ -96,15 +96,14 @@ return function(wk)
         [']d'] = { function() vim.diagnostic.goto_prev() end, 'Goto Prev' },
     }, { mode = "n" })
 
-    wk.register({
-        ['<leader>y'] = { '"+y', "Yank to System Clipboard" },
-
-        ["<leader>cr"] = { ":s/\\%V//gI<Left><Left><Left><Left>", "replace inside selected text" },
+    wk.register ({
+        ['<C-y>'] = { '"+y', "Yank to System Clipboard" },
+        ["<C-r>"] = { ":s/\\%V//g<Left><Left><Left><Left>", "replace inside selected text" },
 
         ["J"] = { ":m '>+1<CR>gv=gv", "Move selected Line Down " },
         ["K"] = { ":m '<-2<CR>gv=gv", "Move selected Line Up " },
 
-        [" "] = { 'c  <ESC>hmzplv`z', "Surround in space" },
+        ["<space>"] = { 'c  <ESC>hmzplv`z', "Surround with space" },
         ["."] = { 'c..<ESC>hmzplv`z', "Surround in dot" },
         ["\""] = { 'c""<ESC>hmzplv`z', "Surround in quotes" },
         ["'"]  = { "c''<ESC>hmzplv`z", "Surround in single quotes" },
