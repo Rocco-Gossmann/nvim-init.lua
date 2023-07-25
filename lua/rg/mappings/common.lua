@@ -6,6 +6,12 @@ return function(wk)
     local cmp = require('cmp')
 
     wk.register({
+
+    --[[============================================================================
+    -- Utils
+    --============================================================================]]
+        ["<C-y>"] = { '"+yy', "Yank Line to System Clipboard" },
+
     --[[============================================================================
     -- File Closing
     --============================================================================]]
@@ -20,7 +26,6 @@ return function(wk)
 
             ["gt"] = { vim.cmd.LazyGit, "Open Git" },
 
-            y = { '"+yy', "Yank to System Clipboard" },
 
             ["cr"] = { ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", "replace word under cursor for document" },
 
@@ -50,24 +55,24 @@ return function(wk)
     --[[============================================================================
     -- TagBar
     --============================================================================]]
-        ['<C-t>'] = { vim.cmd.TagbarToggle, "Open Tagbar" },
+        ['<leader>t'] = { vim.cmd.TagbarToggle, "Open Tagbar" },
         ['{'] = { vim.cmd.TagbarJumpPrev, "Tagbar: Jump Prev" },
         ['}'] = { vim.cmd.TagbarJumpNext, "Tagbar: Jump Next" },
 
     --[[============================================================================
     -- Telescope
     --============================================================================]]
-        ['<C-f>'] = {
+        ['<leader>f'] = {
             name = "Find (Telescope)",
-            ['<C-f>'] = { tele.find_files, "Find Files" },
-            ['<C-d>'] = { function() vim.cmd[[ Telescope find_files search_dirs=['%:h'] ]] end, "Find Files in current Dir" },
-            ['<C-g>'] = { tele.git_files, "Find Git Files" },
-            ['<C-s>'] = { tele.live_grep, "Find Files with String" },
-            ['<C-b>'] = { tele.buffers, "Find Buffer" },
-            ['<C-h>'] = { tele.help_tags, "Find Help Tags" },
-            ['<C-k>'] = { tele.keymaps, "Find Help Tags" },
-            ['<C-u>'] = { tele.keymaps, "Usage of String" },
-            ['<C-n>'] = { tele.resume, "Continue last search" }
+            ['f'] = { tele.find_files, "Find Files" },
+            ['d'] = { function() vim.cmd[[ Telescope find_files search_dirs=['%:h'] ]] end, "Find Files in current Dir" },
+            ['g'] = { tele.git_files, "Find Git Files" },
+            ['s'] = { tele.live_grep, "Find Files with String" },
+            ['b'] = { tele.buffers, "Find Buffer" },
+            ['h'] = { tele.help_tags, "Find Help Tags" },
+            ['k'] = { tele.keymaps, "Find Help Tags" },
+            ['u'] = { tele.keymaps, "Usage of String" },
+            ['n'] = { tele.resume, "Continue last search" }
         },
 
     --[[============================================================================
@@ -99,7 +104,7 @@ return function(wk)
 
     wk.register ({
         ['<C-y>'] = { '"+y', "Yank to System Clipboard" },
-        ["<C-r>"] = { ":s/\\%V//g<Left><Left><Left><Left>", "replace inside selected text" },
+        ["<C-r>"] = { ":s/\\%V//g<Left><Left><Left>", "replace inside selected text" },
 
         ["J"] = { ":m '>+1<CR>gv=gv", "Move selected Line Down " },
         ["K"] = { ":m '<-2<CR>gv=gv", "Move selected Line Up " },
@@ -119,7 +124,7 @@ return function(wk)
     }, { mode = "x" })
 
     wk.register({
-        ['<C-u>'] = { function() vim.lsp.buf.completion({ reason = cmp.ContextReason.Auto }) end, "Code complete" },
+        ['<C-j>'] = { function() vim.lsp.buf.completion({ reason = cmp.ContextReason.Auto }) end, "Code complete" },
         ['<C-h>'] = { function() vim.lsp.buf.signature_help() end, "Signature Help" }
     }, { mode = "i" })
 
