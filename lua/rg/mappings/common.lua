@@ -64,6 +64,7 @@ return function(wk)
     --============================================================================]]
         ['<leader>f'] = {
             name = "Find (Telescope)",
+            ['t'] = { tele.lsp_dynamic_workspace_symbols, "Workspace_symbols"},
             ['f'] = { tele.find_files, "Find Files" },
             ['d'] = { function() vim.cmd[[ Telescope find_files search_dirs=['%:h'] ]] end, "Find Files in current Dir" },
             ['g'] = { tele.git_files, "Find Git Files" },
@@ -71,7 +72,6 @@ return function(wk)
             ['b'] = { tele.buffers, "Find Buffer" },
             ['h'] = { tele.help_tags, "Find Help Tags" },
             ['k'] = { tele.keymaps, "Find Help Tags" },
-            ['u'] = { tele.keymaps, "Usage of String" },
             ['n'] = { tele.resume, "Continue last search" }
         },
 
