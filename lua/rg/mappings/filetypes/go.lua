@@ -6,7 +6,7 @@ return function(wk)
         ['e'] = {
             name = "Run",
 
-            ['d'] = {":!go run %<CR>", "Run file"},
+            ['d'] = {":w<cr>:!go run %<CR>", "Run file"},
 
             ['b'] = "which_key_ignore",
             ['r'] = "which_key_ignore",
