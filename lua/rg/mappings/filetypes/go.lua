@@ -1,21 +1,22 @@
 return function(wk)
 --[[============================================================================
--- Markdown Preview
+-- Go run
 --============================================================================]]
     wk.register({
         ['e'] = {
-            name = "Display Preview",
+            name = "Run",
 
-            ['r'] = { vim.cmd.MarkdownPreview, "Run/Start" },
-            ['s'] = {vim.cmd.MarkdownPreviewStop, "Stop" },
+            ['d'] = {":!go run %<CR>", "Run file"},
 
             ['b'] = "which_key_ignore",
+            ['r'] = "which_key_ignore",
 
             ['l'] = "which_key_ignore",
             ['j'] = "which_key_ignore",
             ['h'] = "which_key_ignore",
             ['<CR>'] = "which_key_ignore",
 
+            ['s'] = "which_key_ignore",
             ['<space>'] = "which_key_ignore",
             ['c'] = "which_key_ignore",
         }

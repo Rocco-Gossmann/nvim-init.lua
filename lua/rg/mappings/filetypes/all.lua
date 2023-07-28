@@ -24,6 +24,10 @@ return function(wk)
                 dapui.close()
                 vim.cmd.DapTerminate()
             end, 'Stop Debug'},
+
+            -- may be used by other filetypes
+            ['d'] = "which_key_ignore",
+
         }
     }, { mode = "n" })
 end
