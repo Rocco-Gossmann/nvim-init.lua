@@ -18,6 +18,9 @@ return require('packer').startup(function(use)
         let g:lightline.colorscheme='tokyonight' 
     ]] }
 
+    -- Tmux integration
+    use { 'christoomey/vim-tmux-navigator' }
+
     -- autoresizing of panes to a workable size
     use { 'camspiers/lens.vim',
         requires = { { 'camspiers/animate.vim' }, },

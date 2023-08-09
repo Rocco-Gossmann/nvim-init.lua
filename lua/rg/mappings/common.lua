@@ -97,12 +97,11 @@ return function(wk)
     -- LSP
     --============================================================================]]
         ['gd'] = { function() vim.lsp.buf.definition() end, 'Goto Definition' },
-        ['<C-h>'] = { function() vim.lsp.buf.hover({ reason = cmp.ContextReason.Auto }) end, "Show Hover" },
+        ['H'] = { function() vim.lsp.buf.hover({ reason = cmp.ContextReason.Auto }) end, "Show Hover" },
         ['[d'] = { function() vim.diagnostic.goto_next() end, 'Goto Next' },
         [']d'] = { function() vim.diagnostic.goto_prev() end, 'Goto Prev' },
     }, { mode = "n" })
-
-    wk.register ({
+wk.register ({
         ['<C-y>'] = { '"+y', "Yank to System Clipboard" },
         ["<C-r>"] = { ":s/\\%V//g<Left><Left><Left>", "replace inside selected text" },
 
