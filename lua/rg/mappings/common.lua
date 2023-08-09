@@ -40,6 +40,29 @@ return function(wk)
             }
         },
 
+        ['z'] = {
+            name="folding",
+            ['g'] = { "zm", "Fold more" },
+            ['m'] = { "zMzr", "Fold All, but first level" }
+        },
+
+        ['b'] = {
+            name="Quickfix-List",
+            ['u'] = { ":grep \"<C-r><C-w>\" ./*<cr><cr><C-o>:copen<cr>", "word to Quickfix-List" },
+            ['f'] = { ":grep \"\" ./*<left><left><left><left><left>", "live grep to Quickfix-List" },
+            ['n'] = { ":cnext<cr>", "Next Quickfix" },
+            ['p'] = { ":cprev<cr>", "Previous Quickfix" },
+            ['o'] = { ":copen<cr>", "Quickfix-List open" },
+            ['i'] = { ":cclose<cr>", "Quickfix-List close" },
+            ['a'] = {
+                name = "Add",
+                ['u'] = { ":grepadd \"<C-r><C-w>\" ./*<cr><cr>:copen<cr>", "word to Quickfix-List" },
+                ['f'] = { ":grepadd \"\" ./*<left><left><left><left><left>", "live grep" },
+            }
+        },
+
+
+
         ['<C-n>'] = { ":NvimTreeToggle<CR>", "Explorer (NvimTree)" },
         ['<M-n>'] = { "<ESC>", "Escape" },
 
@@ -101,7 +124,8 @@ return function(wk)
         ['[d'] = { function() vim.diagnostic.goto_next() end, 'Goto Next' },
         [']d'] = { function() vim.diagnostic.goto_prev() end, 'Goto Prev' },
     }, { mode = "n" })
-wk.register ({
+
+    wk.register ({
         ['<C-y>'] = { '"+y', "Yank to System Clipboard" },
         ["<C-r>"] = { ":s/\\%V//g<Left><Left><Left>", "replace inside selected text" },
 
@@ -115,6 +139,7 @@ wk.register ({
         ["("]  = { "c()<ESC>hmzplv`z", "Surround in braces" },
         ["["]  = { "c[]<ESC>hmzplv`z", "Surround in brackets" },
         ["{"]  = { "c{}<ESC>hmzplv`z", "Surround in squerlies" },
+        ['bu'] = { "y:grep \"<C-r>\"\" ./*<cr><cr>:copen<cr>", "Selection to Quickfix-List" }
     }, { mode = "v" })
 
     wk.register({

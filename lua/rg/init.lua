@@ -30,6 +30,8 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
 
+vim.opt.grepprg="rg -n -i $* /dev/null"
+
 vim.opt.nrformats:append("alpha")
 
 vim.cmd [[
