@@ -10,8 +10,6 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
-vim.opt.smartindent = true
-
 vim.opt.wrap = false
 
 vim.opt.swapfile = false
@@ -22,7 +20,7 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 6
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
@@ -30,13 +28,16 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
 
-vim.opt.grepprg="rg -n -i $* /dev/null"
-
 vim.opt.nrformats:append("alpha")
+
+vim.opt.grepprg="rg -n -i $* /dev/null"
 
 vim.cmd [[
 
 set cursorline
+
+set smartindent
+set autoindent
 
 let g:zig_fmt_autosave = 0
 
@@ -53,13 +54,12 @@ set foldlevelstart=99
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
-
 let g:tmux_navigator_no_mappings = 1
-
 nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 
 ]]
+
 

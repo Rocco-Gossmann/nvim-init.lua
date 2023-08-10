@@ -148,7 +148,12 @@ return function(wk)
 
     wk.register({
         ['<C-j>'] = { function() vim.lsp.buf.completion({ reason = cmp.ContextReason.Auto }) end, "Code complete" },
-        ['<C-h>'] = { function() vim.lsp.buf.signature_help() end, "Signature Help" }
+        ['<C-h>'] = { function() vim.lsp.buf.signature_help() end, "Signature Help" },
+
+        ['§'] = {
+            name = "snippets"
+        }
+
     }, { mode = "i" })
 
 end
