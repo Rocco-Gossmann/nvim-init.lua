@@ -49,11 +49,11 @@ lsp.set_preferences({
 	}
 })
 
+--[[
 lsp.on_attach(function(client, bufnr)
-	require 'rg.mappings.lsp'({buffer = bufnr, remap = false}
-)
-
+	require 'rg.mappings.lsp'({buffer = bufnr, remap = false})
 end)
+]]--
 
 lsp.setup()
 
