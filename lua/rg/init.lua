@@ -51,8 +51,8 @@ nnoremap Q q
 nnoremap gg ggzz
 
 set foldlevelstart=99
-set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
+set foldmethod=expr
 
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
