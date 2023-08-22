@@ -51,9 +51,9 @@ return require('packer').startup(function(use)
     }
 
     -- File managment
-    use { 'nvim-tree/nvim-tree.lua',
-        requires = { 'nvim-tree/nvim-web-devicons' },
-    }
+--    use { 'nvim-tree/nvim-tree.lua',
+--        requires = { 'nvim-tree/nvim-web-devicons' },
+--    }
 --    use { 'francoiscabrol/ranger.vim',
 --        requires= { { 'rbgrouleff/bclose.vim' } }
 --    }

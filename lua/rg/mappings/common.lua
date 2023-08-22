@@ -63,7 +63,7 @@ return function(wk)
 
 
 
-        ['<C-n>'] = { ":NvimTreeToggle<CR>", "Explorer (NvimTree)" },
+        ['<C-n>'] = { ":Vex<CR>", "Explorer" },
         ['<M-n>'] = { "<ESC>", "Escape" },
 
         ["J"] = { "mzJ`z", "Keep Cursor on Join Line" },
