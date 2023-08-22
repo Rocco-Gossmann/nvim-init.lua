@@ -4,7 +4,7 @@ local lsp = require 'lsp-zero'
 lsp.preset('recommended')
 
 lsp.ensure_installed({
-	'tsserver'
+	'tsserver', 'intelephense'
 })
 
 require "rg.lsp"
@@ -48,12 +48,6 @@ lsp.set_preferences({
 		info = 'I'
 	}
 })
-
---[[
-lsp.on_attach(function(client, bufnr)
-	require 'rg.mappings.lsp'({buffer = bufnr, remap = false})
-end)
-]]--
 
 lsp.setup()
 

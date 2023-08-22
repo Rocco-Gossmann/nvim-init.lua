@@ -40,12 +40,18 @@ return function(wk)
             }
         },
 
+    --[[============================================================================
+    -- Folding
+    --============================================================================]]
         ['z'] = {
             name="folding",
             ['g'] = { "zm", "Fold more" },
             ['m'] = { "zMzr", "Fold All, but first level" }
         },
 
+    --[[============================================================================
+    -- Quicklist 
+    --============================================================================]]
         ['b'] = {
             name="Quickfix-List",
             ['u'] = { ":grep \"<C-r><C-w>\" ./*<cr><cr><C-o>:copen<cr>", "word to Quickfix-List" },
@@ -95,8 +101,10 @@ return function(wk)
             ['b'] = { tele.buffers, "Find Buffer" },
             ['h'] = { tele.help_tags, "Find Help Tags" },
             ['k'] = { tele.keymaps, "Find Help Tags" },
-            ['n'] = { tele.resume, "Continue last search" }
+            ['n'] = { tele.resume, "Continue last search" },
+            ['r'] = { ":Telescope lsp_workspace_symbols query=<C-r><C-w><CR>", "Find References" }
         },
+
 
     --[[============================================================================
     -- Harpoone
