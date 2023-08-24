@@ -6,7 +6,7 @@ return function(wk)
 -- VimSpector
 --============================================================================]]
     wk.register({
-        ['e'] = {
+        ['q'] = {
             name = "Debug/Run",
             ["<space>"] = { function() dapui.eval() end, "DAP: Eval under Cursor" },
 

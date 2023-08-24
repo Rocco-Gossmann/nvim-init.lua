@@ -3,7 +3,7 @@ return function(wk)
 -- Markdown Preview
 --============================================================================]]
     wk.register({
-        ['e'] = {
+        ['q'] = {
             name = "Display Preview",
 
             ['r'] = { vim.cmd.MarkdownPreview, "Run/Start" },
