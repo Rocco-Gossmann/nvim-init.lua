@@ -1,4 +1,4 @@
-local wk = require("which-key");
+--local wk = require("which-key");
 local os = require("os");
 
 vim.g.mapleader = " "
@@ -9,9 +9,9 @@ local HOME = os.getenv("HOME");
 if NVIM_APPNAME == nil then NVIM_APPNAME = "nvim" end;
 local CONFPATH = HOME .. "/.config/" .. NVIM_APPNAME
 
-require("rg.mappings.common")(wk)
+require "rg.mappings.common"
 if vim.fn.findfile( "./lua/custom/mappings/common.lua") ~= '' then
-    require ("custom.mappings.common")(wk);
+    require "custom.mappings.common";
 end
 
 vim.cmd('autocmd BufEnter * lua FiletypeKeyMode()')
@@ -24,17 +24,17 @@ function FiletypeKeyMode()
     local done = false;
 
     if vim.fn.findfile( "./lua/rg/mappings/filetypes/" .. ft .. ".lua") ~= '' then
-        require ("rg.mappings.filetypes." .. ft)(wk);
+        require ("rg.mappings.filetypes." .. ft);
         done = true;
     end
 
     if vim.fn.findfile( "./lua/custom/mappings/filetypes/" .. ft .. ".lua") ~= '' then
-        require ("custom.mappings.filetypes." .. ft)(wk);
+        require ("custom.mappings.filetypes." .. ft);
         done = true;
     end
 
     if not(done) then
-        require("rg.mappings.filetypes.all")(wk);
+        require "rg.mappings.filetypes.all";
     end
 
     vim.cmd("cd "..CWD)
