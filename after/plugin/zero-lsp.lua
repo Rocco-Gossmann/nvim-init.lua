@@ -48,7 +48,7 @@ lsp.set_preferences({
 	}
 })
 
-require "rg.lsp"
+require "lsp"
 
 lsp.setup()
 
