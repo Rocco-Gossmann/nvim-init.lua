@@ -48,7 +48,12 @@ A `[WorkingDir]/.nviminit.lua` is loaded after the `~/.config/$NVIM_APPNAME/lua/
 loading. Since it resides in what ever workind directory NeoVim was opened from,
 you can use it to changes the settings to something, that fits your current "Project" best.
 
+### CustomFileType KeyBinds 
+To add your own Keybinds for a specific filetype
+create a `~/.config/$NVIM_APPNAME/lua/custom/mapping/hydras/filetype/[your File Type].lua` file.
+The Lua file **MUST** return a valid Hydra (see how to create one in the Hydra Documentation).
 
+This hydra is then invoced either by pressing `?q` or what ever you define as its body
 
 ---
 ## This Configuration uses the following Package/Plugins
@@ -58,19 +63,7 @@ you can use it to changes the settings to something, that fits your current "Pro
 - **[nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)** as fuzzy finder
 - **[nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)** to provide syntax highlighting
 - **[kdheepak/lazygit.nvim](https://github.com/kdheepak/lazygit.nvim)** for handling anything git related
-
-- **[Tokyonight](https://github.com/folke/tokyonight.nvim)** as current colorscheme
-- **[morhetz/gruvbox](https://github.com/morhetz/gruvbox)** as alternate colorscheme  
-- **[francoiscabrol/ranger.vim](https://github.com/francoiscabrol/ranger.vim)** for a better overview over the project files
-- **[folke/which-key.nvim](https://github.com/folke/which-key.nvim)** keyboard shortcut cheatsheet and assignments
-
-- **[camspiers/lens.vim](https://github.com/camspiers/lens.vim)** to make better use of small screen spaces
 - **[rcarriga/nvim-dap-ui & mfussenegger/nvim-dap](https://github.com/mfussenegger/nvim-dap)** as the Debugger
-- **[iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)** to preview Markdown files
-- **[kdheepak/lazygit.nvim](https://github.com/kdheepak/lazygit.nvim)** Lazygit integration
-- **[EmmaEwert/vim-rgbds](https://github.com/EmmaEwert/vim-rgbds)** Syntax highlighting for GBZ80 Assembly
-- **[kkoomen/vim-doge](https://github.com/kkoomen/vim-doge)** Docblock generator for functions
-- **[preservim/tagbar](https://github.com/preservim/tagbar)** Open the current taglist
 
 The following packages will setup the Intellisense via the Language-Server Protokoll  
 Installing of language servers is down via the `Mason` command.
@@ -92,6 +85,10 @@ Installing of language servers is down via the `Mason` command.
     - **requirements for Snippets**
         - **[l3mon4d3/luasnip](https://github.com/l3mon4d3/luasnip)**
         - **[rafamadriz/friendly-snippets](https://github.com/rafamadriz/friendly-snippets)**
+
+
+This may be added later
+- **[iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)** to preview Markdown files
 ---
 ## Keybindings
 

@@ -75,16 +75,21 @@ local rgenv = require("rg.env")
 -- Filetype Specific Hydra Invoced By ?q  or what ever you decide its body is
 ------------------------------------------------------------------------------
 local fileTypeHydra = nil;
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "*",
+vim.api.nvim_create_autocmd("BufEnter", {
     callback = function()
         vim.schedule(function()
-            if vim.fn.findfile(rgenv.confdir .. "/lua/custom/mapping/hydras/filetype/"..vim.bo.filetype) == not('') then
-                fileTypeHydra = require("custom.mapping.hydras.common");
-            elseif vim.fn.findfile(rgenv.confdir .. "/lua/mapping/hydras/filetype/"..vim.bo.filetype) == '' then
-                fileTypeHydra = require("mapping.hydras.common");
+            if vim.fn.findfile(rgenv.confdir .. "/lua/custom/mapping/hydras/filetype/"..vim.bo.filetype..".lua") ~= '' then
+                fileTypeHydra = dofile(rgenv.confdir .. "/lua/custom/mapping/hydras/filetype/"..vim.bo.filetype..".lua");
+
+            elseif vim.fn.findfile(rgenv.confdir .. "/lua/custom/mapping/hydras/filetype/common.lua") ~= '' then
+                fileTypeHydra = dofile(rgenv.confdir .. "/lua/custom/mapping/hydras/filetype/common.lua");
+
+            elseif vim.fn.findfile(rgenv.confdir .. "/lua/mapping/hydras/filetype/"..vim.bo.filetype..".lua") ~= '' then
+                fileTypeHydra = dofile(rgenv.confdir .. "/lua/mapping/hydras/filetype/"..vim.bo.filetype..".lua")
+
             else
-                fileTypeHydra = require("mapping.hydras." .. vim.bo.filetype)
+                fileTypeHydra = dofile(rgenv.confdir .. "/lua/mapping/hydras/common.lua");
+
             end
         end)
     end
@@ -141,7 +146,9 @@ Hydra({
         {"<C-y>" , sysClipCopy, { exit=true} },
 
         {"q", function()
-            if fileTypeHydra == not(nil) then
+            if fileTypeHydra == nil then
+                print("no filetype based Hydra yet");
+            else
                 fileTypeHydra:activate()
             end
         end},

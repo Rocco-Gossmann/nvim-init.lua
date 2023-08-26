@@ -23,7 +23,7 @@ return require('packer').startup(function(use)
     use { 'jinh0/eyeliner.nvim',
         config = function()
             require'eyeliner'.setup { }
-        end 
+        end
     }
 
     use { 'nvim-telescope/telescope.nvim',
