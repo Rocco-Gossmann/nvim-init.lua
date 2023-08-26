@@ -1,0 +1,17 @@
+local Hydra = require("hydra")
+
+return Hydra({
+    mode = { 'n' },
+    body = "q",
+    hint = [[ Lua Actions: _<esc>_
+=================
+    ]],
+    heads = {
+        {"<esc>", nil, {exit=true}}
+    },
+    config = {
+        color="teal",
+		invoke_on_body = true,
+		hint = { position="middle", border="rounded" }
+    }
+})
