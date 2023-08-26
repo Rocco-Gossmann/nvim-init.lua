@@ -8,5 +8,6 @@ if appname == nil then appname='nvim' end
 
 return {
 	appname = appname,
-	home = home
+	home = home,
+    confdir = home .. "/.config/" .. appname
 }

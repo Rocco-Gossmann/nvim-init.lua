@@ -42,14 +42,14 @@ require "mapping"
 
 vim.cmd [[
 
-set foldexpr=nvim_treesitter#foldexpr()
-set foldmethod=expr
+    set foldexpr=nvim_treesitter#foldexpr()
+    set foldmethod=expr
 
-let g:tmux_navigator_no_mappings = 1
-nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+    let g:tmux_navigator_no_mappings = 1
+    nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+    nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+    nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+    nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 
 ]]
 
@@ -57,12 +57,12 @@ nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 vim.api.nvim_set_hl(0, "Comment", {bg = "none", fg="#a0a0a0"})
 --vim.api.nvim_set_hl(0, "LineNr", {bg = "#333333", fg="#a0a0a0"})
 
-if vim.fn.findfile(rgenv.home .. "/.config/" .. rgenv.appname .. "/lua/custom/init.lua") == not '' then
+if vim.fn.findfile(rgenv.confdir .. "/lua/custom/init.lua") == not '' then
     require "custom"
 end
 
 --      from $CWD
-filename = ".nviminit.lua"
+local filename = ".nviminit.lua"
 if vim.fn.findfile(filename) == '' then
     print("you can customize NVIM further for this folder by creating a '" .. filename .. "' file");
 else

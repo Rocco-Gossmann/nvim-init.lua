@@ -31,6 +31,7 @@ local heads = {
 return Hydra({
 	mode = { 'n' },
     hint = hint,
+    body = "<leader>f",
     heads = heads,
 	config = {
         color="teal",
