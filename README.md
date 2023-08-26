@@ -1,7 +1,6 @@
 # This is my personal NeoVim configuration.
 
 
-
 ## Requirements.
 1. make sure, that Packer is installed. go to [https://github.com/wbthomason/packer.nvim](https://github.com/wbthomason/packer.nvim) and follow the install instructions.
 
@@ -33,77 +32,41 @@ cp /tmp/lazygitinstall/lazygit ~/bin/lazygit
 You can modify this configuration for your personal needs via using one or more of the 
 following methods.
 
-### creating `~/.config/$NVIM_APPNAME/.nvimínit.lua` 
-The `~/.config/nvim/.nviminit.lua` file is loaded, when ever NeoVim is done booting up.
-It functions regardless of the current WorkingDirectory and thus allows you to 
-change NeoVims configuration, without having to commit the changes to this Repo.
+### customization for your install 
+create a `init.lua` in `~/.config/$NVIM_APPNAME/lua/custom` 
+All files in the `custom` directory will be ignored by GIT.
+If a `custom/init.lua` exists, it will be loaded however
 
-### using the `~/.config/$NVIM_APPNAME/lua/custom` folder
-In addition, you can put more Lua files into `~/.config/$NVIM_APPNAME/lua/custom`.
-Files put there also don't need to be commited to the Repo. Then you can call
-files put there from your `~/.config/$NVIM_APPNAME/.nvimínit.lua` via:
-```lua
-require "custom.[your module name]"
-```
+### customization per Workspace
+it is also possible to create a config depending on the workspace you are opening.
 
-### creating a `[WorkingDir]/.nviminit.lua`
-A `[WorkingDir]/.nviminit.lua` is loaded after the `~/.config/nvim/.nvimínit.lua` has finished
+simply create a `.nviminit.lua` inside the folder you are opening NeoVim from.
+(in following refered to as `[WorkingDir]/.nviminit.lua`)
+
+
+A `[WorkingDir]/.nviminit.lua` is loaded after the `~/.config/$NVIM_APPNAME/lua/custom/init.lua` has finished
 loading. Since it resides in what ever workind directory NeoVim was opened from,
 you can use it to changes the settings to something, that fits your current "Project" best.
-
-### Custom Keybindings
-First in `~/.config/$NVIM_APPNAME/lua/custom/mappings/` 
-create a `common.lua` file, that looks like this:
-```lua
-return function(wk) 
-    -- wk = which-key plugin
-    wk.register( 
-        -- See which-key.register for reference, what goes here
-        -- ...
-    )
-end
-
-```
-#### Custom Mappings by Filetype
-If you have mappings, that only should apply to certain filetypes, then you can create a 
-`~/.config/$NVIM_APPNAME/lua/custom/mappings/filetypes/[your filetype].lua` File.
-
-Here is an example, on what a `lua/custom/mappings/filetypes/markdown.lua` could look like.
-```lua
-return function(wk)
---[[============================================================================
--- Markdown Preview
---============================================================================]]
-    wk.register({
-        d = {
-            name = "Display Preview",
-            ['r'] = { vim.cmd.MarkdownPreview, "Run/Start" },
-            ['s'] = {vim.cmd.MarkdownPreviewStop, "Stop" },
-        }
-    }, { prefix="<leader>", mode = "n" })
-end
-
-```
-
-
 
 
 
 ---
 ## This Configuration uses the following Package/Plugins
 - **[Packer](https://github.com/wbthomason/packer.nvim)** for package managing
+- **[ThePrimeagen/harpoon](https://github.com/ThePrimeagen/harpoon)** for better bookmarking of files
+- **[itchyny/lightline.vim](https://github.com/itchyny/lightline.vim)** to improve the visuals more 
+- **[nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)** as fuzzy finder
+- **[nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)** to provide syntax highlighting
+- **[kdheepak/lazygit.nvim](https://github.com/kdheepak/lazygit.nvim)** for handling anything git related
+
 - **[Tokyonight](https://github.com/folke/tokyonight.nvim)** as current colorscheme
 - **[morhetz/gruvbox](https://github.com/morhetz/gruvbox)** as alternate colorscheme  
-- **[itchyny/lightline.vim](https://github.com/itchyny/lightline.vim)** to improve the visuals more 
-- **[camspiers/lens.vim](https://github.com/camspiers/lens.vim)** to make better use of small screen spaces
-- **[nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)** as fuzzy finder
-- **[ThePrimeagen/harpoon](https://github.com/ThePrimeagen/harpoon)** for better bookmarking of files
-- **[kdheepak/lazygit.nvim](https://github.com/kdheepak/lazygit.nvim)** for handling anything git related
 - **[francoiscabrol/ranger.vim](https://github.com/francoiscabrol/ranger.vim)** for a better overview over the project files
-- **[nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)** to provide syntax highlighting
+- **[folke/which-key.nvim](https://github.com/folke/which-key.nvim)** keyboard shortcut cheatsheet and assignments
+
+- **[camspiers/lens.vim](https://github.com/camspiers/lens.vim)** to make better use of small screen spaces
 - **[rcarriga/nvim-dap-ui & mfussenegger/nvim-dap](https://github.com/mfussenegger/nvim-dap)** as the Debugger
 - **[iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)** to preview Markdown files
-- **[folke/which-key.nvim](https://github.com/folke/which-key.nvim)** keyboard shortcut cheatsheet and assignments
 - **[kdheepak/lazygit.nvim](https://github.com/kdheepak/lazygit.nvim)** Lazygit integration
 - **[EmmaEwert/vim-rgbds](https://github.com/EmmaEwert/vim-rgbds)** Syntax highlighting for GBZ80 Assembly
 - **[kkoomen/vim-doge](https://github.com/kkoomen/vim-doge)** Docblock generator for functions
@@ -132,97 +95,9 @@ Installing of language servers is down via the `Mason` command.
 ---
 ## Keybindings
 
-Leader = ` <Space> `
+All Keybindings are explained via Hydra  
+Just press <Space> and wait a second, to see all available steps from their.
+The help is split into two sections.
 
-### Standard Vim
-| Binding | Effect |
-|---------|--------|
-\<leader>qq | Quit |
-\<leader>QQ | force Quite |
-\<leader>qa | Quite all |
-\<leader>QA | force Quite all|
-\<leader>ww | write / save |
-\<leader>WW | force write / force save |
-\<leader>wa | write / save all |
-\<leader>WA | force write / save all |
-
-### Clipboard
-| Binding | Effect |
-|---------|--------|
-\<leader>y | Yank to System Clipboard |      
-\<leader>p | Paste from System Clipboard |      
-
-### TagBar
-| Binding | Effect |
-|---------|--------|
-\<C-t> | Open/Close Tagbar 
-{ | Jump to previous Tag
-} | Jump to next Tag
-
-### Telescope
-| Binding | Effect |
-|---------|--------|
-\<C-f><C-f> | find file in CWD 
-\<C-f><C-s> | find files containing string
-\<C-f><C-u> | like fs, but asks for the string before hand
-\<C-f><C-g> | find file in GIT
-\<C-f><C-b> | find open buffer
-\<C-f><C-h> | find help tag
-\<C-f><C-k> | find key
-
-### Utils
-| Binding | Effect |
-|---------|--------|
-\<C-n> | Open Ranger |
-\<leader>gt | Open Lazygit |
-\<leader>d (over a function or variable) | Generate JS/PHP/... - DocBlock |
-
-### Harpoon
-| Binding | Effect |
-|---------|--------|
-\<leader>hM | Add current File too Harpoon list |
-\<leader>hH | set file at 1. entry on Harpoon list |
-\<leader>hJ | set file at 2. entry on Harpoon list |
-\<leader>hK | set file at 3. entry on Harpoon list |
-\<leader>hL | set file at 4. entry on Harpoon list |
-\<leader>hm | show Harpoon list |
-\<leader>hh | open file at 1. entry on Harpoon list |
-\<leader>hj | open file at 2. entry on Harpoon list |
-\<leader>hk | open file at 3. entry on Harpoon list |
-\<leader>hl | open file at 4. entry on Harpoon list |
-
-
-### Intellisense / LSP
-| Binding | Effect |
-|---------|--------|
-gd | Goto definition |
-\<leader>vws | goto Workspace Symbol|
-\<leader>vd | show diagnostics Floating window|
-\[d | Goto next diagnostics |
-\]d | Goto previous diagnostics |
-\<leader>vca | Code Action |
-\<leader>vrr | Show references |
-\<leader>vrn | rename symbol in whole file|
-\<leader>vff | Format accoring to LSP |
-\<C-h> (Normal Mode)| Show hover / mouse over |
-\<C-h> (Insert Mode)| show function signature |
-\<C-k> (Insert Mode)| show completion options |
-
-
-### DAP (Debug adapter Protocol)
-| Binding | Effect |
-|---------|--------|
-\<F6> | Toggle Breakpoint |  
-\<F5> | Launch Debugger (define via .nviminit.lua) / Continue running|  
-\<F7> | Step Into |  
-\<F8> | Step Over |  
-\<F9> | Stop Out |  
-\<F10>| Reset Debugger |
-\<F4>| show value of var under cursor |
-
-### MarkdownPreview
-| Binding | Effect |
-|---------|--------|
-\<leader>dr| Open Preview |  
-\<leader>ds| End Preview  |
-
+The top one has keys, that can be invoced without the  Leader being pressed first
+The bottom one has keys, that require you to press Leader first

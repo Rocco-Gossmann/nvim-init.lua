@@ -7,7 +7,6 @@ lsp.ensure_installed({
 	'tsserver', 'intelephense'
 })
 
-require "rg.lsp"
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -48,6 +47,8 @@ lsp.set_preferences({
 		info = 'I'
 	}
 })
+
+require "rg.lsp"
 
 lsp.setup()
 
