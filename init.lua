@@ -68,3 +68,5 @@ if vim.fn.findfile(filename) == '' then
 else
     dofile(filename);
 end
+
+require "filetype"
