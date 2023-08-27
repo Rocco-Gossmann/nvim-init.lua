@@ -78,18 +78,19 @@ local fileTypeHydra = nil;
 vim.api.nvim_create_autocmd("BufEnter", {
     callback = function()
         vim.schedule(function()
-            if vim.fn.findfile(rgenv.confdir .. "/lua/custom/mapping/hydras/filetype/"..vim.bo.filetype..".lua") ~= '' then
-                fileTypeHydra = dofile(rgenv.confdir .. "/lua/custom/mapping/hydras/filetype/"..vim.bo.filetype..".lua");
 
-            elseif vim.fn.findfile(rgenv.confdir .. "/lua/custom/mapping/hydras/filetype/common.lua") ~= '' then
-                fileTypeHydra = dofile(rgenv.confdir .. "/lua/custom/mapping/hydras/filetype/common.lua");
+            fileTypeHydra = rgenv.doFileIfExists(rgenv.confdir .. "/lua/custom/mapping/hydras/filetype/"..vim.bo.filetype..".lua");
 
-            elseif vim.fn.findfile(rgenv.confdir .. "/lua/mapping/hydras/filetype/"..vim.bo.filetype..".lua") ~= '' then
-                fileTypeHydra = dofile(rgenv.confdir .. "/lua/mapping/hydras/filetype/"..vim.bo.filetype..".lua")
+            if fileTypeHydra == nil then
+                fileTypeHydra = rgenv.doFileIfExists(rgenv.confdir .. "/lua/custom/mapping/hydras/filetype/common.lua");
+            end
 
-            else
-                fileTypeHydra = dofile(rgenv.confdir .. "/lua/mapping/hydras/common.lua");
+            if fileTypeHydra == nil then
+                fileTypeHydra = rgenv.doFileIfExists(rgenv.confdir .. "/lua/mapping/hydras/filetype/"..vim.bo.filetype..".lua")
+            end
 
+            if fileTypeHydra == nil then
+                fileTypeHydra = rgenv.doFileIfExists(rgenv.confdir .. "/lua/mapping/hydras/common.lua");
             end
         end)
     end
