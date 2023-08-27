@@ -27,17 +27,23 @@ vim.api.nvim_set_keymap("v", "[", "c[]<ESC>hmzplv`z", silnor);
 vim.api.nvim_set_keymap("v", "{", "c{}<ESC>hmzplv`z", silnor);
 vim.api.nvim_set_keymap("v", 'bu', "y:grep \"<C-r>\"\" ./*<cr><cr>:copen<cr>", silnor)
 
-vim.api.nvim_set_keymap('n', 'q', '<nop>' , silnor)  -- disable default q
-vim.api.nvim_set_keymap('n', 'Q', 'q'     , silnor)  -- record macro via Q
-vim.api.nvim_set_keymap('n', 's', '@'     , silnor)  -- play Macros via s
-vim.api.nvim_set_keymap('n', 'M', 'm'     , silnor)  -- create Marks via M
-vim.api.nvim_set_keymap('n', 'm', '`'     , silnor)  -- invoke them via m
+--[[============================================================================
+-- Visual Mode Helpers
+--============================================================================]]
+vim.api.nvim_set_keymap("v", "<C-r>", ":s///gI<Left><Left><Left><Left>", {noremap=true});                  -- Replace in selection
+vim.api.nvim_set_keymap("v", "<C-l>", ":s/^\\(\\s\\{-\\}\\)//gI<Left><Left><Left><Left>", {noremap=true}); -- Replace in sleected line (preselected whitespace group)
 
 --[[============================================================================
 -- Utils
 --============================================================================]]
 local sysClipCopy = '"+yy'
 local replaceUnderCursor = ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>";
+
+vim.api.nvim_set_keymap('n', 'q', '<nop>' , silnor)  -- disable default q
+vim.api.nvim_set_keymap('n', 'Q', 'q'     , silnor)  -- record macro via Q
+vim.api.nvim_set_keymap('n', 's', '@'     , silnor)  -- play Macros via s
+vim.api.nvim_set_keymap('n', 'M', 'm'     , silnor)  -- create Marks via M
+vim.api.nvim_set_keymap('n', 'm', '`'     , silnor)  -- invoke them via m
 
 vim.api.nvim_set_keymap("n", "<C-y>"         , sysClipCopy, silnor);
 vim.api.nvim_set_keymap("n", "<leader><C-r>" , replaceUnderCursor, silnor);
