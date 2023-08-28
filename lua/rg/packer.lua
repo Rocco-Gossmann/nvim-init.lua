@@ -4,10 +4,7 @@ return require('packer').startup(function(use)
     -- packer can manage itself
     use 'wbthomason/packer.nvim'
 
-
-    use { "catppuccin/nvim", as = "catppuccin", run = vim.cmd [[
-        colorscheme catppuccin-macchiato
-    ]] }
+    use { "catppuccin/nvim", as = "catppuccin" }
 
     -- Better Statusline
     use { 'itchyny/lightline.vim', run = vim.cmd [[
