@@ -7,14 +7,17 @@ local hint = [[
    _o_ => Open fold     _c_ => Fold
 
    _g_ => Fold more     _m_ => Fold All, but LV1 
+
+   _r_ => Unfold one level 
+   _R_ => Unfold All
 ]]
 
-local opt = { exit = true, nowait=true}
-
 local heads = {
+    { 'R', 'zR' },
+    { 'r', 'zr', { exit = false } },
     { 'g', 'zm' },
-    { 'o', 'zo', opt },
-    { 'c', 'zc', opt },
+    { 'o', 'zo'},
+    { 'c', 'zC'},
     { 'm', 'zMzr' }
 }
 
@@ -24,6 +27,7 @@ return Hydra({
     body = "z",
     heads = heads,
 	config = {
+        color="blue",
 		invoke_on_body = true,
 		hint = { position="bottom", border="rounded" },
 	},
