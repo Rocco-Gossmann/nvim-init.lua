@@ -40,33 +40,28 @@ vim.opt.foldlevelstart = 99
 
 require "mapping"
 
-vim.cmd [[
 
-    set foldexpr=nvim_treesitter#foldexpr()
-    set foldmethod=expr
+vim.schedule(function()
 
-    let g:tmux_navigator_no_mappings = 1
-    nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-    nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-    nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-    nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+    -- this is a comment just to test the following line
+    vim.api.nvim_set_hl(0, "Comment", {bg = "none", fg="#a0a0a0"})
+    vim.api.nvim_set_hl(0, "Conditional", {bg = "none", fg="#d7afff"})
+    vim.api.nvim_set_hl(0, "@parameter", {bg = "none", fg="#ff87af"})
+    vim.api.nvim_set_hl(0, "@tag.attribute", {bg = "none", fg="#87d7d7"})
+    vim.api.nvim_set_hl(0, "@text.uri", {bg = "none", fg="#ffd7d7"})
 
-]]
+    --vim.api.nvim_set_hl(0, "LineNr", {bg = "#333333", fg="#a0a0a0"})
+    --
+    rgenv.doFileIfExists( rgenv.confdir .. "/lua/custom/init.lua")
 
--- this is a comment just to test the following line
-vim.api.nvim_set_hl(0, "Comment", {bg = "none", fg="#a0a0a0"})
---vim.api.nvim_set_hl(0, "LineNr", {bg = "#333333", fg="#a0a0a0"})
+    --      from $CWD
+    local filename = ".nviminit.lua"
+    if vim.fn.findfile(filename) == '' then
+        print("you can customize NVIM further for this folder by creating a '" .. filename .. "' file");
+    else
+        dofile(filename);
+    end
 
-if vim.fn.findfile(rgenv.confdir .. "/lua/custom/init.lua") == not '' then
-    require "custom"
-end
-
---      from $CWD
-local filename = ".nviminit.lua"
-if vim.fn.findfile(filename) == '' then
-    print("you can customize NVIM further for this folder by creating a '" .. filename .. "' file");
-else
-    dofile(filename);
-end
+end)
 
 require "filetype"

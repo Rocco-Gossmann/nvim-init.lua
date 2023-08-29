@@ -6,6 +6,9 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
             local ft = vim.bo.filetype;
 
+            if rgenv.doFileIfExists(rgenv.confdir .. "/lua/custom/filetype/_all.lua") == nil then
+                rgenv.doFileIfExists(rgenv.confdir .. "/lua/filetype/_all.lua") end
+
             if rgenv.doFileIfExists(rgenv.confdir .. "/lua/custom/filetype/"..ft..".lua") then
                 return
             else

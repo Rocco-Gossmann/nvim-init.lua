@@ -37,6 +37,17 @@ create a `init.lua` in `~/.config/$NVIM_APPNAME/lua/custom`
 All files in the `custom` directory will be ignored by GIT.
 If a `custom/init.lua` exists, it will be loaded however
 
+### customization per filetype your install 
+create a `[your filetype].lua` in `~/.config/$NVIM_APPNAME/lua/custom/filetype` 
+This one gets executed/loaded when Ever vim enters a Buffer that belongs to that filetype.
+
+It is also recommendet to create a `~/.config/$NVIM_APPNAME/lua/custom/filetype/_all.lua`
+This one is always loaded regardless of filetype. Its purpous is to reset your configurations
+back to a base state before the config for a new filetype is loaded.
+
+should you not have a config for a given filetype, all that gets loaded is the 
+`~/.config/$NVIM_APPNAME/lua/custom/filetype/_all.lua`
+
 ### customization per Workspace
 it is also possible to create a config depending on the workspace you are opening.
 
