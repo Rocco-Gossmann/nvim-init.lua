@@ -1,12 +1,15 @@
-vim.cmd [[
+vim.schedule(function()
 
-    set foldexpr=nvim_treesitter#foldexpr()
-    set foldmethod=expr
+    vim.cmd [[
 
-    let g:tmux_navigator_no_mappings = 1
-    nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-    nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-    nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-    nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+        set foldexpr=nvim_treesitter#foldexpr()
 
-]]
+        nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+        nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+        nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+        nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+
+    ]]
+
+    vim.opt.foldmethod="expr"
+end)
