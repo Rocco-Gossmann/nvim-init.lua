@@ -39,11 +39,7 @@ vim.opt.autoindent = true
 
 vim.opt.foldlevelstart = 99
 
-vim.g.indent_guides_enable_on_vim_startup = 1
-vim.g.indent_guides_guide_size = 1
-
 require "mapping"
-
 
 vim.schedule(function()
 
