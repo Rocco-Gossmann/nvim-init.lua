@@ -13,6 +13,8 @@ return require('packer').startup(function(use)
         let g:lightline.subseparator = { 'left': '', 'right': '' }
     ]] }
 
+    use { 'nathanaelkane/vim-indent-guides' }
+
     use { 'christoomey/vim-tmux-navigator' }
 
     use { 'anuvyklack/hydra.nvim' }

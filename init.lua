@@ -1,5 +1,6 @@
 local rgenv = require("rg.env");
 
+
 require "rg.packer"
 
 vim.opt.nu = true
@@ -37,6 +38,8 @@ vim.opt.smartindent = true
 vim.opt.autoindent = true
 
 vim.opt.foldlevelstart = 99
+
+vim.g.indent_guides_enable_on_vim_startup = 1
 
 require "mapping"
 
