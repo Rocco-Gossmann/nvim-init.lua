@@ -32,7 +32,7 @@ local requireHydra = Hydra({
 --==============================================================================
 -- Snippets Hydra
 --==============================================================================
-Hydra({
+local templatesHydra = Hydra({
     mode = { "i" },
     body = "§",
     hint = [[ PHP Snippets: 
@@ -50,64 +50,35 @@ Hydra({
     config = {
         color="teal",
 		invoke_on_body = true,
+        nowait=true,
 		hint = { position="middle", border="rounded" },
         buffer = vim.api.nvim_get_current_buf()
     }
 })
 
 
-
 --==============================================================================
 -- Main Hydra
 --==============================================================================
 
-local dapui = require("dapui");
 
 return Hydra({
     mode = { 'n' },
     body = "q",
-    hint = [[ PHP Actions: _<esc>_
+    hint = [[ PHP Actions:
 =================
-   _b_ => Set Breakpoint
-
-   _r_ => Run Debugger   _c_ => Stop/Close Debugger
-
-   _7_ => step in    _8_ => step over    _9_ => step out
-    
-   _<space>_ => eval under Cursor
+ Insert Mode:
+-----------------
+  _§_ => Snippets
 
 ]],
     heads = {
-        { "b", vim.cmd.DapToggleBreakpoint },
-        { "r", function() 
-                vim.cmd.DapContinue()
-                dapui.open()
-        end },
-        { "<space>", function() dapui.eval() end  },
-
-        { '7', vim.cmd.DapStepInto },
-        { '8', vim.cmd.DapStepOver },
-        { '9', vim.cmd.DapStepOut },
-
-        { 'c', function()
-            dapui.close()
-            vim.cmd.DapTerminate()
-        end, {exit = true}},
-
-        { "h", "h" },
-        { "j", "j" },
-        { "k", "k" },
-        { "l", "l" },
-
-        { "<C-h>", "<C-h>" },
-        { "<C-j>", "<C-j>" },
-        { "<C-k>", "<C-k>" },
-        { "<C-l>", "<C-l>" },
-
-        {"<esc>", nil, {exit=true}}
+        {"§", function() templatesHydra:activate() end },
+        {"<esc>", nil, {exit=true}},
+        {"q", nil, {exit=true}}
     },
     config = {
-        color="blue",
+        color="pink",
 		invoke_on_body = true,
 		hint = { position="bottom", border="rounded" },
         buffer = vim.api.nvim_get_current_buf()

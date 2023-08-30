@@ -105,6 +105,7 @@ vim.g.rg_mapping_autocmd_id = vim.api.nvim_create_autocmd("BufAdd", {
             if fileTypeHydra == nil then
                 fileTypeHydra = rgenv.doFileIfExists(rgenv.confdir .. "/lua/mapping/hydras/common.lua");
             end
+
         end)
     end
 })
@@ -117,6 +118,8 @@ local closingHydra = require "mapping.hydras.closing"; -- Z - key
 local quickListHydra = require "mapping.hydras.quicklist"; -- b - key
 local explorerHydra = require "mapping.hydras.explorer"; -- Shift + E - key
 local splitsHydra  = require "mapping.hydras.split"; -- <leader>w
+local debuggerHydra  = require "mapping.hydras.debugger"; -- Shift + d
+
 
 local telescopeHydra = require "mapping.hydras.telescope"; -- <leader>f
 local harpoonHydra = require "mapping.hydras.harpoon"; -- <leader>h
@@ -131,10 +134,11 @@ Hydra({
  Help                                _<ESC>_
 ===========================================
    _b_ => Quicklist     _E_ => Explorer
-   _g_ => Goto
    _z_ => Folds         _Z_ => Closing
+                      _D_ => Debugger
 
    _<C-y>_ => Line to System Clipboard
+
 
 ===========================================
    <Leader> => 
@@ -159,6 +163,8 @@ Hydra({
         {"Z", function() closingHydra:activate()   end },
         {"b", function() quickListHydra:activate() end },
         {"E", function() explorerHydra:activate() end },
+        {"D", function() debuggerHydra:activate() end },
+        {"w", function() splitsHydra:activate() end },
 
         {"<C-r>" , replaceUnderCursor, { exit=true}  },
         {"<C-y>" , sysClipCopy, { exit=true} },
