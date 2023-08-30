@@ -64,4 +64,6 @@ vim.schedule(function()
 
 end)
 
+require "rg.bufflog"
+
 require "filetype"

@@ -3,11 +3,21 @@ vim.g.mapleader=' '
 local silnor = {noremap=true, silent=true}
 
 --[[============================================================================
+-- Repeated COmmands
+--============================================================================]]
+local sysClipCopy = '"+yy'
+local replaceUnderCursor = ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>";
+
+--[[============================================================================
 -- Select + Visual Mode helpers
 --============================================================================]]
 vim.api.nvim_set_keymap("x", "J", ":m '>+1<CR>gv=gv", silnor); -- Move Selected Line Down 
 vim.api.nvim_set_keymap("x", "K", ":m '<-2<CR>gv=gv", silnor); -- Move Selected Line Up
 vim.api.nvim_set_keymap("x", '<leader>p', '"_dP', silnor);
+
+vim.api.nvim_set_keymap("x", "<C-r>", ":s///gI<Left><Left><Left><Left>", {noremap=true});                  -- Replace in selection
+vim.api.nvim_set_keymap("x", "<C-l>", ":s/^\\(\\s\\{-\\}\\)//gI<Left><Left><Left><Left>", {noremap=true}); -- Replace in sleected line (preselected whitespace group)
+vim.api.nvim_set_keymap("x", "<C-y>"         , sysClipCopy, silnor);
 
 --[[============================================================================
 -- Insert-Mode Hints
@@ -28,17 +38,8 @@ vim.api.nvim_set_keymap("v", "{", "c{}<ESC>hmzplv`z", silnor);
 vim.api.nvim_set_keymap("v", 'bu', "y:grep \"<C-r>\"\" ./*<cr><cr>:copen<cr>", silnor)
 
 --[[============================================================================
--- Visual Mode Helpers
---============================================================================]]
-vim.api.nvim_set_keymap("v", "<C-r>", ":s///gI<Left><Left><Left><Left>", {noremap=true});                  -- Replace in selection
-vim.api.nvim_set_keymap("v", "<C-l>", ":s/^\\(\\s\\{-\\}\\)//gI<Left><Left><Left><Left>", {noremap=true}); -- Replace in sleected line (preselected whitespace group)
-
---[[============================================================================
 -- Utils
 --============================================================================]]
-local sysClipCopy = '"+yy'
-local replaceUnderCursor = ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>";
-
 vim.api.nvim_set_keymap('n', 'q', '<nop>' , silnor)  -- disable default q
 vim.api.nvim_set_keymap('n', 'Q', 'q'     , silnor)  -- record macro via Q
 vim.api.nvim_set_keymap('n', 's', '@'     , silnor)  -- play Macros via s
@@ -59,7 +60,6 @@ vim.api.nvim_set_keymap("v", "<C-u>", "<C-u>zz", silnor);
 --[[============================================================================
 -- Lsp
 --============================================================================]]
-vim.api.nvim_set_keymap("v", 'gd', 'lua vim.lsp.buf.definition()<CR>', silnor);
 vim.api.nvim_set_keymap("v", 'H',  'lua vim.lsp.buf.hover({ reason = cmp.ContextReason.Auto }) <CR>', silnor);
 --vim.api.nvim_set_keymap("v", '[d', function() vim.diagnostic.goto_next() end, silnor);
 --vim.api.nvim_set_keymap("v", ']d', function() vim.diagnostic.goto_prev() end, silnor);
@@ -81,9 +81,16 @@ local rgenv = require("rg.env")
 -- Filetype Specific Hydra Invoced By ?q  or what ever you decide its body is
 ------------------------------------------------------------------------------
 local fileTypeHydra = nil;
-vim.api.nvim_create_autocmd("BufEnter", {
+
+if vim.g.rg_mapping_autocmd_id ~= nil then
+    vim.api.nvim_del_autocmd(vim.g.rg_mapping_autocmd_id);
+end
+
+vim.g.rg_mapping_autocmd_id = vim.api.nvim_create_autocmd("BufAdd", {
     callback = function()
         vim.schedule(function()
+
+            vim.cmd.BuffLogSend("Mapping Buffer: " .. vim.bo.filetype);
 
             fileTypeHydra = rgenv.doFileIfExists(rgenv.confdir .. "/lua/custom/mapping/hydras/filetype/"..vim.bo.filetype..".lua");
 
@@ -122,15 +129,16 @@ Hydra({
    hint = [[ 
  Help                                _<ESC>_
 ===========================================
-   _z_ => Folds         _Z_ => Closing
    _b_ => Quicklist     _E_ => Explorer
+   _g_ => Goto
+   _z_ => Folds         _Z_ => Closing
 
    _<C-y>_ => Line to System Clipboard
 
 ===========================================
    <Leader> => 
 -------------------------------------------
---
+
    _<C-r>_ => Refactor word under Cursor
 
    gt => Open Git

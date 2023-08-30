@@ -12,6 +12,7 @@ return Hydra({
     config = {
         color="teal",
 		invoke_on_body = true,
-		hint = { position="middle", border="rounded" }
+		hint = { position="middle", border="rounded" },
+        buffer = vim.api.nvim_get_current_buf()
     }
 })

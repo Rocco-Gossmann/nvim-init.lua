@@ -3,3 +3,4 @@
 /lua/custom
 tools/nvim-dap-adapter-php/node_modules
 .DS_Store
+BuffLog
