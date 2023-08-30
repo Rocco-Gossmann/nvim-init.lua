@@ -116,6 +116,7 @@ local foldingHydra = require "mapping.hydras.folding"; -- z - key
 local closingHydra = require "mapping.hydras.closing"; -- Z - key
 local quickListHydra = require "mapping.hydras.quicklist"; -- b - key
 local explorerHydra = require "mapping.hydras.explorer"; -- Shift + E - key
+local splitsHydra  = require "mapping.hydras.split"; -- <leader>w
 
 local telescopeHydra = require "mapping.hydras.telescope"; -- <leader>f
 local harpoonHydra = require "mapping.hydras.harpoon"; -- <leader>h
@@ -138,6 +139,8 @@ Hydra({
 ===========================================
    <Leader> => 
 -------------------------------------------
+
+   _w_ => splits
 
    _<C-r>_ => Refactor word under Cursor
 
