@@ -1,0 +1,26 @@
+{
+    "compilerOptions":
+    {
+        "target": "es6",
+        "strict": true,
+        "keyofStringsOnly": true,
+        "typeRoots": [],
+        "types": ["typescript-to-lua/language-extensions"],
+        "noLib": true,
+        "sourceMap": true,
+        "rootDir": ".",
+        "noUncheckedIndexedAccess": true
+    },
+    "include": [
+        "./**/*.ts"
+    ],
+    "tstl":
+    {
+        "luaTarget": "5.1",
+        "noImplicitSelf": true,
+        "noHeader": true,
+        "luaBundle": "lldebugger.lua",
+        "luaBundleEntry": "lldebugger.ts",
+        "luaLibImport": "none"
+    }
+}
