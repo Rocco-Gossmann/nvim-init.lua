@@ -1,7 +1,7 @@
 local rgenv = require("rg.env");
 
 
-require "rg.packer"
+require("rg.packer")
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -39,7 +39,7 @@ vim.opt.autoindent = true
 
 vim.opt.foldlevelstart = 99
 
-require "mapping"
+require("mapping")
 
 vim.schedule(function()
 

@@ -14,8 +14,6 @@ end
 local buflog_send_fnc = no_buffer_marked;
 local buflog_unmark_fnc = no_buffer_marked;
 
-
-
 local function mark_buffer_for_log()
 
     buflog_unmark_fnc();

@@ -1,12 +1,7 @@
+local lsp = require('lsp-zero')
 
-local lsp = require 'lsp-zero'
-
-lsp.preset('recommended')
-
-lsp.ensure_installed({
-	'tsserver', 'intelephense'
-})
-
+lsp.preset('recommended');
+lsp.ensure_installed({ 'tsserver', 'intelephense', 'gopls' })
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -17,7 +12,6 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 })
 
 local cmp_sources = {
-
     { name = 'nvim_lsp', priority = 1000,
         entry_filter = function(entry)
             return require("cmp").lsp.CompletionItemKind.File ~= entry:get_kind()
@@ -39,20 +33,19 @@ lsp.setup_nvim_cmp({
 })
 
 lsp.set_preferences({
-	suggest_lsp_servers = false,
+	suggest_lsp_servers = true,
 	sign_icons = {
-		error = 'E',
-		warn = 'W',
-		hint = 'H',
-		info = 'I'
+		error = '🚨',
+		warn = '⚠️',
+		hint = '❕',
+		info = 'ℹ'
 	}
 })
 
-require "lsp"
-
 lsp.setup()
 
-vim.diagnostic.config({
-	virtual_text = true
-})
+local rgenv = require("rg.env")
+if rgenv.doFileIfExists(".nvim/lsp.lua") == nil then
+    require("lsp");
+end
 
