@@ -51,15 +51,14 @@ vim.schedule(function()
     vim.api.nvim_set_hl(0, "@text.uri", {bg = "none", fg="#ffd7d7"})
 
     --vim.api.nvim_set_hl(0, "LineNr", {bg = "#333333", fg="#a0a0a0"})
-    --
+
     rgenv.doFileIfExists( rgenv.confdir .. "/lua/custom/init.lua")
 
     --      from $CWD
-    local filename = ".nviminit.lua"
-    if vim.fn.findfile(filename) == '' then
-        print("you can customize NVIM further for this folder by creating a '" .. filename .. "' file");
-    else
-        dofile(filename);
+    if rgenv.doFileIfExists(".nvim/init.lua") == nil then
+        if rgenv.doFileIfExists(".nviminit.lua") == nil then
+            print("you can customize NVIM further for this folder by creating a '.nviminit.lua' or a '.nvim/init.lua' file");
+        end
     end
 
 end)
