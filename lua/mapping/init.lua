@@ -51,6 +51,9 @@ vim.api.nvim_set_keymap("n", "<leader><C-r>" , replaceUnderCursor, silnor);
 vim.api.nvim_set_keymap("n", "<leader>gt"    , ':LazyGit<CR>', silnor);
 vim.api.nvim_set_keymap("n", "<S-j>"         , "mzJ`z", silnor); -- Keep Cursor on Join Line
 
+vim.api.nvim_set_keymap("n", "<S-s>"         , ":DBUIToggle<cr>", silnor);
+
+
 -- You can set [NXT] in side your snippes etc, and then use 2xTab to start editing the location
 -- they are in
 vim.api.nvim_set_keymap("n", "<Tab><Tab>", "/\\[NXT\\]<CR>v%c", {silent=true});

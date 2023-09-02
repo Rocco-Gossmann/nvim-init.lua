@@ -6,6 +6,10 @@ return require('packer').startup(function(use)
 
     use { "catppuccin/nvim", as = "catppuccin" }
 
+    use { 'tpope/vim-dadbod' }
+    use { 'kristijanhusak/vim-dadbod-ui' }
+    use { 'kristijanhusak/vim-dadbod-completion' }
+
     -- Better Statusline
     use { 'itchyny/lightline.vim', run = vim.cmd [[
         let g:lightline = {}
