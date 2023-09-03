@@ -35,6 +35,10 @@ vim.api.nvim_set_keymap("v", "'", "c''<ESC>hmzplv`z", silnor);
 vim.api.nvim_set_keymap("v", "(", "c()<ESC>hmzplv`z", silnor);
 vim.api.nvim_set_keymap("v", "[", "c[]<ESC>hmzplv`z", silnor);
 vim.api.nvim_set_keymap("v", "{", "c{}<ESC>hmzplv`z", silnor);
+vim.api.nvim_set_keymap("v", "-", "c--<ESC>hmzplv`z", silnor);
+vim.api.nvim_set_keymap("v", "_", "c__<ESC>hmzplv`z", silnor);
+vim.api.nvim_set_keymap("v", "*", "c**<ESC>hmzplv`z", silnor);
+vim.api.nvim_set_keymap("v", "~", "c~~<ESC>hmzplv`z", silnor);
 vim.api.nvim_set_keymap("v", 'bu', "y:grep \"<C-r>\"\" ./*<cr><cr>:copen<cr>", silnor)
 
 --[[============================================================================

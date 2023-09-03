@@ -9,6 +9,8 @@ local hint = [[ Folding:
    _g_ => Fold more         _r_ => Fold Less
    _G_ => Fold All          _R_ => Unfold All
 
+   _e_ => Expresssion
+
    _h_ => goto start of current fold
    _j_ => goto start of next fold
    _l_ => goto end of current fold
@@ -19,6 +21,8 @@ local hint = [[ Folding:
 local heads = {
     { 'R', 'zR' },
     { 'G', 'zM' },
+
+    { 'e', ':set foldmethod=expr<cr>' },
 
     { 'r', 'zr', { exit = false } },
     { 'g', 'zm', { exit = false } },
