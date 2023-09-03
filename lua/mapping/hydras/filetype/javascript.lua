@@ -16,7 +16,7 @@ local templatesHydra = Hydra({
 ]],
     heads = {
         { 'f', 'function <esc>mzi([NXT]) {[NXT]}<esc>`zi ' },
-        { 's', function() jsSwitchHydra:activate() end },
+        { 's', function() jsSwitchHydra:activate() end , {exit=true}},
         { "<esc>", nil, {exit=true}},
         { "q", nil, {exit=true}}
     },
