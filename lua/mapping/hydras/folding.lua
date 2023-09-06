@@ -18,17 +18,19 @@ local hint = [[ Folding:
 
 ]]
 
+local foldmethod = ':set foldmethod=expr<cr>'
+
 local heads = {
     { 'R', 'zR' },
-    { 'G', 'zM' },
+    { 'G', foldmethod .. 'zM' },
 
-    { 'e', ':set foldmethod=expr<cr>' },
+    { 'e', foldmethod, { exit = false } },
 
     { 'r', 'zr', { exit = false } },
-    { 'g', 'zm', { exit = false } },
+    { 'g', foldmethod .. 'zm', { exit = false } },
 
     { 'o', 'zo' }, { 'O', 'zO' },
-    { 'c', 'zc' }, { 'C', 'zC' },
+    { 'c', foldmethod .. 'zc' }, { 'C', foldmethod .. 'zC' },
 
     { 'h', '[z', { exit = false } },
     { 'l', ']z', { exit = false } },
