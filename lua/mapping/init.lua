@@ -44,6 +44,31 @@ vim.api.nvim_set_keymap("v", "/", "c//<ESC>hmzplv`z", silnor);
 vim.api.nvim_set_keymap("v", 'bu', "y:grep \"<C-r>\"\" ./*<cr><cr>:copen<cr>", silnor)
 
 --[[============================================================================
+-- Mapping m/M + numbers to Global Bookmarks
+--============================================================================]]
+vim.api.nvim_set_keymap('n', 'M1', 'mA'   , silnor)
+vim.api.nvim_set_keymap('n', 'M2', 'mB'   , silnor)
+vim.api.nvim_set_keymap('n', 'M3', 'mC'   , silnor)
+vim.api.nvim_set_keymap('n', 'M4', 'mD'   , silnor)
+vim.api.nvim_set_keymap('n', 'M5', 'mE'   , silnor)
+vim.api.nvim_set_keymap('n', 'M6', 'mF'   , silnor)
+vim.api.nvim_set_keymap('n', 'M7', 'mG'   , silnor)
+vim.api.nvim_set_keymap('n', 'M8', 'mH'   , silnor)
+vim.api.nvim_set_keymap('n', 'M9', 'mI'   , silnor)
+vim.api.nvim_set_keymap('n', 'M0', 'mJ'   , silnor)
+
+vim.api.nvim_set_keymap('n', 'm1', '`A'   , silnor)
+vim.api.nvim_set_keymap('n', 'm2', '`B'   , silnor)
+vim.api.nvim_set_keymap('n', 'm3', '`C'   , silnor)
+vim.api.nvim_set_keymap('n', 'm4', '`D'   , silnor)
+vim.api.nvim_set_keymap('n', 'm5', '`E'   , silnor)
+vim.api.nvim_set_keymap('n', 'm6', '`F'   , silnor)
+vim.api.nvim_set_keymap('n', 'm7', '`G'   , silnor)
+vim.api.nvim_set_keymap('n', 'm8', '`H'   , silnor)
+vim.api.nvim_set_keymap('n', 'm9', '`I'   , silnor)
+vim.api.nvim_set_keymap('n', 'm0', '`J'   , silnor)
+
+--[[============================================================================
 -- Utils
 --============================================================================]]
 vim.api.nvim_set_keymap('n', 'q', '<nop>' , silnor)  -- disable default q
