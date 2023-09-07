@@ -40,11 +40,11 @@ local heads = {
 
 return Hydra({
 	mode = { 'n' },
-	body = "b",
+	body = "B",
     hint = hint,
     heads = heads,
 	config = {
-        color = pink,
+        color = "pink",
 		invoke_on_body = true,
 		hint = { position="bottom", border="rounded" },
 	}

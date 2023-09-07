@@ -147,7 +147,7 @@ Hydra({
    hint = [[ 
  Help                                _<ESC>_
 ===========================================
-   _b_ => Quicklist     _E_ => Explorer
+   _B_ => Quicklist     _E_ => Explorer
    _z_ => Folds         _Z_ => Closing
                       _D_ => Debugger
 
@@ -175,7 +175,7 @@ Hydra({
         {"v", function() lspHydra:activate()       end },
         {"z", function() foldingHydra:activate()   end },
         {"Z", function() closingHydra:activate()   end },
-        {"b", function() quickListHydra:activate() end },
+        {"B", function() quickListHydra:activate() end },
         {"E", function() explorerHydra:activate() end },
         {"D", function() debuggerHydra:activate() end },
         {"w", function() splitsHydra:activate() end },
