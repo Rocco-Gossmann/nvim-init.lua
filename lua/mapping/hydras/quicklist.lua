@@ -11,8 +11,6 @@ local hint = [[
    _a_ => Append to List
 ]];
 
-local opt = { exit = true}
-
 local appendHead = Hydra({
     hint = [[ Quicklist => Append
 ======================================
@@ -20,8 +18,8 @@ local appendHead = Hydra({
    _f_ => Find Expression
 ]],
     heads = {
-        {'u', ':grepadd \"<C-r><C-w>\" ./*<cr><cr>:copen<cr>', opt},
-        {'f', ':grepadd \"\" ./*<left><left><left><left><left>', opt},
+        {'u', ':grepadd \"<C-r><C-w>\" ./*<cr><cr>:copen<cr>'},
+        {'f', ':grepadd \"\" ./*<left><left><left><left><left>'},
     },
 	config = {
 		hint = { position="bottom", border="rounded" },
@@ -29,22 +27,25 @@ local appendHead = Hydra({
 })
 
 local heads = {
-    {'u', ':grep \"<C-r><C-w>\" ./*<cr><cr><C-o>:copen<cr>', opt},
-    {'f', ':grep \"\" ./*<left><left><left><left><left>', opt},
-    {'n', ':cnext<cr>', opt},
-    {'p', ':cprev<cr>', opt},
-    {'o', ':copen<cr>', opt},
-    {'i', ':cclose<cr>', opt},
-    {'a', function() appendHead:activate() end, opt}
+    {'u', ':grep \"<C-r><C-w>\" ./*<cr><cr><C-o>:copen<cr>'},
+    {'f', ':grep \"\" ./*<left><left><left><left><left>'},
+    {'n', ':cnext<cr>'},
+    {'p', ':cprev<cr>'},
+    {'o', ':copen<cr>'},
+    {'i', ':cclose<cr>'},
+    {'a', function() appendHead:activate() end},
+
+    { "<esc>", nil, {exit=true} }, { "q", nil, {exit=true} }
+
 }
 
 return Hydra({
 	mode = { 'n' },
-	body = "B",
+	body = "<S-b>",
     hint = hint,
     heads = heads,
 	config = {
-        color = "pink",
+        color = "teal",
 		invoke_on_body = true,
 		hint = { position="bottom", border="rounded" },
 	}
