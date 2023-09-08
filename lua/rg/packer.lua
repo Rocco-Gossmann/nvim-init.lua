@@ -4,29 +4,27 @@ return require('packer').startup(function(use)
     -- packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    use { "catppuccin/nvim", as = "catppuccin" }
 
+    -- Mysql / Db client
     use { 'tpope/vim-dadbod' }
     use { 'kristijanhusak/vim-dadbod-ui' }
     use { 'kristijanhusak/vim-dadbod-completion' }
 
-    -- Better Statusline
+    -- Must have for TMUX users
+    use { 'christoomey/vim-tmux-navigator' }
+
+
+    -- Some visual fluff
+    use { "catppuccin/nvim", as = "catppuccin" }
+    use {'wfxr/minimap.vim'}
     use { 'itchyny/lightline.vim', run = vim.cmd [[
         let g:lightline = {}
         let g:lightline.separator = { 'left': '', 'right': '' }
         let g:lightline.subseparator = { 'left': '', 'right': '' }
     ]] }
 
-    use { 'christoomey/vim-tmux-navigator' }
 
-    use { 'anuvyklack/hydra.nvim' }
-
-    use { 'jinh0/eyeliner.nvim',
-        config = function()
-            require'eyeliner'.setup { }
-        end
-    }
-
+    -- Better file navigation 
     use { 'nvim-telescope/telescope.nvim',
         tag = '0.1.1',
         requires = { { 'nvim-lua/plenary.nvim' } }
@@ -36,17 +34,26 @@ return require('packer').startup(function(use)
         requires = { "nvim-lua/plenary.nvim" }
     }
 
+
+    -- Awesome Keymapping and Custome modes
+    use { 'anuvyklack/hydra.nvim' }
+
+
+    -- Integrating the best GIT-TUI
     use { 'kdheepak/lazygit.nvim', run = vim.cmd [[
         let g:lazygit_floating_window_scaling_factor = 0.9
         let g:lazygit_floating_window_border_chars = ['╭', '╮', '╰', '╯']
         let g:lazygit_floating_window_use_plenary = 0
     ]] }
 
+
+    -- Debuggers and LSPs
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
     use { "rcarriga/nvim-dap-ui", requires = {
         'mfussenegger/nvim-dap',
     } }
+
 
     use { 'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
