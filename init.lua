@@ -39,7 +39,7 @@ vim.opt.autoindent = true
 
 vim.opt.foldlevelstart = 99
 
-vim.g.minimap_width = 10
+vim.g.minimap_width = 20
 vim.g.minimap_auto_start = 1
 vim.g.minimap_auto_start_win_enter = 1
 
