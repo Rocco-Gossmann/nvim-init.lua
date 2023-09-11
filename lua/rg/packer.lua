@@ -13,10 +13,8 @@ return require('packer').startup(function(use)
     -- Must have for TMUX users
     use { 'christoomey/vim-tmux-navigator' }
 
-
     -- Some visual fluff
     use { "catppuccin/nvim", as = "catppuccin" }
-    use {'wfxr/minimap.vim'}
     use { 'itchyny/lightline.vim', run = vim.cmd [[
         let g:lightline = {}
         let g:lightline.separator = { 'left': '', 'right': '' }
@@ -37,14 +35,6 @@ return require('packer').startup(function(use)
 
     -- Awesome Keymapping and Custome modes
     use { 'anuvyklack/hydra.nvim' }
-
-
-    -- Integrating the best GIT-TUI
-    use { 'kdheepak/lazygit.nvim', run = vim.cmd [[
-        let g:lazygit_floating_window_scaling_factor = 0.9
-        let g:lazygit_floating_window_border_chars = ['╭', '╮', '╰', '╯']
-        let g:lazygit_floating_window_use_plenary = 0
-    ]] }
 
 
     -- Debuggers and LSPs
