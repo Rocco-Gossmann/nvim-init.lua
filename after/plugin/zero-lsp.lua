@@ -1,7 +1,7 @@
 local lsp = require('lsp-zero')
 
 lsp.preset('recommended');
-lsp.ensure_installed({ 'tsserver', 'intelephense', 'gopls' })
+lsp.ensure_installed({ 'tsserver', 'intelephense' })
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -35,10 +35,10 @@ lsp.setup_nvim_cmp({
 lsp.set_preferences({
 	suggest_lsp_servers = true,
 	sign_icons = {
-		error = '🚨',
-		warn = '⚠️',
-		hint = '❕',
-		info = 'ℹ'
+		error = 'E',
+		warn = 'W',
+		hint = '.',
+		info = ' '
 	}
 })
 
@@ -46,8 +46,7 @@ lsp.setup()
 
 vim.diagnostic.config({ virtual_text = true })
 
-local rgenv = require("rg.env")
-if rgenv.doFileIfExists(".nvim/lsp.lua") == nil then
+if require("rg.env").doFileIfExists(".nvim/lsp.lua") == nil then
     require("lsp");
 end
 
