@@ -36,6 +36,17 @@ return require('packer').startup(function(use)
     -- Awesome Keymapping and Custome modes
     use { 'anuvyklack/hydra.nvim' }
 
+    -- Markdown and other Improvements
+
+    use {'godlygeek/tabular'}
+    use {'preservim/vim-markdown'}
+
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = "cd app && npm install",
+        setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" },
+    })
+
 
     -- Debuggers and LSPs
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
