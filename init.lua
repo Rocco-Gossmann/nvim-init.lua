@@ -1,6 +1,5 @@
 local rgenv = require("rg.env");
 
-
 require("rg.packer")
 
 vim.opt.nu = true
@@ -31,7 +30,7 @@ vim.opt.colorcolumn = "80"
 
 vim.opt.nrformats:append("alpha")
 
-vim.opt.grepprg="rg -n -i --ignore-file .rgignore $* /dev/null"
+vim.opt.grepprg="rg -n -i -g -L --ignore-file .rgignore $* /dev/null"
 
 vim.opt.cursorline = true
 vim.opt.smartindent = true
@@ -49,8 +48,6 @@ vim.schedule(function()
     vim.api.nvim_set_hl(0, "@parameter", {bg = "none", fg="#ff87af"})
     vim.api.nvim_set_hl(0, "@tag.attribute", {bg = "none", fg="#87d7d7"})
     vim.api.nvim_set_hl(0, "@text.uri", {bg = "none", fg="#ffd7d7"})
-
-    --vim.api.nvim_set_hl(0, "LineNr", {bg = "#333333", fg="#a0a0a0"})
 
     rgenv.doFileIfExists( rgenv.confdir .. "/lua/custom/init.lua")
 
