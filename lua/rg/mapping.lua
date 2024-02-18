@@ -1,3 +1,4 @@
+-- Commonn - Keymaps
 vim.keymap.set("n", "<leader>ff", require('telescope.builtin').find_files,  { desc = "[F]ind [F]ile"})
 vim.keymap.set("n", "<leader>fb", require('telescope.builtin').buffers,     { desc = "[F]ind [B]uffer"})
 vim.keymap.set("n", "<leader>fs", require('telescope.builtin').live_grep,   { desc = "[F]ind [S]tring"})
@@ -6,7 +7,25 @@ vim.keymap.set('n', '<leader>fr', require('telescope.builtin').resume,      { de
 vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[F]ind [D]iagnostics' })
 vim.keymap.set('n', '<leader>ft', require('telescope.builtin').builtin,     { desc = '[F]ind [T]elescope' })
 
+-- Keymaps, that differ per FileType (Due to differennt technics and binaries being used)
 
+-- <leader>cf - code Format
+
+
+-- PHP - Keymaps
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern={ "*.php" },
+    callback = function()
+        vim.keymap.set('n', '<leader>cf', "<cmd>w<cr><cmd>!pretty-php -q %<cr>", { desc = '[C]ode [F]ormat' });
+    end
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern={ "*.md", ".html", "*.js", ".ts", ".css", "*.scss", "*.json", "*.jsx" },
+    callback = function()
+        vim.keymap.set('n', '<leader>cf', "<cmd>Prettier<cr>", { desc = '[C]ode [F]ormat' });
+    end
+})
 
 
 -- vim.keymap.set('n', '<leader>s/', telescope_live_grep_open_files, { desc = '[S]earch [/] in Open Files' })

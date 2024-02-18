@@ -10,6 +10,7 @@ https://github.com/kdheepak/kickstart.nvim
 # Kicksstart - Remaps
 
 ## Telescope
+
 | Mapping      | Effect               |
 | ------------ | -------------------- |
 | `<leader>ff` | [F]ind [F]ile        |
@@ -19,8 +20,8 @@ https://github.com/kdheepak/kickstart.nvim
 | `<leader>fr` | [F]ind [R]esume      |
 | `<leader>fd` | [F]ind [D]iagnostics |
 | `<leader>ft` | [F]ind [T]elescope   |
-
-
+|              |                      |
+| `<leader>cf` | [C]ode [F]ormat      |
 
 # Original kickstart.nvim Readme
 
