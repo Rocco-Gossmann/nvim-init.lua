@@ -4,23 +4,34 @@
 -- See the kickstart.nvim README for more information
 return {
 
+	-- TMUX-Navigation
 	'christoomey/vim-tmux-navigator',
 
 	-- Markdown Preview
 	{
-	  "iamcco/markdown-preview.nvim",
-	  cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-	  build = "cd app && npm install",
-	  init = function()
-	    vim.g.mkdp_filetypes = { "markdown" }
-	    vim.g.mkdp_port=64209
-	  end,
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		build = "cd app && npm install",
+		init = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+			vim.g.mkdp_port = 64209
+		end,
 
-	  run = function()
-	    print("running")
-	  end,
-
-	  ft = { "markdown" },
+		ft = { "markdown" },
 	},
+
+
+	-- Coding Tools
+	{
+		"prettier/vim-prettier",
+		ft = {
+			'javascript', 'typescript',
+			'css', 'less', 'scss',
+			'json', 'graphql',
+			'markdown', 'vue',
+			'svelte', 'yaml', 'html'
+		}
+	},
+
 
 }
