@@ -32,6 +32,4 @@ return {
 			'svelte', 'yaml', 'html'
 		}
 	},
-	
-
 }
