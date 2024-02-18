@@ -4,10 +4,19 @@
 -- See the kickstart.nvim README for more information
 return {
 
-	-- TMUX-Navigation
+	-- Navigation
+	-- -- TMUX - Integration
 	'christoomey/vim-tmux-navigator',
 
-	-- Markdown Preview
+	-- -- Harpoon 1
+	{
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		dependencies = { "nvim-lua/plenary.nvim" }
+	},
+
+	-- Coding Tools
+	-- -- Markdown Preview
 	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -20,8 +29,7 @@ return {
 		ft = { "markdown" },
 	},
 
-
-	-- Coding Tools
+	-- -- Prettier
 	{
 		"prettier/vim-prettier",
 		ft = {

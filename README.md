@@ -6,23 +6,45 @@ https://github.com/kdheepak/kickstart.nvim
 
 - [iamcco/Markdown-Preview](https://github.com/iamcco/markdown-preview.nvim) (requires NPM)
 - [prettier/vim-prettier](https://github.com/prettier/vim-prettier) (requires prettier executable in System-$PATH)
+- [ThePrimeagen/harpoon (2)](https://github.com/ThePrimeagen/harpoon/tree/harpoon2)
 
 # Kicksstart - Remaps
 
 ## Telescope
 
-| Mapping      | Effect               |
-| ------------ | -------------------- |
-| `<leader>ff` | [F]ind [F]ile        |
-| `<leader>fb` | [F]ind [B]uffer      |
-| `<leader>fs` | [F]ind [S]tring      |
-| `<leader>fh` | [F]ind [H]elp        |
-| `<leader>fr` | [F]ind [R]esume      |
-| `<leader>fd` | [F]ind [D]iagnostics |
-| `<leader>ft` | [F]ind [T]elescope   |
-|              |                      |
-| `<leader>cf` | [C]ode [F]ormat      |
+| Mapping            | Effect               |
+| ------------------ | -------------------- |
+| `<leader>ff`       | [F]ind [F]ile        |
+| `<leader>fb`       | [F]ind [B]uffer      |
+| `<leader>fs`       | [F]ind [S]tring      |
+| `<leader>fh`       | [F]ind [H]elp        |
+| `<leader>fr`       | [F]ind [R]esume      |
+| `<leader>fd`       | [F]ind [D]iagnostics |
+| `<leader>ft`       | [F]ind [T]elescope   |
 
+## Harpoon
+| Mapping            | Effect               |
+| ------------------ | -------------------- |
+| `<leader>h<space>` | [H]arpoon UI         |
+| `<leader>ha`       | [H]arpoon [A]ppend   |
+| `<leader>hh`       | [H]arpoon Slot 1     |
+| `<leader>hj`       | [H]arpoon Slot 2     |
+| `<leader>hk`       | [H]arpoon Slot 3     |
+| `<leader>hl`       | [H]arpoon Slot 4     |
+
+## Actions
+| Mapping            | Effect               |
+| ------------------ | -------------------- |
+| `<leader>cf`       | [C]ode [F]ormat      |
+
+# Other Installs
+
+- pretty-php (via Mason)
+
+
+---
+---
+---
 # Original kickstart.nvim Readme
 
 https://github.com/kdheepak/kickstart.nvim/assets/1813121/f3ff9a2b-c31f-44df-a4fa-8a0d7b17cf7b

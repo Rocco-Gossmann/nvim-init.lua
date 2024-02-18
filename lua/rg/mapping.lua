@@ -17,10 +17,18 @@ vim.keymap.set('n', 'Ek', '<cmd>sp .<cr>', { desc = '[E]xplorer top' })
 vim.keymap.set('n', '_', '<cmd>sp<cr>', { desc = 'Split Vertical' })
 vim.keymap.set('n', 'I', '<cmd>vs<cr>', { desc = 'Split Horizontal' })
 
-
+-- -- Harpoon
+--
+local harpoon = require("harpoon")
+vim.keymap.set("n", "<leader>h<space>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "[H]arpoon UI" })
+vim.keymap.set("n", "<leader>ha", function() harpoon:list():append() end, { desc = "[H]arpoon [A]ppend" })
+vim.keymap.set("n", "<leader>hh", function() harpoon:list():select(1) end, { desc = "[H]arpoon use 1" })
+vim.keymap.set("n", "<leader>hj", function() harpoon:list():select(2) end, { desc = "[H]arpoon use 2" })
+vim.keymap.set("n", "<leader>hk", function() harpoon:list():select(3) end, { desc = "[H]arpoon use 3" })
+vim.keymap.set("n", "<leader>hl", function() harpoon:list():select(4) end, { desc = "[H]arpoon use 4" })
+--
 -- Keymaps, that differ per FileType (Due to differennt technics and binaries being used)
 
--- <leader>cf - code Format
 
 
 -- PHP
