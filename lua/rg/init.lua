@@ -57,3 +57,5 @@ nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 
 ]]
+
+require "rg.mapping"
