@@ -4,6 +4,9 @@
 -- See the kickstart.nvim README for more information
 return {
 
+	'christoomey/vim-tmux-navigator',
+
+	-- Markdown Preview
 	{
 	  "iamcco/markdown-preview.nvim",
 	  cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },

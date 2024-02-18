@@ -1,10 +1,11 @@
-# A fresh start based on kickstart.nvim, based on
+# A fresh start based on kickstart.nvim
 
 https://github.com/kdheepak/kickstart.nvim
 
 
-
-
+# Additional Plugins
+- [iamcco/Markdown-Preview](https://github.com/iamcco/markdown-preview.nvim) (requires via NPM)
+-
 
 
 
