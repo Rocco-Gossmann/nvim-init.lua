@@ -599,7 +599,7 @@ local servers = {
 
   tsserver = {},
 
-  htmx = { filetypes = { 'html' } },
+  -- htmx = { filetypes = { 'html' } }, <-- removed because Cargo is not easy to install on windows
 
   html = { filetypes = { 'html' } },
 

@@ -9,6 +9,7 @@ vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { de
 vim.keymap.set('n', '<leader>ft', require('telescope.builtin').builtin, { desc = '[F]ind [T]elescope' })
 
 -- -- Splits
+vim.keymap.set('n', 'EE', '<cmd>e .<cr>', { desc = '[E]xplorer in place' })
 vim.keymap.set('n', 'El', '<cmd>vs<cr><C-w>l<cmd>e .<cr>', { desc = '[E]xplorer right' })
 vim.keymap.set('n', 'Eh', '<cmd>vs .<cr>', { desc = '[E]xplorer left' })
 vim.keymap.set('n', 'Ej', '<cmd>sp<cr><C-w>j<cmd>e .<cr>', { desc = '[E]xplorer bottom' })
@@ -49,7 +50,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 -- Markdown, Java-/Typescript, (s)css, JSON, JSX
 vim.api.nvim_create_autocmd("BufEnter", {
-    pattern = { "*.md", ".html", "*.js", ".ts", ".css", "*.scss", "*.json", "*.jsx" },
+    pattern = { "*.md", "*.html", "*.js", ".ts", ".css", "*.scss", "*.json", "*.jsx" },
     callback = function()
         vim.keymap.set('n', '<leader>cf', "<cmd>Prettier<cr>", { desc = '[C]ode [F]ormat' });
     end
