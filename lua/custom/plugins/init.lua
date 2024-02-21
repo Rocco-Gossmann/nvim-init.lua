@@ -29,6 +29,10 @@ return {
 		ft = { "markdown" },
 	},
 
+	{ 'dhruvasagar/vim-table-mode',
+		ft = { 'markdown' }
+	},
+
 	-- -- Prettier
 	{
 		"prettier/vim-prettier",
