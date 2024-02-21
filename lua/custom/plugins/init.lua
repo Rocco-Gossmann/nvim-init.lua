@@ -2,7 +2,9 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
-return {
+return {    -- Awesome Keymapping and Custome modes
+
+    'anuvyklack/hydra.nvim',
 
 	-- Navigation
 	-- -- TMUX - Integration
@@ -29,9 +31,16 @@ return {
 		ft = { "markdown" },
 	},
 
+
 	{ 'dhruvasagar/vim-table-mode',
 		ft = { 'markdown' }
 	},
+
+	-- -- Debug Adapter Protocol
+	{ "rcarriga/nvim-dap-ui", dependencies = {
+        'mfussenegger/nvim-dap',
+    } },
+
 
 	-- -- Prettier
 	{
