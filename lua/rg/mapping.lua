@@ -1,14 +1,87 @@
--- Commonn - Keymaps
--- -- Telescope
-vim.keymap.set("n", "<leader>ff", require('telescope.builtin').find_files, { desc = "[F]ind [F]ile" })
-vim.keymap.set("n", "<leader>fb", require('telescope.builtin').buffers, { desc = "[F]ind [B]uffer" })
-vim.keymap.set("n", "<leader>fs", require('telescope.builtin').live_grep, { desc = "[F]ind [S]tring" })
-vim.keymap.set("n", "<leader>fh", require('telescope.builtin').help_tags, { desc = "[F]ind [H]elp" })
-vim.keymap.set('n', '<leader>fr', require('telescope.builtin').resume, { desc = '[F]ind [R]esume' })
-vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[F]ind [D]iagnostics' })
-vim.keymap.set('n', '<leader>ft', require('telescope.builtin').builtin, { desc = '[F]ind [T]elescope' })
+local silnor = {noremap=true, silent=true}
 
--- -- Splits
+--[[============================================================================
+-- Repeated COmmands
+--============================================================================]]
+local sysClipCopy = '"+yy'
+local replaceUnderCursor = ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>";
+
+--[[============================================================================
+-- Select + Visual Mode helpers
+--============================================================================]]
+vim.keymap.set("x", "J", ":m '>+1<CR>gv=gv", silnor); -- Move Selected Line Down 
+vim.keymap.set("x", "K", ":m '<-2<CR>gv=gv", silnor); -- Move Selected Line Up
+vim.keymap.set("x", '<leader>p', '"_dP', silnor);
+
+vim.keymap.set("x", "<C-r>", ":s///gI<Left><Left><Left><Left>", {noremap=true});                  -- Replace in selection
+vim.keymap.set("x", "<C-l>", ":s/^\\(\\s\\{-\\}\\)//gI<Left><Left><Left><Left>", {noremap=true}); -- Replace in sleected line (preselected whitespace group)
+vim.keymap.set("x", "<C-y>"         , sysClipCopy, silnor);
+
+--[[============================================================================
+-- Insert-Mode Hints
+--============================================================================]]
+vim.keymap.set("i", '<C-j>', '<cmd>lua vim.lsp.buf.completion({ reason = require("cmp").ContextReason.Auto })<CR>', silnor);
+vim.keymap.set("i", '<C-h>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', silnor);
+
+--[[============================================================================
+-- Surround with
+--============================================================================]]
+vim.keymap.set("v", "<space>", 'c  <ESC>hmzplv`z', silnor);
+vim.keymap.set("v", ".", 'c..<ESC>hmzplv`z', silnor);
+vim.keymap.set("v", "\"", 'c""<ESC>hmzplv`z', silnor);
+vim.keymap.set("v", "'", "c''<ESC>hmzplv`z", silnor);
+vim.keymap.set("v", "`", "c``<ESC>hmzplv`z", silnor);
+vim.keymap.set("v", "(", "c()<ESC>hmzplv`z", silnor);
+vim.keymap.set("v", "[", "c[]<ESC>hmzplv`z", silnor);
+vim.keymap.set("v", "{", "c{}<ESC>hmzplv`z", silnor);
+vim.keymap.set("v", "-", "c--<ESC>hmzplv`z", silnor);
+vim.keymap.set("v", "_", "c__<ESC>hmzplv`z", silnor);
+vim.keymap.set("v", "*", "c**<ESC>hmzplv`z", silnor);
+vim.keymap.set("v", "~", "c~~<ESC>hmzplv`z", silnor);
+vim.keymap.set("v", "/", "c//<ESC>hmzplv`z", silnor);
+
+--[[============================================================================
+-- Mapping m/M + numbers to Global Bookmarks
+--============================================================================]]
+vim.keymap.set('n', 'M1', 'mA'   , silnor)
+vim.keymap.set('n', 'M2', 'mB'   , silnor)
+vim.keymap.set('n', 'M3', 'mC'   , silnor)
+vim.keymap.set('n', 'M4', 'mD'   , silnor)
+vim.keymap.set('n', 'M5', 'mE'   , silnor)
+vim.keymap.set('n', 'M6', 'mF'   , silnor)
+vim.keymap.set('n', 'M7', 'mG'   , silnor)
+vim.keymap.set('n', 'M8', 'mH'   , silnor)
+vim.keymap.set('n', 'M9', 'mI'   , silnor)
+vim.keymap.set('n', 'M0', 'mJ'   , silnor)
+
+vim.keymap.set('n', 'm1', '`A'   , silnor)
+vim.keymap.set('n', 'm2', '`B'   , silnor)
+vim.keymap.set('n', 'm3', '`C'   , silnor)
+vim.keymap.set('n', 'm4', '`D'   , silnor)
+vim.keymap.set('n', 'm5', '`E'   , silnor)
+vim.keymap.set('n', 'm6', '`F'   , silnor)
+vim.keymap.set('n', 'm7', '`G'   , silnor)
+vim.keymap.set('n', 'm8', '`H'   , silnor)
+vim.keymap.set('n', 'm9', '`I'   , silnor)
+vim.keymap.set('n', 'm0', '`J'   , silnor)
+
+--[[ ===========================================================================
+-- Snippet Helpers
+--============================================================================]]
+-- You can set [NXT] in side your snippes etc, and then use 2xTab to start editing the location
+-- they are in
+vim.keymap.set("n", "<Tab><Tab>", "/\\[NXT\\]<CR>v%c", {silent=true});
+vim.keymap.set("i", "<S-Tab>", "<esc>/\\[NXT\\]<CR>v%c", {silent=true});
+
+-- Keep Cursor centered, when jumping and searching
+vim.keymap.set("v", "n", "nzz", silnor);
+vim.keymap.set("v", "N", "Nzz", silnor);
+vim.keymap.set("v", "<C-d>", "<C-d>zz", silnor);
+vim.keymap.set("v", "<C-u>", "<C-u>zz", silnor);
+
+--[[============================================================================
+-- Splits
+--============================================================================]]
 vim.keymap.set('n', 'EE', '<cmd>e .<cr>', { desc = '[E]xplorer in place' })
 vim.keymap.set('n', 'El', '<cmd>vs<cr><C-w>l<cmd>e .<cr>', { desc = '[E]xplorer right' })
 vim.keymap.set('n', 'Eh', '<cmd>vs .<cr>', { desc = '[E]xplorer left' })
@@ -17,6 +90,19 @@ vim.keymap.set('n', 'Ek', '<cmd>sp .<cr>', { desc = '[E]xplorer top' })
 
 vim.keymap.set('n', '_', '<cmd>sp<cr>', { desc = 'Split Vertical' })
 vim.keymap.set('n', 'I', '<cmd>vs<cr>', { desc = 'Split Horizontal' })
+
+
+--[[============================================================================ 
+-- Commonn - Keymaps
+--============================================================================]]
+-- -- Telescope
+vim.keymap.set("n", "<leader>ff", require('telescope.builtin').find_files, { desc = "[F]ind [F]ile" })
+vim.keymap.set("n", "<leader>fb", require('telescope.builtin').buffers, { desc = "[F]ind [B]uffer" })
+vim.keymap.set("n", "<leader>fs", require('telescope.builtin').live_grep, { desc = "[F]ind [S]tring" })
+vim.keymap.set("n", "<leader>fh", require('telescope.builtin').help_tags, { desc = "[F]ind [H]elp" })
+vim.keymap.set('n', '<leader>fr', require('telescope.builtin').resume, { desc = '[F]ind [R]esume' })
+vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[F]ind [D]iagnostics' })
+vim.keymap.set('n', '<leader>ft', require('telescope.builtin').builtin, { desc = '[F]ind [T]elescope' })
 
 -- -- Harpoon
 --
@@ -30,13 +116,15 @@ vim.keymap.set("n", "<leader>hl", function() harpoon:list():select(4) end, { des
 --
 -- Keymaps, that differ per FileType (Due to differennt technics and binaries being used)
 
-
+-- <leader>cf - Code-Format
+-- D - Debug-Action
 
 -- PHP
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = { "*.php" },
     callback = function()
         vim.keymap.set('n', '<leader>cf', "<cmd>w<cr><cmd>!pretty-php -q %<cr>", { desc = '[C]ode [F]ormat' });
+        require("rg.hydras.xdebug")
     end
 })
 
