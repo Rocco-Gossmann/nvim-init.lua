@@ -37,9 +37,9 @@ return {    -- Awesome Keymapping and Custome modes
 	},
 
 	-- -- Debug Adapter Protocol
-	{ "rcarriga/nvim-dap-ui", dependencies = {
-        'mfussenegger/nvim-dap',
-    } },
+	{ "rcarriga/nvim-dap-ui",
+		dependencies = { 'mfussenegger/nvim-dap' }
+	},
 
 
 	-- -- Prettier
@@ -52,5 +52,10 @@ return {    -- Awesome Keymapping and Custome modes
 			'markdown', 'vue',
 			'svelte', 'yaml', 'html'
 		}
+	},
+
+	-- -- Better Folding???
+	{ 'kevinhwang91/nvim-ufo',
+		dependencies = 'kevinhwang91/promise-async',
 	},
 }

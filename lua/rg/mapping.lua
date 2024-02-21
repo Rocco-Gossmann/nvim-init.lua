@@ -102,7 +102,7 @@ vim.keymap.set("n", "<leader>fs", require('telescope.builtin').live_grep, { desc
 vim.keymap.set("n", "<leader>fh", require('telescope.builtin').help_tags, { desc = "[F]ind [H]elp" })
 vim.keymap.set('n', '<leader>fr', require('telescope.builtin').resume, { desc = '[F]ind [R]esume' })
 vim.keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[F]ind [D]iagnostics' })
-vim.keymap.set('n', '<leader>ft', require('telescope.builtin').builtin, { desc = '[F]ind [T]elescope' })
+vim.keymap.set('n', '<leader>ft', require('telescope.builtin').lsp_document_symbols, { desc = '[F]ind [T]elescope' })
 
 -- -- Harpoon
 --

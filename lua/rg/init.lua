@@ -61,3 +61,7 @@ nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 ]]
 
 require "rg.mapping"
+
+local env = require ("rg.env");
+env.doFileIfExists(env.confdir .. "/lua/rg/custom/init.lua");
+
