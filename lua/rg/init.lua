@@ -39,24 +39,11 @@ set autoindent
 
 let g:zig_fmt_autosave = 0
 
-nnoremap M m
-nnoremap m `
-
-map q <nop>
-nnoremap s @
-nnoremap Q q
-
-nnoremap gg ggzz
-
 set foldlevelstart=99
 set foldexpr=nvim_treesitter#foldexpr()
 set foldmethod=expr
 
 let g:tmux_navigator_no_mappings = 1
-nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 
 ]]
 
