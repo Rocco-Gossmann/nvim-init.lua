@@ -2,9 +2,9 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
-return {    -- Awesome Keymapping and Custome modes
+return { -- Awesome Keymapping and Custome modes
 
-    'anuvyklack/hydra.nvim',
+	'anuvyklack/hydra.nvim',
 
 	-- Navigation
 	-- -- TMUX - Integration
@@ -32,13 +32,34 @@ return {    -- Awesome Keymapping and Custome modes
 	},
 
 
-	{ 'dhruvasagar/vim-table-mode',
+	{
+		'dhruvasagar/vim-table-mode',
 		ft = { 'markdown' }
 	},
 
 	-- -- Debug Adapter Protocol
-	{ "rcarriga/nvim-dap-ui",
+	{
+		"rcarriga/nvim-dap-ui",
 		dependencies = { 'mfussenegger/nvim-dap' }
+	},
+
+	-- -- MySQL Client
+	{
+		'kristijanhusak/vim-dadbod-ui',
+		dependencies = {
+			{ 'tpope/vim-dadbod',                     lazy = true },
+			{ 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
+		},
+		cmd = {
+			'DBUI',
+			'DBUIToggle',
+			'DBUIAddConnection',
+			'DBUIFindBuffer',
+		},
+		init = function()
+			-- Your DBUI configuration
+			vim.g.db_ui_use_nerd_fonts = 1
+		end,
 	},
 
 
@@ -55,7 +76,9 @@ return {    -- Awesome Keymapping and Custome modes
 	},
 
 	-- -- Better Folding???
-	{ 'kevinhwang91/nvim-ufo',
+	{
+		'kevinhwang91/nvim-ufo',
 		dependencies = 'kevinhwang91/promise-async',
 	},
+
 }
