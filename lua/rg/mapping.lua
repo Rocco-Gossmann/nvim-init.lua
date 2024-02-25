@@ -93,8 +93,8 @@ vim.keymap.set({'n'}, 'Eh', '<cmd>vs .<cr>', { desc = '[E]xplorer left' })
 vim.keymap.set({'n'}, 'Ej', '<cmd>sp<cr><C-w>j<cmd>e .<cr>', { desc = '[E]xplorer bottom' })
 vim.keymap.set({'n'}, 'Ek', '<cmd>sp .<cr>', { desc = '[E]xplorer top' })
 
-vim.keymap.set({'n'}, '_', '<cmd>sp<cr>', { desc = 'Split Vertical' })
-vim.keymap.set({'n'}, 'I', '<cmd>vs<cr>', { desc = 'Split Horizontal' })
+vim.keymap.set({'n'}, '<C-_>', '<cmd>sp<cr>', { desc = 'Split Vertical' })
+vim.keymap.set({'n'}, '<C-i>', '<cmd>vs<cr>', { desc = 'Split Horizontal' })
 
 vim.keymap.set({'n'}, '<C-h>', '<C-w>h', silnor)
 vim.keymap.set({'n'}, '<C-j>', '<C-w>j', silnor)
