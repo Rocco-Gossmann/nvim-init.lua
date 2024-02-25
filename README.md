@@ -6,49 +6,92 @@ https://github.com/nvim-lua/kickstart.nvim
 
 - [iamcco/Markdown-Preview](https://github.com/iamcco/markdown-preview.nvim) (requires NPM)
 - [prettier/vim-prettier](https://github.com/prettier/vim-prettier) (requires prettier executable in System-$PATH)
-- [ThePrimeagen/harpoon (2)](https://github.com/ThePrimeagen/harpoon/tree/harpoon2)
 
 # Kicksstart - Remaps
 
-## Telescope
+## (Normal Mode) Telescope
 
-| Mapping            | Effect               |
-| ------------------ | -------------------- |
-| `<leader>ff`       | [F]ind [F]ile        |
-| `<leader>fb`       | [F]ind [B]uffer      |
-| `<leader>fs`       | [F]ind [S]tring      |
-| `<leader>fh`       | [F]ind [H]elp        |
-| `<leader>fr`       | [F]ind [R]esume      |
-| `<leader>fd`       | [F]ind [D]iagnostics |
-| `<leader>ft`       | [F]ind [T]elescope   |
+| Mapping      | Effect               |
+| ------------ | -------------------- |
+| `<leader>ff` | [F]ind [F]ile        |
+| `<leader>fb` | [F]ind [B]uffer      |
+| `<leader>fs` | [F]ind [S]tring      |
+| `<leader>fh` | [F]ind [H]elp        |
+| `<leader>fr` | [F]ind [R]esume      |
+| `<leader>fd` | [F]ind [D]iagnostics |
+| `<leader>ft` | [F]ind [T]ag (function/Symbol)  |
 
-## Harpoon
-| Mapping            | Effect               |
-| ------------------ | -------------------- |
-| `<leader>h<space>` | [H]arpoon UI         |
-| `<leader>ha`       | [H]arpoon [A]ppend   |
-| `<leader>hh`       | [H]arpoon Slot 1     |
-| `<leader>hj`       | [H]arpoon Slot 2     |
-| `<leader>hk`       | [H]arpoon Slot 3     |
-| `<leader>hl`       | [H]arpoon Slot 4     |
+## (Normal Mode) Actions
 
-## Actions
-| Mapping            | Effect               |
-| ------------------ | -------------------- |
-| `<leader>cf`       | [C]ode [F]ormat      |
+| Mapping      | Effect          |
+| ------------ | --------------- |
+| `<leader>cf` | [C]ode [F]ormat |
+
+## (Normal Mode) Split
+
+| Mapping | Effect           |
+| ------- | ---------------- |
+| `<C-i>` | Vertical Split   |
+| `<C-->` | Horizontal Split |
+
+## (Normal Mode) Explorer
+
+| Mapping | Effect                 |
+| ------- | ---------------------- |
+| `EE`    | Explorer in space      |
+| `Et`    | [E]xplorer new [T]ab   |
+| `El`    | [E]xplorer split right |
+| `Eh`    | [E]xplorer split left  |
+| `Ej`    | [E]xplorer split down  |
+| `Ek`    | [E]xplorer split up    |
+| `Et`    | [E]xplorer tab         |
+
+## (Visual Mode) Utils
+| Mapping   | Effect                  |
+| --------- | ----------------------- |
+| <S-j> | Move selected Line Down |
+| <S-K> | Move selected Line Up |
+
+
+## (Visual Mode) Surround
+
+| Mapping   | Effect                  |
+| --------- | ----------------------- |
+| `<space>` | Surround with ` `       |
+| `.`       | Surround with `.`       |
+| `"`       | Surround with `"`       |
+| `'`       | ...                     |
+| `         | Surround with Backticks |
+| `(`       | ...                     |
+| `[`       | ...                     |
+| `{`       | ...                     |
+| `-`       | ...                     |
+| `\_`      | ...                     |
+| `*`       | ...                     |
+| `~`       | ...                     |
+| `/`       | ...                     |
+
+example to comment out a word `viw */` would turn any selected `word` into `/* word */`:
+
+Or in Lua `viw [[--` would turn any selected `word` into `--[[ word ]]--`
+
+
+
+
 
 # Other Installs
 
 - pretty-php (via Mason)
 
+---
 
 ---
+
 ---
----
+
 # Original kickstart.nvim Readme
 
 https://github.com/nvim-lua/kickstart.nvim
-
 
 ### Introduction
 

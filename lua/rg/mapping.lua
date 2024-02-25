@@ -92,16 +92,10 @@ vim.keymap.set({'n'}, 'El', '<cmd>vs<cr><C-w>l<cmd>e .<cr>', { desc = '[E]xplore
 vim.keymap.set({'n'}, 'Eh', '<cmd>vs .<cr>', { desc = '[E]xplorer left' })
 vim.keymap.set({'n'}, 'Ej', '<cmd>sp<cr><C-w>j<cmd>e .<cr>', { desc = '[E]xplorer bottom' })
 vim.keymap.set({'n'}, 'Ek', '<cmd>sp .<cr>', { desc = '[E]xplorer top' })
+vim.keymap.set({'n'}, 'Et', '<cmd>tabnew .<cr>', { desc = '[E]xplorer [t]ab' })
 
 vim.keymap.set({'n'}, '<C-_>', '<cmd>sp<cr>', { desc = 'Split Vertical' })
 vim.keymap.set({'n'}, '<C-i>', '<cmd>vs<cr>', { desc = 'Split Horizontal' })
-
-vim.keymap.set({'n'}, '<C-h>', '<C-w>h', silnor)
-vim.keymap.set({'n'}, '<C-j>', '<C-w>j', silnor)
-vim.keymap.set({'n'}, '<C-k>', '<C-w>k', silnor)
-vim.keymap.set({'n'}, '<C-l>', '<C-w>l', silnor)
-
---[[============================================================================ 
 -- Commonn - Keymaps
 --============================================================================]]
 -- -- Telescope
@@ -112,15 +106,6 @@ vim.keymap.set({"n"}, "<leader>fh", require('telescope.builtin').help_tags, { de
 vim.keymap.set({'n'}, '<leader>fr', require('telescope.builtin').resume, { desc = '[F]ind [R]esume' })
 vim.keymap.set({'n'}, '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[F]ind [D]iagnostics' })
 vim.keymap.set({'n'}, '<leader>ft', require('telescope.builtin').lsp_document_symbols, { desc = '[F]ind [T]elescope' })
-
--- -- Harpoon
-local harpoon = require("harpoon")
-vim.keymap.set({"n"}, "<leader>h<space>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "[H]arpoon UI" })
-vim.keymap.set({"n"}, "<leader>ha", function() harpoon:list():append() end, { desc = "[H]arpoon [A]ppend" })
-vim.keymap.set({"n"}, "<leader>hh", function() harpoon:list():select(1) end, { desc = "[H]arpoon use 1" })
-vim.keymap.set({"n"}, "<leader>hj", function() harpoon:list():select(2) end, { desc = "[H]arpoon use 2" })
-vim.keymap.set({"n"}, "<leader>hk", function() harpoon:list():select(3) end, { desc = "[H]arpoon use 3" })
-vim.keymap.set({"n"}, "<leader>hl", function() harpoon:list():select(4) end, { desc = "[H]arpoon use 4" })
 
 -- -- TMUX-Navigations
 vim.keymap.set({"n"}, "<C-h>", "<cmd>TmuxNavigateLeft<cr>",  silnor)

@@ -10,13 +10,6 @@ return { -- Awesome Keymapping and Custome modes
 	-- -- TMUX - Integration
 	'christoomey/vim-tmux-navigator',
 
-	-- -- Harpoon 1
-	{
-		"ThePrimeagen/harpoon",
-		branch = "harpoon2",
-		dependencies = { "nvim-lua/plenary.nvim" }
-	},
-
 	-- Coding Tools
 	-- -- Markdown Preview
 	{
