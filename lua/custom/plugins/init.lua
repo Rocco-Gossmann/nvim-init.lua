@@ -5,6 +5,7 @@
 return { -- Awesome Keymapping and Custome modes
 
 	'anuvyklack/hydra.nvim',
+	'preservim/nerdtree',
 
 	-- Navigation
 	-- -- TMUX - Integration
@@ -23,7 +24,13 @@ return { -- Awesome Keymapping and Custome modes
 		ft = { "markdown" },
 	},
 
-	'preservim/nerdtree',
+    {
+        "kdheepak/lazygit.nvim",
+        -- optional for floating window border decoration
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+    },
 
 	-- -- Debug Adapter Protocol
 	{ "rcarriga/nvim-dap-ui",

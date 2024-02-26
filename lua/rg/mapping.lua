@@ -18,6 +18,7 @@ vim.keymap.set({"x"}, "<C-l>", ":s/^\\(\\s\\{-\\}\\)//gI<Left><Left><Left><Left>
 vim.keymap.set({"x"}, "<C-y>"         , sysClipCopy, silnor);
 
 vim.keymap.set({'n'}, '<C-n>', '<cmd>NERDTreeToggle<cr>')
+vim.keymap.set({'n'}, 'lg', '<cmd>LazyGit<cr>')
 
 --[[============================================================================
 -- Hints and Hovers
