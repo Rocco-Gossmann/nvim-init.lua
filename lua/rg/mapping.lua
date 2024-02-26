@@ -17,6 +17,8 @@ vim.keymap.set({"x"}, "<C-r>", ":s///gI<Left><Left><Left><Left>", {noremap=true}
 vim.keymap.set({"x"}, "<C-l>", ":s/^\\(\\s\\{-\\}\\)//gI<Left><Left><Left><Left>", {noremap=true}); -- Replace in sleected line (preselected whitespace group)
 vim.keymap.set({"x"}, "<C-y>"         , sysClipCopy, silnor);
 
+vim.keymap.set({'n'}, '<C-n>', '<cmd>NERDTreeToggle<cr>')
+
 --[[============================================================================
 -- Hints and Hovers
 --============================================================================]]
@@ -96,6 +98,9 @@ vim.keymap.set({'n'}, 'Et', '<cmd>tabnew .<cr>', { desc = '[E]xplorer [t]ab' })
 
 vim.keymap.set({'n'}, '<C-_>', '<cmd>sp<cr>', { desc = 'Split Vertical' })
 vim.keymap.set({'n'}, '<C-i>', '<cmd>vs<cr>', { desc = 'Split Horizontal' })
+
+
+
 -- Commonn - Keymaps
 --============================================================================]]
 -- -- Telescope
