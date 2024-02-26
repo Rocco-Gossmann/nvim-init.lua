@@ -20,15 +20,14 @@ https://github.com/nvim-lua/kickstart.nvim
 | `<leader>fr` | [F]ind [R]esume      |
 | `<leader>fd` | [F]ind [D]iagnostics |
 | `<leader>ft` | [F]ind [T]ag (function/Symbol)  |
+| `<leader>fe` | [F]ind in [E]xporer |
 
 ## (Normal Mode) Actions
-
 | Mapping      | Effect          |
 | ------------ | --------------- |
 | `<leader>cf` | [C]ode [F]ormat |
 
 ## (Normal Mode) Split
-
 | Mapping | Effect           |
 | ------- | ---------------- |
 | `<C-i>` | Vertical Split   |
