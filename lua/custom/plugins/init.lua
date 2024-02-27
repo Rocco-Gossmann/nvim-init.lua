@@ -13,7 +13,8 @@ return { -- Awesome Keymapping and Custome modes
 
 	-- Coding Tools
 	-- -- Markdown Preview
-	{ "iamcco/markdown-preview.nvim",
+	{
+		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 		build = "cd app && npm install",
 		init = function()
@@ -24,21 +25,32 @@ return { -- Awesome Keymapping and Custome modes
 		ft = { "markdown" },
 	},
 
-    {
-        "kdheepak/lazygit.nvim",
-        -- optional for floating window border decoration
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
-    },
+	{
+		"kdheepak/lazygit.nvim",
+		-- optional for floating window border decoration
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+	},
+
+	{
+		"danymat/neogen",
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		config = true,
+		-- Uncomment next line if you want to follow only stable versions
+		-- version = "*"
+	},
+
 
 	-- -- Debug Adapter Protocol
-	{ "rcarriga/nvim-dap-ui",
+	{
+		"rcarriga/nvim-dap-ui",
 		dependencies = { 'mfussenegger/nvim-dap' }
 	},
 
 	-- -- MySQL Client
-	{ 'kristijanhusak/vim-dadbod-ui',
+	{
+		'kristijanhusak/vim-dadbod-ui',
 		dependencies = {
 			{ 'tpope/vim-dadbod',                     lazy = true },
 			{ 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
@@ -57,7 +69,8 @@ return { -- Awesome Keymapping and Custome modes
 
 
 	-- -- Prettier
-	{ "prettier/vim-prettier",
+	{
+		"prettier/vim-prettier",
 		ft = {
 			'javascript', 'typescript',
 			'css', 'less', 'scss',
@@ -68,13 +81,15 @@ return { -- Awesome Keymapping and Custome modes
 	},
 
 	-- -- Makrdown Table format
-	{ 'dhruvasagar/vim-table-mode',
+	{
+		'dhruvasagar/vim-table-mode',
 		ft = { 'markdown' }
 	},
 
 
 	-- -- Better Folding???
-	{ 'kevinhwang91/nvim-ufo',
+	{
+		'kevinhwang91/nvim-ufo',
 		dependencies = 'kevinhwang91/promise-async',
 	},
 
