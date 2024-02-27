@@ -38,7 +38,7 @@ return { -- Awesome Keymapping and Custome modes
 		dependencies = "nvim-treesitter/nvim-treesitter",
 		config = true,
 		-- Uncomment next line if you want to follow only stable versions
-		-- version = "*"
+		version = "*"
 	},
 
 
@@ -87,10 +87,21 @@ return { -- Awesome Keymapping and Custome modes
 	},
 
 
-	-- -- Better Folding???
+	-- -- Better Folding (Not prefect, but it works)
 	{
 		'kevinhwang91/nvim-ufo',
 		dependencies = 'kevinhwang91/promise-async',
+	},
+
+	-- colorscheme
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+		init = function()
+			vim.cmd [[colorscheme tokyonight-night]]
+		end
 	},
 
 }

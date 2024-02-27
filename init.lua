@@ -200,21 +200,21 @@ require('lazy').setup({
     },
   },
 
-  {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    lazy = false,
-    config = function()
-      require('onedark').setup {
-        -- Set a style preset. 'dark' is default.
-        style = 'darker', -- dark, darker, cool, deep, warm, warmer, lightk
-        transparent = true
-      }
-      require('onedark').load()
+  --{
+  --  -- Theme inspired by Atom
+  --  'navarasu/onedark.nvim',
+  --  priority = 1000,
+  --  lazy = false,
+  --  config = function()
+  --    require('onedark').setup {
+  --      -- Set a style preset. 'dark' is default.
+  --      style = 'dark', -- dark, darker, cool, deep, warm, warmer, lightk
+  --      -- transparent = true
+  --    }
+  --    require('onedark').load()
 
-    end,
-  },
+  --  end,
+  --},
 
   {
     -- Set lualine as statusline
