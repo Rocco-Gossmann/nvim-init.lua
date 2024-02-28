@@ -14,13 +14,28 @@ https://github.com/nvim-lua/kickstart.nvim
 | Mapping      | Effect               |
 | ------------ | -------------------- |
 | `<leader>ff` | [F]ind [F]ile        |
-| `<leader>fb` | [F]ind [B]uffer      |
+| `<leader><space>` | [F]ind [B]uffer      |
 | `<leader>fs` | [F]ind [S]tring      |
 | `<leader>fh` | [F]ind [H]elp        |
 | `<leader>fr` | [F]ind [R]esume      |
 | `<leader>fd` | [F]ind [D]iagnostics |
 | `<leader>ft` | [F]ind [T]ag (function/Symbol)  |
 | `<leader>fe` | [F]ind in [E]xporer |
+| `<leader>fg` | [F]uzzily find in Buffer |
+
+
+## (Normal Mode) Git
+
+| Mapping      | Effect               |
+| ------------ | -------------------- |
+| `<leader>gf` | [G]it [F]ile        |
+| `<leader>gs` | [G]it [S]tage Hunk      |
+| `<leader>gu` | [G]it [U]ndo State Hunk        |
+| `<leader>gS` | [G]it [S]tage Buffer      |
+| `<leader>gp` | [G]it [P]review Hunk |
+| `<leader>gb` | [G]it [B]lame lin|
+| `<leader>gl` | [G]it [L]og |
+
 
 ## (Normal Mode) Actions
 | Mapping      | Effect          |

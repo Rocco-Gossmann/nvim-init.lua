@@ -19,7 +19,7 @@ vim.keymap.set({"x"}, "<C-y>"         , sysClipCopy, silnor);
 
 vim.keymap.set({'n'}, '<C-n>', '<cmd>NERDTreeToggle<cr>')
 vim.keymap.set({'n'}, '<leader>fe', '<cmd>NERDTreeFind<cr>')
-vim.keymap.set({'n'}, 'lg', '<cmd>LazyGit<cr>')
+vim.keymap.set({'n'}, '<leader>lg', '<cmd>LazyGit<cr>')
 
 --[[============================================================================
 -- Hints and Hovers
@@ -107,13 +107,41 @@ vim.keymap.set({'n'}, '<C-i>', '<cmd>vs<cr>', { desc = 'Split Horizontal' })
 --============================================================================]]
 -- -- Telescope
 vim.keymap.set({"n"}, "<leader>ff", require('telescope.builtin').find_files, { desc = "[F]ind [F]ile" })
-vim.keymap.set({"n"}, "<leader>fb", require('telescope.builtin').buffers, { desc = "[F]ind [B]uffer" })
+-- vim.keymap.set({"n"}, "<leader>fb", require('telescope.builtin').buffers, { desc = "[F]ind [B]uffer" })
 vim.keymap.set({"n"}, "<leader>fs", require('telescope.builtin').live_grep, { desc = "[F]ind [S]tring" })
 vim.keymap.set({"n"}, "<leader>fh", require('telescope.builtin').help_tags, { desc = "[F]ind [H]elp" })
 vim.keymap.set({'n'}, '<leader>fr', require('telescope.builtin').resume, { desc = '[F]ind [R]esume' })
 vim.keymap.set({'n'}, '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[F]ind [D]iagnostics' })
 vim.keymap.set({'n'}, '<leader>ft', require('telescope.builtin').lsp_document_symbols, { desc = '[F]ind [T]elescope' })
 vim.keymap.set({'n'}, '<leader>fe', '<cmd>NERDTreeFind<cr>', {desc = '[F]ind in [E]xplorer'})
+
+vim.keymap.set({'n'}, '<leader>fg', function()
+  -- You can pass additional configuration to telescope to change theme, layout, etc.
+  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+    winblend = 10,
+    previewer = false,
+  })
+end, { desc = '[F]uzzily search in current buffer' })
+
+-- -- Git Signs
+local gs = package.loaded.gitsigns
+vim.keymap.set({'n'}, '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
+vim.keymap.set({'n'}, '<leader>gs', gs.stage_hunk, { desc = 'git stage hunk' })
+vim.keymap.set({'n'}, '<leader>gu', gs.undo_stage_hunk, { desc = 'undo stage hunk' })
+vim.keymap.set({'n'}, '<leader>gS', gs.stage_buffer, { desc = 'git Stage buffer' })
+
+-- vim.keymap.set({'n'}, '<leader>gr', gs.reset_hunk, { desc = 'git reset hunk' })
+-- vim.keymap.set({'n'}, '<leader>gR', gs.reset_buffer, { desc = 'git Reset buffer' })
+vim.keymap.set({'n'}, '<leader>gp', gs.preview_hunk, { desc = 'preview git hunk' })
+vim.keymap.set({'n'}, '<leader>gb', function() gs.blame_line { full = false } end, { desc = 'git blame line' })
+vim.keymap.set({'n'}, '<leader>gd', gs.diffthis, { desc = 'git diff against index' })
+vim.keymap.set({'n'}, '<leader>gD', function() gs.diffthis '~' end, { desc = 'git diff against last commit' })
+
+vim.keymap.set({'n'}, '<leader>gc', "<cmd>Git commit<cr>", { desc = 'git diff against last commit' })
+vim.keymap.set({'n'}, '<leader>gl', "<cmd>Gclog<cr>", { desc = 'git diff against last commit' })
+
+-- vim.keymap.set({'v'}, '<leader>hs', function() gs.stage_hunk { vim.fn.line '.', vim.fn.line 'v' } end, { desc = 'stage git hunk' })
+-- vim.keymap.set({'v'}, '<leader>hr', function() gs.reset_hunk { vim.fn.line '.', vim.fn.line 'v' } end, { desc = 'reset git hunk' })
 
 -- -- TMUX-Navigations
 vim.keymap.set({"n"}, "<C-h>", "<cmd>TmuxNavigateLeft<cr>",  silnor)
