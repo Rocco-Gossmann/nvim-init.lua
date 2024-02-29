@@ -3,3 +3,4 @@ test.sh
 .luarc.json
 nvim
 lua/rg/custom
+lazy-lock.json
