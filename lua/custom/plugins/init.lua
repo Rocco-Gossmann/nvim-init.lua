@@ -87,11 +87,11 @@ return { -- Awesome Keymapping and Custome modes
 	},
 
 
-	-- -- Better Folding (Not prefect, but it works)
-	{
-		'kevinhwang91/nvim-ufo',
-		dependencies = 'kevinhwang91/promise-async',
-	},
+--	-- -- Better Folding (Not prefect, but it works)
+--	{
+--		'kevinhwang91/nvim-ufo',
+--		dependencies = 'kevinhwang91/promise-async',
+--	},
 
 	-- colorscheme
 	{
@@ -100,7 +100,10 @@ return { -- Awesome Keymapping and Custome modes
 		priority = 1000,
 		opts = {},
 		init = function()
-			vim.cmd [[colorscheme tokyonight-night]]
+			vim.cmd [[
+				colorscheme tokyonight-night
+				hi Normal guibg=transparent
+			]]
 		end
 	},
 
