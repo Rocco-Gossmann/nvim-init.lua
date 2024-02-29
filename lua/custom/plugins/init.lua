@@ -87,11 +87,6 @@ return { -- Awesome Keymapping and Custome modes
 	},
 
 
---	-- -- Better Folding (Not prefect, but it works)
---	{
---		'kevinhwang91/nvim-ufo',
---		dependencies = 'kevinhwang91/promise-async',
---	},
 
 	-- colorscheme
 	{
@@ -106,5 +101,30 @@ return { -- Awesome Keymapping and Custome modes
 			]]
 		end
 	},
+
+	{
+		'segeljakt/vim-silicon',
+		lazy = true,
+		cmd = { "Silicon" },
+		init = function()
+			vim.cmd [[
+			let g:silicon = {
+				  \   'theme':              'Dracula',
+				  \   'font':               'Lucida Console',
+				  \   'background':         '#AAAAFF',
+				  \   'shadow-color':       '#555555',
+				  \   'line-pad':                   2,
+					  \   'pad-horiz':              4,
+					  \   'pad-vert':               4,
+				  \   'shadow-blur-radius':         0,
+				  \   'shadow-offset-x':            0,
+				  \   'shadow-offset-y':            0,
+				  \   'line-number':           v:false,
+				  \   'round-corner':          v:true,
+				  \   'window-controls':       v:false,
+				  \ }
+			]]
+		end
+	}
 
 }
