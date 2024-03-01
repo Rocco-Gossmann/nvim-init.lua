@@ -149,6 +149,9 @@ vim.keymap.set({"n"}, "<C-j>", "<cmd>TmuxNavigateDown<cr>",  silnor)
 vim.keymap.set({"n"}, "<C-k>", "<cmd>TmuxNavigateUp<cr>",    silnor)
 vim.keymap.set({"n"}, "<C-l>", "<cmd>TmuxNavigateRight<cr>", silnor)
 
+
+vim.keymap.set({"n"}, "<leader>cd", "<cmd>Neogen<cr>", { desc="[C]ode [D]ocument" });
+
 --
 -- Keymaps, that differ per FileType (Due to differennt technics and binaries being used)
 
