@@ -1,4 +1,11 @@
-local dapui = require("dapui")
-dapui.setup()
+-- [[==========================================================================
+-- Debug-Adapter-Protocoll
+-- ==========================================================================]]
+return {
+	"rcarriga/nvim-dap-ui",
+	dependencies = { 'mfussenegger/nvim-dap' },
+	config = function ()
+		require("dapui").setup()
+	end
+}
 
-return {}
