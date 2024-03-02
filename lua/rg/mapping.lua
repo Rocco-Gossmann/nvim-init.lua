@@ -88,6 +88,7 @@ vim.keymap.set({"v"}, "N", "Nzz", silnor);
 vim.keymap.set({"v"}, "<C-d>", "<C-d>zz", silnor);
 vim.keymap.set({"v"}, "<C-u>", "<C-u>zz", silnor);
 
+
 --[[============================================================================
 -- Splits
 --============================================================================]]
@@ -102,12 +103,19 @@ vim.keymap.set({'n'}, '<C-_>', '<cmd>sp<cr>', { desc = 'Split Vertical' })
 vim.keymap.set({'n'}, '<C-i>', '<cmd>vs<cr>', { desc = 'Split Horizontal' })
 
 
-
--- Commonn - Keymaps
+--[[============================================================================
+-- Codium AI
 --============================================================================]]
--- -- Telescope
+vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
+vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
+vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+
+
+--[[============================================================================
+-- Telescope
+--============================================================================]]
 vim.keymap.set({"n"}, "<leader>ff", require('telescope.builtin').find_files, { desc = "[F]ind [F]ile" })
--- vim.keymap.set({"n"}, "<leader>fb", require('telescope.builtin').buffers, { desc = "[F]ind [B]uffer" })
 vim.keymap.set({"n"}, "<leader>fs", require('telescope.builtin').live_grep, { desc = "[F]ind [S]tring" })
 vim.keymap.set({"n"}, "<leader>fh", require('telescope.builtin').help_tags, { desc = "[F]ind [H]elp" })
 vim.keymap.set({'n'}, '<leader>fr', require('telescope.builtin').resume, { desc = '[F]ind [R]esume' })
@@ -123,7 +131,9 @@ vim.keymap.set({'n'}, '<leader>fg', function()
   })
 end, { desc = '[F]uzzily search in current buffer' })
 
--- -- Git Signs
+--[[============================================================================
+-- Git Signs
+--============================================================================]]
 local gs = package.loaded.gitsigns
 vim.keymap.set({'n'}, '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
 vim.keymap.set({'n'}, '<leader>gs', gs.stage_hunk, { desc = 'git stage hunk' })
@@ -143,11 +153,14 @@ vim.keymap.set({'n'}, '<leader>gl', "<cmd>Gclog<cr>", { desc = 'git diff against
 -- vim.keymap.set({'v'}, '<leader>hs', function() gs.stage_hunk { vim.fn.line '.', vim.fn.line 'v' } end, { desc = 'stage git hunk' })
 -- vim.keymap.set({'v'}, '<leader>hr', function() gs.reset_hunk { vim.fn.line '.', vim.fn.line 'v' } end, { desc = 'reset git hunk' })
 
--- -- TMUX-Navigations
+--[[============================================================================
+-- TMUX-Navigations
+--============================================================================]]
 vim.keymap.set({"n"}, "<C-h>", "<cmd>TmuxNavigateLeft<cr>",  silnor)
 vim.keymap.set({"n"}, "<C-j>", "<cmd>TmuxNavigateDown<cr>",  silnor)
 vim.keymap.set({"n"}, "<C-k>", "<cmd>TmuxNavigateUp<cr>",    silnor)
 vim.keymap.set({"n"}, "<C-l>", "<cmd>TmuxNavigateRight<cr>", silnor)
+
 
 
 vim.keymap.set({"n"}, "<leader>cd", "<cmd>Neogen<cr>", { desc="[C]ode [D]ocument" });
@@ -184,7 +197,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 --[[============================================================================
--- TMUX-Navigation
+-- Native Vim Tweaks
 --============================================================================]]
 vim.cmd[[
 
