@@ -1,3 +1,5 @@
+-- vim.g.codeium_manual = true
+
 vim.opt.nu = true
 vim.opt.relativenumber=true
 
