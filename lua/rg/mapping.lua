@@ -141,6 +141,7 @@ vim.keymap.set({ 'n' }, 'Et', '<cmd>tabnew .<cr>', { desc = '[E]xplorer [t]ab' }
 vim.keymap.set({ 'n' }, '<C-_>', '<cmd>sp<cr>', { desc = 'Split Vertical' })
 vim.keymap.set({ 'n' }, '<C-i>', '<cmd>vs<cr>', { desc = 'Split Horizontal' })
 
+vim.keymap.set({ 'n' }, '<leader><Tab>', '<cmd>ZenMode<cr>', { desc = 'Zen Mode' })
 
 --[[============================================================================
 -- Codeium AI

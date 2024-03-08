@@ -12,4 +12,13 @@ return {
 	-- unifys switching between NeoVim Splits and TMUX-Panes
 	-- (Press C-H/J/K/L to move between them)
 	'christoomey/vim-tmux-navigator',
+
+	{
+	  "folke/zen-mode.nvim",
+	  opts = {
+		-- your configuration comes here
+		-- or leave it empty to use the default settings
+		-- refer to the configuration section below
+	  }
+	}
 }
