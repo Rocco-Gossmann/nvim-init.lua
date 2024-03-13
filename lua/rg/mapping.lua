@@ -74,19 +74,19 @@ end, { desc = '[C]ode [A]ction' })
 --[[============================================================================
 -- Surround with
 --============================================================================]]
-vim.keymap.set({ "v" }, "<space>", 'c  <ESC>hmzplv`z', silnor);
-vim.keymap.set({ "v" }, ".", 'c..<ESC>hmzplv`z', silnor);
-vim.keymap.set({ "v" }, "\"", 'c""<ESC>hmzplv`z', silnor);
-vim.keymap.set({ "v" }, "'", "c''<ESC>hmzplv`z", silnor);
-vim.keymap.set({ "v" }, "`", "c``<ESC>hmzplv`z", silnor);
-vim.keymap.set({ "v" }, "(", "c()<ESC>hmzplv`z", silnor);
-vim.keymap.set({ "v" }, "[", "c[]<ESC>hmzplv`z", silnor);
-vim.keymap.set({ "v" }, "{", "c{}<ESC>hmzplv`z", silnor);
-vim.keymap.set({ "v" }, "-", "c--<ESC>hmzplv`z", silnor);
-vim.keymap.set({ "v" }, "_", "c__<ESC>hmzplv`z", silnor);
-vim.keymap.set({ "v" }, "*", "c**<ESC>hmzplv`z", silnor);
-vim.keymap.set({ "v" }, "~", "c~~<ESC>hmzplv`z", silnor);
-vim.keymap.set({ "v" }, "/", "c//<ESC>hmzplv`z", silnor);
+--vim.keymap.set({ "v" }, "<space>", 'c  <ESC>hmzplv`z', silnor);
+--vim.keymap.set({ "v" }, ".", 'c..<ESC>hmzplv`z', silnor);
+--vim.keymap.set({ "v" }, "\"", 'c""<ESC>hmzplv`z', silnor);
+--vim.keymap.set({ "v" }, "'", "c''<ESC>hmzplv`z", silnor);
+--vim.keymap.set({ "v" }, "`", "c``<ESC>hmzplv`z", silnor);
+--vim.keymap.set({ "v" }, "(", "c()<ESC>hmzplv`z", silnor);
+--vim.keymap.set({ "v" }, "[", "c[]<ESC>hmzplv`z", silnor);
+--vim.keymap.set({ "v" }, "{", "c{}<ESC>hmzplv`z", silnor);
+--vim.keymap.set({ "v" }, "-", "c--<ESC>hmzplv`z", silnor);
+--vim.keymap.set({ "v" }, "_", "c__<ESC>hmzplv`z", silnor);
+--vim.keymap.set({ "v" }, "*", "c**<ESC>hmzplv`z", silnor);
+--vim.keymap.set({ "v" }, "~", "c~~<ESC>hmzplv`z", silnor);
+--vim.keymap.set({ "v" }, "/", "c//<ESC>hmzplv`z", silnor);
 
 --[[============================================================================
 -- Mapping m/M + numbers to Global Bookmarks
