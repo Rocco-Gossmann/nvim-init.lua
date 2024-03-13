@@ -226,7 +226,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 -- -- Lua - Code-Formatting
 vim.api.nvim_create_autocmd("BufEnter", {
-    pattern = { "*.lua" },
+    pattern = { "*.lua", "*.go" },
     callback = function()
         vim.keymap.set({ 'n' }, '<leader>cf', vim.lsp.buf.format, { desc = '[C]ode [F]ormat' });
     end

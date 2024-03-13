@@ -2,10 +2,70 @@
 
 https://github.com/nvim-lua/kickstart.nvim
 
+
+<!-- vim-markdown-toc GFM -->
+
+* [Additional Plugins](#additional-plugins)
+  * [Markdown Support](#markdown-support)
+  * [Tools](#tools)
+  * [Coding Tools](#coding-tools)
+  * [UI Libraries](#ui-libraries)
+* [Kicksstart - Remaps](#kicksstart---remaps)
+  * [(Normal Mode) Telescope](#normal-mode-telescope)
+  * [(Normal Mode) Git](#normal-mode-git)
+  * [(Normal Mode) Actions](#normal-mode-actions)
+  * [(Normal Mode) Split](#normal-mode-split)
+  * [(Normal Mode) Explorer](#normal-mode-explorer)
+  * [(Visual Mode) Utils](#visual-mode-utils)
+  * [(Visual Mode) Surround](#visual-mode-surround)
+* [Other Installs](#other-installs)
+  * [----](#----)
+  * [----](#-----1)
+  * [----](#-----2)
+* [Original kickstart.nvim Readme](#original-kickstartnvim-readme)
+    * [Introduction](#introduction)
+    * [Installation](#installation)
+    * [Post Installation](#post-installation)
+    * [Getting Started](#getting-started)
+    * [Recommended Steps](#recommended-steps)
+    * [Configuration And Extension](#configuration-and-extension)
+      * [Example: Adding an autopairs plugin](#example-adding-an-autopairs-plugin)
+      * [Example: Adding a file tree plugin](#example-adding-a-file-tree-plugin)
+    * [Contribution](#contribution)
+    * [FAQ](#faq)
+    * [Windows Installation](#windows-installation)
+    * [Hints And Tips For New Neovimmers](#hints-and-tips-for-new-neovimmers)
+    * [Use The Help, Luke!](#use-the-help-luke)
+    * [To The Telescope!](#to-the-telescope)
+
+<!-- vim-markdown-toc -->
+
+
 # Additional Plugins
 
+## Markdown Support
 - [iamcco/Markdown-Preview](https://github.com/iamcco/markdown-preview.nvim) (requires NPM)
+- [dhruvasagar/vim-table-mode](https://github.com/dhruvasagar/vim-table-mode)
+- [mzlogin/vim-markdown-toc](https://github.com/mzlogin/vim-markdown-toc)
+
+## Tools
+- [tpope/vim-dadbod](https://github.com/tpope/vim-dadbod) Database Client
+- [kristijanhusak/vim-dadbod-ui](https://github.com/kristijanhusak/vim-dadbod-ui) (UI for Database Client)
+- [segeljakt/vim-silicon](https://github.com/segeljakt/vim-silicon) Take Screenshots of Code
+- [kdheepak/lazygit.nvim](https://github.com/kdheepak/lazygit.nvim) LazyGit integration 
+
+## Coding Tools
 - [prettier/vim-prettier](https://github.com/prettier/vim-prettier) (requires prettier executable in System-$PATH)
+- [danymat/neogen](https://github.com/danymat/neogen) create Doc-Blocks based on Treesitter
+- [Exafunction/codeium.vim](https://github.com/Exafunction/codeium.vim) Copilot like AI support (but free)
+
+## UI Libraries
+- [anuvyklack/hydra.nvim](https://github.com/anuvyklack/hydra.nvim) (mainly for the Debugger)
+- [preservim/nerdtree](https://github.com/preservim/nerdtree) better file explorer
+- [christoomey/vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator) better TMUX-Integration
+- [folke/zen-mode.nvim](https://github.com/folke/zen-mode.nvim) ZenMode
+
+
 
 # Kicksstart - Remaps
 
@@ -20,8 +80,8 @@ https://github.com/nvim-lua/kickstart.nvim
 | `<leader>fr` | [F]ind [R]esume      |
 | `<leader>fd` | [F]ind [D]iagnostics |
 | `<leader>ft` | [F]ind [T]ag (function/Symbol)  |
-| `<leader>fe` | [F]ind in [E]xporer |
 | `<leader>fg` | [F]uzzily find in Buffer |
+| `<leader>fe` | [F]ind current File in [E]xporer |
 
 
 ## (Normal Mode) Git
@@ -41,12 +101,16 @@ https://github.com/nvim-lua/kickstart.nvim
 | Mapping      | Effect          |
 | ------------ | --------------- |
 | `<leader>cf` | [C]ode [F]ormat |
+| `<leader>ca` | [C]ode [A]ction |
+| `<leader>cd` | [C]ode [D]ocument |
+
 
 ## (Normal Mode) Split
 | Mapping | Effect           |
 | ------- | ---------------- |
 | `<C-i>` | Vertical Split   |
 | `<C-->` | Horizontal Split |
+| `<leader><tab>` | open current pane in Zen-Mode |
 
 ## (Normal Mode) Explorer
 
@@ -97,11 +161,10 @@ Or in Lua `viw [[--` would turn any selected `word` into `--[[ word ]]--`
 
 - pretty-php (via Mason)
 
----
-
----
-
----
+----
+----
+----
+----
 
 # Original kickstart.nvim Readme
 

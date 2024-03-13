@@ -23,4 +23,11 @@ return {
 		'dhruvasagar/vim-table-mode',
 		ft = { 'markdown' }
 	},
+
+	-- [[----------------------------------------------------------------------
+	-- TOC (Table of Contents)
+	-- ----------------------------------------------------------------------]]
+	{ 'mzlogin/vim-markdown-toc',
+		ft = { 'markdown' },
+	}
 }
