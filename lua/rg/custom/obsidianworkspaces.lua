@@ -1,0 +1,6 @@
+return {
+    {
+      name = "home",
+      path = "~",
+    },
+}
