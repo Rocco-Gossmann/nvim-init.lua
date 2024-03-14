@@ -32,6 +32,8 @@ vim.opt.nrformats:append("alpha")
 
 vim.opt.grepprg="rg -n -i --ignore-file .rgignore $* /dev/null"
 
+vim.opt.conceallevel = 1
+
 vim.cmd [[
 
 set cursorline
