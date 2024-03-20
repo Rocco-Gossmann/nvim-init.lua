@@ -215,18 +215,9 @@ vim.keymap.set({ "n" }, "<C-l>", "<cmd>TmuxNavigateRight<cr>", silnor)
 -- <leader>cf - Code-Format
 -- D - Debug-Action
 
--- -- PHP - Code-Formating / Debugger
-vim.api.nvim_create_autocmd("BufEnter", {
-    pattern = { "*.php" },
-    callback = function()
-        vim.keymap.set({ 'n' }, '<leader>cf', "<cmd>w<cr><cmd>!pretty-php -q %<cr>", { desc = '[C]ode [F]ormat' });
-        require("rg.hydras.xdebug")
-    end
-})
-
 -- -- Lua - Code-Formatting
 vim.api.nvim_create_autocmd("BufEnter", {
-    pattern = { "*.lua", "*.go" },
+    pattern = { "*.lua", "*.go", "*.php" },
     callback = function()
         vim.keymap.set({ 'n' }, '<leader>cf', vim.lsp.buf.format, { desc = '[C]ode [F]ormat' });
     end
