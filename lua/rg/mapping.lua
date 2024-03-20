@@ -37,6 +37,8 @@ vim.keymap.set({ "x" }, "<C-y>", sysClipCopy, silnor);
 vim.keymap.set({ 'n' }, '<C-n>', '<cmd>NERDTreeToggle<cr>')
 vim.keymap.set({ 'n' }, '<leader>lg', '<cmd>LazyGit<cr>')
 
+vim.keymap.set({ 'n' }, '/', '/\\c')
+
 --[[============================================================================
 -- Lsp
 --============================================================================]]
