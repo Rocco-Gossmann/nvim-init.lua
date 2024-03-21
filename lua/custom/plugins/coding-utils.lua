@@ -2,6 +2,13 @@
 -- Plugins to help keep code more readable
 -- ==========================================================================]]
 return {
+	-- [[----------------------------------------------------------------------
+	-- Undo Tree
+	-- ----------------------------------------------------------------------]]
+	{
+		"mbbill/undotree",
+		cmd = { "UndotreeToggle" },
+	},
 
 	-- [[----------------------------------------------------------------------
 	-- Create DocBlocks
@@ -43,22 +50,22 @@ return {
 	'tpope/vim-repeat',
 
 	-- [[----------------------------------------------------------------------
-	-- Highlight for 
-	-- TODO: 
-	-- HACK: 
-	-- NOTE: 
-	-- FIX: 
-	-- WARNING: 
+	-- Highlight for
+	-- TODO:
+	-- HACK:
+	-- NOTE:
+	-- FIX:
+	-- WARNING:
 	-- PERF:
 	-- ----------------------------------------------------------------------]]
 	{
-	  "folke/todo-comments.nvim",
-	  dependencies = { "nvim-lua/plenary.nvim" },
-	  opts = {
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {
 
-		-- your configuration comes here
-		-- or leave it empty to use the default settings
-		-- refer to the configuration section below
-	  }
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+		}
 	}
 }
