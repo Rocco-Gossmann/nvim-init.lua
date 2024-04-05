@@ -3,7 +3,6 @@ require('which-key').register {
     ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
     ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
     ['<leader>h'] = { name = '[H]arpoon', _ = 'which_key_ignore' },
-    ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
     --  ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
 
     ['<leader>f'] = { name = '[F]ind', _ = 'which_key_ignore' },
@@ -146,15 +145,11 @@ vim.keymap.set({ 'n' }, '<C-i>', '<cmd>vs<cr>', { desc = 'Split Horizontal' })
 vim.keymap.set({ 'n' }, '<leader><Tab>', '<cmd>ZenMode<cr>', { desc = 'Zen Mode' })
 
 --[[============================================================================
--- Codeium AI
+-- Makefile - Tools
 --============================================================================]]
-vim.keymap.set('n', '<leader>tc', vim.cmd.CodeiumToggle, { desc = "[T]oggle [C]odeium AI", expr = true, silent = true })
-vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
-vim.keymap.set('i', '<C-l>', function() return vim.fn['codeium#Complete']() end, { expr = true, silent = true })
-vim.keymap.set('i', '<c-n>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
-vim.keymap.set('i', '<c-p>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
-vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
-
+vim.keymap.set({ 'n' }, '<leader>mm', '<cmd>!make<cr>', { desc = '[M]ake (default)' })
+vim.keymap.set({ 'n' }, '<leader>mr', '<cmd>!make run<cr>', { desc = '[M]ake [r]un' })
+vim.keymap.set({ 'n' }, '<leader>mc', '<cmd>!make clean<cr>', { desc = '[M]ake [c]lean' })
 
 --[[============================================================================
 -- Telescope / [F]ind
@@ -217,15 +212,31 @@ vim.keymap.set({ "n" }, "<C-l>", "<cmd>TmuxNavigateRight<cr>", silnor)
 -- <leader>cf - Code-Format
 -- D - Debug-Action
 
--- -- PHP - Code-Formating / Debugger
+-- Debugger
 vim.api.nvim_create_autocmd("BufEnter", {
-    pattern = { "*.php" },
+    pattern = { "*.php", "*.go" },
     callback = function()
         require("rg.hydras.xdebug")
     end
 })
 
--- -- Lua - Code-Formatting
+-- Format before Save
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = { "*.go" },
+    callback = function()
+        vim.lsp.buf.format()
+    end
+})
+
+-- <Leader>r => Run Command
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = { "*.go" },
+    callback = function()
+        vim.keymap.set({ 'n' }, '<leader>r', "<cmd>!go run .<cr>", { desc = 'Go [R]un' });
+    end
+})
+
+-- Code-Formatting
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = { "*.lua", "*.go" },
     callback = function()
@@ -233,7 +244,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end
 })
 
--- -- Code - Formating -- Markdown, Java-/Typescript, (s)css, JSON, JSX
+-- Code - Formating -- Markdown, Java-/Typescript, (s)css, JSON, JSX
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = { "*.md", "*.html", "*.js", ".ts", ".css", "*.scss", "*.json", "*.jsx" },
     callback = function()
