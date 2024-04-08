@@ -8,16 +8,12 @@ return Hydra({
     hint = [[ Debugger
 =====================================
  _b_ => Set Breakpoint
-
  _s_ => Start Debugger   
+ _<space>_ => eval under Cursor
+ _<S-d>_ => Stop/Close Debugger
 
  Step: 
  _7_ => in   _8_ => over   _9_ => out 
-  
- _<space>_ => eval under Cursor
-
- _<S-d>_ => Stop/Close Debugger
-
 ]],
     heads = {
         { "b", vim.cmd.DapToggleBreakpoint },
@@ -37,6 +33,6 @@ return Hydra({
     config = {
         color="pink",
 		invoke_on_body = true,
-		hint = { position="bottom-right", border="rounded" }
+		hint = { position="top-right", border="rounded" }
     }
 })

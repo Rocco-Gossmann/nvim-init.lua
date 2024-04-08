@@ -149,6 +149,7 @@ vim.keymap.set({ 'n' }, '<leader><Tab>', '<cmd>ZenMode<cr>', { desc = 'Zen Mode'
 --============================================================================]]
 vim.keymap.set({ 'n' }, '<leader>mm', '<cmd>!make<cr>', { desc = '[M]ake (default)' })
 vim.keymap.set({ 'n' }, '<leader>mr', '<cmd>!make run<cr>', { desc = '[M]ake [r]un' })
+vim.keymap.set({ 'n' }, '<leader>r', '<cmd>!make run<cr>', { desc = '[M]ake [r]un' })
 vim.keymap.set({ 'n' }, '<leader>mc', '<cmd>!make clean<cr>', { desc = '[M]ake [c]lean' })
 
 --[[============================================================================
@@ -214,7 +215,7 @@ vim.keymap.set({ "n" }, "<C-l>", "<cmd>TmuxNavigateRight<cr>", silnor)
 
 -- Debugger
 vim.api.nvim_create_autocmd("BufEnter", {
-    pattern = { "*.php", "*.go" },
+    pattern = { "*.php", "*.go", "*.c", "*.cpp" },
     callback = function()
         require("rg.hydras.xdebug")
     end
@@ -225,14 +226,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = { "*.go" },
     callback = function()
         vim.lsp.buf.format()
-    end
-})
-
--- <Leader>r => Run Command
-vim.api.nvim_create_autocmd("BufEnter", {
-    pattern = { "*.go" },
-    callback = function()
-        vim.keymap.set({ 'n' }, '<leader>r', "<cmd>!go run .<cr>", { desc = 'Go [R]un' });
     end
 })
 
