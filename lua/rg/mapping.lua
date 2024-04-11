@@ -213,6 +213,17 @@ vim.keymap.set({ "n" }, "<C-l>", "<cmd>TmuxNavigateRight<cr>", silnor)
 -- <leader>cf - Code-Format
 -- D - Debug-Action
 
+-- Template code
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = { "*.cpp", "*.c", "*.h" },
+    callback = function()
+        vim.cmd[[
+            inoremap §h <esc>:lua require("rg.template").handleC_H()<cr>
+        ]]
+    end
+})
+
 -- Debugger
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = { "*.php", "*.go", "*.c", "*.cpp" },
