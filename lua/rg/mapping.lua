@@ -38,6 +38,8 @@ vim.keymap.set({ 'n' }, '<leader>lg', '<cmd>LazyGit<cr>')
 
 vim.keymap.set({ 'n' }, '/', '/\\c')
 
+vim.keymap.set({'n'}, "<leader>t", "<cmd>TR<cr>", silnor);
+
 --[[============================================================================
 -- Lsp
 --============================================================================]]
@@ -148,8 +150,8 @@ vim.keymap.set({ 'n' }, '<leader><Tab>', '<cmd>ZenMode<cr>', { desc = 'Zen Mode'
 -- Makefile - Tools
 --============================================================================]]
 vim.keymap.set({ 'n' }, '<leader>mm', '<cmd>!make<cr>', { desc = '[M]ake (default)' })
-vim.keymap.set({ 'n' }, '<leader>mr', '<cmd>!make run<cr>', { desc = '[M]ake [r]un' })
-vim.keymap.set({ 'n' }, '<leader>r', '<cmd>!make run<cr>', { desc = '[M]ake [r]un' })
+vim.keymap.set({ 'n' }, '<leader>mr', '<cmd>!tmux split-pane -h make run<cr>', { desc = '[M]ake [r]un' })
+vim.keymap.set({ 'n' }, '<leader>r', '<cmd>!tmux split-pane -h make run<cr>', { desc = '[M]ake [r]un' })
 vim.keymap.set({ 'n' }, '<leader>mc', '<cmd>!make clean<cr>', { desc = '[M]ake [c]lean' })
 
 --[[============================================================================
@@ -226,7 +228,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 -- Debugger
 vim.api.nvim_create_autocmd("BufEnter", {
-    pattern = { "*.php", "*.go", "*.c", "*.cpp" },
+    pattern = { "*.php", "*.go", "*.c", "*.cpp", "*.h", "*.hpp" },
     callback = function()
         require("rg.hydras.xdebug")
     end
