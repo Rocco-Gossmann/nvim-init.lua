@@ -1,5 +1,3 @@
--- vim.g.codeium_manual = true
-
 vim.opt.nu = true
 vim.opt.relativenumber=true
 
@@ -50,6 +48,8 @@ set foldmethod=expr
 let g:tmux_navigator_no_mappings = 1
 
 ]]
+
+require "rg.copen"
 
 require "rg.mapping"
 
