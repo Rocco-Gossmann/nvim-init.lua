@@ -150,8 +150,8 @@ vim.keymap.set({ 'n' }, '<leader><Tab>', '<cmd>ZenMode<cr>', { desc = 'Zen Mode'
 -- Makefile - Tools
 --============================================================================]]
 vim.keymap.set({ 'n' }, '<leader>mm', '<cmd>!make<cr>', { desc = '[M]ake (default)' })
-vim.keymap.set({ 'n' }, '<leader>mr', '<cmd>!tmux split-pane -h make run<cr>', { desc = '[M]ake [r]un' })
-vim.keymap.set({ 'n' }, '<leader>r', '<cmd>!tmux split-pane -h make run<cr>', { desc = '[M]ake [r]un' })
+vim.keymap.set({ 'n' }, '<leader>mr', '<cmd>!tmux split-pane -h \'make run ; read\'<cr>', { desc = '[M]ake [r]un' })
+vim.keymap.set({ 'n' }, '<leader>r', '<cmd>!tmux split-pane -h \'make run ; read\' <cr>', { desc = '[M]ake [r]un' })
 vim.keymap.set({ 'n' }, '<leader>mc', '<cmd>!make clean<cr>', { desc = '[M]ake [c]lean' })
 
 --[[============================================================================
@@ -236,7 +236,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 -- Format before Save
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = { "*.go" },
+    pattern = { "*.go", "*.hpp", "*.h", "*.cpp", "*.c" },
     callback = function()
         vim.lsp.buf.format()
     end
