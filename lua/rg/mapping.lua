@@ -208,6 +208,11 @@ vim.keymap.set({ "n" }, "<C-j>", "<cmd>TmuxNavigateDown<cr>", silnor)
 vim.keymap.set({ "n" }, "<C-k>", "<cmd>TmuxNavigateUp<cr>", silnor)
 vim.keymap.set({ "n" }, "<C-l>", "<cmd>TmuxNavigateRight<cr>", silnor)
 
+vim.keymap.set({ "n" }, "<M-h>", "2<C-w><", {})
+vim.keymap.set({ "n" }, "<M-j>", "2<C-w>+", {})
+vim.keymap.set({ "n" }, "<M-k>", "2<C-w>-", {})
+vim.keymap.set({ "n" }, "<M-l>", "2<C-w>>", {})
+
 
 --
 -- Keymaps, that differ per FileType (Due to differennt technics and binaries being used)
