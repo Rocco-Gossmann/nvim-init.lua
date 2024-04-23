@@ -1,15 +1,17 @@
 require('which-key').register {
     ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
     ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
+    ['E']         = { name = '[E]xplorer', _ = 'which_key_ignore' },
+    ['<leader>f'] = { name = '[F]ile', _ = 'which_key_ignore' },
     ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
-    ['<leader>h'] = { name = '[H]arpoon', _ = 'which_key_ignore' },
-    --  ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
+    ['<leader>m'] = { name = '[M]ake', _ = 'which_key_ignore' },
 
-    ['<leader>f'] = { name = '[F]ind', _ = 'which_key_ignore' },
+    ['<leader>p'] = { name = '[P]roject', _ = 'which_key_ignore' },
 
-    ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
-    --   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+    ['<leader>t'] = { name = '[T]ask', _ = 'which_key_ignore' },
     ['<leader>l'] = { name = '[L]azy', _ = 'which_key_ignore' },
+
+    --   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
 }
 
 local silnor = { noremap = true, silent = true }
@@ -29,33 +31,34 @@ vim.keymap.set({ "x" }, "J", ":m '>+1<CR>gv=gv", silnor); -- Move Selected Line 
 vim.keymap.set({ "x" }, "K", ":m '<-2<CR>gv=gv", silnor); -- Move Selected Line Up
 vim.keymap.set({ "x" }, '<leader>p', '"_dP', silnor);
 
-vim.keymap.set({ "x" }, "<C-r>", ":s///gI<Left><Left><Left><Left>", { noremap = true });                  -- Replace in selection
-vim.keymap.set({ "x" }, "<C-l>", ":s/^\\(\\s\\{-\\}\\)//gI<Left><Left><Left><Left>", { noremap = true }); -- Replace in sleected line (preselected whitespace group)
+vim.keymap.set({ "x" }, "<C-r>", ":s///g<Left><Left><Left><Left>", { noremap = true });                  -- Replace in selection
+vim.keymap.set({ "x" }, "<C-l>", ":s/^\\(\\s\\{-\\}\\)//g<Left><Left><Left><Left>", { noremap = true }); -- Replace in sleected line (preselected whitespace group)
 vim.keymap.set({ "x" }, "<C-y>", sysClipCopy, silnor);
 
 vim.keymap.set({ 'n' }, '<C-n>', '<cmd>NERDTreeToggle<cr>')
 vim.keymap.set({ 'n' }, '<leader>lg', '<cmd>LazyGit<cr>')
 
-vim.keymap.set({ 'n' }, '/', '/\\c')
+vim.keymap.set({ 'n' }, '<C-/>', '/\\c')
 
-vim.keymap.set({'n'}, "<leader>t", "<cmd>TR<cr>", silnor);
+vim.keymap.set({ 'n' }, "<leader>t", "<cmd>TR<cr>", silnor);
 
 --[[============================================================================
 -- Lsp
 --============================================================================]]
--- -- Insert - Mode use
 vim.keymap.set({ "n" }, '<S-h>', function() vim.lsp.buf.hover() end, { desc = 'Hover Documentation' });
 vim.keymap.set({ "n" }, '<S-k>', function() vim.lsp.buf.signature_help() end, { desc = 'Signature Documentation' });
-
-vim.keymap.set({ "i" }, '<C-j>', '<cmd>lua vim.lsp.buf.completion({ reason = require("cmp").ContextReason.Auto })<CR>',
-    silnor);
-vim.keymap.set({ "i" }, '<C-h>', function() vim.lsp.buf.signature_help() end, silnor);
-
 vim.keymap.set({ 'n' }, 'gd', telescope_builtin.lsp_definitions, { desc = '[G]oto [D]efinition' })
 vim.keymap.set({ 'n' }, 'gr', telescope_builtin.lsp_references, { desc = '[G]oto [R]eferences' })
 vim.keymap.set({ 'n' }, 'gI', telescope_builtin.lsp_implementations, { desc = '[G]oto [I]mplementation' })
 vim.keymap.set({ 'n' }, 'gD', vim.lsp.buf.declaration, { desc = '[G]oto [D]eclaration' })
-vim.keymap.set({ 'n' }, '<leader>D', telescope_builtin.lsp_type_definitions, { desc = 'Type [D]efinition' })
+
+
+-- vim.keymap.set({ 'n' }, '<leader>D', telescope_builtin.lsp_type_definitions, { desc = 'Type [D]efinition' })
+
+-- -- Insert - Mode use
+vim.keymap.set({ "i" }, '<C-j>', function() vim.lsp.buf.signature_help() end, silnor);
+vim.keymap.set({ "i" }, '<C-h>', '<cmd>lua vim.lsp.buf.completion({ reason = require("cmp").ContextReason.Auto })<CR>',
+    silnor);
 
 --[[============================================================================
 -- [C]ode Actions
@@ -73,23 +76,6 @@ vim.keymap.set({ "n" }, '<leader>ca', function()
         }
     }
 end, { desc = '[C]ode [A]ction' })
-
---[[============================================================================
--- Surround with
---============================================================================]]
---vim.keymap.set({ "v" }, "<space>", 'c  <ESC>hmzplv`z', silnor);
---vim.keymap.set({ "v" }, ".", 'c..<ESC>hmzplv`z', silnor);
---vim.keymap.set({ "v" }, "\"", 'c""<ESC>hmzplv`z', silnor);
---vim.keymap.set({ "v" }, "'", "c''<ESC>hmzplv`z", silnor);
---vim.keymap.set({ "v" }, "`", "c``<ESC>hmzplv`z", silnor);
---vim.keymap.set({ "v" }, "(", "c()<ESC>hmzplv`z", silnor);
---vim.keymap.set({ "v" }, "[", "c[]<ESC>hmzplv`z", silnor);
---vim.keymap.set({ "v" }, "{", "c{}<ESC>hmzplv`z", silnor);
---vim.keymap.set({ "v" }, "-", "c--<ESC>hmzplv`z", silnor);
---vim.keymap.set({ "v" }, "_", "c__<ESC>hmzplv`z", silnor);
---vim.keymap.set({ "v" }, "*", "c**<ESC>hmzplv`z", silnor);
---vim.keymap.set({ "v" }, "~", "c~~<ESC>hmzplv`z", silnor);
---vim.keymap.set({ "v" }, "/", "c//<ESC>hmzplv`z", silnor);
 
 --[[============================================================================
 -- Mapping m/M + numbers to Global Bookmarks
@@ -151,15 +137,16 @@ vim.keymap.set({ 'n' }, '<leader><Tab>', '<cmd>ZenMode<cr>', { desc = 'Zen Mode'
 --============================================================================]]
 vim.keymap.set({ 'n' }, '<leader>mm', '<cmd>!make<cr>', { desc = '[M]ake (default)' })
 vim.keymap.set({ 'n' }, '<leader>mr', '<cmd>!tmux split-pane -h \'make run ; read\'<cr>', { desc = '[M]ake [r]un' })
-vim.keymap.set({ 'n' }, '<leader>r', '<cmd>!tmux split-pane -h \'make run ; read\' <cr>', { desc = '[M]ake [r]un' })
 vim.keymap.set({ 'n' }, '<leader>mc', '<cmd>!make clean<cr>', { desc = '[M]ake [c]lean' })
 
 --[[============================================================================
 -- Telescope / [F]ind
 --============================================================================]]
 -- See `:help telescope.builtin`
-vim.keymap.set({ "n" }, "<leader>ff", telescope_builtin.find_files, { desc = "[F]ind [F]ile" })
-vim.keymap.set({ "n" }, "<leader>fs", telescope_builtin.live_grep, { desc = "[F]ind [S]tring" })
+vim.keymap.set({ "n" }, "<leader>pf", telescope_builtin.find_files, { desc = "[P]roject [F]ile" })
+-- vim.keymap.set({ "n" }, "<leader>ff", telescope_builtin.find_files, { desc = "[F]ind [F]ile" })
+vim.keymap.set({ "n" }, "<leader>ps", telescope_builtin.live_grep, { desc = "[P]roject find [S]tring" })
+--vim.keymap.set({ "n" }, "<leader>fs", telescope_builtin.live_grep, { desc = "[F]ind [S]tring" })
 vim.keymap.set({ "n" }, "<leader>fh", telescope_builtin.help_tags, { desc = "[F]ind [H]elp" })
 vim.keymap.set({ 'n' }, '<leader>fr', telescope_builtin.resume, { desc = '[F]ind [R]esume' })
 vim.keymap.set({ 'n' }, '<leader>fd', telescope_builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
@@ -183,22 +170,8 @@ vim.keymap.set('n', '<leader><space>', telescope_builtin.buffers, { desc = '[ ] 
 --============================================================================]]
 local gs = package.loaded.gitsigns
 vim.keymap.set({ 'n' }, '<leader>gf', telescope_builtin.git_files, { desc = 'Search [G]it [F]iles' })
-vim.keymap.set({ 'n' }, '<leader>gs', gs.stage_hunk, { desc = 'git stage hunk' })
-vim.keymap.set({ 'n' }, '<leader>gu', gs.undo_stage_hunk, { desc = 'undo stage hunk' })
-vim.keymap.set({ 'n' }, '<leader>gS', gs.stage_buffer, { desc = 'git Stage buffer' })
-
--- vim.keymap.set({'n'}, '<leader>gr', gs.reset_hunk, { desc = 'git reset hunk' })
--- vim.keymap.set({'n'}, '<leader>gR', gs.reset_buffer, { desc = 'git Reset buffer' })
-vim.keymap.set({ 'n' }, '<leader>gp', gs.preview_hunk, { desc = 'preview git hunk' })
-vim.keymap.set({ 'n' }, '<leader>gb', function() gs.blame_line { full = false } end, { desc = 'git blame line' })
-vim.keymap.set({ 'n' }, '<leader>gd', gs.diffthis, { desc = 'git diff against index' })
-vim.keymap.set({ 'n' }, '<leader>gD', function() gs.diffthis '~' end, { desc = 'git diff against last commit' })
-
-vim.keymap.set({ 'n' }, '<leader>gc', "<cmd>Git commit<cr>", { desc = 'git diff against last commit' })
-vim.keymap.set({ 'n' }, '<leader>gl', "<cmd>Gclog<cr>", { desc = 'git diff against last commit' })
-
--- vim.keymap.set({'v'}, '<leader>hs', function() gs.stage_hunk { vim.fn.line '.', vim.fn.line 'v' } end, { desc = 'stage git hunk' })
--- vim.keymap.set({'v'}, '<leader>hr', function() gs.reset_hunk { vim.fn.line '.', vim.fn.line 'v' } end, { desc = 'reset git hunk' })
+vim.keymap.set({ 'n' }, '<leader>gb', function() gs.blame_line { full = false } end, { desc = '[G]it [b]lame line' })
+vim.keymap.set({ 'n' }, '<leader>gd', gs.toggle_deleted, { desc = '[G]it show [D]eleted' })
 
 --[[============================================================================
 -- TMUX-Navigations
@@ -221,11 +194,10 @@ vim.keymap.set({ "n" }, "<M-l>", "2<C-w>>", {})
 -- D - Debug-Action
 
 -- Template code
-
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = { "*.cpp", "*.c", "*.h" },
     callback = function()
-        vim.cmd[[
+        vim.cmd [[
             inoremap §h <esc>:lua require("rg.template").handleC_H()<cr>
         ]]
     end
@@ -275,7 +247,7 @@ vim.cmd [[
     nnoremap s @
     nnoremap Q q
 
-    nnoremap gg ggzz
+"    nnoremap gg ggzz
 
 
 ]]
