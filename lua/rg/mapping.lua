@@ -1,4 +1,5 @@
 require('which-key').register {
+    ['<leader>b'] = { name = '[B]ookmarks (use // BM: ...)', _ = 'which_key_ignore' },
     ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
     ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
     ['E']         = { name = '[E]xplorer', _ = 'which_key_ignore' },
@@ -131,6 +132,7 @@ vim.keymap.set({ 'n' }, '<C-_>', '<cmd>sp<cr>', { desc = 'Split Vertical' })
 vim.keymap.set({ 'n' }, '<C-i>', '<cmd>vs<cr>', { desc = 'Split Horizontal' })
 
 vim.keymap.set({ 'n' }, '<leader><Tab>', '<cmd>ZenMode<cr>', { desc = 'Zen Mode' })
+vim.keymap.set({ 'n' }, '<leader>b', '<cmd>BM<cr>', silnor)
 
 --[[============================================================================
 -- Makefile - Tools
