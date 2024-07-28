@@ -32,7 +32,7 @@ vim.keymap.set({ "x" }, "J", ":m '>+1<CR>gv=gv", silnor); -- Move Selected Line 
 vim.keymap.set({ "x" }, "K", ":m '<-2<CR>gv=gv", silnor); -- Move Selected Line Up
 vim.keymap.set({ "x" }, '<leader>p', '"_dP', silnor);
 
-vim.keymap.set({ "x" }, "<C-r>", ":s///g<Left><Left><Left><Left>", { noremap = true });                  -- Replace in selection
+vim.keymap.set({ "x" }, "<C-r>", ":s///g<Left><Left><Left>", { noremap = true });                  -- Replace in selection
 vim.keymap.set({ "x" }, "<C-l>", ":s/^\\(\\s\\{-\\}\\)//g<Left><Left><Left><Left>", { noremap = true }); -- Replace in sleected line (preselected whitespace group)
 vim.keymap.set({ "x" }, "<C-y>", sysClipCopy, silnor);
 

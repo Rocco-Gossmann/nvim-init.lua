@@ -6,14 +6,18 @@ local M = {
 		require("nvim-taskrunner").setup({
 
 			{
+				label = "New Bookmark Comment",
+				action = "o//78a=o BM: o78a=kA ",
+			},
+
+			{
 				label = "Go return err nil",
 
 				action = "oif err != nil {oreturn erro}o",
 			},
 
-
 			{
-				label = "Create NEW C++ - .h + .cpp file combo",
+				label = "CPP: Create NEW C++ - .h + .cpp file combo",
 				action = function()
 					vim.ui.input({ prompt = "What's it called? " },
 						function(classname)
