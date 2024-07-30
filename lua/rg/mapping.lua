@@ -11,6 +11,8 @@ require('which-key').register {
 
     ['<leader>t'] = { name = '[T]ask', _ = 'which_key_ignore' },
     ['<leader>l'] = { name = '[L]azy', _ = 'which_key_ignore' },
+    ['<leader>s'] = { name = "[S]plit" , _ = 'which_key_ignore' },
+    ['<Tab>'] = { name = "[Tab]" , _ = 'which_key_ignore' }
 
     --   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
 }
@@ -108,7 +110,7 @@ vim.keymap.set({ 'n' }, 'm0', '`J', silnor)
 --============================================================================]]
 -- You can set [NXT] in side your snippes etc, and then use 2xTab to start editing the location
 -- they are in
-vim.keymap.set({ "n" }, "<Tab><Tab>", "/\\[NXT\\]<CR>v%c", { silent = true });
+vim.keymap.set({ "n" }, "<Tab><Tab>", "/\\[NXT\\]<CR>v%c", { desc="Goto next [NXT]", silent = true });
 vim.keymap.set({ "i" }, "<S-Tab>", "<esc>/\\[NXT\\]<CR>v%c", { silent = true });
 
 -- Keep Cursor centered, when jumping and searching
@@ -128,11 +130,14 @@ vim.keymap.set({ 'n' }, 'Ej', '<cmd>sp<cr><C-w>j<cmd>e .<cr>', { desc = '[E]xplo
 vim.keymap.set({ 'n' }, 'Ek', '<cmd>sp .<cr>', { desc = '[E]xplorer top' })
 vim.keymap.set({ 'n' }, 'Et', '<cmd>tabnew .<cr>', { desc = '[E]xplorer [t]ab' })
 
-vim.keymap.set({ 'n' }, '<C-_>', '<cmd>sp<cr>', { desc = 'Split Vertical' })
-vim.keymap.set({ 'n' }, '<C-i>', '<cmd>vs<cr>', { desc = 'Split Horizontal' })
+vim.keymap.set({ 'n' }, '<leader>sv', '<cmd>sp<cr>', { desc = '[S]plit [V]ertical' })
+vim.keymap.set({ 'n' }, '<leader>sh', '<cmd>vs<cr>', { desc = '[S]plit [H]orizontal' })
 
 vim.keymap.set({ 'n' }, '<leader><Tab>', '<cmd>ZenMode<cr>', { desc = 'Zen Mode' })
 vim.keymap.set({ 'n' }, '<leader>b', '<cmd>BM<cr>', silnor)
+
+vim.keymap.set({ 'n' }, '<Tab>n', 'gt', {desc = '[Tab] next'})
+vim.keymap.set({ 'n' }, '<Tab>p', 'gT', {desc = '[Tab] previous'})
 
 --[[============================================================================
 -- Makefile - Tools
