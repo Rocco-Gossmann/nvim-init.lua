@@ -119,7 +119,6 @@ vim.keymap.set({ "v" }, "N", "Nzz", silnor);
 vim.keymap.set({ "v" }, "<C-d>", "<C-d>zz", silnor);
 vim.keymap.set({ "v" }, "<C-u>", "<C-u>zz", silnor);
 
-
 --[[============================================================================
 -- Splits
 --============================================================================]]
@@ -138,6 +137,7 @@ vim.keymap.set({ 'n' }, '<leader>b', '<cmd>BM<cr>', silnor)
 
 vim.keymap.set({ 'n' }, '<Tab>n', 'gt', {desc = '[Tab] next'})
 vim.keymap.set({ 'n' }, '<Tab>p', 'gT', {desc = '[Tab] previous'})
+
 
 --[[============================================================================
 -- Makefile - Tools
@@ -220,7 +220,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 -- Format before Save
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = { "*.go", "*.hpp", "*.h", "*.cpp", "*.c" },
+    pattern = { "*.go", "*.hpp", "*.h", "*.cpp", "*.c", "*.tmpl"},
     callback = function()
         vim.lsp.buf.format()
     end

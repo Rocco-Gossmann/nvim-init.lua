@@ -49,10 +49,13 @@ let g:tmux_navigator_no_mappings = 1
 
 ]]
 
-require "rg.copen"
+vim.filetype.add({ extension = { templ = "templ" } })
 
+require "rg.copen"
 require "rg.mapping"
 
 local env = require ("rg.env");
 env.doFileIfExists(env.confdir .. "/lua/rg/custom/init.lua");
+
+
 
