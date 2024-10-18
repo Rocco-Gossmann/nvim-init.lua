@@ -1,21 +1,71 @@
-require('which-key').register {
-    ['<leader>b'] = { name = '[B]ookmarks (use // BM: ...)', _ = 'which_key_ignore' },
-    ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-    ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-    ['E']         = { name = '[E]xplorer', _ = 'which_key_ignore' },
-    ['<leader>f'] = { name = '[F]ile', _ = 'which_key_ignore' },
-    ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
-    ['<leader>m'] = { name = '[M]ake', _ = 'which_key_ignore' },
+local mappfunc = require("rg.mapping_functions");
+local telescope_builtin = require('telescope.builtin');
+local gs = package.loaded.gitsigns
 
-    ['<leader>p'] = { name = '[P]roject', _ = 'which_key_ignore' },
 
-    ['<leader>t'] = { name = '[T]ask', _ = 'which_key_ignore' },
-    ['<leader>l'] = { name = '[L]azy', _ = 'which_key_ignore' },
-    ['<leader>s'] = { name = "[S]plit" , _ = 'which_key_ignore' },
-    ['<Tab>'] = { name = "[Tab]" , _ = 'which_key_ignore' }
+require("which-key").add({
+    -- Tab Navigation
+    { '<Tab>',           group = '[GUI Tab]' },
+    { '<Tab>n',          'gt',                                   desc = '[Tab] next',                         mode = 'n' },
+    { '<Tab>p',          'gT',                                   desc = '[Tab] previous',                     mode = 'n' },
 
-    --   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-}
+    -- Code
+    { '<leader>c',       group = '[C]ode' },
+    { '<leader>cr',      vim.lsp.buf.rename,                     desc = '[C]ode [R]ename',                    mode = 'n' },
+    { '<leader>cd',      '<cmd>Neogen<cr>',                      desc = '[C]ode [D]ocument',                  mode = 'n' },
+    { '<leader>ca',      '<cmd>Neogen<cr>',                      desc = '[C]ode [D]ocument',                  mode = 'n' },
+    { '<leader>ca',      mappfunc.codeAction,                    desc = '[C]ode [A]ction',                    mode = "n" },
+
+    -- Exlorrer
+    { 'E',               group = '[E]xplorer' },
+    { 'EE',              '<cmd>e .<cr>',                         desc = '[E]xplorer in place',                mode = 'n' },
+    { 'El',              '<cmd>vs<cr><C-w>l<cmd>e .<cr>',        desc = '[E]xplorer right',                   mode = 'n' },
+    { 'Eh',              '<cmd>vs .<cr>',                        desc = '[E]xplorer left',                    mode = 'n' },
+    { 'Ej',              '<cmd>sp<cr><C-w>j<cmd>e .<cr>',        desc = '[E]xplorer bottom',                  mode = 'n' },
+    { 'Ek',              '<cmd>sp .<cr>',                        desc = '[E]xplorer top',                     mode = 'n' },
+    { 'Et',              '<cmd>tabnew .<cr>',                    desc = '[E]xplorer [t]ab',                   mode = 'n' },
+
+    -- Project
+    { '<leader>p',       group = '[P]roject' },
+    { "<leader>pf",      telescope_builtin.find_files,           desc = "[P]roject [F]iles",                  mode = "n" },
+    { "<leader>ps",      telescope_builtin.live_grep,            desc = "[P]roject find [S]tring",            mode = "n" },
+
+    -- Files
+    { '<leader>f',       group = '[F]ile' },
+    { "<leader>ff",      telescope_builtin.find_files,           desc = "[F]ind [F]ile",                      mode = "n" },
+    { "<leader>fh",      telescope_builtin.help_tags,            desc = "[F]ind [H]elp",                      mode = "n" },
+    { '<leader>fr',      telescope_builtin.resume,               desc = '[F]ind [R]esume',                    mode = 'n' },
+    { '<leader>fd',      telescope_builtin.diagnostics,          desc = '[F]ind [D]iagnostics',               mode = 'n' },
+    { '<leader>ft',      telescope_builtin.lsp_document_symbols, desc = '[F]ind [T]elescope',                 mode = 'n' },
+    { '<leader>fe',      '<cmd>NERDTreeFind<cr>',                desc = '[F]ind in [E]xplorer',               mode = 'n' },
+    { '<leader>fg',      mappfunc.fuzzySearchInBuffer,           desc = '[F]uzzily search in current buffer', mode = 'n' },
+    { '<leader>fo',      telescope_builtin.oldfiles,             desc = '[F]ind [O]lder File',                mode = 'n' },
+
+    -- Git
+    { '<leader>g',       group = '[G]it' },
+    { '<leader>gf',      telescope_builtin.git_files,            desc = 'Search [G]it [F]iles',               mode = 'n' },
+    { '<leader>gb',      mappfunc.gitBlameLine,                  desc = '[G]it [b]lame line',                 mode = 'n' },
+    { '<leader>gd',      gs.toggle_deleted,                      desc = '[G]it show [D]eleted',               mode = 'n' },
+    { '<leader>gl',      '<cmd>LazyGit<cr>',                     desc = '[G]it ([L]azyGit)',                  mode = 'n' },
+
+    -- Make
+    { '<leader>m',       group = '[M]ake' },
+    { '<leader>mm',      '<cmd>!make<cr>',                       desc = '[M]ake (default)',                   mode = 'n' },
+    { '<leader>mr',      mappfunc.tmuxMakeRun,                   desc = '[M]ake [r]un',                       mode = 'n' },
+    { '<leader>mc',      '<cmd>!make clean<cr>',                 desc = '[M]ake [c]lean',                     mode = 'n' },
+
+    -- Split
+    { '<leader>s',       group = "[S]plit" },
+    { '<leader>sh',      '<cmd>sp<cr>',                          desc = '[S]plit [V]ertical',                 mode = 'n' },
+    { '<leader>sv',      '<cmd>vs<cr>',                          desc = '[S]plit [H]orizontal',               mode = 'n' },
+
+    -- Misc
+    { '<leader><Tab>',   '<cmd>ZenMode<cr>',                     desc = 'Zen Mode',                           mode = 'n' },
+    { '<leader>b',       '<cmd>BM<cr>',                          desc = '[B]ookmarks',                        mode = 'n' },
+    { "<leader>t",       "<cmd>TR<cr>",                          desc = "[T]askrunner",                       mode = 'n' },
+    { '<leader><space>', telescope_builtin.buffers,              desc = '[ ] Find existing buffers',          mode = 'n' },
+})
+
 
 local silnor = { noremap = true, silent = true }
 
@@ -25,7 +75,6 @@ local silnor = { noremap = true, silent = true }
 local sysClipCopy = '"+yy'
 --local replaceUnderCursor = ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>";
 
-local telescope_builtin = require('telescope.builtin');
 
 --[[============================================================================
 -- Select + Visual Mode helpers
@@ -34,16 +83,14 @@ vim.keymap.set({ "x" }, "J", ":m '>+1<CR>gv=gv", silnor); -- Move Selected Line 
 vim.keymap.set({ "x" }, "K", ":m '<-2<CR>gv=gv", silnor); -- Move Selected Line Up
 vim.keymap.set({ "x" }, '<leader>p', '"_dP', silnor);
 
-vim.keymap.set({ "x" }, "<C-r>", ":s///g<Left><Left><Left>", { noremap = true });                  -- Replace in selection
+vim.keymap.set({ "x" }, "<C-r>", ":s///g<Left><Left><Left>", { noremap = true });                        -- Replace in selection
 vim.keymap.set({ "x" }, "<C-l>", ":s/^\\(\\s\\{-\\}\\)//g<Left><Left><Left><Left>", { noremap = true }); -- Replace in sleected line (preselected whitespace group)
 vim.keymap.set({ "x" }, "<C-y>", sysClipCopy, silnor);
 
 vim.keymap.set({ 'n' }, '<C-n>', '<cmd>NERDTreeToggle<cr>')
-vim.keymap.set({ 'n' }, '<leader>lg', '<cmd>LazyGit<cr>')
 
 vim.keymap.set({ 'n' }, '<C-/>', '/\\c')
 
-vim.keymap.set({ 'n' }, "<leader>t", "<cmd>TR<cr>", silnor);
 
 --[[============================================================================
 -- Lsp
@@ -56,29 +103,10 @@ vim.keymap.set({ 'n' }, 'gI', telescope_builtin.lsp_implementations, { desc = '[
 vim.keymap.set({ 'n' }, 'gD', vim.lsp.buf.declaration, { desc = '[G]oto [D]eclaration' })
 
 
--- vim.keymap.set({ 'n' }, '<leader>D', telescope_builtin.lsp_type_definitions, { desc = 'Type [D]efinition' })
-
 -- -- Insert - Mode use
 vim.keymap.set({ "i" }, '<C-j>', function() vim.lsp.buf.signature_help() end, silnor);
 vim.keymap.set({ "i" }, '<C-h>', '<cmd>lua vim.lsp.buf.completion({ reason = require("cmp").ContextReason.Auto })<CR>',
     silnor);
-
---[[============================================================================
--- [C]ode Actions
---============================================================================]]
-vim.keymap.set({ "n" }, "<leader>cr", vim.lsp.buf.rename, { desc = "[C]ode [R]ename" });
-vim.keymap.set({ "n" }, "<leader>cd", "<cmd>Neogen<cr>", { desc = "[C]ode [D]ocument" });
-vim.keymap.set({ "n" }, '<leader>ca', function()
-    vim.lsp.buf.code_action {
-        context = {
-            only = {
-                'quickfix',
-                'refactor',
-                'source'
-            }
-        }
-    }
-end, { desc = '[C]ode [A]ction' })
 
 --[[============================================================================
 -- Mapping m/M + numbers to Global Bookmarks
@@ -110,7 +138,7 @@ vim.keymap.set({ 'n' }, 'm0', '`J', silnor)
 --============================================================================]]
 -- You can set [NXT] in side your snippes etc, and then use 2xTab to start editing the location
 -- they are in
-vim.keymap.set({ "n" }, "<Tab><Tab>", "/\\[NXT\\]<CR>v%c", { desc="Goto next [NXT]", silent = true });
+vim.keymap.set({ "n" }, "<Tab><Tab>", "/\\[NXT\\]<CR>v%c", { desc = "Goto next", silent = true });
 vim.keymap.set({ "i" }, "<S-Tab>", "<esc>/\\[NXT\\]<CR>v%c", { silent = true });
 
 -- Keep Cursor centered, when jumping and searching
@@ -118,67 +146,6 @@ vim.keymap.set({ "v" }, "n", "nzz", silnor);
 vim.keymap.set({ "v" }, "N", "Nzz", silnor);
 vim.keymap.set({ "v" }, "<C-d>", "<C-d>zz", silnor);
 vim.keymap.set({ "v" }, "<C-u>", "<C-u>zz", silnor);
-
---[[============================================================================
--- Splits
---============================================================================]]
-vim.keymap.set({ 'n' }, 'EE', '<cmd>e .<cr>', { desc = '[E]xplorer in place' })
-vim.keymap.set({ 'n' }, 'El', '<cmd>vs<cr><C-w>l<cmd>e .<cr>', { desc = '[E]xplorer right' })
-vim.keymap.set({ 'n' }, 'Eh', '<cmd>vs .<cr>', { desc = '[E]xplorer left' })
-vim.keymap.set({ 'n' }, 'Ej', '<cmd>sp<cr><C-w>j<cmd>e .<cr>', { desc = '[E]xplorer bottom' })
-vim.keymap.set({ 'n' }, 'Ek', '<cmd>sp .<cr>', { desc = '[E]xplorer top' })
-vim.keymap.set({ 'n' }, 'Et', '<cmd>tabnew .<cr>', { desc = '[E]xplorer [t]ab' })
-
-vim.keymap.set({ 'n' }, '<leader>sv', '<cmd>sp<cr>', { desc = '[S]plit [V]ertical' })
-vim.keymap.set({ 'n' }, '<leader>sh', '<cmd>vs<cr>', { desc = '[S]plit [H]orizontal' })
-
-vim.keymap.set({ 'n' }, '<leader><Tab>', '<cmd>ZenMode<cr>', { desc = 'Zen Mode' })
-vim.keymap.set({ 'n' }, '<leader>b', '<cmd>BM<cr>', silnor)
-
-vim.keymap.set({ 'n' }, '<Tab>n', 'gt', {desc = '[Tab] next'})
-vim.keymap.set({ 'n' }, '<Tab>p', 'gT', {desc = '[Tab] previous'})
-
-
---[[============================================================================
--- Makefile - Tools
---============================================================================]]
-vim.keymap.set({ 'n' }, '<leader>mm', '<cmd>!make<cr>', { desc = '[M]ake (default)' })
-vim.keymap.set({ 'n' }, '<leader>mr', '<cmd>!tmux split-pane -h \'make run ; read\'<cr>', { desc = '[M]ake [r]un' })
-vim.keymap.set({ 'n' }, '<leader>mc', '<cmd>!make clean<cr>', { desc = '[M]ake [c]lean' })
-
---[[============================================================================
--- Telescope / [F]ind
---============================================================================]]
--- See `:help telescope.builtin`
-vim.keymap.set({ "n" }, "<leader>pf", telescope_builtin.find_files, { desc = "[P]roject [F]ile" })
--- vim.keymap.set({ "n" }, "<leader>ff", telescope_builtin.find_files, { desc = "[F]ind [F]ile" })
-vim.keymap.set({ "n" }, "<leader>ps", telescope_builtin.live_grep, { desc = "[P]roject find [S]tring" })
---vim.keymap.set({ "n" }, "<leader>fs", telescope_builtin.live_grep, { desc = "[F]ind [S]tring" })
-vim.keymap.set({ "n" }, "<leader>fh", telescope_builtin.help_tags, { desc = "[F]ind [H]elp" })
-vim.keymap.set({ 'n' }, '<leader>fr', telescope_builtin.resume, { desc = '[F]ind [R]esume' })
-vim.keymap.set({ 'n' }, '<leader>fd', telescope_builtin.diagnostics, { desc = '[F]ind [D]iagnostics' })
-vim.keymap.set({ 'n' }, '<leader>ft', telescope_builtin.lsp_document_symbols, { desc = '[F]ind [T]elescope' })
-vim.keymap.set({ 'n' }, '<leader>fe', '<cmd>NERDTreeFind<cr>', { desc = '[F]ind in [E]xplorer' })
-
-vim.keymap.set({ 'n' }, '<leader>fg', function()
-    -- You can pass additional configuration to telescope to change theme, layout, etc.
-    telescope_builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-        winblend = 10,
-        previewer = false,
-    })
-end, { desc = '[F]uzzily search in current buffer' })
-
-vim.keymap.set('n', '<leader>fo', telescope_builtin.oldfiles, { desc = '[F]ind [O]lder File' })
-vim.keymap.set('n', '<leader><space>', telescope_builtin.buffers, { desc = '[ ] Find existing buffers' })
-
-
---[[============================================================================
--- Git Signs
---============================================================================]]
-local gs = package.loaded.gitsigns
-vim.keymap.set({ 'n' }, '<leader>gf', telescope_builtin.git_files, { desc = 'Search [G]it [F]iles' })
-vim.keymap.set({ 'n' }, '<leader>gb', function() gs.blame_line { full = false } end, { desc = '[G]it [b]lame line' })
-vim.keymap.set({ 'n' }, '<leader>gd', gs.toggle_deleted, { desc = '[G]it show [D]eleted' })
 
 --[[============================================================================
 -- TMUX-Navigations
@@ -220,7 +187,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 -- Format before Save
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = { "*.go", "*.hpp", "*.h", "*.cpp", "*.c", "*.tmpl"},
+    pattern = { "*.go", "*.hpp", "*.h", "*.cpp", "*.c", "*.tmpl" },
     callback = function()
         vim.lsp.buf.format()
     end
@@ -228,7 +195,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 -- Code-Formatting
 vim.api.nvim_create_autocmd("BufEnter", {
-    pattern = { "*.lua", "*.go" },
+    pattern = { "*.lua", "*.go", "*.php" },
     callback = function()
         vim.keymap.set({ 'n' }, '<leader>cf', vim.lsp.buf.format, { desc = '[C]ode [F]ormat' });
     end
@@ -241,6 +208,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
         vim.keymap.set({ 'n' }, '<leader>cf', "<cmd>Prettier<cr>", { desc = '[C]ode [F]ormat' });
     end
 })
+
 
 --[[============================================================================
 -- Native Vim Tweaks
