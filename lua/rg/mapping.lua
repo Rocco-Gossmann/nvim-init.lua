@@ -1,9 +1,9 @@
+local whichkey = require("which-key")
 local mappfunc = require("rg.mapping_functions");
 local telescope_builtin = require('telescope.builtin');
 local gs = package.loaded.gitsigns
 
-
-require("which-key").add({
+whichkey.add({
     -- Tab Navigation
     { '<Tab>',           group = '[GUI Tab]' },
     { '<Tab>n',          'gt',                                   desc = '[Tab] next',                         mode = 'n' },
@@ -59,11 +59,22 @@ require("which-key").add({
     { '<leader>sh',      '<cmd>sp<cr>',                          desc = '[S]plit [V]ertical',                 mode = 'n' },
     { '<leader>sv',      '<cmd>vs<cr>',                          desc = '[S]plit [H]orizontal',               mode = 'n' },
 
+    -- Debugger
+    { '<leader>d',       group = "[D]ebugger" },
+    { "<leader>ds",      mappfunc.start_stop_debugger,           desc = "[D]ebugger [s]tart/[s]top" },
+    { "<leader>de",      mappfunc.debugger_evaluate,             desc = "[D]ebugger [E]valuate" },
+    { "<leader>db",      vim.cmd.DapToggleBreakpoint,            desc = "[D]ebugger [B]reakpoint Toggle" },
+    { "<F7>",            vim.cmd.DapStepInto },
+    { "<F8>",            vim.cmd.DapStepOver },
+    { "<F9>",            vim.cmd.DapStepOut },
+
     -- Misc
     { '<leader><Tab>',   '<cmd>ZenMode<cr>',                     desc = 'Zen Mode',                           mode = 'n' },
     { '<leader>b',       '<cmd>BM<cr>',                          desc = '[B]ookmarks',                        mode = 'n' },
     { "<leader>t",       "<cmd>TR<cr>",                          desc = "[T]askrunner",                       mode = 'n' },
     { '<leader><space>', telescope_builtin.buffers,              desc = '[ ] Find existing buffers',          mode = 'n' },
+    { '<C-n>',           '<cmd>NERDTreeToggle<cr>',              desc = 'Files',                              mode = 'n' },
+
 })
 
 
@@ -87,7 +98,6 @@ vim.keymap.set({ "x" }, "<C-r>", ":s///g<Left><Left><Left>", { noremap = true })
 vim.keymap.set({ "x" }, "<C-l>", ":s/^\\(\\s\\{-\\}\\)//g<Left><Left><Left><Left>", { noremap = true }); -- Replace in sleected line (preselected whitespace group)
 vim.keymap.set({ "x" }, "<C-y>", sysClipCopy, silnor);
 
-vim.keymap.set({ 'n' }, '<C-n>', '<cmd>NERDTreeToggle<cr>')
 
 vim.keymap.set({ 'n' }, '<C-/>', '/\\c')
 
@@ -160,7 +170,6 @@ vim.keymap.set({ "n" }, "<M-j>", "2<C-w>+", {})
 vim.keymap.set({ "n" }, "<M-k>", "2<C-w>-", {})
 vim.keymap.set({ "n" }, "<M-l>", "2<C-w>>", {})
 
-
 --
 -- Keymaps, that differ per FileType (Due to differennt technics and binaries being used)
 
@@ -174,14 +183,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
         vim.cmd [[
             inoremap §h <esc>:lua require("rg.template").handleC_H()<cr>
         ]]
-    end
-})
-
--- Debugger
-vim.api.nvim_create_autocmd("BufEnter", {
-    pattern = { "*.php", "*.go", "*.c", "*.cpp", "*.h", "*.hpp" },
-    callback = function()
-        require("rg.hydras.xdebug")
     end
 })
 
@@ -223,13 +224,4 @@ vim.cmd [[
     nnoremap Q q
 
 "    nnoremap gg ggzz
-
-
 ]]
-
-
--- vim.keymap.set('n', '<leader>s/', telescope_live_grep_open_files, { desc = '[S]earch [/] in Open Files' })
--- vim.keymap.set('n', '<leader>ss', telescope_builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
--- vim.keymap.set('n', '<leader>gf', telescope_builtin.git_files, { desc = 'Search [G]it [F]iles' })
--- vim.keymap.set('n', '<leader>sw', telescope_builtin.grep_string, { desc = '[S]earch current [W]ord' })
--- vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on Git Root' })

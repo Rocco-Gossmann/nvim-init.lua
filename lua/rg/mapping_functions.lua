@@ -1,9 +1,13 @@
 local telescope_builtin = require('telescope.builtin');
 local gs = package.loaded.gitsigns
+local dapui = require("dapui");
+local dap = require("dap");
+
+local debuggerRunning = false
 
 return {
 
-    codeAction = function()
+    codeAction          = function()
         vim.lsp.buf.code_action {
             context = {
                 only = {
@@ -24,10 +28,27 @@ return {
         })
     end,
 
-    gitBlameLine = function()
+    gitBlameLine        = function()
         gs.blame_line { full = false }
     end,
 
-    tmuxMakeRun  = "<cmd>!tmux split-pane -h \'make run ; read\'<cr>",
+    tmuxMakeRun         = "<cmd>!tmux split-pane -h \'make run ; read\'<cr>",
+
+    start_stop_debugger = function()
+        if (debuggerRunning) then
+            dapui.close(); vim.cmd.DapTerminate()
+            debuggerRunning = false
+        else
+            vim.inspect(dap);
+            dapui.open();
+            vim.cmd.DapContinue();
+            debuggerRunning = true;
+        end
+    end,
+
+    debugger_evaluate = function()
+        dapui.eval();
+    end
+
 
 }

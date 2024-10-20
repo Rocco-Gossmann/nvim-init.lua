@@ -3,9 +3,6 @@
 -- ==========================================================================]]
 --
 return {
-	-- Allows for temporary Shortcut-changes 
-	'anuvyklack/hydra.nvim',
-
 	-- File-Explorer with Tree View  (C-n to open)
 	'preservim/nerdtree',
 
