@@ -387,15 +387,14 @@ local servers = {
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
-  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
   gopls = {},
 
-  tsserver = {},
+  ts_ls = {},
 
   -- htmx = { filetypes = { 'html' } }, <-- removed because Cargo is not easy to install on windows
 
-  html = { filetypes = { 'html' } },
+  html = { filetypes = { 'html', 'tmpl', 'twig', 'twig', 'hbs' } },
 
   lua_ls = {
     Lua = {
