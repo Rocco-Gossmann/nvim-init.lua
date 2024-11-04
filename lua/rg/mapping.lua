@@ -69,13 +69,15 @@ whichkey.add({
     { "<F8>",            vim.cmd.DapStepOver },
     { "<F9>",            vim.cmd.DapStepOut },
 
+    -- Templates
+    { '§',               group = "Templates" },
+    { '§w',              templates.newTmuxWorkspace,             desc = 'TMUX-[W]orkspace',                   mode = 'n' },
+
     -- Misc
     { '<leader><Tab>',   '<cmd>ZenMode<cr>',                     desc = 'Zen Mode',                           mode = 'n' },
     { '<leader>b',       '<cmd>BM<cr>',                          desc = '[B]ookmarks',                        mode = 'n' },
-    -- { "<leader>t",       "<cmd>TR<cr>",                          desc = "[T]askrunner",                       mode = 'n' },
     { '<leader><space>', telescope_builtin.buffers,              desc = '[ ] Find existing buffers',          mode = 'n' },
     { '<C-n>',           '<cmd>NERDTreeToggle<cr>',              desc = 'Files',                              mode = 'n' },
-    { '§',               group = "Templates" },
 
 })
 
@@ -193,9 +195,9 @@ vim.api.nvim_create_autocmd("BufEnter", {
     pattern = { "*.php" },
     callback = function()
         whichkey.add({
-            { "§c", function() templates.handlePHP("class") end,      mode = { "n" }, desc = "PHP-Class" },
-            { "§t", function() templates.handlePHP("trait") end,      mode = { "n" }, desc = "PHP-Trait" },
-            { "§i", function() templates.handlePHP("interface") end,  mode = { "n" }, desc = "PHP-Interface" },
+            { "§c", function() templates.handlePHP("class") end,     mode = { "n" }, desc = "PHP-Class" },
+            { "§t", function() templates.handlePHP("trait") end,     mode = { "n" }, desc = "PHP-Trait" },
+            { "§i", function() templates.handlePHP("interface") end, mode = { "n" }, desc = "PHP-Interface" },
         })
     end
 })

@@ -6,7 +6,7 @@ local function handleC_H()
 
     if string.len(headername) > 0 then
         env.readTemplate("hpp.h")
-        vim.cmd("%s/___HEADER___/"..headername.."/g")
+        vim.cmd("%s/___HEADER___/" .. headername .. "/g")
     end
 end
 
@@ -16,20 +16,26 @@ local function handlePHP(tmpl)
 
     env.readTemplate("tmpl.php")
 
-    vim.cmd("%s/___TYPE___/"..tmpl.."/g")
+    vim.cmd("%s/___TYPE___/" .. tmpl .. "/g")
 
     if string.len(namespace) > 0 then
-        vim.cmd("%s/___NAMESPACE___/namespace "..namespace..";/g")
+        vim.cmd("%s/___NAMESPACE___/namespace " .. namespace .. ";/g")
     else
         vim.cmd("%s/___NAMESPACE___//g")
     end
 
-    vim.cmd("%s/___CLASSNAME___/"..classname.."/g")
+    vim.cmd("%s/___CLASSNAME___/" .. classname .. "/g")
 
+    vim.cmd("norm ggdd");
+end
+
+local function newTmuxWorkspace()
+    env.readTemplate("workspace.tmux.tpl")
     vim.cmd("norm ggdd");
 end
 
 return {
     handleC_H = handleC_H,
-    handlePHP = handlePHP
+    handlePHP = handlePHP,
+    newTmuxWorkspace = newTmuxWorkspace
 }
