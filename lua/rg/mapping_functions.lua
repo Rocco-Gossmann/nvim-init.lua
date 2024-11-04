@@ -48,7 +48,8 @@ return {
 
     debugger_evaluate = function()
         dapui.eval();
-    end
+    end,
 
+    tmuxLazyGit= "<cmd>!tmux new-window \'lazygit\'<cr>",
 
 }

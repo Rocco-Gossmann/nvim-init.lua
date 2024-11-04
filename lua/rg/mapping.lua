@@ -1,5 +1,6 @@
 local whichkey = require("which-key")
 local mappfunc = require("rg.mapping_functions");
+local templates = require("rg.template");
 local telescope_builtin = require('telescope.builtin');
 local gs = package.loaded.gitsigns
 
@@ -46,7 +47,7 @@ whichkey.add({
     { '<leader>gf',      telescope_builtin.git_files,            desc = 'Search [G]it [F]iles',               mode = 'n' },
     { '<leader>gb',      mappfunc.gitBlameLine,                  desc = '[G]it [b]lame line',                 mode = 'n' },
     { '<leader>gd',      gs.toggle_deleted,                      desc = '[G]it show [D]eleted',               mode = 'n' },
-    { '<leader>gl',      '<cmd>LazyGit<cr>',                     desc = '[G]it ([L]azyGit)',                  mode = 'n' },
+    { '<leader>gl',      mappfunc.tmuxLazyGit,                   desc = '[G]it ([L]azyGit)',                  mode = 'n' },
 
     -- Make
     { '<leader>m',       group = '[M]ake' },
@@ -71,9 +72,10 @@ whichkey.add({
     -- Misc
     { '<leader><Tab>',   '<cmd>ZenMode<cr>',                     desc = 'Zen Mode',                           mode = 'n' },
     { '<leader>b',       '<cmd>BM<cr>',                          desc = '[B]ookmarks',                        mode = 'n' },
-    { "<leader>t",       "<cmd>TR<cr>",                          desc = "[T]askrunner",                       mode = 'n' },
+    -- { "<leader>t",       "<cmd>TR<cr>",                          desc = "[T]askrunner",                       mode = 'n' },
     { '<leader><space>', telescope_builtin.buffers,              desc = '[ ] Find existing buffers',          mode = 'n' },
     { '<C-n>',           '<cmd>NERDTreeToggle<cr>',              desc = 'Files',                              mode = 'n' },
+    { '§',               group = "Templates" },
 
 })
 
@@ -181,8 +183,20 @@ vim.api.nvim_create_autocmd("BufEnter", {
     pattern = { "*.cpp", "*.c", "*.h" },
     callback = function()
         vim.cmd [[
-            inoremap §h <esc>:lua require("rg.template").handleC_H()<cr>
+            nnoremap §h <esc>:lua require("rg.template").handleC_H()<cr>
         ]]
+    end
+})
+
+-- Template code
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = { "*.php" },
+    callback = function()
+        whichkey.add({
+            { "§c", function() templates.handlePHP("class") end,      mode = { "n" }, desc = "PHP-Class" },
+            { "§t", function() templates.handlePHP("trait") end,      mode = { "n" }, desc = "PHP-Trait" },
+            { "§i", function() templates.handlePHP("interface") end,  mode = { "n" }, desc = "PHP-Interface" },
+        })
     end
 })
 
