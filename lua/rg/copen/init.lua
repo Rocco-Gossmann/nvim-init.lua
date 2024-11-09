@@ -35,7 +35,7 @@ vim.api.nvim_create_user_command("BM", function()
 
     env.basicTelescopePick(lines, function(choice)
         local ln = choice:match('(%d+):');
-        vim.cmd.norm(ln.."gg");
+        vim.cmd.norm(ln.."gg<cr>");
     end, "What Bookmark? ");
 
 end, {
