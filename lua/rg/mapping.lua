@@ -15,7 +15,10 @@ whichkey.add({
     { '<leader>cr',      vim.lsp.buf.rename,                     desc = '[C]ode [R]ename',                    mode = 'n' },
     { '<leader>cd',      '<cmd>Neogen<cr>',                      desc = '[C]ode [D]ocument',                  mode = 'n' },
     { '<leader>ca',      '<cmd>Neogen<cr>',                      desc = '[C]ode [D]ocument',                  mode = 'n' },
-    { '<leader>ca',      mappfunc.codeAction,                    desc = '[C]ode [A]ction',                    mode = "n" },
+    { '<leader>ca',      mappfunc.codeAction,                    desc = '[C]ode [A]ction',                    mode = 'n' },
+
+    { '<leader>cl',      group = '[C]ode [L]sp' },
+    { '<leader>clr',     '<cmd>LspRestart<cr>',                  desc = '[C]ode [L]sp [R]estart',             mode = 'n' },
 
     -- Exlorrer
     { 'E',               group = '[E]xplorer' },
