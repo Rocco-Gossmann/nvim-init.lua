@@ -79,6 +79,7 @@ whichkey.add({
     -- Misc
     { '<leader><Tab>',   '<cmd>ZenMode<cr>',                     desc = 'Zen Mode',                           mode = 'n' },
     { '<leader>b',       '<cmd>BM<cr>',                          desc = '[B]ookmarks',                        mode = 'n' },
+    { '<leader>t',       '<cmd>TR<cr>',                          desc = '[T]ask Runner',                      mode = 'n' },
     { '<leader><space>', telescope_builtin.buffers,              desc = '[ ] Find existing buffers',          mode = 'n' },
     { '<C-n>',           '<cmd>NERDTreeToggle<cr>',              desc = 'Files',                              mode = 'n' },
 
