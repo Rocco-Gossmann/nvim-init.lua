@@ -50,6 +50,7 @@ let g:tmux_navigator_no_mappings = 1
 ]]
 
 vim.filetype.add({ extension = { templ = "templ" } })
+vim.filetype.add({ extension = { sql = "mysql" } })
 
 require "rg.copen"
 require "rg.mapping"
