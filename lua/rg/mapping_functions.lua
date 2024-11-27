@@ -32,7 +32,7 @@ return {
         gs.blame_line { full = false }
     end,
 
-    tmuxMakeRun         = "<cmd>!tmux split-pane -h \'make run ; read\'<cr>",
+    tmuxMakeRun         = "<cmd>!tmux split-window -v -p25 \'make run ; read\'<cr>",
 
     start_stop_debugger = function()
         if (debuggerRunning) then
