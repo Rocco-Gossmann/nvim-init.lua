@@ -1,9 +1,8 @@
 local telescope_builtin = require('telescope.builtin');
 local gs = package.loaded.gitsigns
 local dapui = require("dapui");
-local dap = require("dap");
 
-local debuggerRunning = false
+local debuggerUIOpen = false
 
 return {
 
@@ -32,24 +31,32 @@ return {
         gs.blame_line { full = false }
     end,
 
-    tmuxMakeRun         = "<cmd>!tmux split-pane -h \'make run ; read\'<cr>",
+    tmuxMakeRun         = "<cmd>!tmux split-window -v -p25 \'make run ; read\'<cr>",
 
-    start_stop_debugger = function()
-        if (debuggerRunning) then
-            dapui.close(); vim.cmd.DapTerminate()
-            debuggerRunning = false
-        else
-            vim.inspect(dap);
+    start_debugger      = function()
+        if (debuggerUIOpen == false) then
             dapui.open();
-            vim.cmd.DapContinue();
-            debuggerRunning = true;
+            debuggerUIOpen = true;
         end
+
+        vim.cmd.DapContinue();
     end,
 
-    debugger_evaluate = function()
+    stop_debugger = function()
+
+        if (debuggerUIOpen) then
+            dapui.close();
+            debuggerUIOpen = false;
+        end
+
+        vim.cmd.DapTerminate()
+
+    end,
+
+    debugger_evaluate   = function()
         dapui.eval();
     end,
 
-    tmuxLazyGit= "<cmd>!tmux new-window \'lazygit\'<cr>",
+    tmuxLazyGit         = "<cmd>!tmux new-window \'lazygit\'<cr>",
 
 }

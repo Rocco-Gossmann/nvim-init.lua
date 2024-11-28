@@ -65,12 +65,14 @@ whichkey.add({
 
     -- Debugger
     { '<leader>d',       group = "[D]ebugger" },
-    { "<leader>ds",      mappfunc.start_stop_debugger,           desc = "[D]ebugger [s]tart/[s]top" },
     { "<leader>de",      mappfunc.debugger_evaluate,             desc = "[D]ebugger [E]valuate" },
     { "<leader>db",      vim.cmd.DapToggleBreakpoint,            desc = "[D]ebugger [B]reakpoint Toggle" },
-    { "<F7>",            vim.cmd.DapStepInto },
-    { "<F8>",            vim.cmd.DapStepOver },
-    { "<F9>",            vim.cmd.DapStepOut },
+    { "<F5>",            mappfunc.start_debugger,                group = "[D]Debugger" },
+    { "<F6>",            vim.cmd.DapToggleBreakpoint,            group = "[D]Debugger" },
+    { "<F11>",           vim.cmd.DapStepInto,                    group = "[D]Debugger" },
+    { "<F10>",           vim.cmd.DapStepOver,                    group = "[D]Debugger" },
+    { "<S-F11>",         vim.cmd.DapStepOut,                     group = "[D]Debugger" },
+    { "<F12>",           mappfunc.stop_debugger,                 group = "[D]Debugger" },
 
     -- Templates
     { '§',               group = "Templates" },
