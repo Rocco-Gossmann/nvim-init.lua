@@ -61,4 +61,10 @@ env.doFileIfExists(env.confdir .. "/lua/rg/custom/init.lua");
 env.doFileIfExists("./.nvim/init.lua");
 
 
+vim.cmd [[
 
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
+]]

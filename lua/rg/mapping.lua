@@ -20,7 +20,7 @@ whichkey.add({
     { '<leader>cl',      group = '[C]ode [L]sp' },
     { '<leader>clr',     '<cmd>LspRestart<cr>',                  desc = '[C]ode [L]sp [R]estart',             mode = 'n' },
 
-    -- Exlorrer
+    -- Exlorer
     { 'E',               group = '[E]xplorer' },
     { 'EE',              '<cmd>e .<cr>',                         desc = '[E]xplorer in place',                mode = 'n' },
     { 'El',              '<cmd>vs<cr><C-w>l<cmd>e .<cr>',        desc = '[E]xplorer right',                   mode = 'n' },
@@ -62,6 +62,14 @@ whichkey.add({
     { '<leader>s',       group = "[S]plit" },
     { '<leader>sh',      '<cmd>sp<cr>',                          desc = '[S]plit [V]ertical',                 mode = 'n' },
     { '<leader>sv',      '<cmd>vs<cr>',                          desc = '[S]plit [H]orizontal',               mode = 'n' },
+    { '<leader>sb',      '<C-w>=',                               desc = '[S]plit [B]alance',                  mode = 'n' },
+    { '<leader>sm',      '<C-w>_<C-w>|',                         desc = '[S]plit [M]aximize',                 mode = 'n' },
+
+    { '<C-Down>',        '<C-w>-',                               desc = "Decrease Split height",              mode = 'n' },
+    { '<C-Up>',          '<C-w>+',                               desc = "Increase Split height",              mode = 'n' },
+    { '<C-Right>',       '<C-w>>',                               desc = "Increase Split width",               mode = 'n' },
+    { '<C-Left>',        '<C-w><',                               desc = "Decrease Split width",               mode = 'n' },
+
 
     -- Debugger
     { '<leader>d',       group = "[D]ebugger" },
