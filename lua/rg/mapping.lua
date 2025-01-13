@@ -23,11 +23,11 @@ whichkey.add({
     -- Exlorer
     { 'E',               group = '[E]xplorer' },
     { 'EE',              '<cmd>e .<cr>',                         desc = '[E]xplorer in place',                mode = 'n' },
-    { 'El',              '<cmd>vs<cr><C-w>l<cmd>e .<cr>',        desc = '[E]xplorer right',                   mode = 'n' },
-    { 'Eh',              '<cmd>vs .<cr>',                        desc = '[E]xplorer left',                    mode = 'n' },
-    { 'Ej',              '<cmd>sp<cr><C-w>j<cmd>e .<cr>',        desc = '[E]xplorer bottom',                  mode = 'n' },
-    { 'Ek',              '<cmd>sp .<cr>',                        desc = '[E]xplorer top',                     mode = 'n' },
-    { 'Et',              '<cmd>tabnew .<cr>',                    desc = '[E]xplorer [t]ab',                   mode = 'n' },
+    { 'EL',              '<cmd>vs<cr><C-w>l<cmd>e .<cr>',        desc = '[E]xplorer right',                   mode = 'n' },
+    { 'EH',              '<cmd>vs .<cr>',                        desc = '[E]xplorer left',                    mode = 'n' },
+    { 'EJ',              '<cmd>sp<cr><C-w>j<cmd>e .<cr>',        desc = '[E]xplorer bottom',                  mode = 'n' },
+    { 'EK',              '<cmd>sp .<cr>',                        desc = '[E]xplorer top',                     mode = 'n' },
+    { 'ET',              '<cmd>tabnew .<cr>',                    desc = '[E]xplorer [t]ab',                   mode = 'n' },
 
     -- Project
     { '<leader>p',       group = '[P]roject' },
@@ -37,6 +37,7 @@ whichkey.add({
     -- Files
     { '<leader>f',       group = '[F]ile' },
     { "<leader>ff",      telescope_builtin.find_files,           desc = "[F]ind [F]ile",                      mode = "n" },
+    { "<leader>fs",      telescope_builtin.live_grep,            desc = "[F]String in Project",               mode = "n" },
     { "<leader>fh",      telescope_builtin.help_tags,            desc = "[F]ind [H]elp",                      mode = "n" },
     { '<leader>fr',      telescope_builtin.resume,               desc = '[F]ind [R]esume',                    mode = 'n' },
     { '<leader>fd',      telescope_builtin.diagnostics,          desc = '[F]ind [D]iagnostics',               mode = 'n' },
@@ -231,6 +232,15 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         vim.lsp.buf.format()
     end
 })
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.go" },
+  callback = function()
+    vim.lsp.buf.code_action { context = { only = { 'source.organizeImports' } }, apply = true }
+    vim.lsp.buf.code_action { context = { only = { 'source.fixAll' } }, apply = true }
+  end,
+})
+
 
 -- Code-Formatting
 vim.api.nvim_create_autocmd("BufEnter", {
