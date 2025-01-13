@@ -23,11 +23,11 @@ whichkey.add({
     -- Exlorer
     { 'E',               group = '[E]xplorer' },
     { 'EE',              '<cmd>e .<cr>',                         desc = '[E]xplorer in place',                mode = 'n' },
-    { 'El',              '<cmd>vs<cr><C-w>l<cmd>e .<cr>',        desc = '[E]xplorer right',                   mode = 'n' },
-    { 'Eh',              '<cmd>vs .<cr>',                        desc = '[E]xplorer left',                    mode = 'n' },
-    { 'Ej',              '<cmd>sp<cr><C-w>j<cmd>e .<cr>',        desc = '[E]xplorer bottom',                  mode = 'n' },
-    { 'Ek',              '<cmd>sp .<cr>',                        desc = '[E]xplorer top',                     mode = 'n' },
-    { 'Et',              '<cmd>tabnew .<cr>',                    desc = '[E]xplorer [t]ab',                   mode = 'n' },
+    { 'EL',              '<cmd>vs<cr><C-w>l<cmd>e .<cr>',        desc = '[E]xplorer right',                   mode = 'n' },
+    { 'EH',              '<cmd>vs .<cr>',                        desc = '[E]xplorer left',                    mode = 'n' },
+    { 'EJ',              '<cmd>sp<cr><C-w>j<cmd>e .<cr>',        desc = '[E]xplorer bottom',                  mode = 'n' },
+    { 'EK',              '<cmd>sp .<cr>',                        desc = '[E]xplorer top',                     mode = 'n' },
+    { 'ET',              '<cmd>tabnew .<cr>',                    desc = '[E]xplorer [t]ab',                   mode = 'n' },
 
     -- Project
     { '<leader>p',       group = '[P]roject' },
