@@ -217,6 +217,14 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 -- Format before Save
+-- remove trailing whitespaces
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = {"*.*"},
+    callback = function()
+        vim.cmd.substitute("/\\s\\+$//ge");
+    end
+})
+
 vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = { "*.go", "*.hpp", "*.h", "*.cpp", "*.c", "*.tmpl" },
     callback = function()
