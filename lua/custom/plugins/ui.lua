@@ -3,8 +3,8 @@
 -- ==========================================================================]]
 --
 return {
-	-- File-Explorer with Tree View  (C-n to open)
-	'preservim/nerdtree',
+	-- File-Explorer with Tree View  (<leader>n to open)
+	-- 'preservim/nerdtree',
 
 	-- unifys switching between NeoVim Splits and TMUX-Panes
 	-- (Press C-H/J/K/L to move between them)
