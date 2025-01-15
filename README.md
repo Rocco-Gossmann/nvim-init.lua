@@ -39,7 +39,9 @@ https://github.com/nvim-lua/kickstart.nvim
 | ------------ | -------------------- |
 | `<leader>ff` | [F]ind [F]ile        |
 | `<leader>pf` | [P]roject [F]ind file        |
+| `<leader>ff` | [F]ind [F]ile in Project|
 | `<leader>ps` | [P]roject [S]earch String      |
+| `<leader>fs` | [F]ind [S]tring in Project|
 | `<leader><space>` | [F]ind [B]uffer      |
 | `<leader>fh` | [F]ind [H]elp        |
 | `<leader>fr` | [F]ind [R]esume      |
@@ -72,6 +74,7 @@ https://github.com/nvim-lua/kickstart.nvim
 | ------------ | --------------- |
 | `<leader>cf` | [C]ode [F]ormat |
 | `<leader>ca` | [C]ode [A]ction |
+| `<leader>cr` | [C]ode [R]efactor Rename |
 | `<leader>cd` | [C]ode [D]ocument |
 
 
@@ -80,6 +83,8 @@ https://github.com/nvim-lua/kickstart.nvim
 | ------- | ---------------- |
 | `<leader>sv` | Vertical Split   |
 | `<leader>sh` | Horizontal Split |
+| `<leader>sb` | Balance all Splits to be a similar size |
+| `<leader>sm` | Maximize the current Split |
 | `<leader><tab>` | open current pane in Zen-Mode |
 
 ## (Normal Mode) Explorer
