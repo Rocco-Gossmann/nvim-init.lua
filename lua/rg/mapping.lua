@@ -229,7 +229,9 @@ vim.api.nvim_create_autocmd("BufEnter", {
 vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = { "*.*" },
     callback = function()
-        vim.cmd.substitute("/\\s\\+$//ge");
+        vim.cmd.normal("Mz")
+        vim.cmd("%s/\\s\\+$//ge")
+        vim.cmd.normal("mz")
     end
 })
 
