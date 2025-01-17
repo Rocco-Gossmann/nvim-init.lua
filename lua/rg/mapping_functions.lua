@@ -31,7 +31,7 @@ return {
         gs.blame_line { full = false }
     end,
 
-    tmuxMakeRun         = "<cmd>!tmux split-window -v -p25 \'make run ; read\'<cr>",
+    tmuxMakeRun         = "<cmd>!tmux split-window -v -p25 \'make run\'<cr>",
 
     start_debugger      = function()
         if (debuggerUIOpen == false) then
