@@ -14,7 +14,6 @@ whichkey.add({
     { '<leader>c',       group = '[C]ode' },
     { '<leader>cr',      vim.lsp.buf.rename,                     desc = '[C]ode [R]ename',                       mode = 'n' },
     { '<leader>cd',      '<cmd>Neogen<cr>',                      desc = '[C]ode [D]ocument',                     mode = 'n' },
-    { '<leader>ca',      '<cmd>Neogen<cr>',                      desc = '[C]ode [D]ocument',                     mode = 'n' },
     { '<leader>ca',      mappfunc.codeAction,                    desc = '[C]ode [A]ction',                       mode = 'n' },
 
     { '<leader>cl',      group = '[C]ode [L]sp' },
@@ -143,31 +142,6 @@ vim.keymap.set({ 'n' }, 'gD', vim.lsp.buf.declaration, { desc = '[G]oto [D]eclar
 vim.keymap.set({ "i" }, '<C-j>', function() vim.lsp.buf.signature_help() end, silnor);
 vim.keymap.set({ "i" }, '<C-h>', '<cmd>lua vim.lsp.buf.completion({ reason = require("cmp").ContextReason.Auto })<CR>',
     silnor);
-
---[[============================================================================
--- Mapping m/M + numbers to Global Bookmarks
---============================================================================]]
-vim.keymap.set({ 'n' }, 'M1', 'mA', silnor)
-vim.keymap.set({ 'n' }, 'M2', 'mB', silnor)
-vim.keymap.set({ 'n' }, 'M3', 'mC', silnor)
-vim.keymap.set({ 'n' }, 'M4', 'mD', silnor)
-vim.keymap.set({ 'n' }, 'M5', 'mE', silnor)
-vim.keymap.set({ 'n' }, 'M6', 'mF', silnor)
-vim.keymap.set({ 'n' }, 'M7', 'mG', silnor)
-vim.keymap.set({ 'n' }, 'M8', 'mH', silnor)
-vim.keymap.set({ 'n' }, 'M9', 'mI', silnor)
-vim.keymap.set({ 'n' }, 'M0', 'mJ', silnor)
-
-vim.keymap.set({ 'n' }, 'm1', '`A', silnor)
-vim.keymap.set({ 'n' }, 'm2', '`B', silnor)
-vim.keymap.set({ 'n' }, 'm3', '`C', silnor)
-vim.keymap.set({ 'n' }, 'm4', '`D', silnor)
-vim.keymap.set({ 'n' }, 'm5', '`E', silnor)
-vim.keymap.set({ 'n' }, 'm6', '`F', silnor)
-vim.keymap.set({ 'n' }, 'm7', '`G', silnor)
-vim.keymap.set({ 'n' }, 'm8', '`H', silnor)
-vim.keymap.set({ 'n' }, 'm9', '`I', silnor)
-vim.keymap.set({ 'n' }, 'm0', '`J', silnor)
 
 --[[ ===========================================================================
 -- Snippet Helpers
