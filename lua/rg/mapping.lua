@@ -7,75 +7,76 @@ local gs = package.loaded.gitsigns
 whichkey.add({
     -- Tab Navigation
     { '<Tab>',           group = '[GUI Tab]' },
-    { '<Tab>n',          'gt',                                   desc = '[Tab] next',                            mode = 'n' },
-    { '<Tab>p',          'gT',                                   desc = '[Tab] previous',                        mode = 'n' },
+    { '<Tab>n',          'gt',                                   desc = '[Tab] next',                              mode = 'n' },
+    { '<Tab>p',          'gT',                                   desc = '[Tab] previous',                          mode = 'n' },
 
     -- Code
     { '<leader>c',       group = '[C]ode' },
-    { '<leader>cr',      vim.lsp.buf.rename,                     desc = '[C]ode [R]ename',                       mode = 'n' },
-    { '<leader>cd',      '<cmd>Neogen<cr>',                      desc = '[C]ode [D]ocument',                     mode = 'n' },
-    { '<leader>ca',      mappfunc.codeAction,                    desc = '[C]ode [A]ction',                       mode = 'n' },
+    { '<leader>cr',      vim.lsp.buf.rename,                     desc = '[C]ode [R]ename',                         mode = 'n' },
+    { '<leader>cd',      '<cmd>Neogen<cr>',                      desc = '[C]ode [D]ocument',                       mode = 'n' },
+    { '<leader>ca',      mappfunc.codeAction,                    desc = '[C]ode [A]ction',                         mode = 'n' },
 
     { '<leader>cl',      group = '[C]ode [L]sp' },
-    { '<leader>clr',     '<cmd>LspRestart<cr>',                  desc = '[C]ode [L]sp [R]estart',                mode = 'n' },
+    { '<leader>clr',     '<cmd>LspRestart<cr>',                  desc = '[C]ode [L]sp [R]estart',                  mode = 'n' },
 
     -- Exlorer
     { 'E',               group = '[E]xplorer' },
-    { 'EE',              '<cmd>e .<cr>',                         desc = '[E]xplorer in place',                   mode = 'n' },
-    { 'EL',              '<cmd>vs<cr><C-w>l<cmd>e .<cr>',        desc = '[E]xplorer right',                      mode = 'n' },
-    { 'EH',              '<cmd>vs .<cr>',                        desc = '[E]xplorer left',                       mode = 'n' },
-    { 'EJ',              '<cmd>sp<cr><C-w>j<cmd>e .<cr>',        desc = '[E]xplorer bottom',                     mode = 'n' },
-    { 'EK',              '<cmd>sp .<cr>',                        desc = '[E]xplorer top',                        mode = 'n' },
-    { 'ET',              '<cmd>tabnew .<cr>',                    desc = '[E]xplorer [t]ab',                      mode = 'n' },
+    { 'EE',              '<cmd>e .<cr>',                         desc = '[E]xplorer in place',                     mode = 'n' },
+    { 'EL',              '<cmd>vs<cr><C-w>l<cmd>e .<cr>',        desc = '[E]xplorer right',                        mode = 'n' },
+    { 'EH',              '<cmd>vs .<cr>',                        desc = '[E]xplorer left',                         mode = 'n' },
+    { 'EJ',              '<cmd>sp<cr><C-w>j<cmd>e .<cr>',        desc = '[E]xplorer bottom',                       mode = 'n' },
+    { 'EK',              '<cmd>sp .<cr>',                        desc = '[E]xplorer top',                          mode = 'n' },
+    { 'ET',              '<cmd>tabnew .<cr>',                    desc = '[E]xplorer [t]ab',                        mode = 'n' },
 
     -- Close commands
     -- ZZ => Close current (default mapping)
+    { 'ZZ',              '<cmd>q<cr>',                           desc = 'Close current buffer (warn if not saved)' },
     { 'ZD',              '<cmd>bd!<cr>',                         desc = 'remove current buffer (ignore unsaved)' },
     { 'ZA',              '<cmd>qa!<cr>',                         desc = 'close all buffers (ignore unsaved)' },
     { 'ZW',              '<cmd>wqa!<cr>',                        desc = 'close all buffers (save all files)' },
 
     -- Project
     { '<leader>p',       group = '[P]roject' },
-    { "<leader>pf",      telescope_builtin.find_files,           desc = "[P]roject [F]iles",                     mode = "n" },
-    { "<leader>ps",      telescope_builtin.live_grep,            desc = "[P]roject find [S]tring",               mode = "n" },
+    { "<leader>pf",      telescope_builtin.find_files,           desc = "[P]roject [F]iles",                       mode = "n" },
+    { "<leader>ps",      telescope_builtin.live_grep,            desc = "[P]roject find [S]tring",                 mode = "n" },
 
     -- Files
     { '<leader>f',       group = '[F]ile' },
-    { "<leader>ff",      telescope_builtin.find_files,           desc = "[F]ind [F]ile",                         mode = "n" },
-    { "<leader>fs",      telescope_builtin.live_grep,            desc = "[F]String in Project",                  mode = "n" },
-    { "<leader>fh",      telescope_builtin.help_tags,            desc = "[F]ind [H]elp",                         mode = "n" },
-    { '<leader>fr',      telescope_builtin.resume,               desc = '[F]ind [R]esume',                       mode = 'n' },
-    { '<leader>fd',      telescope_builtin.diagnostics,          desc = '[F]ind [D]iagnostics',                  mode = 'n' },
-    { '<leader>ft',      telescope_builtin.lsp_document_symbols, desc = '[F]ind [T]elescope',                    mode = 'n' },
+    { "<leader>ff",      telescope_builtin.find_files,           desc = "[F]ind [F]ile",                           mode = "n" },
+    { "<leader>fs",      telescope_builtin.live_grep,            desc = "[F]String in Project",                    mode = "n" },
+    { "<leader>fh",      telescope_builtin.help_tags,            desc = "[F]ind [H]elp",                           mode = "n" },
+    { '<leader>fr',      telescope_builtin.resume,               desc = '[F]ind [R]esume',                         mode = 'n' },
+    { '<leader>fd',      telescope_builtin.diagnostics,          desc = '[F]ind [D]iagnostics',                    mode = 'n' },
+    { '<leader>ft',      telescope_builtin.lsp_document_symbols, desc = '[F]ind [T]elescope',                      mode = 'n' },
     --    { '<leader>fe',      '<cmd>NERDTreeFind<cr>',                desc = '[F]ind in [E]xplorer',               mode = 'n' },
-    { '<leader>fg',      mappfunc.fuzzySearchInBuffer,           desc = '[F]uzzily search in current buffer',    mode = 'n' },
-    { '<leader>fo',      telescope_builtin.oldfiles,             desc = '[F]ind [O]lder File',                   mode = 'n' },
+    { '<leader>fg',      mappfunc.fuzzySearchInBuffer,           desc = '[F]uzzily search in current buffer',      mode = 'n' },
+    { '<leader>fo',      telescope_builtin.oldfiles,             desc = '[F]ind [O]lder File',                     mode = 'n' },
     --    { '<leader>fn',      '<cmd>NERDTreeToggle<cr>',              desc = '[F]file ([N]erdTree)',               mode = 'n' },
 
     -- Git
     { '<leader>g',       group = '[G]it' },
-    { '<leader>gf',      telescope_builtin.git_files,            desc = 'Search [G]it [F]iles',                  mode = 'n' },
-    { '<leader>gb',      mappfunc.gitBlameLine,                  desc = '[G]it [b]lame line',                    mode = 'n' },
-    { '<leader>gd',      gs.toggle_deleted,                      desc = '[G]it show [D]eleted',                  mode = 'n' },
-    { '<leader>gl',      mappfunc.tmuxLazyGit,                   desc = '[G]it ([L]azyGit)',                     mode = 'n' },
+    { '<leader>gf',      telescope_builtin.git_files,            desc = 'Search [G]it [F]iles',                    mode = 'n' },
+    { '<leader>gb',      mappfunc.gitBlameLine,                  desc = '[G]it [b]lame line',                      mode = 'n' },
+    { '<leader>gd',      gs.toggle_deleted,                      desc = '[G]it show [D]eleted',                    mode = 'n' },
+    { '<leader>gl',      mappfunc.tmuxLazyGit,                   desc = '[G]it ([L]azyGit)',                       mode = 'n' },
 
     -- Make
     { '<leader>m',       group = '[M]ake' },
-    { '<leader>mm',      '<cmd>!make<cr>',                       desc = '[M]ake (default)',                      mode = 'n' },
-    { '<leader>mr',      mappfunc.tmuxMakeRun,                   desc = '[M]ake [r]un',                          mode = 'n' },
-    { '<leader>mc',      '<cmd>!make clean<cr>',                 desc = '[M]ake [c]lean',                        mode = 'n' },
+    { '<leader>mm',      '<cmd>!make<cr>',                       desc = '[M]ake (default)',                        mode = 'n' },
+    { '<leader>mr',      mappfunc.tmuxMakeRun,                   desc = '[M]ake [r]un',                            mode = 'n' },
+    { '<leader>mc',      '<cmd>!make clean<cr>',                 desc = '[M]ake [c]lean',                          mode = 'n' },
 
     -- Split
     { '<leader>s',       group = "[S]plit" },
-    { '<leader>sh',      '<cmd>sp<cr>',                          desc = '[S]plit [V]ertical',                    mode = 'n' },
-    { '<leader>sv',      '<cmd>vs<cr>',                          desc = '[S]plit [H]orizontal',                  mode = 'n' },
-    { '<leader>sb',      '<C-w>=',                               desc = '[S]plit [B]alance',                     mode = 'n' },
-    { '<leader>sm',      '<C-w>_<C-w>|',                         desc = '[S]plit [M]aximize',                    mode = 'n' },
+    { '<leader>sh',      '<cmd>sp<cr>',                          desc = '[S]plit [V]ertical',                      mode = 'n' },
+    { '<leader>sv',      '<cmd>vs<cr>',                          desc = '[S]plit [H]orizontal',                    mode = 'n' },
+    { '<leader>sb',      '<C-w>=',                               desc = '[S]plit [B]alance',                       mode = 'n' },
+    { '<leader>sm',      '<C-w>_<C-w>|',                         desc = '[S]plit [M]aximize',                      mode = 'n' },
 
-    { '<C-Down>',        '<C-w>-',                               desc = "Decrease Split height",                 mode = 'n' },
-    { '<C-Up>',          '<C-w>+',                               desc = "Increase Split height",                 mode = 'n' },
-    { '<C-Right>',       '<C-w>>',                               desc = "Increase Split width",                  mode = 'n' },
-    { '<C-Left>',        '<C-w><',                               desc = "Decrease Split width",                  mode = 'n' },
+    { '<C-Down>',        '<C-w>-',                               desc = "Decrease Split height",                   mode = 'n' },
+    { '<C-Up>',          '<C-w>+',                               desc = "Increase Split height",                   mode = 'n' },
+    { '<C-Right>',       '<C-w>>',                               desc = "Increase Split width",                    mode = 'n' },
+    { '<C-Left>',        '<C-w><',                               desc = "Decrease Split width",                    mode = 'n' },
 
 
     -- Debugger
@@ -91,13 +92,13 @@ whichkey.add({
 
     -- Templates
     { '§',               group = "Templates" },
-    { '§w',              templates.newTmuxWorkspace,             desc = 'TMUX-[W]orkspace',                      mode = 'n' },
+    { '§w',              templates.newTmuxWorkspace,             desc = 'TMUX-[W]orkspace',                        mode = 'n' },
 
     -- Misc
-    { '<leader><Tab>',   '<cmd>ZenMode<cr>',                     desc = 'Zen Mode',                              mode = 'n' },
-    { '<leader>b',       '<cmd>BM<cr>',                          desc = '[B]ookmarks',                           mode = 'n' },
-    { '<leader>t',       '<cmd>TR<cr>',                          desc = '[T]ask Runner',                         mode = 'n' },
-    { '<leader><space>', telescope_builtin.buffers,              desc = '[ ] Find existing buffers',             mode = 'n' },
+    { '<leader><Tab>',   '<cmd>ZenMode<cr>',                     desc = 'Zen Mode',                                mode = 'n' },
+    { '<leader>b',       '<cmd>BM<cr>',                          desc = '[B]ookmarks',                             mode = 'n' },
+    { '<leader>t',       '<cmd>TR<cr>',                          desc = '[T]ask Runner',                           mode = 'n' },
+    { '<leader><space>', telescope_builtin.buffers,              desc = '[ ] Find existing buffers',               mode = 'n' },
     -- { '<leader>n',       '<cmd>NERDTreeToggle<cr>',              desc = 'Files',                              mode = 'n' },
 
 })
