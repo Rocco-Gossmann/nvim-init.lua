@@ -42,15 +42,13 @@ return {
         vim.cmd.DapContinue();
     end,
 
-    stop_debugger = function()
-
+    stop_debugger       = function()
         if (debuggerUIOpen) then
             dapui.close();
             debuggerUIOpen = false;
         end
 
         vim.cmd.DapTerminate()
-
     end,
 
     debugger_evaluate   = function()

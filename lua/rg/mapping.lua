@@ -21,6 +21,7 @@ whichkey.add({
 
     -- Exlorer
     { 'E',               group = '[E]xplorer' },
+    { '<C-n>',           '<cmd>NERDTreeToggle<cr>',              mode = 'n' },
     { 'EE',              '<cmd>e .<cr>',                         desc = '[E]xplorer in place',                   mode = 'n' },
     { 'EL',              '<cmd>vs<cr><C-w>l<cmd>e .<cr>',        desc = '[E]xplorer right',                      mode = 'n' },
     { 'EH',              '<cmd>vs .<cr>',                        desc = '[E]xplorer left',                       mode = 'n' },
