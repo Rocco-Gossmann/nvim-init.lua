@@ -9,6 +9,9 @@ whichkey.add({
     { '<Tab>',           group = '[GUI Tab]' },
     { '<Tab>n',          'gt',                                   desc = '[Tab] next',                              mode = 'n' },
     { '<Tab>p',          'gT',                                   desc = '[Tab] previous',                          mode = 'n' },
+    { '<M-n>',           'gt',                                   mode = 'n' },
+    { '<M-p>',           'gT',                                   mode = 'n' },
+
 
     -- Code
     { '<leader>c',       group = '[C]ode' },
@@ -20,26 +23,27 @@ whichkey.add({
     { '<leader>clr',     '<cmd>LspRestart<cr>',                  desc = '[C]ode [L]sp [R]estart',                  mode = 'n' },
 
     -- Exlorer
-    { 'E',               group = '[E]xplorer' },
     { '<C-n>',           '<cmd>NERDTreeToggle<cr>',              mode = 'n' },
-    { 'EE',              '<cmd>e .<cr>',                         desc = '[E]xplorer in place',                   mode = 'n' },
-    { 'EL',              '<cmd>vs<cr><C-w>l<cmd>e .<cr>',        desc = '[E]xplorer right',                      mode = 'n' },
-    { 'EH',              '<cmd>vs .<cr>',                        desc = '[E]xplorer left',                       mode = 'n' },
-    { 'EJ',              '<cmd>sp<cr><C-w>j<cmd>e .<cr>',        desc = '[E]xplorer bottom',                     mode = 'n' },
-    { 'EK',              '<cmd>sp .<cr>',                        desc = '[E]xplorer top',                        mode = 'n' },
-    { 'ET',              '<cmd>tabnew .<cr>',                    desc = '[E]xplorer [t]ab',                      mode = 'n' },
+    { 'E',               group = '[E]xplorer' },
+    { 'EE',              '<cmd>e .<cr>',                         desc = '[E]xplorer in place',                     mode = 'n' },
+    { 'EL',              '<cmd>vs<cr><C-w>l<cmd>e .<cr>',        desc = '[E]xplorer right',                        mode = 'n' },
+    { 'EH',              '<cmd>vs .<cr>',                        desc = '[E]xplorer left',                         mode = 'n' },
+    { 'EJ',              '<cmd>sp<cr><C-w>j<cmd>e .<cr>',        desc = '[E]xplorer bottom',                       mode = 'n' },
+    { 'EK',              '<cmd>sp .<cr>',                        desc = '[E]xplorer top',                          mode = 'n' },
+    { 'ET',              '<cmd>tabnew .<cr>',                    desc = '[E]xplorer [t]ab',                        mode = 'n' },
 
     -- Close commands
     -- ZZ => Close current (default mapping)
     { 'ZZ',              '<cmd>q<cr>',                           desc = 'Close current buffer (warn if not saved)' },
     { 'ZD',              '<cmd>bd!<cr>',                         desc = 'remove current buffer (ignore unsaved)' },
-    { 'ZA',              '<cmd>qa!<cr>',                         desc = 'close all buffers (ignore unsaved)' },
     { 'ZW',              '<cmd>wqa!<cr>',                        desc = 'close all buffers (save all files)' },
+    { 'ZA',              '<cmd>qa!<cr>',                         desc = 'close all buffers (ignore unsaved)' },
 
     -- Project
     { '<leader>p',       group = '[P]roject' },
     { "<leader>pf",      telescope_builtin.find_files,           desc = "[P]roject [F]iles",                       mode = "n" },
     { "<leader>ps",      telescope_builtin.live_grep,            desc = "[P]roject find [S]tring",                 mode = "n" },
+    { "<leader>pw",      telescope_builtin.grep_string,          desc = "[P]roject find [W]ord",                  mode = "n" },
 
     -- Files
     { '<leader>f',       group = '[F]ile' },
@@ -49,10 +53,10 @@ whichkey.add({
     { '<leader>fr',      telescope_builtin.resume,               desc = '[F]ind [R]esume',                         mode = 'n' },
     { '<leader>fd',      telescope_builtin.diagnostics,          desc = '[F]ind [D]iagnostics',                    mode = 'n' },
     { '<leader>ft',      telescope_builtin.lsp_document_symbols, desc = '[F]ind [T]elescope',                      mode = 'n' },
-    --    { '<leader>fe',      '<cmd>NERDTreeFind<cr>',                desc = '[F]ind in [E]xplorer',               mode = 'n' },
+    { '<leader>fe',      '<cmd>NERDTreeFind<cr>',                desc = '[F]ind in [E]xplorer',                    mode = 'n' },
     { '<leader>fg',      mappfunc.fuzzySearchInBuffer,           desc = '[F]uzzily search in current buffer',      mode = 'n' },
     { '<leader>fo',      telescope_builtin.oldfiles,             desc = '[F]ind [O]lder File',                     mode = 'n' },
-    --    { '<leader>fn',      '<cmd>NERDTreeToggle<cr>',              desc = '[F]file ([N]erdTree)',               mode = 'n' },
+    { '<leader>fn',      '<cmd>NERDTreeToggle<cr>',              desc = '[F]file ([N]erdTree)',                    mode = 'n' },
 
     -- Git
     { '<leader>g',       group = '[G]it' },
@@ -74,10 +78,10 @@ whichkey.add({
     { '<leader>sb',      '<C-w>=',                               desc = '[S]plit [B]alance',                       mode = 'n' },
     { '<leader>sm',      '<C-w>_<C-w>|',                         desc = '[S]plit [M]aximize',                      mode = 'n' },
 
-    { '<C-Down>',        '<C-w>-',                               desc = "Decrease Split height",                   mode = 'n' },
-    { '<C-Up>',          '<C-w>+',                               desc = "Increase Split height",                   mode = 'n' },
-    { '<C-Right>',       '<C-w>>',                               desc = "Increase Split width",                    mode = 'n' },
-    { '<C-Left>',        '<C-w><',                               desc = "Decrease Split width",                    mode = 'n' },
+    { '<M-Down>',        '2<C-w>-',                              desc = "Decrease Split height",                   mode = 'n' },
+    { '<M-Up>',          '2<C-w>+',                              desc = "Increase Split height",                   mode = 'n' },
+    { '<M-Right>',       '2<C-w>>',                              desc = "Increase Split width",                    mode = 'n' },
+    { '<M-Left>',        '2<C-w><',                              desc = "Decrease Split width",                    mode = 'n' },
 
 
     -- Debugger
@@ -167,10 +171,6 @@ vim.keymap.set({ "n" }, "<C-j>", "<cmd>TmuxNavigateDown<cr>", silnor)
 vim.keymap.set({ "n" }, "<C-k>", "<cmd>TmuxNavigateUp<cr>", silnor)
 vim.keymap.set({ "n" }, "<C-l>", "<cmd>TmuxNavigateRight<cr>", silnor)
 
-vim.keymap.set({ "n" }, "<M-h>", "2<C-w><", {})
-vim.keymap.set({ "n" }, "<M-j>", "2<C-w>+", {})
-vim.keymap.set({ "n" }, "<M-k>", "2<C-w>-", {})
-vim.keymap.set({ "n" }, "<M-l>", "2<C-w>>", {})
 
 --
 -- Keymaps, that differ per FileType (Due to differennt technics and binaries being used)
