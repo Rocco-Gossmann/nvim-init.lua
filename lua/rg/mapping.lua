@@ -22,6 +22,12 @@ whichkey.add({
     { '<leader>cl',      group = '[C]ode [L]sp' },
     { '<leader>clr',     '<cmd>LspRestart<cr>',                  desc = '[C]ode [L]sp [R]estart',                  mode = 'n' },
 
+    -- Qucklist
+    { '<leader>q',       group = '[Q]uicklist' },
+    { '<leader>qn',      '<cmd>cn<cr>',                          desc = '[Q]uicklist [N]ext' },
+    { '<leader>qp',      '<cmd>cp<cr>',                          desc = '[Q]uicklist [P]revious' },
+    { '<leader>qc',      '<cmd>cc<cr>',                          desc = '[Q]uicklist [C]lose' },
+
     -- Exlorer
     { '<C-n>',           '<cmd>NERDTreeToggle<cr>',              mode = 'n' },
     { 'E',               group = '[E]xplorer' },
@@ -43,7 +49,7 @@ whichkey.add({
     { '<leader>p',       group = '[P]roject' },
     { "<leader>pf",      telescope_builtin.find_files,           desc = "[P]roject [F]iles",                       mode = "n" },
     { "<leader>ps",      telescope_builtin.live_grep,            desc = "[P]roject find [S]tring",                 mode = "n" },
-    { "<leader>pw",      telescope_builtin.grep_string,          desc = "[P]roject find [W]ord",                  mode = "n" },
+    { "<leader>pw",      telescope_builtin.grep_string,          desc = "[P]roject find [W]ord",                   mode = "n" },
 
     -- Files
     { '<leader>f',       group = '[F]ile' },
@@ -52,7 +58,8 @@ whichkey.add({
     { "<leader>fh",      telescope_builtin.help_tags,            desc = "[F]ind [H]elp",                           mode = "n" },
     { '<leader>fr',      telescope_builtin.resume,               desc = '[F]ind [R]esume',                         mode = 'n' },
     { '<leader>fd',      telescope_builtin.diagnostics,          desc = '[F]ind [D]iagnostics',                    mode = 'n' },
-    { '<leader>ft',      telescope_builtin.lsp_document_symbols, desc = '[F]ind [T]elescope',                      mode = 'n' },
+    { '<leader>ft',      telescope_builtin.lsp_document_symbols, desc = '[F]ind [T]ags',                           mode = 'n' },
+    { '<leader>fm',      '<cmd>Telescope keymaps<cr>',           desc = '[F]ind [M]appings',                       mode = 'n' },
     { '<leader>fe',      '<cmd>NERDTreeFind<cr>',                desc = '[F]ind in [E]xplorer',                    mode = 'n' },
     { '<leader>fg',      mappfunc.fuzzySearchInBuffer,           desc = '[F]uzzily search in current buffer',      mode = 'n' },
     { '<leader>fo',      telescope_builtin.oldfiles,             desc = '[F]ind [O]lder File',                     mode = 'n' },
@@ -89,7 +96,7 @@ whichkey.add({
     { "<leader>de",      mappfunc.debugger_evaluate,             desc = "[D]ebugger [E]valuate" },
     { "<leader>db",      vim.cmd.DapToggleBreakpoint,            desc = "[D]ebugger [B]reakpoint Toggle" },
     { "<F5>",            mappfunc.start_debugger,                group = "[D]Debugger" },
-    { "<F6>",            vim.cmd.DapToggleBreakpoint,            group = "[D]Debugger" },
+    { "<F9>",            vim.cmd.DapToggleBreakpoint,            group = "[D]Debugger" },
     { "<F11>",           vim.cmd.DapStepInto,                    group = "[D]Debugger" },
     { "<F10>",           vim.cmd.DapStepOver,                    group = "[D]Debugger" },
     { "<S-F11>",         vim.cmd.DapStepOut,                     group = "[D]Debugger" },
@@ -137,6 +144,7 @@ vim.keymap.set({ 'n' }, '<C-/>', '/\\c')
 -- Lsp
 --============================================================================]]
 vim.keymap.set({ "n" }, '<S-h>', function() vim.lsp.buf.hover() end, { desc = 'Hover Documentation' });
+vim.keymap.set({ "n" }, '<leader>gh', function() vim.lsp.buf.hover() end, { desc = 'Hover Documentation' });
 vim.keymap.set({ "n" }, '<S-k>', function() vim.lsp.buf.signature_help() end, { desc = 'Signature Documentation' });
 vim.keymap.set({ 'n' }, 'gd', telescope_builtin.lsp_definitions, { desc = '[G]oto [D]efinition' })
 vim.keymap.set({ 'n' }, 'gr', telescope_builtin.lsp_references, { desc = '[G]oto [R]eferences' })
@@ -242,7 +250,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
         vim.keymap.set({ 'n' }, '<leader>cf', "<cmd>Prettier<cr>", { desc = '[C]ode [F]ormat' });
     end
 })
-
 
 --[[============================================================================
 -- Native Vim Tweaks
