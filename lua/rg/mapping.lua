@@ -75,7 +75,8 @@ whichkey.add({
     -- Make
     { '<leader>m',       group = '[M]ake' },
     { '<leader>mm',      '<cmd>!make<cr>',                       desc = '[M]ake (default)',                        mode = 'n' },
-    { '<leader>mr',      mappfunc.tmuxMakeRun,                   desc = '[M]ake [r]un',                            mode = 'n' },
+    { '<leader>mr',      mappfunc.tmuxMakeRun,                   desc = '[M]ake [R]un',                            mode = 'n' },
+    { '<leader>md',      mappfunc.tmuxMakeDev,                 desc = '[M]ake [D]ev/[D]ebug',                         mode = 'n' },
     { '<leader>mc',      '<cmd>!make clean<cr>',                 desc = '[M]ake [c]lean',                          mode = 'n' },
 
     -- Split
@@ -182,6 +183,17 @@ vim.keymap.set({ "n" }, "<C-l>", "<cmd>TmuxNavigateRight<cr>", silnor)
 
 --
 -- Keymaps, that differ per FileType (Due to differennt technics and binaries being used)
+--------------------------------------------------------------------------------
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = { "*.todo" },
+    callback = function()
+        vim.keymap.set({ 'n' }, 'ts', vim.cmd.TaskStart, { desc = '[T]ask [S]tart', silent = true });
+        vim.keymap.set({ 'n' }, 'tn', vim.cmd.TaskNew, { desc = '[T]ask [N]ew', silent = true });
+        vim.keymap.set({ 'n' }, 'tc', vim.cmd.TaskCancel, { desc = '[T]ask [C]ancel', silent = true });
+        vim.keymap.set({ 'n' }, 'td', vim.cmd.TaskDone, { desc = '[T]ask [D]one', silent = true });
+        vim.keymap.set({ 'n' }, 'tr', vim.cmd.TaskReset, { desc = '[T]ask [R]eset', silent = true });
+    end
+})
 
 -- <leader>cf - Code-Format
 -- D - Debug-Action

@@ -32,8 +32,9 @@ return {
     end,
 
     tmuxMakeRun         = "<cmd>!tmux split-window -v -p25 \'make run\'<cr>",
+    tmuxMakeDev         = "<cmd>!tmux new-window -d \'make dev\'<cr>",
 
-    start_debugger      = function()
+    start_debugger    = function()
         if (debuggerUIOpen == false) then
             dapui.open();
             debuggerUIOpen = true;
@@ -42,7 +43,7 @@ return {
         vim.cmd.DapContinue();
     end,
 
-    stop_debugger       = function()
+    stop_debugger     = function()
         if (debuggerUIOpen) then
             dapui.close();
             debuggerUIOpen = false;
@@ -51,10 +52,10 @@ return {
         vim.cmd.DapTerminate()
     end,
 
-    debugger_evaluate   = function()
+    debugger_evaluate = function()
         dapui.eval();
     end,
 
-    tmuxLazyGit         = "<cmd>!tmux new-window \'lazygit\'<cr>",
+    tmuxLazyGit       = "<cmd>!tmux new-window \'lazygit\'<cr>",
 
 }
