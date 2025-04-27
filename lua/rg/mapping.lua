@@ -76,7 +76,7 @@ whichkey.add({
     { '<leader>m',       group = '[M]ake' },
     { '<leader>mm',      '<cmd>!make<cr>',                       desc = '[M]ake (default)',                        mode = 'n' },
     { '<leader>mr',      mappfunc.tmuxMakeRun,                   desc = '[M]ake [R]un',                            mode = 'n' },
-    { '<leader>md',      mappfunc.tmuxMakeDev,                 desc = '[M]ake [D]ev/[D]ebug',                         mode = 'n' },
+    { '<leader>md',      mappfunc.tmuxMakeDev,                   desc = '[M]ake [D]ev/[D]ebug',                    mode = 'n' },
     { '<leader>mc',      '<cmd>!make clean<cr>',                 desc = '[M]ake [c]lean',                          mode = 'n' },
 
     -- Split
@@ -113,6 +113,12 @@ whichkey.add({
     { '<leader>t',       '<cmd>TR<cr>',                          desc = '[T]ask Runner',                           mode = 'n' },
     { '<leader><space>', telescope_builtin.buffers,              desc = '[ ] Find existing buffers',               mode = 'n' },
     -- { '<leader>n',       '<cmd>NERDTreeToggle<cr>',              desc = 'Files',                              mode = 'n' },
+
+    -- Auto Close
+    { '{',               '{}i',                                 mode = 'i' },
+    { '[',               '[]i',                                 mode = 'i' },
+    { '\'',              '\'\'i',                               mode = 'i' },
+    { '"',               '""i',                                 mode = 'i' },
 
 })
 
