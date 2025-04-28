@@ -115,6 +115,7 @@ whichkey.add({
     -- { '<leader>n',       '<cmd>NERDTreeToggle<cr>',              desc = 'Files',                              mode = 'n' },
 
     -- Auto Close
+    { '(',               '()i',                                 mode = 'i' },
     { '{',               '{}i',                                 mode = 'i' },
     { '[',               '[]i',                                 mode = 'i' },
     { '\'',              '\'\'i',                               mode = 'i' },
