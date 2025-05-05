@@ -47,15 +47,15 @@ whichkey.add({
 
     -- Project
     { '<leader>p',       group = '[P]roject' },
-    { "<leader>pf",      telescope_builtin.find_files,           desc = "[P]roject [F]iles",                       mode = "n" },
-    { "<leader>ps",      telescope_builtin.live_grep,            desc = "[P]roject find [S]tring",                 mode = "n" },
-    { "<leader>pw",      telescope_builtin.grep_string,          desc = "[P]roject find [W]ord",                   mode = "n" },
+    { '<leader>pf',      telescope_builtin.find_files,           desc = '[P]roject [F]iles',                       mode = 'n' },
+    { '<leader>ps',      telescope_builtin.live_grep,            desc = '[P]roject find [S]tring',                 mode = 'n' },
+    { '<leader>pw',      telescope_builtin.grep_string,          desc = '[P]roject find [W]ord',                   mode = 'n' },
 
     -- Files
     { '<leader>f',       group = '[F]ile' },
-    { "<leader>ff",      telescope_builtin.find_files,           desc = "[F]ind [F]ile",                           mode = "n" },
-    { "<leader>fs",      telescope_builtin.live_grep,            desc = "[F]String in Project",                    mode = "n" },
-    { "<leader>fh",      telescope_builtin.help_tags,            desc = "[F]ind [H]elp",                           mode = "n" },
+    { '<leader>ff',      telescope_builtin.find_files,           desc = '[F]ind [F]ile',                           mode = 'n' },
+    { '<leader>fs',      telescope_builtin.live_grep,            desc = '[F]String in Project',                    mode = 'n' },
+    { '<leader>fh',      telescope_builtin.help_tags,            desc = '[F]ind [H]elp',                           mode = 'n' },
     { '<leader>fr',      telescope_builtin.resume,               desc = '[F]ind [R]esume',                         mode = 'n' },
     { '<leader>fd',      telescope_builtin.diagnostics,          desc = '[F]ind [D]iagnostics',                    mode = 'n' },
     { '<leader>ft',      telescope_builtin.lsp_document_symbols, desc = '[F]ind [T]ags',                           mode = 'n' },
