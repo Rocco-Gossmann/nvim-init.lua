@@ -114,13 +114,6 @@ whichkey.add({
     { '<leader><space>', telescope_builtin.buffers,              desc = '[ ] Find existing buffers',               mode = 'n' },
     -- { '<leader>n',       '<cmd>NERDTreeToggle<cr>',              desc = 'Files',                              mode = 'n' },
 
-    -- Auto Close
-    { '(',               '()i',                                 mode = 'i' },
-    { '{',               '{}i',                                 mode = 'i' },
-    { '[',               '[]i',                                 mode = 'i' },
-    { '\'',              '\'\'i',                               mode = 'i' },
-    { '"',               '""i',                                 mode = 'i' },
-
 })
 
 
