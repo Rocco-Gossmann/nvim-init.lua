@@ -24,21 +24,23 @@ vim.opt.grepprg="rg -n -i --ignore-file .rgignore $* /dev/null"
 vim.opt.conceallevel = 1
 vim.opt.wrap = false
 
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    callback = function()
+        vim.opt.tabstop=4
+        vim.opt.autoindent=true
+        vim.opt.cursorline=true
+
+        vim.opt.foldlevelstart=99
+        vim.opt.foldmethod="indent"
+        -- vim.opt.foldexpr="nvim_treesitter#foldexpr()"
+    end
+})
+
+
 vim.cmd [[
 
-set cursorline
-
-set autoindent
-set noexpandtab
-set tabstop=4
-set shiftwidth=0 " shiftwidth = tabstop
-
 let g:zig_fmt_autosave = 0
-
-set foldlevelstart=99
-set foldexpr=nvim_treesitter#foldexpr()
-set foldmethod=expr
-
 let g:tmux_navigator_no_mappings = 1
 
 ]]
