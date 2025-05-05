@@ -154,9 +154,8 @@ vim.keymap.set({ 'n' }, 'gD', vim.lsp.buf.declaration, { desc = '[G]oto [D]eclar
 
 
 -- -- Insert - Mode use
-vim.keymap.set({ "i" }, '<C-j>', function() vim.lsp.buf.signature_help() end, silnor);
-vim.keymap.set({ "i" }, '<C-h>', '<cmd>lua vim.lsp.buf.completion({ reason = require("cmp").ContextReason.Auto })<CR>',
-    silnor);
+vim.keymap.set({ "i" }, '<C-j>', '<cmd>lua vim.lsp.buf.completion({ reason = require("cmp").ContextReason.Auto })<CR>', silnor);
+vim.keymap.set({ "i" }, '<C-h>', function() vim.lsp.buf.signature_help() end, silnor);
 
 --[[ ===========================================================================
 -- Snippet Helpers
