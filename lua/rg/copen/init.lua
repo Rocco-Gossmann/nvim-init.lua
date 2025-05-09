@@ -72,3 +72,5 @@ vim.api.nvim_create_user_command("CH", function()
     end, "What H - File?")
 end, {
 });
+
+return {}

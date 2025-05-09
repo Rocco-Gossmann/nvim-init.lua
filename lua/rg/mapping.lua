@@ -17,7 +17,7 @@ whichkey.add({
     { '<leader>c',       group = '[C]ode' },
     { '<leader>cr',      vim.lsp.buf.rename,                     desc = '[C]ode [R]ename',                         mode = 'n' },
     { '<leader>cd',      '<cmd>Neogen<cr>',                      desc = '[C]ode [D]ocument',                       mode = 'n' },
-    { '<leader>ca',      mappfunc.codeAction,                    desc = '[C]ode [A]ction',                         mode = 'n' },
+    { '<leader>ca',      mappfunc.codeAction,                    desc = '[C]ode [A]ction',                         mode = {'n', 'x'} },
 
     { '<leader>cl',      group = '[C]ode [L]sp' },
     { '<leader>clr',     '<cmd>LspRestart<cr>',                  desc = '[C]ode [L]sp [R]estart',                  mode = 'n' },
@@ -50,26 +50,26 @@ whichkey.add({
     { '<leader>pf',      telescope_builtin.find_files,           desc = '[P]roject [F]iles',                       mode = 'n' },
     { '<leader>ps',      telescope_builtin.live_grep,            desc = '[P]roject find [S]tring',                 mode = 'n' },
     { '<leader>pw',      telescope_builtin.grep_string,          desc = '[P]roject find [W]ord',                   mode = 'n' },
+    { '<leader>pt',      telescope_builtin.lsp_dynamic_workspace_symbols, desc = '[P]roject find [T]ag',           mode = 'n' },
 
     -- Files
     { '<leader>f',       group = '[F]ile' },
     { '<leader>ff',      telescope_builtin.find_files,           desc = '[F]ind [F]ile',                           mode = 'n' },
-    { '<leader>fs',      telescope_builtin.live_grep,            desc = '[F]String in Project',                    mode = 'n' },
-    { '<leader>fh',      telescope_builtin.help_tags,            desc = '[F]ind [H]elp',                           mode = 'n' },
-    { '<leader>fr',      telescope_builtin.resume,               desc = '[F]ind [R]esume',                         mode = 'n' },
-    { '<leader>fd',      telescope_builtin.diagnostics,          desc = '[F]ind [D]iagnostics',                    mode = 'n' },
-    { '<leader>ft',      telescope_builtin.lsp_document_symbols, desc = '[F]ind [T]ags',                           mode = 'n' },
-    { '<leader>fm',      '<cmd>Telescope keymaps<cr>',           desc = '[F]ind [M]appings',                       mode = 'n' },
-    { '<leader>fe',      '<cmd>NERDTreeFind<cr>',                desc = '[F]ind in [E]xplorer',                    mode = 'n' },
-    { '<leader>fg',      mappfunc.fuzzySearchInBuffer,           desc = '[F]uzzily search in current buffer',      mode = 'n' },
     { '<leader>fo',      telescope_builtin.oldfiles,             desc = '[F]ind [O]lder File',                     mode = 'n' },
-    { '<leader>fn',      '<cmd>NERDTreeToggle<cr>',              desc = '[F]file ([N]erdTree)',                    mode = 'n' },
+    { '<leader>fh',      telescope_builtin.help_tags,            desc = '[F]ind [H]elp',                           mode = 'n' },
+    { '<leader>fm',      '<cmd>Telescope keymaps<cr>',           desc = '[F]ind [M]appings',                       mode = 'n' },
+    { '<leader>fr',      telescope_builtin.resume,               desc = '[F]ind [R]esume',                         mode = 'n' },
+    { '<leader>ft',      telescope_builtin.lsp_document_symbols, desc = '[F]ind file [T]ags',                      mode = 'n' },
+    { '<leader>fe',      '<cmd>NERDTreeFind<cr>',                desc = '[F]ile show in [E]xplorer',               mode = 'n' },
+    { '<leader>fd',      telescope_builtin.diagnostics,          desc = '[F]ile [D]Diagnose',                      mode = 'n' },
+    { '<leader>fg',      mappfunc.fuzzySearchInBuffer,           desc = '[F]ile [G]rep',                           mode = 'n' },
+    { '<leader>fn',      '<cmd>NERDTreeToggle<cr>',              desc = '[F]files ([N]erdTree)',                   mode = 'n' },
 
     -- Git
-    { '<leader>g',       group = '[G]it' },
-    { '<leader>gf',      telescope_builtin.git_files,            desc = 'Search [G]it [F]iles',                    mode = 'n' },
-    { '<leader>gb',      mappfunc.gitBlameLine,                  desc = '[G]it [b]lame line',                      mode = 'n' },
-    { '<leader>gd',      gs.toggle_deleted,                      desc = '[G]it show [D]eleted',                    mode = 'n' },
+    -- { '<leader>g',       group = '[G]it' },
+    -- { '<leader>gf',      telescope_builtin.git_files,            desc = 'Search [G]it [F]iles',                    mode = 'n' },
+    -- { '<leader>gb',      mappfunc.gitBlameLine,                  desc = '[G]it [b]lame line',                      mode = 'n' },
+    -- { '<leader>gd',      gs.toggle_deleted,                      desc = '[G]it show [D]eleted',                    mode = 'n' },
     { '<leader>gl',      mappfunc.tmuxLazyGit,                   desc = '[G]it ([L]azyGit)',                       mode = 'n' },
 
     -- Make
@@ -154,7 +154,8 @@ vim.keymap.set({ 'n' }, 'gD', vim.lsp.buf.declaration, { desc = '[G]oto [D]eclar
 
 
 -- -- Insert - Mode use
-vim.keymap.set({ "i" }, '<C-j>', '<cmd>lua vim.lsp.buf.completion({ reason = require("cmp").ContextReason.Auto })<CR>', silnor);
+vim.keymap.set({ "i" }, '<C-j>', '<cmd>lua vim.lsp.buf.completion({ reason = require("cmp").ContextReason.Auto })<CR>',
+    silnor);
 vim.keymap.set({ "i" }, '<C-h>', function() vim.lsp.buf.signature_help() end, silnor);
 
 --[[ ===========================================================================
