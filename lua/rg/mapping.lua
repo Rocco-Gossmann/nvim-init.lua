@@ -70,7 +70,7 @@ whichkey.add({
     -- { '<leader>gf',      telescope_builtin.git_files,            desc = 'Search [G]it [F]iles',                    mode = 'n' },
     -- { '<leader>gb',      mappfunc.gitBlameLine,                  desc = '[G]it [b]lame line',                      mode = 'n' },
     -- { '<leader>gd',      gs.toggle_deleted,                      desc = '[G]it show [D]eleted',                    mode = 'n' },
-    { '<leader>gl',      mappfunc.tmuxLazyGit,                   desc = '[G]it ([L]azyGit)',                       mode = 'n' },
+    -- { '<leader>gl',      mappfunc.tmuxLazyGit,                   desc = '[G]it ([L]azyGit)',                       mode = 'n' },
 
     -- Make
     { '<leader>m',       group = '[M]ake' },
