@@ -6,6 +6,19 @@ Based on [Kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim.
 
 These are the most important ones though.
 
+### Exiting NeoVim
+
+typing `:q!` or `:qwa!` to close buffers or vim is slow. These shortcuts are an alternative to that.
+(all sequences here require `shift` to be held)
+
+| Sequence | Description                        |
+| :------- | :--------------------------------- |
+| `ZZ`     | as per default: closes a buffer    |
+| `ZD`     | delete the current buffer (`:bd!`) |
+| `ZW`     | write/save and close all Buffers   |
+| `ZA`     | close all buffers, without saving  |
+
+
 ### Leader based maps
 
 the leader key is `<space>` as per [Kickstart.nvim's](https://github.com/nvim-lua/kickstart.nvim). default.
@@ -33,7 +46,6 @@ the window layout)
 | `<leader>pw` | [P]roject find [W]ord under cursor |
 | `<leader>pt` | [P]roject find [T]ag (aka. Symbol) |
 
-
 #### Leader G >= Git
 
 | Sequence     | Description                        |
@@ -43,7 +55,6 @@ the window layout)
 | `<leader>gn` | [G]it [N]ext changed Block         |
 | `<leader>gp` | [G]it [P]revious changed Block     |
 | `<leader>gd` | [G]it show [D]iff of changed Block |
-
 
 #### Leader F >= Anything that has to do with [F]iles or [F]inding stuff
 
@@ -94,7 +105,6 @@ If the Makefile defines a `run`, `clean` or `dev` task, you can trigger them fro
 | `<leader>mr` | [M]ake [R]un           |
 | `<leader>mc` | [M]ake [C]lean         |
 | `<leader>md` | [M]ake [D]ev           |
-
 
 ### Debugger keys
 

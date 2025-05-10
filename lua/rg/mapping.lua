@@ -66,15 +66,12 @@ whichkey.add({
 	{ '<leader>fn',      '<cmd>NERDTreeToggle<cr>',                       desc = '[F]files ([N]erdTree)',                   mode = 'n' },
 
 	-- Git
-	-- { '<leader>g',       group = '[G]it' },
+	{ '<leader>g',       group = '[G]it' },
 	{ '<leader>gf',      telescope_builtin.git_files,                     desc = 'Search [G]it [F]iles',                    mode = 'n' },
 	{ '<leader>gb',      mappfunc.gitBlameLine,                           desc = '[G]it [B]lame line',                      mode = 'n' },
 	{ '<leader>gn',      '<cmd>Gitsigns next_hunk<cr>',                   desc = '[G]it [N]ext changed Block',              mode = 'n' },
 	{ '<leader>gp',      '<cmd>Gitsigns prev_hunk<cr>',                   desc = '[G]it [P]revious changed Block',          mode = 'n' },
 	{ '<leader>gd',      '<cmd>Gitsigns preview_hunk_inline<cr>',         desc = '[G]it [D]iff Changed Block',              mode = 'n' },
-
-	-- { '<leader>gd',      gs.toggle_deleted,                      desc = '[G]it show [D]eleted',                    mode = 'n' },
-	-- { '<leader>gl',      mappfunc.tmuxLazyGit,                   desc = '[G]it ([L]azyGit)',                       mode = 'n' },
 
 	-- Make
 	{ '<leader>m',       group = '[M]ake' },
