@@ -269,12 +269,11 @@ vim.api.nvim_create_autocmd("BufEnter", {
 --============================================================================]]
 vim.cmd [[
 
-    nnoremap M m
-    nnoremap m `
+	nnoremap M m
+	nnoremap m `
 
-    map q <nop>
-    nnoremap s @
-    nnoremap Q q
+	map q <nop>
+	nnoremap s @
+	nnoremap Q q
 
-"    nnoremap gg ggzz
 ]]
