@@ -65,6 +65,7 @@ whichkey.add({
 	{ '<leader>gn',      '<cmd>Gitsigns next_hunk<cr>',                   desc = '[G]it [N]ext changed Block',              mode = 'n' },
 	{ '<leader>gp',      '<cmd>Gitsigns prev_hunk<cr>',                   desc = '[G]it [P]revious changed Block',          mode = 'n' },
 	{ '<leader>gd',      '<cmd>Gitsigns preview_hunk_inline<cr>',         desc = '[G]it [D]iff Changed Block',              mode = 'n' },
+	{ '<leader>gs',      '<cmd>Gitsigns stage_hunk<cr>',                  desc = '[G]it [S]tage Hunk',                      mode = 'n' },
 
 	-- Make
 	{ '<leader>m',       group = '[M]ake' },

@@ -55,6 +55,7 @@ the window layout)
 | `<leader>gn` | [G]it [N]ext changed Block         |
 | `<leader>gp` | [G]it [P]revious changed Block     |
 | `<leader>gd` | [G]it show [D]iff of changed Block |
+| `<leader>gs` | [G]it [S]tage changed Block     |
 
 #### Leader F >= Anything that has to do with [F]iles or [F]inding stuff
 
