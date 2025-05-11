@@ -5,13 +5,6 @@ local telescope_builtin = require('telescope.builtin');
 local gs = package.loaded.gitsigns
 
 whichkey.add({
-	-- Tab Navigation
-	{ '<Tab>',           group = '[GUI Tab]' },
-	{ '<Tab>n',          'gt',                                            desc = '[Tab] next',                              mode = 'n' },
-	{ '<Tab>p',          'gT',                                            desc = '[Tab] previous',                          mode = 'n' },
-	{ '<M-n>',           'gt',                                            mode = 'n' },
-	{ '<M-p>',           'gT',                                            mode = 'n' },
-
 
 	-- Code
 	{ '<leader>c',       group = '[C]ode' },
