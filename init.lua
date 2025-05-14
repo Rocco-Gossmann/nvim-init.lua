@@ -710,7 +710,7 @@ require('lazy').setup({
       completion = {
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
-        documentation = { auto_show = false, auto_show_delay_ms = 500 },
+        documentation = { auto_show = true, auto_show_delay_ms = 250 },
       },
 
       sources = {
@@ -735,7 +735,6 @@ require('lazy').setup({
       signature = { enabled = true },
     },
   },
-
   {
     'rose-pine/neovim',
     name = 'rose-pine',
@@ -768,7 +767,6 @@ require('lazy').setup({
       require('mini.ai').setup { n_lines = 500 }
 
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
-      --
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
