@@ -25,9 +25,12 @@ vim.opt.mouse = 'a'
 
 -- Folding options
 vim.opt.foldlevelstart = 99
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
+vim.opt.foldmethod = "marker"
+vim.opt.foldmarker = "{,}"
+
+-- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4

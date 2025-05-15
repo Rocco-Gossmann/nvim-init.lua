@@ -58,6 +58,9 @@ whichkey.add({
 	{ '<leader>fg',      mappfunc.fuzzySearchInBuffer,                    desc = '[F]ile [G]rep',                           mode = 'n' },
 	{ '<leader>fn',      '<cmd>NERDTreeToggle<cr>',                       desc = '[F]files ([N]erdTree)',                   mode = 'n' },
 
+	-- Folding
+	{ 'zM',              "<cmd>set foldlevel=1<cr>",                      desc = "collaps all but first level",             mode = 'n' },
+
 	-- Git
 	{ '<leader>g',       group = '[G]it' },
 	{ '<leader>gf',      telescope_builtin.git_files,                     desc = 'Search [G]it [F]iles',                    mode = 'n' },
