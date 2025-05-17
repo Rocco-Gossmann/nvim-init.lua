@@ -38,6 +38,8 @@ whichkey.add({
 	{ 'ZW',              '<cmd>wqa!<cr>',                                 desc = 'close all buffers (save all files)' },
 	{ 'ZA',              '<cmd>qa!<cr>',                                  desc = 'close all buffers (ignore unsaved)' },
 
+	{ '<leader>e',      vim.diagnostic.open_float,                    desc = 'show [E]rrors and Warnings',                       mode = 'n' },
+
 	-- Project
 	{ '<leader>p',       group = '[P]roject' },
 	{ '<leader>pf',      telescope_builtin.find_files,                    desc = '[P]roject [F]iles',                       mode = 'n' },
