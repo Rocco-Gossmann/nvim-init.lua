@@ -39,6 +39,7 @@ whichkey.add({
 	{ 'ZA',              '<cmd>qa!<cr>',                                  desc = 'close all buffers (ignore unsaved)' },
 
 	{ '<leader>e',      vim.diagnostic.open_float,                    desc = 'show [E]rrors and Warnings',                       mode = 'n' },
+	{ '<leader>#',      '<cmd>e#<cr>',                    desc = 'alt+tab files',                       mode = 'n' },
 
 	-- Project
 	{ '<leader>p',       group = '[P]roject' },
