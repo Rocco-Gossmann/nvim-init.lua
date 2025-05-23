@@ -38,8 +38,8 @@ whichkey.add({
 	{ 'ZW',              '<cmd>wqa!<cr>',                                 desc = 'close all buffers (save all files)' },
 	{ 'ZA',              '<cmd>qa!<cr>',                                  desc = 'close all buffers (ignore unsaved)' },
 
-	{ '<leader>e',      vim.diagnostic.open_float,                    desc = 'show [E]rrors and Warnings',                       mode = 'n' },
-	{ '<leader>#',      '<cmd>e#<cr>',                    desc = 'alt+tab files',                       mode = 'n' },
+	{ '<leader>e',       vim.diagnostic.open_float,                       desc = 'show [E]rrors and Warnings',              mode = 'n' },
+	{ '<leader>#',       '<cmd>e#<cr>',                                   desc = 'alt+tab files',                           mode = 'n' },
 
 	-- Project
 	{ '<leader>p',       group = '[P]roject' },
@@ -72,6 +72,9 @@ whichkey.add({
 	{ '<leader>gp',      '<cmd>Gitsigns prev_hunk<cr>',                   desc = '[G]it [P]revious changed Block',          mode = 'n' },
 	{ '<leader>gd',      '<cmd>Gitsigns preview_hunk_inline<cr>',         desc = '[G]it [D]iff Changed Block',              mode = 'n' },
 	{ '<leader>gs',      '<cmd>Gitsigns stage_hunk<cr>',                  desc = '[G]it [S]tage Hunk',                      mode = 'n' },
+	{ '<leader>gl',      '<cmd>!tmux new-window "lazygit"<cr>',           desc = '[G]it [L]azygit',                         mode = 'n' },
+	{ '<leader>lg',      '<cmd>!tmux new-window "lazygit"<cr>',           desc = '[L]azy[G]it',                             mode = 'n' },
+
 
 	-- Make
 	{ '<leader>m',       group = '[M]ake' },
