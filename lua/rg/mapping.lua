@@ -11,6 +11,8 @@ whichkey.add({
 	{ '<leader>cr',      vim.lsp.buf.rename,                              desc = '[C]ode [R]ename',                         mode = 'n' },
 	{ '<leader>cd',      '<cmd>Neogen<cr>',                               desc = '[C]ode [D]ocument',                       mode = 'n' },
 	{ '<leader>ca',      mappfunc.codeAction,                             desc = '[C]ode [A]ction',                         mode = { 'n', 'x' } },
+	{ '<leader>cc',      '<cmd>norm gcc<cr>',                             desc = '[C]ode [C]omment',                        mode = { 'n' } },
+	{ '<leader>cc',      '<cmd>norm gc<cr>',                              desc = '[C]ode [C]omment',                        mode = { 'x' } },
 
 	{ '<leader>cl',      group = '[C]ode [L]sp' },
 	{ '<leader>clr',     '<cmd>LspRestart<cr>',                           desc = '[C]ode [L]sp [R]estart',                  mode = 'n' },
