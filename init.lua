@@ -750,9 +750,26 @@ require('lazy').setup({
         },
       })
 
-      vim.cmd 'colorscheme rose-pine'
-      vim.cmd 'hi Whitespace guifg=#282828'
+      -- vim.cmd 'colorscheme rose-pine'
+      -- vim.cmd 'hi Whitespace guifg=#282828'
     end,
+  },
+
+  {
+    "polirritmico/monokai-nightasty.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function ()
+
+      require("monokai-nightasty").setup({
+        dark_style_background="transparent"
+      })
+
+      vim.cmd 'colorscheme monokai-nightasty'
+      vim.cmd 'hi Whitespace guifg=#606060'
+
+    end
+
   },
 
   -- Highlight todo, notes, etc in comments

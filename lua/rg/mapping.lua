@@ -21,7 +21,7 @@ whichkey.add({
 	{ '<leader>q',       group = '[Q]uicklist' },
 	{ '<leader>qn',      '<cmd>cn<cr>',                                   desc = '[Q]uicklist [N]ext' },
 	{ '<leader>qp',      '<cmd>cp<cr>',                                   desc = '[Q]uicklist [P]revious' },
-	{ '<leader>qc',      '<cmd>cc<cr>',                                   desc = '[Q]uicklist [C]lose' },
+	{ '<leader>qc',      '<cmd>cclose<cr>',                               desc = '[Q]uicklist [C]lose' },
 
 	-- Exlorer
 	{ '<C-n>',           '<cmd>NERDTreeToggle<cr>',                       mode = 'n' },
