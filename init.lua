@@ -213,7 +213,7 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
 
-      numhl=true,
+      numhl = true,
     },
   },
 
@@ -714,12 +714,18 @@ require('lazy').setup({
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
         documentation = { auto_show = true, auto_show_delay_ms = 250 },
+        completion = { auto_show = true, auto_show_delay_ms = 250 }
       },
 
       sources = {
         default = { 'lsp', 'path', 'snippets', 'lazydev' },
+        per_filetype = {
+          sql = { 'snippets', 'dadbod', 'buffer' },
+          mysql = { 'dadbod' },
+        },
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+          dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
         },
       },
 
@@ -759,15 +765,13 @@ require('lazy').setup({
     "polirritmico/monokai-nightasty.nvim",
     lazy = false,
     priority = 1000,
-    config = function ()
-
+    config = function()
       require("monokai-nightasty").setup({
-        dark_style_background="transparent"
+        dark_style_background = "transparent"
       })
 
       vim.cmd 'colorscheme monokai-nightasty'
       vim.cmd 'hi Whitespace guifg=#606060'
-
     end
 
   },
