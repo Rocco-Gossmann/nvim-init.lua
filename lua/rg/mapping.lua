@@ -19,8 +19,9 @@ whichkey.add({
 
 	-- Qucklist
 	{ '<leader>q',       group = '[Q]uicklist' },
-	{ '<leader>qn',      '<cmd>cn<cr>',                                   desc = '[Q]uicklist [N]ext' },
-	{ '<leader>qp',      '<cmd>cp<cr>',                                   desc = '[Q]uicklist [P]revious' },
+	{ '<leader>qd',      vim.diagnostic.setloclist,                       desc = '[Q]uicklist [D]iagnostics' },
+	{ '<leader>qn',      '<cmd>cnext<cr>',                                desc = '[Q]uicklist [N]ext' },
+	{ '<leader>qp',      '<cmd>cprevious<cr>',                            desc = '[Q]uicklist [P]revious' },
 	{ '<leader>qc',      '<cmd>cclose<cr>',                               desc = '[Q]uicklist [C]lose' },
 
 	-- Exlorer
