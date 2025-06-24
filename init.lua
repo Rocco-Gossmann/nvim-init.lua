@@ -67,7 +67,7 @@ vim.opt.termguicolors = true
 vim.opt.colorcolumn = "80,120"
 vim.opt.nrformats:append("alpha")
 
-vim.opt.grepprg = "rg -n -i --ignore-file .rgignore $* /dev/null"
+vim.opt.grepprg = "rg -n -s --ignore-file .rgignore $* /dev/null"
 vim.opt.conceallevel = 1
 vim.opt.wrap = false
 
