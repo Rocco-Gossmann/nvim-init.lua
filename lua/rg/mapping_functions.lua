@@ -56,6 +56,8 @@ return {
         dapui.eval();
     end,
 
-    tmuxLazyGit       = "<cmd>!tmux new-window \'lazygit\'<cr>",
+    tmuxLazyGit       = "<cmd>!tmux display-popup -w90\\% -h95\\% -E \'lazygit\'<cr>",
+    tmuxLazyDocker    = "<cmd>!tmux display-popup -w90\\% -h95\\% -E \'lazydocker\'<cr>",
+    tmuxLazySQL       = "<cmd>!tmux display-popup -w90\\% -h95\\% -E \'lazysql\'<cr>",
 
 }

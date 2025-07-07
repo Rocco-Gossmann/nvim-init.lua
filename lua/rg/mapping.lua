@@ -75,9 +75,12 @@ whichkey.add({
 	{ '<leader>gp',      '<cmd>Gitsigns prev_hunk<cr>',                   desc = '[G]it [P]revious changed Block',          mode = 'n' },
 	{ '<leader>gd',      '<cmd>Gitsigns preview_hunk_inline<cr>',         desc = '[G]it [D]iff Changed Block',              mode = 'n' },
 	{ '<leader>gs',      '<cmd>Gitsigns stage_hunk<cr>',                  desc = '[G]it [S]tage Hunk',                      mode = 'n' },
-	{ '<leader>gl',      '<cmd>!tmux new-window "lazygit"<cr>',           desc = '[G]it [L]azygit',                         mode = 'n' },
-	{ '<leader>lg',      '<cmd>!tmux new-window "lazygit"<cr>',           desc = '[L]azy[G]it',                             mode = 'n' },
+	{ '<leader>gl',      mappfunc.tmuxLazyGit,                            desc = '[G]it [L]azygit',                         mode = 'n' },
 
+	-- Launch
+	{ '<leader>lg',      mappfunc.tmuxLazyGit,                            desc = '[L]aunch Lazy[G]it',                      mode = 'n' },
+	{ '<leader>ld',      mappfunc.tmuxLazyDocker,                         desc = '[L]aunch Lazy[D]ocker',                   mode = 'n' },
+	{ '<leader>ls',      mappfunc.tmuxLazySQL,                            desc = '[L]aunch Lazy[S]QL',                      mode = 'n' },
 
 	-- Make
 	{ '<leader>m',       group = '[M]ake' },
