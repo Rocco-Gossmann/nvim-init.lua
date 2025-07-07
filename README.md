@@ -118,6 +118,56 @@ If the Makefile defines a `run`, `clean` or `dev` task, you can trigger them fro
 | `<f12>`  | step out          |
 | `<f8>`   | stop debugger     |
 
+
+## Some usefull lua scripts.
+
+### PHP-Debugging
+```lua
+dap.adapters.php = {
+  type = 'executable',
+  command = 'node',
+  args = { env.confdir .. '/lua/rg/custom/vscode-php-debug/out/phpDebug.js' }
+}
+
+dap.defaults.php.exception_breakpoints = { "Notice", "Warning", "Error", "Exception" }
+```
+
+### TaskRunner Scripts
+```lua
+return {
+
+	-- <c-v>Esc = print escape char
+
+	{
+		label = "New Bookmark Comment",
+		action = "o//78a=o BM: o78a=kA ",
+	},
+
+	{
+		label = "PHP: to Error log",
+		action = "oerror_log(var_export([], true));8hi",
+	},
+
+	{
+		label = "Curly { to Square [",
+		action = "csB]",
+	},
+
+	{
+		label = "DBUI: table head 2 insert",
+		action = "0v$:s/\\(\\s*\\)|\\(\\s*\\)/`\\1, \\2`/g0vt`d$vF,dv0S)"
+	},
+
+	{
+		label = "DBUI: table row 2 insert",
+		action = "0v$:s/\\(\\s*\\)|\\(\\s*\\)/'\\1, \\2'/g0vt'd$vF,dv0S)"
+	}
+}
+```
+
+
+# original kickstart.nvim
+
 ## Introduction
 
 A starting point for Neovim that is:

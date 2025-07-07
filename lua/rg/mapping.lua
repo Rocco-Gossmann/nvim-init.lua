@@ -2,7 +2,6 @@ local whichkey = require("which-key")
 local mappfunc = require("rg.mapping_functions");
 local templates = require("rg.template");
 local telescope_builtin = require('telescope.builtin');
-local gs = package.loaded.gitsigns
 
 whichkey.add({
 
