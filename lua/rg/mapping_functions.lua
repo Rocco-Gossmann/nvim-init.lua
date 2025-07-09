@@ -60,4 +60,16 @@ return {
     tmuxLazyDocker    = "<cmd>!tmux display-popup -w90\\% -h95\\% -E \'lazydocker\'<cr>",
     tmuxLazySQL       = "<cmd>!tmux display-popup -w90\\% -h95\\% -E \'lazysql\'<cr>",
 
+	lspRestart = function(pattern, lspnames)
+
+		vim.api.nvim_create_autocmd("BufEnter", { 
+			pattern = pattern,
+			callback = function()
+				vim.keymap.set({ 'n' }, '<leader>clr', '<cmd>LspRestart '..lspnames..'<cr>', { desc = '[C]ode [L]sp [R]estart' });
+			end
+		})
+
+	end
+
+
 }

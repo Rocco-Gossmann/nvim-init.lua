@@ -189,6 +189,11 @@ vim.keymap.set({ "n" }, "<C-j>", "<cmd>TmuxNavigateDown<cr>", silnor)
 vim.keymap.set({ "n" }, "<C-k>", "<cmd>TmuxNavigateUp<cr>", silnor)
 vim.keymap.set({ "n" }, "<C-l>", "<cmd>TmuxNavigateRight<cr>", silnor)
 
+--[[============================================================================
+-- LanguageServer restart per Filetype
+--============================================================================]]
+mappfunc.lspRestart({ "*.php" }       , "intelephense phpactor")
+mappfunc.lspRestart({ "*.js", "*.ts" }, "ts_ls")
 
 --
 -- Keymaps, that differ per FileType (Due to differennt technics and binaries being used)
@@ -217,32 +222,40 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	end
 })
 
--- Template code
 vim.api.nvim_create_autocmd("BufEnter", {
 	pattern = { "*.php" },
 	callback = function()
+
 		whichkey.add({
 			{ "§c", function() templates.handlePHP("class") end,     mode = { "n" }, desc = "PHP-Class" },
 			{ "§t", function() templates.handlePHP("trait") end,     mode = { "n" }, desc = "PHP-Trait" },
 			{ "§i", function() templates.handlePHP("interface") end, mode = { "n" }, desc = "PHP-Interface" },
 		})
+
 	end
 })
+
+
+
 
 -- Format before Save
 -- remove trailing whitespaces
 vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = { "*.php", "*.js", "*.css", "*.go", "*.sql" },
+	pattern = { "*.php", "*.js", "*.css", "*.go", "*.sql", "*.lua" },
 	callback = function()
+
 		vim.cmd.normal("Mz")
 		vim.cmd("%s/\\s\\+$//ge")
 		vim.cmd.normal("mz")
+
+
 	end
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = { "*.go", "*.hpp", "*.h", "*.cpp", "*.c", "*.tmpl" },
 	callback = function()
+
 		vim.lsp.buf.format()
 	end
 })
@@ -250,6 +263,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = { "*.go" },
 	callback = function()
+
 		vim.lsp.buf.code_action { context = { only = { 'source.organizeImports' } }, apply = true }
 		vim.lsp.buf.code_action { context = { only = { 'source.fixAll' } }, apply = true }
 	end,
