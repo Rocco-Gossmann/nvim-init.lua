@@ -241,7 +241,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 -- Format before Save
 -- remove trailing whitespaces
 vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = { "*.php", "*.js", "*.css", "*.go", "*.sql", "*.lua" },
+	pattern = { "*.php", "*.js", "*.css", "*.go", "*.sql", "*.lua", "*.tpl" },
 	callback = function()
 
 		vim.cmd.normal("Mz")

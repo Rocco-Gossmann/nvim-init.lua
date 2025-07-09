@@ -56,9 +56,9 @@ return {
         dapui.eval();
     end,
 
-    tmuxLazyGit       = "<cmd>!tmux display-popup -w90\\% -h95\\% -E \'lazygit\'<cr>",
-    tmuxLazyDocker    = "<cmd>!tmux display-popup -w90\\% -h95\\% -E \'lazydocker\'<cr>",
-    tmuxLazySQL       = "<cmd>!tmux display-popup -w90\\% -h95\\% -E \'lazysql\'<cr>",
+    tmuxLazyGit       = "<cmd>!tmux new-window \'lazygit\'<cr>",
+    tmuxLazyDocker    = "<cmd>!tmux new-window \'lazydocker\'<cr>",
+    tmuxLazySQL       = "<cmd>!tmux new-window \'lazysql\'<cr>",
 
 	lspRestart = function(pattern, lspnames)
 
