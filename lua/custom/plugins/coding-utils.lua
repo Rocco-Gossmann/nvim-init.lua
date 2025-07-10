@@ -57,6 +57,7 @@ return {
 	-- FIX:
 	-- WARNING:
 	-- PERF:
+	--
 	-- ----------------------------------------------------------------------]]
 	{
 		"folke/todo-comments.nvim",
@@ -67,5 +68,34 @@ return {
 			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
 		}
+	},
+
+	-- inline - closing bracket context
+	{
+		'code-biscuits/nvim-biscuits',
+		dependencies = { 'nvim-treesitter/nvim-treesitter', },
+		config = function()
+			require('nvim-biscuits').setup({
+				default_config = {
+					max_length = 24,
+					min_distance = 2,
+					prefix_string = " 📎 ",
+					cursor_line_only = true
+				},
+				language_config = {
+					html = {
+						prefix_string = " 🌐 "
+					},
+					javascript = {
+						prefix_string = " ✨ ",
+						max_length = 80
+					},
+					python = {
+						disabled = true
+					}
+				}
+			})
+		end
 	}
+
 }
