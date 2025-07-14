@@ -118,11 +118,16 @@ whichkey.add({
 	{ '§w',              templates.newTmuxWorkspace,                      desc = 'TMUX-[W]orkspace',                        mode = 'n' },
 
 	-- Misc
-	{ '<leader><Tab>',   '<cmd>ZenMode<cr>',                              desc = 'Zen Mode',                                mode = 'n' },
-	{ '<leader>b',       '<cmd>BM<cr>',                                   desc = '[B]ookmarks',                             mode = 'n' },
-	{ '<leader>t',       '<cmd>TR<cr>',                                   desc = '[T]ask Runner',                           mode = 'n' },
 	{ '<leader><space>', telescope_builtin.buffers,                       desc = '[ ] Find existing buffers',               mode = 'n' },
 	-- { '<leader>n',       '<cmd>NERDTreeToggle<cr>',              desc = 'Files',                              mode = 'n' },
+
+	-- Toggle
+	{ '<leader>t',       group = "[T]toggle" },
+	{ '<leader>tr',      '<cmd>TR<cr>',                                   desc = '[T]ask [R]unner',                         mode = 'n' },
+	{ '<leader>tb',      '<cmd>BM<cr>',                                   desc = '[T]o   [B]ookmarks',                      mode = 'n' },
+	{ '<leader>tt',      '<cmd>Twilight<cr>',                             desc = '[T]oggle [T]wilight',                     mode = 'n' },
+	{ '<leader>tz',      '<cmd>ZenMode<cr>',                              desc = '[T]oggle [Z]en-mode',                                mode = 'n' },
+
 
 })
 
