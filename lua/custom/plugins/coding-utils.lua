@@ -36,15 +36,10 @@ return {
 	},
 
 	-- [[----------------------------------------------------------------------
-	-- GitHub-Copilot like AI
-	-- ----------------------------------------------------------------------]]
-	-- 'Exafunction/codeium.vim',
-
-
-	-- [[----------------------------------------------------------------------
 	-- better surround, than what I can muster
 	-- ----------------------------------------------------------------------]]
 	'tpope/vim-surround',
+	'Matt-A-Bennett/vim-surround-funk',
 
 	-- supplementary to surround
 	'tpope/vim-repeat',
