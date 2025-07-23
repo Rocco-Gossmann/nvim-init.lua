@@ -300,4 +300,6 @@ vim.cmd [[
 	nnoremap s @
 	nnoremap Q q
 
+	nnoremap <C-p> <C-i>
+
 ]]
