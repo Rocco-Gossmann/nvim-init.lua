@@ -124,9 +124,10 @@ whichkey.add({
 	-- Toggle
 	{ '<leader>t',       group = "[T]toggle" },
 	{ '<leader>tr',      '<cmd>TR<cr>',                                   desc = '[T]ask [R]unner',                         mode = 'n' },
-	{ '<leader>tb',      '<cmd>BM<cr>',                                   desc = '[T]o   [B]ookmarks',                      mode = 'n' },
+	{ '<leader>tb',      '<cmd>BM<cr>',                                   desc = '[T]o [B]ookmarks',                        mode = 'n' },
 	{ '<leader>tt',      '<cmd>Twilight<cr>',                             desc = '[T]oggle [T]wilight',                     mode = 'n' },
 	{ '<leader>tz',      '<cmd>ZenMode<cr>',                              desc = '[T]oggle [Z]en-mode',                     mode = 'n' },
+	{ '<leader>tm',      '<cmd>MonokaiToggleLight<cr>',                   desc = '[T]oggle [M]onokai-Theme',                mode = 'n' },
 
 
 })
@@ -298,5 +299,7 @@ vim.cmd [[
 	map q <nop>
 	nnoremap s @
 	nnoremap Q q
+
+	nnoremap <C-p> <C-i>
 
 ]]

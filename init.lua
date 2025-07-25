@@ -771,11 +771,12 @@ require('lazy').setup({
     priority = 1000,
     config = function()
       require("monokai-nightasty").setup({
-        dark_style_background = "transparent"
+        dark_style_background = "transparent",
+        light_style_background = "transparent"
       })
 
       vim.cmd 'colorscheme monokai-nightasty'
-      vim.cmd 'hi Whitespace guifg=#606060'
+      -- vim.cmd 'hi Whitespace guifg=#606060'
     end
 
   },
