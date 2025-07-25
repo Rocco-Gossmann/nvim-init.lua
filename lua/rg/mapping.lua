@@ -126,7 +126,7 @@ whichkey.add({
 	{ '<leader>tr',      '<cmd>TR<cr>',                                   desc = '[T]ask [R]unner',                         mode = 'n' },
 	{ '<leader>tb',      '<cmd>BM<cr>',                                   desc = '[T]o   [B]ookmarks',                      mode = 'n' },
 	{ '<leader>tt',      '<cmd>Twilight<cr>',                             desc = '[T]oggle [T]wilight',                     mode = 'n' },
-	{ '<leader>tz',      '<cmd>ZenMode<cr>',                              desc = '[T]oggle [Z]en-mode',                                mode = 'n' },
+	{ '<leader>tz',      '<cmd>ZenMode<cr>',                              desc = '[T]oggle [Z]en-mode',                     mode = 'n' },
 
 
 })
@@ -159,14 +159,14 @@ vim.keymap.set({ 'n' }, '<C-/>', '/\\c')
 --[[============================================================================
 -- Lsp
 --============================================================================]]
-vim.keymap.set({ "n" }, '<S-h>', function() vim.lsp.buf.hover() end, { desc = 'Hover Documentation' });
-vim.keymap.set({ "n" }, '<leader>gh', function() vim.lsp.buf.hover() end, { desc = 'Hover Documentation' });
-vim.keymap.set({ "n" }, '<S-k>', function() vim.lsp.buf.signature_help() end, { desc = 'Signature Documentation' });
+vim.keymap.set({ 'n' }, '<S-h>', function() vim.lsp.buf.hover() end, { desc = 'Hover Documentation' });
+vim.keymap.set({ 'n' }, '<leader>gh', function() vim.lsp.buf.hover() end, { desc = 'Hover Documentation' });
+vim.keymap.set({ 'n' }, '<S-k>', function() vim.lsp.buf.signature_help() end, { desc = 'Signature Documentation' });
 vim.keymap.set({ 'n' }, 'gd', telescope_builtin.lsp_definitions, { desc = '[G]oto [D]efinition' })
 vim.keymap.set({ 'n' }, 'gr', telescope_builtin.lsp_references, { desc = '[G]oto [R]eferences' })
-vim.keymap.set({ 'n' }, 'gI', telescope_builtin.lsp_implementations, { desc = '[G]oto [I]mplementation' })
+vim.keymap.set({ 'n' }, 'gi', telescope_builtin.lsp_implementations, { desc = '[G]oto [I]mplementation' })
 vim.keymap.set({ 'n' }, 'gD', vim.lsp.buf.declaration, { desc = '[G]oto [D]eclaration' })
-
+vim.keymap.set({ 'n' }, 'gtd', telescope_builtin.lsp_type_definitions, { desc = '[G]oto [T]ype Definition' })
 
 
 whichkey.add({
