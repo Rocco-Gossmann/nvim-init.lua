@@ -1,5 +1,9 @@
 local mappfunc = require("rg.mapping_functions");
 
+vim.filetype.add({ extension = { templ = "templ" } })
+vim.filetype.add({ extension = { sql = "mysql" } })
+vim.filetype.add({ extension = { ini = "toml" } })
+vim.filetype.add({ extension = { html = "tpl" } })
 --[[============================================================================
 -- LanguageServer restart per Filetype
 --============================================================================]]
