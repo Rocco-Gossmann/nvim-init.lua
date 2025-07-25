@@ -1,3 +1,5 @@
+require "rg.globals"
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 

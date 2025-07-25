@@ -1,11 +1,3 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
--- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = true
-
-vim.g.zig_fmt_autosave = 0
-vim.g.tmux_navigator_no_mappings = 1
 
 vim.opt.winborder = "rounded"
 
