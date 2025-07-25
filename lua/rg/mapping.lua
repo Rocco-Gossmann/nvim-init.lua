@@ -1,295 +1,188 @@
+-- [[ Basic Keymaps ]]
+--  See `:help vim.keymap.set()`
+
 local whichkey = require("which-key")
 local mappfunc = require("rg.mapping_functions");
 local templates = require("rg.template");
 local telescope_builtin = require('telescope.builtin');
 
+--[[============================================================================
+-- Common Keymaps:
+-- -----------------------------------------------------------------------------
+-- these are some rempas, that, for some reason don't work when configured any
+-- other way
+--============================================================================]]
+
 whichkey.add({
 
 	-- Code
 	{ '<leader>c',       group = '[C]ode' },
-	{ '<leader>cr',      vim.lsp.buf.rename,                              desc = '[C]ode [R]ename',                         mode = 'n' },
-	{ '<leader>cd',      '<cmd>Neogen<cr>',                               desc = '[C]ode [D]ocument',                       mode = 'n' },
-	{ '<leader>ca',      mappfunc.codeAction,                             desc = '[C]ode [A]ction',                         mode = { 'n', 'x' } },
-	{ '<leader>cc',      '<cmd>norm gcc<cr>',                             desc = '[C]ode [C]omment',                        mode = { 'n' } },
-	{ '<leader>cc',      '<cmd>norm gc<cr>',                              desc = '[C]ode [C]omment',                        mode = { 'x' } },
+	{ '<leader>cr',      vim.lsp.buf.rename,                                desc = '[C]ode [R]ename',                         mode = 'n' },
+	{ '<leader>cd',      '<cmd>Neogen<cr>',                                 desc = '[C]ode [D]ocument',                       mode = 'n' },
+	{ '<leader>ca',      mappfunc.codeAction,                               desc = '[C]ode [A]ction',                         mode = { 'n', 'x' } },
+	{ '<leader>cc',      '<cmd>norm gcc<cr>',                               desc = '[C]ode [C]omment',                        mode = { 'n' } },
+	{ '<leader>cc',      '<cmd>norm gc<cr>',                                desc = '[C]ode [C]omment',                        mode = { 'x' } },
 
 	{ '<leader>cl',      group = '[C]ode [L]sp' },
-	{ '<leader>clr',     '<cmd>LspRestart<cr>',                           desc = '[C]ode [L]sp [R]estart',                  mode = 'n' },
+	{ '<leader>clr',     '<cmd>LspRestart<cr>',                             desc = '[C]ode [L]sp [R]estart',                  mode = 'n' },
 
 	-- Qucklist
 	{ '<leader>q',       group = '[Q]uicklist' },
-	{ '<leader>qd',      vim.diagnostic.setloclist,                       desc = '[Q]uicklist [D]iagnostics' },
-	{ '<leader>qn',      '<cmd>cnext<cr>',                                desc = '[Q]uicklist [N]ext' },
-	{ '<leader>qp',      '<cmd>cprevious<cr>',                            desc = '[Q]uicklist [P]revious' },
-	{ '<leader>qc',      '<cmd>cclose<cr>',                               desc = '[Q]uicklist [C]lose' },
+	{ '<leader>qd',      vim.diagnostic.setloclist,                         desc = '[Q]uicklist [D]iagnostics' },
+	{ '<leader>qn',      '<cmd>cnext<cr>',                                  desc = '[Q]uicklist [N]ext' },
+	{ '<leader>qp',      '<cmd>cprevious<cr>',                              desc = '[Q]uicklist [P]revious' },
+	{ '<leader>qc',      '<cmd>cclose<cr>',                                 desc = '[Q]uicklist [C]lose' },
 
 	-- Exlorer
-	{ '<C-n>',           '<cmd>NERDTreeToggle<cr>',                       mode = 'n' },
+	{ '<C-n>',           '<cmd>NERDTreeToggle<cr>',                         mode = 'n' },
 	{ 'E',               group = '[E]xplorer' },
-	{ 'EE',              '<cmd>e .<cr>',                                  desc = '[E]xplorer in place',                     mode = 'n' },
-	{ 'EL',              '<cmd>vs<cr><C-w>l<cmd>e .<cr>',                 desc = '[E]xplorer right',                        mode = 'n' },
-	{ 'EH',              '<cmd>vs .<cr>',                                 desc = '[E]xplorer left',                         mode = 'n' },
-	{ 'EJ',              '<cmd>sp<cr><C-w>j<cmd>e .<cr>',                 desc = '[E]xplorer bottom',                       mode = 'n' },
-	{ 'EK',              '<cmd>sp .<cr>',                                 desc = '[E]xplorer top',                          mode = 'n' },
-	{ 'ET',              '<cmd>tabnew .<cr>',                             desc = '[E]xplorer [t]ab',                        mode = 'n' },
+	{ 'EE',              '<cmd>e .<cr>',                                    desc = '[E]xplorer in place',                     mode = 'n' },
+	{ 'EL',              '<cmd>vs<cr><C-w>l<cmd>e .<cr>',                   desc = '[E]xplorer right',                        mode = 'n' },
+	{ 'EH',              '<cmd>vs .<cr>',                                   desc = '[E]xplorer left',                         mode = 'n' },
+	{ 'EJ',              '<cmd>sp<cr><C-w>j<cmd>e .<cr>',                   desc = '[E]xplorer bottom',                       mode = 'n' },
+	{ 'EK',              '<cmd>sp .<cr>',                                   desc = '[E]xplorer top',                          mode = 'n' },
+	{ 'ET',              '<cmd>tabnew .<cr>',                               desc = '[E]xplorer [t]ab',                        mode = 'n' },
 
 	-- Close commands
 	-- ZZ => Close current (default mapping)
-	{ 'ZZ',              '<cmd>q<cr>',                                    desc = 'Close current buffer (warn if not saved)' },
-	{ 'ZD',              '<cmd>bd!<cr>',                                  desc = 'remove current buffer (ignore unsaved)' },
-	{ 'ZW',              '<cmd>wqa!<cr>',                                 desc = 'close all buffers (save all files)' },
-	{ 'ZA',              '<cmd>qa!<cr>',                                  desc = 'close all buffers (ignore unsaved)' },
+	{ 'ZZ',              '<cmd>q<cr>',                                      desc = 'Close current buffer (warn if not saved)' },
+	{ 'ZD',              '<cmd>bd!<cr>',                                    desc = 'remove current buffer (ignore unsaved)' },
+	{ 'ZW',              '<cmd>wqa!<cr>',                                   desc = 'close all buffers (save all files)' },
+	{ 'ZA',              '<cmd>qa!<cr>',                                    desc = 'close all buffers (ignore unsaved)' },
 
-	{ '<leader>e',       vim.diagnostic.open_float,                       desc = 'show [E]rrors and Warnings',              mode = 'n' },
-	{ '<leader>#',       '<cmd>e#<cr>',                                   desc = 'alt+tab files',                           mode = 'n' },
+	{ '<leader>e',       vim.diagnostic.open_float,                         desc = 'show [E]rrors and Warnings',              mode = 'n' },
+	{ '<leader>#',       '<cmd>e#<cr>',                                     desc = 'alt+tab files',                           mode = 'n' },
 
 	-- Project
 	{ '<leader>p',       group = '[P]roject' },
-	{ '<leader>pf',      telescope_builtin.find_files,                    desc = '[P]roject [F]iles',                       mode = 'n' },
-	{ '<leader>ps',      telescope_builtin.live_grep,                     desc = '[P]roject find [S]tring',                 mode = 'n' },
-	{ '<leader>pw',      telescope_builtin.grep_string,                   desc = '[P]roject find [W]ord',                   mode = 'n' },
-	{ '<leader>pt',      telescope_builtin.lsp_dynamic_workspace_symbols, desc = '[P]roject find [T]ag',                    mode = 'n' },
+	{ '<leader>pf',      telescope_builtin.find_files,                      desc = '[P]roject [F]iles',                       mode = 'n' },
+	{ '<leader>ps',      telescope_builtin.live_grep,                       desc = '[P]roject find [S]tring',                 mode = 'n' },
+	{ '<leader>pw',      telescope_builtin.grep_string,                     desc = '[P]roject find [W]ord',                   mode = 'n' },
+	{ '<leader>pt',      telescope_builtin.lsp_dynamic_workspace_symbols,   desc = '[P]roject find [T]ag',                    mode = 'n' },
 
 	-- Files
 	{ '<leader>f',       group = '[F]ile' },
-	{ '<leader>ff',      telescope_builtin.find_files,                    desc = '[F]ind [F]ile',                           mode = 'n' },
-	{ '<leader>fo',      telescope_builtin.oldfiles,                      desc = '[F]ind [O]lder File',                     mode = 'n' },
-	{ '<leader>fh',      telescope_builtin.help_tags,                     desc = '[F]ind [H]elp',                           mode = 'n' },
-	{ '<leader>fm',      '<cmd>Telescope keymaps<cr>',                    desc = '[F]ind [M]appings',                       mode = 'n' },
-	{ '<leader>fr',      telescope_builtin.resume,                        desc = '[F]ind [R]esume',                         mode = 'n' },
-	{ '<leader>ft',      telescope_builtin.lsp_document_symbols,          desc = '[F]ind file [T]ags',                      mode = 'n' },
-	{ '<leader>fe',      '<cmd>NERDTreeFind<cr>',                         desc = '[F]ile show in [E]xplorer',               mode = 'n' },
-	{ '<leader>fd',      telescope_builtin.diagnostics,                   desc = '[F]ile [D]Diagnose',                      mode = 'n' },
-	{ '<leader>fg',      mappfunc.fuzzySearchInBuffer,                    desc = '[F]ile [G]rep',                           mode = 'n' },
-	{ '<leader>fn',      '<cmd>NERDTreeToggle<cr>',                       desc = '[F]files ([N]erdTree)',                   mode = 'n' },
+	{ '<leader>ff',      telescope_builtin.find_files,                      desc = '[F]ind [F]ile',                           mode = 'n' },
+	{ '<leader>fo',      telescope_builtin.oldfiles,                        desc = '[F]ind [O]lder File',                     mode = 'n' },
+	{ '<leader>fh',      telescope_builtin.help_tags,                       desc = '[F]ind [H]elp',                           mode = 'n' },
+	{ '<leader>fm',      '<cmd>Telescope keymaps<cr>',                      desc = '[F]ind [M]appings',                       mode = 'n' },
+	{ '<leader>fr',      telescope_builtin.resume,                          desc = '[F]ind [R]esume',                         mode = 'n' },
+	{ '<leader>ft',      telescope_builtin.lsp_document_symbols,            desc = '[F]ind file [T]ags',                      mode = 'n' },
+	{ '<leader>fe',      '<cmd>NERDTreeFind<cr>',                           desc = '[F]ile show in [E]xplorer',               mode = 'n' },
+	{ '<leader>fd',      telescope_builtin.diagnostics,                     desc = '[F]ile [D]Diagnose',                      mode = 'n' },
+	{ '<leader>fg',      mappfunc.fuzzySearchInBuffer,                      desc = '[F]ile [G]rep',                           mode = 'n' },
+	{ '<leader>fn',      '<cmd>NERDTreeToggle<cr>',                         desc = '[F]files ([N]erdTree)',                   mode = 'n' },
 
 	-- Folding
-	{ 'zM',              "<cmd>set foldlevel=1<cr>",                      desc = "collaps all but first level",             mode = 'n' },
+	{ 'zM',              "<cmd>set foldlevel=1<cr>",                        desc = "collaps all but first level",             mode = 'n' },
 
 	-- Git
 	{ '<leader>g',       group = '[G]it' },
-	{ '<leader>gf',      telescope_builtin.git_files,                     desc = 'Search [G]it [F]iles',                    mode = 'n' },
-	{ '<leader>gb',      mappfunc.gitBlameLine,                           desc = '[G]it [B]lame line',                      mode = 'n' },
-	{ '<leader>gn',      '<cmd>Gitsigns next_hunk<cr>',                   desc = '[G]it [N]ext changed Block',              mode = 'n' },
-	{ '<leader>gp',      '<cmd>Gitsigns prev_hunk<cr>',                   desc = '[G]it [P]revious changed Block',          mode = 'n' },
-	{ '<leader>gd',      '<cmd>Gitsigns preview_hunk_inline<cr>',         desc = '[G]it [D]iff Changed Block',              mode = 'n' },
-	{ '<leader>gs',      '<cmd>Gitsigns stage_hunk<cr>',                  desc = '[G]it [S]tage Hunk',                      mode = 'n' },
-	{ '<leader>gl',      mappfunc.tmuxLazyGit,                            desc = '[G]it [L]azygit',                         mode = 'n' },
+	{ '<leader>gf',      telescope_builtin.git_files,                       desc = 'Search [G]it [F]iles',                    mode = 'n' },
+	{ '<leader>gb',      mappfunc.gitBlameLine,                             desc = '[G]it [B]lame line',                      mode = 'n' },
+	{ '<leader>gn',      '<cmd>Gitsigns next_hunk<cr>',                     desc = '[G]it [N]ext changed Block',              mode = 'n' },
+	{ '<leader>gp',      '<cmd>Gitsigns prev_hunk<cr>',                     desc = '[G]it [P]revious changed Block',          mode = 'n' },
+	{ '<leader>gd',      '<cmd>Gitsigns preview_hunk_inline<cr>',           desc = '[G]it [D]iff Changed Block',              mode = 'n' },
+	{ '<leader>gs',      '<cmd>Gitsigns stage_hunk<cr>',                    desc = '[G]it [S]tage Hunk',                      mode = 'n' },
+	{ '<leader>gl',      mappfunc.tmuxLazyGit,                              desc = '[G]it [L]azygit',                         mode = 'n' },
 
 	-- Launch
-	{ '<leader>lg',      mappfunc.tmuxLazyGit,                            desc = '[L]aunch Lazy[G]it',                      mode = 'n' },
-	{ '<leader>ld',      mappfunc.tmuxLazyDocker,                         desc = '[L]aunch Lazy[D]ocker',                   mode = 'n' },
-	{ '<leader>ls',      mappfunc.tmuxLazySQL,                            desc = '[L]aunch Lazy[S]QL',                      mode = 'n' },
-	{ '<leader>lr',      mappfunc.tmuxRanger,                             desc = '[L]aunch [R]anger',                       mode = 'n' },
+	{ '<leader>lg',      mappfunc.tmuxLazyGit,                              desc = '[L]aunch Lazy[G]it',                      mode = 'n' },
+	{ '<leader>ld',      mappfunc.tmuxLazyDocker,                           desc = '[L]aunch Lazy[D]ocker',                   mode = 'n' },
+	{ '<leader>ls',      mappfunc.tmuxLazySQL,                              desc = '[L]aunch Lazy[S]QL',                      mode = 'n' },
+	{ '<leader>lr',      mappfunc.tmuxRanger,                               desc = '[L]aunch [R]anger',                       mode = 'n' },
 
 	-- Make
 	{ '<leader>m',       group = '[M]ake' },
-	{ '<leader>mm',      '<cmd>!make<cr>',                                desc = '[M]ake (default)',                        mode = 'n' },
-	{ '<leader>mr',      mappfunc.tmuxMakeRun,                            desc = '[M]ake [R]un',                            mode = 'n' },
-	{ '<leader>md',      mappfunc.tmuxMakeDev,                            desc = '[M]ake [D]ev/[D]ebug',                    mode = 'n' },
-	{ '<leader>mc',      '<cmd>!make clean<cr>',                          desc = '[M]ake [c]lean',                          mode = 'n' },
+	{ '<leader>mm',      '<cmd>!make<cr>',                                  desc = '[M]ake (default)',                        mode = 'n' },
+	{ '<leader>mr',      mappfunc.tmuxMakeRun,                              desc = '[M]ake [R]un',                            mode = 'n' },
+	{ '<leader>md',      mappfunc.tmuxMakeDev,                              desc = '[M]ake [D]ev/[D]ebug',                    mode = 'n' },
+	{ '<leader>mc',      '<cmd>!make clean<cr>',                            desc = '[M]ake [c]lean',                          mode = 'n' },
 
 	-- Split
 	{ '<leader>s',       group = "[S]plit" },
-	{ '<leader>sh',      '<cmd>sp<cr>',                                   desc = '[S]plit [V]ertical',                      mode = 'n' },
-	{ '<leader>sv',      '<cmd>vs<cr>',                                   desc = '[S]plit [H]orizontal',                    mode = 'n' },
-	{ '<leader>sb',      '<C-w>=',                                        desc = '[S]plit [B]alance',                       mode = 'n' },
-	{ '<leader>sm',      '<C-w>_<C-w>|',                                  desc = '[S]plit [M]aximize',                      mode = 'n' },
+	{ '<leader>sh',      '<cmd>sp<cr>',                                     desc = '[S]plit [V]ertical',                      mode = 'n' },
+	{ '<leader>sv',      '<cmd>vs<cr>',                                     desc = '[S]plit [H]orizontal',                    mode = 'n' },
+	{ '<leader>sb',      '<C-w>=',                                          desc = '[S]plit [B]alance',                       mode = 'n' },
+	{ '<leader>sm',      '<C-w>_<C-w>|',                                    desc = '[S]plit [M]aximize',                      mode = 'n' },
 
-	{ '<M-Down>',        '2<C-w>-',                                       desc = "Decrease Split height",                   mode = 'n' },
-	{ '<M-Up>',          '2<C-w>+',                                       desc = "Increase Split height",                   mode = 'n' },
-	{ '<M-Right>',       '2<C-w>>',                                       desc = "Increase Split width",                    mode = 'n' },
-	{ '<M-Left>',        '2<C-w><',                                       desc = "Decrease Split width",                    mode = 'n' },
+	{ '<M-Down>',        '2<C-w>-',                                         desc = "Decrease Split height",                   mode = 'n' },
+	{ '<M-Up>',          '2<C-w>+',                                         desc = "Increase Split height",                   mode = 'n' },
+	{ '<M-Right>',       '2<C-w>>',                                         desc = "Increase Split width",                    mode = 'n' },
+	{ '<M-Left>',        '2<C-w><',                                         desc = "Decrease Split width",                    mode = 'n' },
 
 
 	-- Debugger
 	{ '<leader>d',       group = "[D]ebugger" },
-	{ "<leader>de",      mappfunc.debugger_evaluate,                      desc = "[D]ebugger [E]valuate" },
-	{ "<leader>db",      vim.cmd.DapToggleBreakpoint,                     desc = "[D]ebugger [B]reakpoint Toggle" },
-	{ "<F5>",            mappfunc.start_debugger,                         group = "[D]Debugger" },
-	{ "<F9>",            vim.cmd.DapToggleBreakpoint,                     group = "[D]Debugger" },
-	{ "<F10>",           vim.cmd.DapStepOver,                             group = "[D]Debugger" },
-	{ "<F11>",           vim.cmd.DapStepInto,                             group = "[D]Debugger" },
-	{ "<F12>",           vim.cmd.DapStepOut,                              group = "[D]Debugger" },
-	{ "<F8>",            mappfunc.stop_debugger,                          group = "[D]Debugger" },
+	{ "<leader>de",      mappfunc.debugger_evaluate,                        desc = "[D]ebugger [E]valuate" },
+	{ "<leader>db",      vim.cmd.DapToggleBreakpoint,                       desc = "[D]ebugger [B]reakpoint Toggle" },
+	{ "<F5>",            mappfunc.start_debugger,                           group = "[D]Debugger" },
+	{ "<F9>",            vim.cmd.DapToggleBreakpoint,                       group = "[D]Debugger" },
+	{ "<F10>",           vim.cmd.DapStepOver,                               group = "[D]Debugger" },
+	{ "<F11>",           vim.cmd.DapStepInto,                               group = "[D]Debugger" },
+	{ "<F12>",           vim.cmd.DapStepOut,                                group = "[D]Debugger" },
+	{ "<F8>",            mappfunc.stop_debugger,                            group = "[D]Debugger" },
 
 	-- Templates
 	{ '§',               group = "Templates" },
-	{ '§w',              templates.newTmuxWorkspace,                      desc = 'TMUX-[W]orkspace',                        mode = 'n' },
+	{ '§w',              templates.newTmuxWorkspace,                        desc = 'TMUX-[W]orkspace',                        mode = 'n' },
 
 	-- Misc
-	{ '<leader><space>', telescope_builtin.buffers,                       desc = '[ ] Find existing buffers',               mode = 'n' },
+	{ '<leader><space>', telescope_builtin.buffers,                         desc = '[ ] Find existing buffers',               mode = 'n' },
 	-- { '<leader>n',       '<cmd>NERDTreeToggle<cr>',              desc = 'Files',                              mode = 'n' },
 
 	-- Toggle
 	{ '<leader>t',       group = "[T]toggle" },
-	{ '<leader>tr',      '<cmd>TR<cr>',                                   desc = '[T]ask [R]unner',                         mode = 'n' },
-	{ '<leader>tb',      '<cmd>BM<cr>',                                   desc = '[T]o [B]ookmarks',                        mode = 'n' },
-	{ '<leader>tt',      '<cmd>Twilight<cr>',                             desc = '[T]oggle [T]wilight',                     mode = 'n' },
-	{ '<leader>tz',      '<cmd>ZenMode<cr>',                              desc = '[T]oggle [Z]en-mode',                     mode = 'n' },
-	{ '<leader>tm',      '<cmd>MonokaiToggleLight<cr>',                   desc = '[T]oggle [M]onokai-Theme',                mode = 'n' },
+	{ '<leader>tr',      '<cmd>TR<cr>',                                     desc = '[T]ask [R]unner',                         mode = 'n' },
+	{ '<leader>tb',      '<cmd>BM<cr>',                                     desc = '[T]o [B]ookmarks',                        mode = 'n' },
+	{ '<leader>tt',      '<cmd>Twilight<cr>',                               desc = '[T]oggle [T]wilight',                     mode = 'n' },
+	{ '<leader>tz',      '<cmd>ZenMode<cr>',                                desc = '[T]oggle [Z]en-mode',                     mode = 'n' },
+	{ '<leader>tm',      '<cmd>MonokaiToggleLight<cr>',                     desc = '[T]oggle [M]onokai-Theme',                mode = 'n' },
 
+	-- LSP
+	{ '<S-h>',           function() vim.lsp.buf.hover() end,                desc = 'Hover Documentation',                     mode = 'n' },
+	{ 'gh',              function() vim.lsp.buf.hover() end,                desc = 'Hover Documentation',                     mode = 'n' },
+	{ '<S-k>',           function() vim.lsp.buf.signature_help() end,       desc = 'Signature Documentation',                 mode = 'n' },
+	{ 'gd',              telescope_builtin.lsp_definitions,                 desc = '[G]oto [D]efinition',                     mode = 'n' },
+	{ 'gr',              telescope_builtin.lsp_references,                  desc = '[G]oto [R]eferences',                     mode = 'n' },
+	{ 'gi',              telescope_builtin.lsp_implementations,             desc = '[G]oto [I]mplementation',                 mode = 'n' },
+	{ 'gD',              vim.lsp.buf.declaration,                           desc = '[G]oto [D]eclaration',                    mode = 'n' },
+	{ 'gtd',             telescope_builtin.lsp_type_definitions,            desc = '[G]oto [T]ype Definition',                mode = 'n' },
 
-})
+	-- Visual Mode Helpers
+	{ "J",               ":m '>+1<CR>gv=gv",                                mode = 'x',                                       noremap = true,     silent = true },
+	{ "K",               ":m '<-2<CR>gv=gv",                                mode = 'x',                                       noremap = true,     silent = true },
+	{ '<leader>p',       '"_dP',                                            mode = 'x',                                       noremap = true,     silent = true },
+	{ "<C-r>",           ":s///g<Left><Left><Left>",                        mode = 'x',                                       noremap = true },
+	{ "<C-l>",           ":s/^\\(\\s\\{-\\}\\)//g<Left><Left><Left><Left>", mode = 'x',                                       noremap = true },
+	{ "<C-y>",           '"+yy',                                       mode = 'x' },
 
+	--      keep cursor centered
+	{ "n",               "nzz",                                             mode = "v",                                       noremap = true,     silent = true },
+	{ "N",               "Nzz",                                             mode = "v",                                       noremap = true,     silent = true },
+	{ "<C-d>",           "<C-d>zz",                                         mode = "v",                                       noremap = true,     silent = true },
+	{ "<C-u>",           "<C-u>zz",                                         mode = "v",                                       noremap = true,     silent = true },
 
-local silnor = { noremap = true, silent = true }
+	-- Insert Mode Helpers
+	{ "<C-j>",           function() require("blink-cmp").show() end,        mode = { "i" },                                   noremap = true,     silent = true },
+	{ "<C-h>",           function() vim.lsp.buf.signature_help() end,       mode = { "i" },                                   noremap = true,     silent = true },
 
---[[============================================================================
--- Repeated COmmands
---============================================================================]]
-local sysClipCopy = '"+yy'
---local replaceUnderCursor = ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>";
+	-- TMUX-Navigations
+	{ "<C-h>",           "<cmd>TmuxNavigateLeft<cr>",                       mode = "n",                                       noremap = true,     silent = true },
+	{ "<C-j>",           "<cmd>TmuxNavigateDown<cr>",                       mode = "n",                                       noremap = true,     silent = true },
+	{ "<C-k>",           "<cmd>TmuxNavigateUp<cr>",                         mode = "n",                                       noremap = true,     silent = true },
+	{ "<C-l>",           "<cmd>TmuxNavigateRight<cr>",                      mode = "n",                                       noremap = true,     silent = true },
 
+	-- Terminal Helpes
+	{'<Esc><Esc>', '<C-\\><C-n>', desc="Exit terminal mode", mode = "t"},
 
---[[============================================================================
--- Select + Visual Mode helpers
---============================================================================]]
-vim.keymap.set({ "x" }, "J", ":m '>+1<CR>gv=gv", silnor); -- Move Selected Line Down
-vim.keymap.set({ "x" }, "K", ":m '<-2<CR>gv=gv", silnor); -- Move Selected Line Up
-vim.keymap.set({ "x" }, '<leader>p', '"_dP', silnor);
-
-vim.keymap.set({ "x" }, "<C-r>", ":s///g<Left><Left><Left>", { noremap = true });                        -- Replace in selection
-vim.keymap.set({ "x" }, "<C-l>", ":s/^\\(\\s\\{-\\}\\)//g<Left><Left><Left><Left>", { noremap = true }); -- Replace in sleected line (preselected whitespace group)
-vim.keymap.set({ "x" }, "<C-y>", sysClipCopy, silnor);
-
-
-vim.keymap.set({ 'n' }, '<C-/>', '/\\c')
-
-
---[[============================================================================
--- Lsp
---============================================================================]]
-vim.keymap.set({ 'n' }, '<S-h>', function() vim.lsp.buf.hover() end, { desc = 'Hover Documentation' });
-vim.keymap.set({ 'n' }, '<leader>gh', function() vim.lsp.buf.hover() end, { desc = 'Hover Documentation' });
-vim.keymap.set({ 'n' }, '<S-k>', function() vim.lsp.buf.signature_help() end, { desc = 'Signature Documentation' });
-vim.keymap.set({ 'n' }, 'gd', telescope_builtin.lsp_definitions, { desc = '[G]oto [D]efinition' })
-vim.keymap.set({ 'n' }, 'gr', telescope_builtin.lsp_references, { desc = '[G]oto [R]eferences' })
-vim.keymap.set({ 'n' }, 'gi', telescope_builtin.lsp_implementations, { desc = '[G]oto [I]mplementation' })
-vim.keymap.set({ 'n' }, 'gD', vim.lsp.buf.declaration, { desc = '[G]oto [D]eclaration' })
-vim.keymap.set({ 'n' }, 'gtd', telescope_builtin.lsp_type_definitions, { desc = '[G]oto [T]ype Definition' })
-
-
-whichkey.add({
-	{ "<C-j>", function() require("blink-cmp").show() end, mode = { "i" } }
-})
--- -- Insert - Mode use
-vim.keymap.set({ "i" }, '<C-h>', function() vim.lsp.buf.signature_help() end, silnor);
-
---[[ ===========================================================================
--- Snippet Helpers
---============================================================================]]
--- You can set [NXT] in side your snippes etc, and then use 2xTab to start editing the location
--- they are in
-vim.keymap.set({ "n" }, "<Tab><Tab>", "/\\[NXT\\]<CR>v%c", { desc = "Goto next", silent = true });
-vim.keymap.set({ "i" }, "<S-Tab>", "<esc>/\\[NXT\\]<CR>v%c", { silent = true });
-
--- Keep Cursor centered, when jumping and searching
-vim.keymap.set({ "v" }, "n", "nzz", silnor);
-vim.keymap.set({ "v" }, "N", "Nzz", silnor);
-vim.keymap.set({ "v" }, "<C-d>", "<C-d>zz", silnor);
-vim.keymap.set({ "v" }, "<C-u>", "<C-u>zz", silnor);
-
---[[============================================================================
--- TMUX-Navigations
---============================================================================]]
-vim.keymap.set({ "n" }, "<C-h>", "<cmd>TmuxNavigateLeft<cr>", silnor)
-vim.keymap.set({ "n" }, "<C-j>", "<cmd>TmuxNavigateDown<cr>", silnor)
-vim.keymap.set({ "n" }, "<C-k>", "<cmd>TmuxNavigateUp<cr>", silnor)
-vim.keymap.set({ "n" }, "<C-l>", "<cmd>TmuxNavigateRight<cr>", silnor)
-
---[[============================================================================
--- LanguageServer restart per Filetype
---============================================================================]]
-mappfunc.lspRestart({ "*.php" }, "intelephense phpactor")
-mappfunc.lspRestart({ "*.js", "*.ts" }, "ts_ls")
-
---
--- Keymaps, that differ per FileType (Due to differennt technics and binaries being used)
---------------------------------------------------------------------------------
-vim.api.nvim_create_autocmd("BufEnter", {
-	pattern = { "*.todo" },
-	callback = function()
-		vim.keymap.set({ 'n' }, 'ts', vim.cmd.TaskStart, { desc = '[T]ask [S]tart', silent = true });
-		vim.keymap.set({ 'n' }, 'tn', vim.cmd.TaskNew, { desc = '[T]ask [N]ew', silent = true });
-		vim.keymap.set({ 'n' }, 'tc', vim.cmd.TaskCancel, { desc = '[T]ask [C]ancel', silent = true });
-		vim.keymap.set({ 'n' }, 'td', vim.cmd.TaskDone, { desc = '[T]ask [D]one', silent = true });
-		vim.keymap.set({ 'n' }, 'tr', vim.cmd.TaskReset, { desc = '[T]ask [R]eset', silent = true });
-	end
-})
-
--- <leader>cf - Code-Format
--- D - Debug-Action
-
--- Template code
-vim.api.nvim_create_autocmd("BufEnter", {
-	pattern = { "*.cpp", "*.c", "*.h" },
-	callback = function()
-		vim.cmd [[
-            nnoremap §h <esc>:lua require("rg.template").handleC_H()<cr>
-        ]]
-	end
-})
-
-vim.api.nvim_create_autocmd("BufEnter", {
-	pattern = { "*.php" },
-	callback = function()
-		whichkey.add({
-			{ "§c", function() templates.handlePHP("class") end,     mode = { "n" }, desc = "PHP-Class" },
-			{ "§t", function() templates.handlePHP("trait") end,     mode = { "n" }, desc = "PHP-Trait" },
-			{ "§i", function() templates.handlePHP("interface") end, mode = { "n" }, desc = "PHP-Interface" },
-		})
-	end
-})
-
-
-
-
--- Format before Save
--- remove trailing whitespaces
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = { "*.php", "*.js", "*.css", "*.go", "*.sql", "*.lua", "*.tpl" },
-	callback = function()
-		vim.cmd.normal("Mz")
-		vim.cmd("%s/\\s\\+$//ge")
-		vim.cmd.normal("mz")
-	end
-})
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = { "*.go", "*.hpp", "*.h", "*.cpp", "*.c", "*.tmpl" },
-	callback = function()
-		vim.lsp.buf.format()
-	end
-})
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = { "*.go" },
-	callback = function()
-		vim.lsp.buf.code_action { context = { only = { 'source.organizeImports' } }, apply = true }
-		vim.lsp.buf.code_action { context = { only = { 'source.fixAll' } }, apply = true }
-	end,
-})
-
-
--- Code-Formatting
-vim.api.nvim_create_autocmd("BufEnter", {
-	pattern = { "*.lua", "*.go", "*.php" },
-	callback = function()
-		vim.keymap.set({ 'n' }, '<leader>cf', vim.lsp.buf.format, { desc = '[C]ode [F]ormat' });
-	end
-})
-
--- Code - Formating -- Markdown, Java-/Typescript, (s)css, JSON, JSX
-vim.api.nvim_create_autocmd("BufEnter", {
-	pattern = { "*.md", "*.html", "*.js", ".ts", ".css", "*.scss", "*.json", "*.jsx" },
-	callback = function()
-		vim.keymap.set({ 'n' }, '<leader>cf', "<cmd>Prettier<cr>", { desc = '[C]ode [F]ormat' });
-	end
 })
 
 --[[============================================================================
 -- Native Vim Tweaks
+-- -----------------------------------------------------------------------------
+-- these are some rempas, that, for some reason don't work when configured any
+-- other way
 --============================================================================]]
 vim.cmd [[
 
@@ -303,3 +196,4 @@ vim.cmd [[
 	nnoremap <C-p> <C-i>
 
 ]]
+
