@@ -155,7 +155,7 @@ whichkey.add({
 	{ '<leader>p',       '"_dP',                                            mode = 'x',                                       noremap = true,     silent = true },
 	{ "<C-r>",           ":s///g<Left><Left><Left>",                        mode = 'x',                                       noremap = true },
 	{ "<C-l>",           ":s/^\\(\\s\\{-\\}\\)//g<Left><Left><Left><Left>", mode = 'x',                                       noremap = true },
-	{ "<C-y>",           '"+yy',                                       mode = 'x' },
+	{ "<C-y>",           '"+yy',                                            mode = 'x' },
 
 	--      keep cursor centered
 	{ "n",               "nzz",                                             mode = "v",                                       noremap = true,     silent = true },
@@ -174,7 +174,7 @@ whichkey.add({
 	{ "<C-l>",           "<cmd>TmuxNavigateRight<cr>",                      mode = "n",                                       noremap = true,     silent = true },
 
 	-- Terminal Helpes
-	{'<Esc><Esc>', '<C-\\><C-n>', desc="Exit terminal mode", mode = "t"},
+	{ '<Esc><Esc>',      '<C-\\><C-n>',                                     desc = "Exit terminal mode",                      mode = "t" },
 
 })
 
@@ -196,4 +196,3 @@ vim.cmd [[
 	nnoremap <C-p> <C-i>
 
 ]]
-
