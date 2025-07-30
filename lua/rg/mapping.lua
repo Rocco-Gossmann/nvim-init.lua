@@ -143,6 +143,7 @@ whichkey.add({
 	{ '<S-h>',           function() vim.lsp.buf.hover() end,                desc = 'Hover Documentation',                     mode = 'n' },
 	{ 'gh',              function() vim.lsp.buf.hover() end,                desc = 'Hover Documentation',                     mode = 'n' },
 	{ '<S-k>',           function() vim.lsp.buf.signature_help() end,       desc = 'Signature Documentation',                 mode = 'n' },
+	{ 'gs',              function() vim.lsp.buf.signature_help() end,       desc = 'Signature Documentation',                 mode = 'n' },
 	{ 'gd',              telescope_builtin.lsp_definitions,                 desc = '[G]oto [D]efinition',                     mode = 'n' },
 	{ 'gr',              telescope_builtin.lsp_references,                  desc = '[G]oto [R]eferences',                     mode = 'n' },
 	{ 'gi',              telescope_builtin.lsp_implementations,             desc = '[G]oto [I]mplementation',                 mode = 'n' },
