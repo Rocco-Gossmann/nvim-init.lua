@@ -146,8 +146,7 @@ whichkey.add({
 	{ 'gd',              telescope_builtin.lsp_definitions,                 desc = '[G]oto [D]efinition',                     mode = 'n' },
 	{ 'gr',              telescope_builtin.lsp_references,                  desc = '[G]oto [R]eferences',                     mode = 'n' },
 	{ 'gi',              telescope_builtin.lsp_implementations,             desc = '[G]oto [I]mplementation',                 mode = 'n' },
-	{ 'gD',              vim.lsp.buf.declaration,                           desc = '[G]oto [D]eclaration',                    mode = 'n' },
-	{ 'gtd',             telescope_builtin.lsp_type_definitions,            desc = '[G]oto [T]ype Definition',                mode = 'n' },
+	{ 'gD',              telescope_builtin.lsp_type_definitions,            desc = '[G]oto type-[D]efinition',                mode = 'n' },
 
 	-- Visual Mode Helpers
 	{ "J",               ":m '>+1<CR>gv=gv",                                mode = 'x',                                       noremap = true,     silent = true },
