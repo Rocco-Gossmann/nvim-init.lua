@@ -33,6 +33,12 @@ whichkey.add({
 	{ '<leader>qp',      '<cmd>cprevious<cr>',                              desc = '[Q]uicklist [P]revious' },
 	{ '<leader>qc',      '<cmd>cclose<cr>',                                 desc = '[Q]uicklist [C]lose' },
 
+	{ 'q',               group = '[Q]uicklist' },
+	{ 'qd',              vim.diagnostic.setloclist,                         desc = '[Q]uicklist [D]iagnostics' },
+	{ 'qn',              '<cmd>cnext<cr>',                                  desc = '[Q]uicklist [N]ext' },
+	{ 'qp',              '<cmd>cprevious<cr>',                              desc = '[Q]uicklist [P]revious' },
+	{ 'qc',              '<cmd>cclose<cr>',                                 desc = '[Q]uicklist [C]lose' },
+
 	-- Exlorer
 	{ '<C-n>',           '<cmd>NERDTreeToggle<cr>',                         mode = 'n' },
 	{ 'E',               group = '[E]xplorer' },

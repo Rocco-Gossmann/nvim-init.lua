@@ -1,5 +1,8 @@
 # My NVIM - Config
 
+> [!Attention] this is config expects NeoVim 0.11 or higher.
+> try lower versions at your own risk
+
 Based on [Kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim.
 
 ## Keymaps
@@ -17,7 +20,6 @@ typing `:q!` or `:qwa!` to close buffers or vim is slow. These shortcuts are an 
 | `ZD`     | delete the current buffer (`:bd!`) |
 | `ZW`     | write/save and close all Buffers   |
 | `ZA`     | close all buffers, without saving  |
-
 
 ### Leader based maps
 
@@ -55,7 +57,7 @@ the window layout)
 | `<leader>gn` | [G]it [N]ext changed Block         |
 | `<leader>gp` | [G]it [P]revious changed Block     |
 | `<leader>gd` | [G]it show [D]iff of changed Block |
-| `<leader>gs` | [G]it [S]tage changed Block     |
+| `<leader>gs` | [G]it [S]tage changed Block        |
 
 #### Leader F >= Anything that has to do with [F]iles or [F]inding stuff
 
@@ -109,19 +111,21 @@ If the Makefile defines a `run`, `clean` or `dev` task, you can trigger them fro
 
 ### Debugger keys
 
-| Sequence | Description       |
-| :------- | :---------------- |
-| `<f9>`   | toggle breakpoint |
-| `<f5>`   | start debugger    |
-| `<f11>`  | step into         |
-| `<f10>`  | step over         |
-| `<f12>`  | step out          |
-| `<f8>`   | stop debugger     |
-
+| Sequence     | Description                 |
+| :----------- | :-------------------------- |
+| `<leader>de` | evalueate item under cursor |
+| `<leader>db` | debugger breakpoint toggle  |
+| `<f9>`       | toggle breakpoint           |
+| `<f5>`       | start debugger              |
+| `<f11>`      | step into                   |
+| `<f10>`      | step over                   |
+| `<f12>`      | step out                    |
+| `<f8>`       | stop debugger               |
 
 ## Some usefull lua scripts.
 
 ### PHP-Debugging
+
 ```lua
 dap.adapters.php = {
   type = 'executable',
@@ -133,6 +137,7 @@ dap.defaults.php.exception_breakpoints = { "Notice", "Warning", "Error", "Except
 ```
 
 ### TaskRunner Scripts
+
 ```lua
 return {
 
@@ -164,7 +169,6 @@ return {
 	}
 }
 ```
-
 
 # original kickstart.nvim
 
