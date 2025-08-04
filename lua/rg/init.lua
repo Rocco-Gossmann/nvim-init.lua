@@ -3,18 +3,25 @@ require "rg.filetypes";
 require "rg.copen"
 require "rg.mapping"
 
-vim.opt.winborder = "rounded"
 
 vim.api.nvim_create_autocmd("User", {
   pattern = "TelescopeFindPre",
   callback = function()
+
+	local vimOptBorders = vim.opt_local.winborder;
     vim.opt_local.winborder = "none"
+
     vim.api.nvim_create_autocmd("WinLeave", {
       once = true,
+
       callback = function()
-        vim.opt_local.winborder = "rounded"
+
+        vim.opt_local.winborder = vimOptBorders
+
       end,
+
     })
+
   end,
 })
 
