@@ -32,7 +32,7 @@ vim.opt.shiftwidth = 4
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
-
+vim.opt.winborder = "bold"
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
@@ -56,18 +56,24 @@ vim.opt.smartcase = false
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
+-- Preview substitutions live, as you type!
+vim.opt.inccommand = 'nosplit'
+
 -- Keep signcolumn on by default
 vim.opt.signcolumn = 'yes'
 vim.opt.termguicolors = true
 vim.opt.colorcolumn = "80,120"
 vim.opt.nrformats:append("alpha")
 
+-- Show which line your cursor is on
+vim.opt.cursorline = true
+
 vim.opt.grepprg = "rg -n -s --ignore-file .rgignore $* /dev/null"
 vim.opt.conceallevel = 1
 vim.opt.wrap = false
 
 -- Decrease update time
-vim.opt.updatetime = 50
+vim.opt.updatetime = 16
 
 -- Decrease mapped sequence wait time
 vim.opt.timeoutlen = 300
@@ -82,12 +88,6 @@ vim.opt.splitbelow = true
 vim.opt.list = true
 vim.opt.listchars = { tab = '| ', trail = '·', nbsp = '␣' }
 
--- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
-
--- Show which line your cursor is on
-vim.opt.cursorline = true
-
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 4
 
@@ -95,3 +95,5 @@ vim.opt.scrolloff = 4
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.opt.confirm = true
+
+
