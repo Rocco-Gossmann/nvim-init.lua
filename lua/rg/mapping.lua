@@ -119,15 +119,15 @@ whichkey.add({
 
 
 	-- Debugger
-	{ '<leader>d',       group = "[D]ebugger" },
-	{ "<leader>de",      mappfunc.debugger_evaluate,                        desc = "[D]ebugger [E]valuate" },
-	{ "<leader>db",      vim.cmd.DapToggleBreakpoint,                       desc = "[D]ebugger [B]reakpoint Toggle" },
-	{ "<F5>",            mappfunc.start_debugger,                           group = "[D]Debugger" },
-	{ "<F9>",            vim.cmd.DapToggleBreakpoint,                       group = "[D]Debugger" },
-	{ "<F10>",           vim.cmd.DapStepOver,                               group = "[D]Debugger" },
-	{ "<F11>",           vim.cmd.DapStepInto,                               group = "[D]Debugger" },
-	{ "<F12>",           vim.cmd.DapStepOut,                                group = "[D]Debugger" },
-	{ "<F8>",            mappfunc.stop_debugger,                            group = "[D]Debugger" },
+	-- { '<leader>d',       group = "[D]ebugger" },
+	-- { "<leader>db",      vim.cmd.DapToggleBreakpoint,                       desc = "[D]ebugger [B]reakpoint Toggle" },
+	{ "<F6>",            mappfunc.debugger_evaluate,                        desc = "[D]ebugger Evaluate" },
+	{ "<F5>",            mappfunc.start_debugger,                           group = "[D]Debugger Start" },
+	{ "<F9>",            vim.cmd.DapToggleBreakpoint,                       group = "[D]Debugger Breakpoint" },
+	{ "<F10>",           vim.cmd.DapStepOver,                               group = "[D]Debugger StepOver" },
+	{ "<F11>",           vim.cmd.DapStepInto,                               group = "[D]Debugger StepInto" },
+	{ "<F12>",           vim.cmd.DapStepOut,                                group = "[D]Debugger StepOut" },
+	{ "<F8>",            mappfunc.stop_debugger,                            group = "[D]Debugger Stop" },
 
 	-- Templates
 	{ '§',               group = "Templates" },
