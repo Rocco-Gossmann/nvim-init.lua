@@ -5,10 +5,12 @@ local env = require "rg.env"
 -- <!-- BM: HTML Comment
 -- // BM: Line Comment Bookmark
 -- /* BM: Block Comment Bookmark */
+-- /** BM: Doc Comment Bookmark */
 -- # BM: Hash Bookmark
 -- + BM: nonesense Bookmark
 
 vim.api.nvim_create_user_command("BM", function()
+
     local buf = vim.api.nvim_get_current_buf();
     local allLines = vim.api.nvim_buf_get_lines(buf, 0, -1, false);
     local lines = {}
@@ -22,6 +24,7 @@ vim.api.nvim_create_user_command("BM", function()
 
         local hit = line:match('//%s*BM:%s') or
         line:match('/%*%s*BM:%s') or
+        line:match('/%*%*%s*BM:%s') or
         line:match('#%s*BM:%s') or
         line:match('"%s*BM:%s') or
         line:match('%-%-%s*BM:%s') or
@@ -31,7 +34,6 @@ vim.api.nvim_create_user_command("BM", function()
             table.insert(lines, idx .. ": " .. line:match('.*BM:%s(.+)$'));
         end
     end
-
 
     env.basicTelescopePick(lines, function(choice)
         local ln = choice:match('(%d+):');
