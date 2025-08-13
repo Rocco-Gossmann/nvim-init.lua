@@ -201,4 +201,6 @@ vim.cmd [[
 
 	nnoremap <C-p> <C-i>
 
+	inoremap <C-d> <C-k>
+
 ]]
