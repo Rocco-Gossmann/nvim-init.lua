@@ -582,7 +582,7 @@ require('lazy').setup({
         default = { 'lsp', 'path', 'snippets', 'lazydev' },
         per_filetype = {
           sql = { 'snippets', 'dadbod', 'buffer' },
-          mysql = { 'dadbod' },
+          mysql = { 'dadbod', 'buffer' },
         },
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
