@@ -23,12 +23,12 @@ mappfunc.lspRestart({ "*.yml" }, "docker_compose_language_service")
 -- Todo-Lists
 -- -----------------------------------------------------------------------------
 mappfunc.filetypeKeymap({ "*.todo", "*.md" }, {
-	{ 't',  group = '[T]ask' },
-	{ 'ts', vim.cmd.TaskStart,  mode = 'n', desc = '[S]tart',  silent = true },
-	{ 'tn', vim.cmd.TaskNew,    mode = 'n', desc = '[N]ew',    silent = true },
-	{ 'tc', vim.cmd.TaskCancel, mode = 'n', desc = '[C]ancel', silent = true },
-	{ 'td', vim.cmd.TaskDone,   mode = 'n', desc = '[D]one',   silent = true },
-	{ 'tr', vim.cmd.TaskReset,  mode = 'n', desc = '[R]eset',  silent = true },
+	{ '<leader>j',  group = '[J]ob / Task' },
+	{ '<leader>js', vim.cmd.TaskStart,  mode = 'n', desc = '[S]tart'},
+	{ '<leader>jn', vim.cmd.TaskNew,    mode = 'n', desc = '[N]ew'},
+	{ '<leader>jc', vim.cmd.TaskCancel, mode = 'n', desc = '[C]ancel'},
+	{ '<leader>jd', vim.cmd.TaskDone,   mode = 'n', desc = '[D]one'},
+	{ '<leader>jr', vim.cmd.TaskReset,  mode = 'n', desc = '[R]eset'},
 });
 
 -- loading Tempaltes
