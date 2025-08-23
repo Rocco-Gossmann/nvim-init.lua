@@ -17,14 +17,14 @@ whichkey.add({
 
 	-- Code
 	{ '<leader>c',       group = '[C]ode' },
-	{ '<leader>cr',      vim.lsp.buf.rename,                                desc = '[R]ename',                         mode = 'n' },
-	{ '<leader>cd',      '<cmd>Neogen<cr>',                                 desc = '[D]ocument',                       mode = 'n' },
-	{ '<leader>ca',      mappfunc.codeAction,                               desc = '[A]ction',                         mode = { 'n', 'x' } },
-	{ '<leader>cc',      '<cmd>norm gcc<cr>',                               desc = '[C]omment',                        mode = { 'n' } },
-	{ '<leader>cc',      '<cmd>norm gc<cr>',                                desc = '[C]omment',                        mode = { 'x' } },
+	{ '<leader>cr',      vim.lsp.buf.rename,                                desc = '[R]ename',                                mode = 'n' },
+	{ '<leader>cd',      '<cmd>Neogen<cr>',                                 desc = '[D]ocument',                              mode = 'n' },
+	{ '<leader>ca',      mappfunc.codeAction,                               desc = '[A]ction',                                mode = { 'n', 'x' } },
+	{ '<leader>cc',      '<cmd>norm gcc<cr>',                               desc = '[C]omment',                               mode = { 'n' } },
+	{ '<leader>cc',      '<cmd>norm gc<cr>',                                desc = '[C]omment',                               mode = { 'x' } },
 
 	{ '<leader>cl',      group = '[C]ode [L]sp' },
-	{ '<leader>clr',     '<cmd>LspRestart<cr>',                             desc = '[L]sp [R]estart',                  mode = 'n' },
+	{ '<leader>clr',     '<cmd>LspRestart<cr>',                             desc = '[L]sp [R]estart',                         mode = 'n' },
 
 	-- Qucklist
 	{ '<leader>q',       group = '[Q]uicklist' },
@@ -143,9 +143,9 @@ whichkey.add({
 	{ '<leader>t',       group = "[T]toggle" },
 	{ '<leader>tr',      '<cmd>TR<cr>',                                     desc = '[T]ask [R]unner',                         mode = 'n' },
 	{ '<leader>tb',      '<cmd>BM<cr>',                                     desc = '[T]o [B]ookmarks',                        mode = 'n' },
-	{ '<leader>tt',      '<cmd>Twilight<cr>',                               desc = '[T]oggle [T]wilight',                     mode = 'n' },
 	{ '<leader>tz',      '<cmd>ZenMode<cr>',                                desc = '[T]oggle [Z]en-mode',                     mode = 'n' },
 	{ '<leader>tl',      '<cmd>MonokaiToggleLight<cr>',                     desc = '[T]oggle [L]ight/Dark',                   mode = 'n' },
+	-- { '<leader>tt',      '<cmd>Twilight<cr>',                               desc = '[T]oggle [T]wilight',                     mode = 'n' },
 
 	-- LSP
 	{ '<S-h>',           function() vim.lsp.buf.hover() end,                desc = 'Hover Documentation',                     mode = 'n' },
