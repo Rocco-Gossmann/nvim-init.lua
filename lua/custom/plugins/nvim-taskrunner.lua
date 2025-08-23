@@ -6,6 +6,7 @@ local M = {
 		require("nvim-taskrunner").setup( require("rg.custom.tasks") )
 
 	end,
+
 };
 
 return M;

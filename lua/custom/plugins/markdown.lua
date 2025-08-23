@@ -7,6 +7,7 @@ return {
 	-- ----------------------------------------------------------------------]]
 	{
 		"MeanderingProgrammer/markdown.nvim",
+		lazy = true,
 		main = "render-markdown",
 		opts = {},
 		name = "render-markdown",
@@ -21,6 +22,7 @@ return {
 	-- ----------------------------------------------------------------------]]
 	{
 		'dhruvasagar/vim-table-mode',
+		lazy = true,
 		ft = { 'markdown' }
 	},
 
@@ -29,6 +31,30 @@ return {
 	-- ----------------------------------------------------------------------]]
 	{
 		'mzlogin/vim-markdown-toc',
+		lazy = true,
 		ft = { 'markdown' },
+	},
+
+	-- [[----------------------------------------------------------------------
+	-- Todo item handling
+	-- : TaskNew
+	-- : TaskStart
+	-- : ....
+	-- ----------------------------------------------------------------------]]
+	{
+		"rocco-gossmann/nvim-tasklist",
+		lazy = true,
+		cmd = {
+			'TaskNew',
+			'TaskStart',
+			'TaskDone',
+			'TaskCancel',
+			'TaskReset',
+		},
+
+		init = function()
+			require("nvim-tasklist").setup()
+		end
+
 	}
 }
