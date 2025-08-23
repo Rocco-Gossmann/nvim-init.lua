@@ -1,6 +1,7 @@
 # My NVIM - Config
 
-> [!Attention] this is config expects NeoVim 0.11 or higher.
+> [!Attention]  
+> this is config expects NeoVim 0.11 or higher.
 > try lower versions at your own risk
 
 Based on [Kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim.
@@ -32,13 +33,17 @@ So I'm not going to list every single one here.
 
 pressing `<leader>` twice opens a list of all current buffers.
 
-#### Leader Tab
+#### Leader T => Toggle
 
-toggle Zen Mode. aka. hide everything but the current buffer you are on.
-(nice for temporarily maximizing to small splits, without having to destroy
-the window layout)
+| Sequence     | Description                                                                |
+| :----------- | :------------------------------------------------------------------------- |
+| `<leader>tz` | [T]oggle [Z]en-Mode (maximizes current buffer and brings it to the center) |
+| `<leader>tt` | [T]oggle [T]wighlight (gray out everything but the current text block)     |
+| `<leader>tl` | [T]oggle Monokai ([L]ight and Dark-Mode)                                   |
+| `<leader>tb` | [T]o [B]ookmark-list                                                       |
+| `<leader>tr` | [T]ask [R]unner (List of Tasks/Macros)                                     |
 
-#### Leader P >= Project
+#### Leader P => Project
 
 | Sequence     | Description                        |
 | :----------- | :--------------------------------- |
@@ -48,7 +53,7 @@ the window layout)
 | `<leader>pw` | [P]roject find [W]ord under cursor |
 | `<leader>pt` | [P]roject find [T]ag (aka. Symbol) |
 
-#### Leader G >= Git
+#### Leader G => Git
 
 | Sequence     | Description                        |
 | :----------- | :--------------------------------- |
@@ -59,7 +64,7 @@ the window layout)
 | `<leader>gd` | [G]it show [D]iff of changed Block |
 | `<leader>gs` | [G]it [S]tage changed Block        |
 
-#### Leader F >= Anything that has to do with [F]iles or [F]inding stuff
+#### Leader F => Anything that has to do with [F]iles or [F]inding stuff
 
 Which-key will show you what is available here 😉.
 A few interresting mappings are:
@@ -73,11 +78,11 @@ A few interresting mappings are:
 | `<leader>fe` | [F]ind current file in [E]xplorer                |
 | ...          |                                                  |
 
-#### Leader q >= some convenient [Q]uicklist manipulations.
+#### Leader q => some convenient [Q]uicklist manipulations.
 
 Which-key will show you what is available here 😉.
 
-#### Leader s >= handeling window [S]plits
+#### Leader s => handeling window [S]plits
 
 | Sequence     | Description                                                    |
 | :----------- | :------------------------------------------------------------- |
@@ -86,7 +91,7 @@ Which-key will show you what is available here 😉.
 | `<leader>sb` | [S]plit [B]alance (make all splits roughtly the same size)     |
 | `<leader>sm` | [S]plit [M]aximize (make the current split as big as possible) |
 
-#### Leader c >= anything, that has to do with [C]ode
+#### Leader c => anything, that has to do with [C]ode
 
 | Sequence      | Description                                                                                                     |
 | :------------ | :-------------------------------------------------------------------------------------------------------------- |
@@ -96,7 +101,7 @@ Which-key will show you what is available here 😉.
 | `<leader>ca`  | [C]ode [A]ctions (if the LSP allows it, list available actions)                                                 |
 | `<leader>clr` | [C]ode [L]anguageserver [R]estart (some Languageservers, like tsserver need to be restarted from time to time ) |
 
-#### Leader m >= [M]akefile/[M]ake actions (requires vim to be run in a TMUX-Session)
+#### Leader m => [M]akefile/[M]ake actions (requires vim to be run in a TMUX-Session)
 
 Makefiles can be handy, if a project needs to run certain shell scripts.
 If the Makefile defines a `run`, `clean` or `dev` task, you can trigger them from within the editor
@@ -111,16 +116,26 @@ If the Makefile defines a `run`, `clean` or `dev` task, you can trigger them fro
 
 ### Debugger keys
 
-| Sequence     | Description                 |
-| :----------- | :-------------------------- |
-| `<leader>de` | evalueate item under cursor |
-| `<leader>db` | debugger breakpoint toggle  |
-| `<f9>`       | toggle breakpoint           |
-| `<f5>`       | start debugger              |
-| `<f11>`      | step into                   |
-| `<f10>`      | step over                   |
-| `<f12>`      | step out                    |
-| `<f8>`       | stop debugger               |
+| Sequence | Description                 |
+| :------- | :-------------------------- |
+| `<f9>`   | toggle breakpoint           |
+| `<f5>`   | start debugger              |
+| `<f6>`   | evalueate item under cursor |
+| `<f11>`  | step into                   |
+| `<f10>`  | step over                   |
+| `<f12>`  | step out                    |
+| `<f8>`   | stop debugger               |
+
+
+### Markdown / `*.todo` files specific actions
+
+| Sequence     | description                              |
+| ------------ | ---------------------------------------- |
+| `<leader>j ` | [J]obs / Todos                           |
+| `<leader>jn` | convert line to Todo                     |
+| `<leader>js` | mark todo as started                     |
+| `<leader>jc` | mark todo as canceled                    |
+| `<leader>jr` | remove/reset all Todo-Metadata from line |
 
 ## Some usefull lua scripts.
 
@@ -212,7 +227,8 @@ External Requirements:
 
 ### Install Kickstart
 
-> [!NOTE] > [Backup](#FAQ) your previous configuration (if any exists)
+> [!NOTE]
+> [Backup](#FAQ) your previous configuration (if any exists)
 
 Neovim's configurations are located under the following paths, depending on your OS:
 

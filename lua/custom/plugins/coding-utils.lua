@@ -49,10 +49,10 @@ return {
 	-- TODO:
 	-- HACK:
 	-- NOTE:
+	-- INFO:
 	-- FIX:
 	-- WARNING:
 	-- PERF:
-	--
 	-- ----------------------------------------------------------------------]]
 	{
 		"folke/todo-comments.nvim",
