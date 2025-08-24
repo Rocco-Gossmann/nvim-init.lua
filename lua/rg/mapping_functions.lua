@@ -5,18 +5,14 @@ local dapui = require("dapui");
 local debuggerUIOpen = false
 
 local function filetypeKeymap(pattern, maps)
-
-	vim.api.nvim_create_autocmd("BufEnter", {
+	vim.api.nvim_create_autocmd("BufAdd", {
 		pattern = pattern,
 		callback = function(args)
-
 			local newMaps = {}
 
-			for _,v in pairs(maps) do
-
+			for _, v in pairs(maps) do
 				v.buffer = args.buf
 				table.insert(newMaps, v)
-
 			end
 
 			require("which-key").add(newMaps)
@@ -84,12 +80,14 @@ return {
 
 	lspRestart          = function(pattern, lspnames)
 		filetypeKeymap(pattern, {
-			'<leader>clr',
-			'<cmd>LspRestart ' .. lspnames .. '<cr>',
-			mode = 'n',
-			desc = '[C]ode [L]sp [R]estart'
+			{
+				'<leader>clr',
+				'<cmd>LspRestart ' .. lspnames .. '<cr>',
+				mode = 'n',
+				desc = '[C]ode [L]sp [R]estart'
+			}
 		})
 	end,
 
-	filetypeKeymap      = filetypeKeymap
+	filetypeKeymap      = filetypeKeymap,
 }
