@@ -83,12 +83,12 @@ return {
 	tmuxRanger          = "<cmd>!tmux new-window \'ranger\'<cr>",
 
 	lspRestart          = function(pattern, lspnames)
-		filetypeKeymap(pattern, {
+		filetypeKeymap(pattern, {{
 			'<leader>clr',
 			'<cmd>LspRestart ' .. lspnames .. '<cr>',
 			mode = 'n',
 			desc = '[C]ode [L]sp [R]estart'
-		})
+		}})
 	end,
 
 	filetypeKeymap      = filetypeKeymap
