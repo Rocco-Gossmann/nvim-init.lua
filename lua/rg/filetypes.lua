@@ -1,13 +1,19 @@
 local whichkey = require("which-key")
 local mappfunc = require("rg.mapping_functions");
+local rgcore = require("rg.core");
 
 --[[============================================================================
--- Filetype Extensions
+-- Map File Extension => Filetype
 --============================================================================]]
-vim.filetype.add({ extension = { html = "tpl" } }) -- interpret .tpl files as HTML
 vim.filetype.add({ extension = { templ = "templ" } })
 vim.filetype.add({ extension = { sql = "mysql" } })
-vim.filetype.add({ extension = { ini = "toml" } })
+
+--[[============================================================================
+-- Handle certain unknown file extensions
+--============================================================================]]
+
+rgcore.customFileExtension({ "*.tpl" }, "html");
+rgcore.customFileExtension({ "*.toml" }, "ini");
 
 --[[============================================================================
 -- LanguageServer restart per Filetype
