@@ -18,7 +18,7 @@ rgcore.customFileExtension({ "*.toml" }, "ini");
 --[[============================================================================
 -- LanguageServer restart per Filetype
 --============================================================================]]
-mappfunc.lspRestart({ "*.php" }, "intelephense phpactor")
+mappfunc.lspRestart({ "*.php" }, "phpactor")
 mappfunc.lspRestart({ "*.js", "*.ts" }, "ts_ls")
 mappfunc.lspRestart({ "dockerfile" }, "dockerls")
 mappfunc.lspRestart({ "*.yml" }, "docker_compose_language_service")
