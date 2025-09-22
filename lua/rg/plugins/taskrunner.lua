@@ -1,10 +1,11 @@
+local confPath = require("rg.env").confdir
+
 local function createFileInFolder(folder, filename)
 	return function()
 		local fullPath = folder .. "/" .. filename
 
 		if vim.fn.findfile(fullPath) ~= "" then
 			vim.cmd.tabnew(fullPath)
-
 		else
 			if vim.fn.finddir(folder) == "" then
 				vim.fn.mkdir(folder)
@@ -13,7 +14,6 @@ local function createFileInFolder(folder, filename)
 			vim.cmd.tabnew()
 			require("rg.env").readTemplate(filename .. ".tpl")
 			vim.cmd("w " .. fullPath)
-
 		end
 	end
 end
@@ -37,17 +37,14 @@ return {
 		end
 
 		if vim.fn.finddir(confPath .. "/lua/rg/dap/vscode-php-debug") == "" then
-
 			table.insert(tasks, {
 				label = "install PHP-Debug-Adapter",
 				action = function()
-					vim.cmd("cd " .. confPath);
-					vim.cmd("!" .. confPath .. "/install-php-dap.sh");
-				end
+					vim.cmd("cd " .. confPath)
+					vim.cmd("!" .. confPath .. "/install-php-dap.sh")
+				end,
 			})
-
 		end
-
 
 		table.insert(tasks, {
 			label = "create / open .vscode/launch.json",
