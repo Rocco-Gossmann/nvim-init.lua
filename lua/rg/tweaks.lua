@@ -85,5 +85,30 @@ vim.api.nvim_create_user_command("CH", function()
 end, {
 });
 
+-- Telescope Border-Fix
+--=============================================================================
+vim.api.nvim_create_autocmd("User", {
+  pattern = "TelescopeFindPre",
+  callback = function()
+
+	local vimOptBorders = vim.opt_local.winborder;
+    vim.opt_local.winborder = "none"
+
+    vim.api.nvim_create_autocmd("WinLeave", {
+      once = true,
+
+      callback = function()
+
+        vim.opt_local.winborder = vimOptBorders
+
+      end,
+
+    })
+
+  end,
+})
+
+
+
 return {}
 
