@@ -144,7 +144,10 @@ whichkey.add({
 	{ '<leader>tr',      '<cmd>TR<cr>',                                     desc = '[T]ask [R]unner',                         mode = 'n' },
 	{ '<leader>tb',      '<cmd>BM<cr>',                                     desc = '[T]o [B]ookmarks',                        mode = 'n' },
 	{ '<leader>tz',      '<cmd>ZenMode<cr>',                                desc = '[T]oggle [Z]en-mode',                     mode = 'n' },
-	{ '<leader>tl',      '<cmd>MonokaiToggleLight<cr>',                     desc = '[T]oggle [L]ight/Dark',                   mode = 'n' },
+
+	{ '<leader>tl',      group = '[T]oggle [L]ight/Dark' },
+	{ '<leader>tld',     '<cmd>colorscheme rose-pine-main<cr>',  desc = '[T]oggle [D]ark' },
+	{ '<leader>tll',     '<cmd>colorscheme rose-pine-dawn<cr>',  desc = '[T]oggle [L]ight' },
 	-- { '<leader>tt',      '<cmd>Twilight<cr>',                               desc = '[T]oggle [T]wilight',                     mode = 'n' },
 
 	-- LSP
