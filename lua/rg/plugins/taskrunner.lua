@@ -36,7 +36,7 @@ return {
 			}
 		end
 
-		if vim.fn.finddir("vscode-php-debug") == "" then
+		if vim.fn.finddir(confPath .. "/lua/rg/dap/vscode-php-debug") == "" then
 
 			table.insert(tasks, {
 				label = "install PHP-Debug-Adapter",
