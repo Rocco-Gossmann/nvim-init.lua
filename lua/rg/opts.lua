@@ -1,9 +1,6 @@
 -- [[ Setting options ]]
 -- See `:help vim.opt`
--- NOTE: You can change these options as you wish!
---  For more options, you can see `:help option-list`
-
-
+--     `:help option-list`
 
 -- Make line numbers default
 --
@@ -97,5 +94,6 @@ vim.opt.scrolloff = 4
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.opt.confirm = true
+
 
 

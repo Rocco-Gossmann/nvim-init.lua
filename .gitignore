@@ -1,6 +1,2 @@
-tags
-test.sh
-.luarc.json
-nvim
-lua/rg/custom
-lazy-lock.json
+lua/rg/dap/vscode-php-debug
+lua/rg/dap/vscode-php-debug/out
