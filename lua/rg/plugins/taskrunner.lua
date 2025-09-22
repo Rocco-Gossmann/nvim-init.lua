@@ -41,7 +41,8 @@ return {
 			table.insert(tasks, {
 				label = "install PHP-Debug-Adapter",
 				action = function()
-					vim.cmd("!" .. require("rg.env").confdir .. "/install-php-dap.sh");
+					vim.cmd("cd " .. confPath);
+					vim.cmd("!" .. confPath .. "/install-php-dap.sh");
 				end
 			})
 
