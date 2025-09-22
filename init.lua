@@ -9,3 +9,4 @@ require "rg.mappings"
 require "rg.filetypes"
 require "rg.tweaks"
 
+require("rg.env").doFileIfExists("./.nvim/init.lua");

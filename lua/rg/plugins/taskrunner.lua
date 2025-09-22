@@ -49,10 +49,17 @@ return {
 		})
 
 		table.insert(tasks, {
+			label = "create / open .nvim/init.lua",
+			action = createFileInFolder("./.nvim", "init.lua"),
+		})
+
+		table.insert(tasks, {
 			label = "create / open .vscode/launch.json",
 			action = createFileInFolder("./.vscode", "launch.json"),
 		})
 
 		require("nvim-taskrunner").setup(tasks)
+
 	end,
+
 }
