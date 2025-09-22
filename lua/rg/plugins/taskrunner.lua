@@ -50,7 +50,7 @@ return {
 
 
 		table.insert(tasks, {
-			label = "create .vscode/launch.json for PHP",
+			label = "create / open .vscode/launch.json",
 			action = createFileInFolder("./.vscode", "launch.json"),
 		})
 
