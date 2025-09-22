@@ -13,6 +13,7 @@ local function createFileInFolder(folder, filename)
 
 			vim.cmd.tabnew()
 			require("rg.env").readTemplate(filename .. ".tpl")
+			vim.cmd.normal("ggdd")
 			vim.cmd("w " .. fullPath)
 		end
 	end
@@ -25,15 +26,11 @@ return {
 	dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
 
 	init = function()
-		local tasks = require("rg.env").doFileIfExists("./.nvim/tasks.lua")
 
-		if tasks == nil or not tasks then
-			tasks = {
-				{
-					label = "add a .nvim/tasks.lua in your project",
-					action = createFileInFolder("./.nvim", "tasks.lua"),
-				},
-			}
+		local tasks = require("rg.env").doFileIfExists("./.nvim/tasks.lua") or {}
+
+		if type(tasks) ~= "table" then
+			tasks = {}
 		end
 
 		if vim.fn.finddir(confPath .. "/lua/rg/dap/vscode-php-debug") == "" then
@@ -45,6 +42,11 @@ return {
 				end,
 			})
 		end
+
+		table.insert(tasks, {
+			label = "create / open .nvim/tasks.lua",
+			action = createFileInFolder("./.nvim", "tasks.lua"),
+		})
 
 		table.insert(tasks, {
 			label = "create / open .vscode/launch.json",
