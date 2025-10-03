@@ -85,5 +85,21 @@ vim.api.nvim_create_user_command("CH", function()
 end, {
 });
 
+
+vim.lsp.config("lua_ls", {
+	settings = {
+		Lua = {
+			workspace = {
+				library = {
+					vim.fn.getcwd() .. "/lua",
+					vim.fn.getcwd()
+				},
+				maxPreload = 100000,
+				preloadFileSize = 10000,
+			},
+		},
+	},
+})
+
 return {}
 
