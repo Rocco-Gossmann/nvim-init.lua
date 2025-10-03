@@ -154,6 +154,12 @@ return {
 							completion = {
 								callSnippet = "Replace",
 							},
+
+							workspace = {
+								vim.fn.getcwd() .. "/lua",
+								vim.fn.getcwd(),
+							},
+
 							-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
 							-- diagnostics = { disable = { 'missing-fields' } },
 						},
