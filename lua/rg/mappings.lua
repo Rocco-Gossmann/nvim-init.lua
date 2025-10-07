@@ -102,7 +102,7 @@ whichkey.add({
 
 	-- Make
 	{ '<leader>m',       group = '[M]ake' },
-	{ '<leader>mm',      '<cmd>!make<cr>',                                  desc = '(default)',                               mode = 'n' },
+	{ '<leader>mm',      mappfunc.tmuxMakeDefault,           desc = '(default)',                               mode = 'n' },
 	{ '<leader>mr',      mappfunc.tmuxMakeRun,                              desc = '[R]un',                                   mode = 'n' },
 	{ '<leader>md',      mappfunc.tmuxMakeDev,                              desc = '[D]ev/[D]ebug',                           mode = 'n' },
 	{ '<leader>mc',      '<cmd>!make clean<cr>',                            desc = '[c]lean',                                 mode = 'n' },
@@ -146,8 +146,8 @@ whichkey.add({
 	{ '<leader>tz',      '<cmd>ZenMode<cr>',                                desc = '[T]oggle [Z]en-mode',                     mode = 'n' },
 
 	{ '<leader>tl',      group = '[T]oggle [L]ight/Dark' },
-	{ '<leader>tld',     '<cmd>colorscheme rose-pine-main<cr>',  desc = '[T]oggle [D]ark' },
-	{ '<leader>tll',     '<cmd>colorscheme rose-pine-dawn<cr>',  desc = '[T]oggle [L]ight' },
+	{ '<leader>tld',     '<cmd>colorscheme rose-pine-main<cr>',             desc = '[T]oggle [D]ark' },
+	{ '<leader>tll',     '<cmd>colorscheme rose-pine-dawn<cr>',             desc = '[T]oggle [L]ight' },
 	-- { '<leader>tt',      '<cmd>Twilight<cr>',                               desc = '[T]oggle [T]wilight',                     mode = 'n' },
 
 	-- LSP

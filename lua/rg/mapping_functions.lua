@@ -49,7 +49,8 @@ return {
 	end,
 
 	tmuxMakeRun         = "<cmd>!tmux split-window -v -p25 \'make run\'<cr>",
-	tmuxMakeDev         = "<cmd>!tmux new-window -d \'make dev\'<cr>",
+	tmuxMakeDev         = "<cmd>!tmux new-window \'make dev\'<cr>",
+	tmuxMakeDefault     = "<cmd>!tmux new-window \'make\'<cr>",
 
 	start_debugger      = function()
 		if (debuggerUIOpen == false) then
