@@ -1,4 +1,3 @@
-local whichkey = require("which-key")
 local mappfunc = require("rg.mapping_functions");
 local rgcore = require("rg.core");
 

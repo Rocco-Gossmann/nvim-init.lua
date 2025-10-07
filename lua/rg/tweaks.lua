@@ -110,5 +110,21 @@ vim.api.nvim_create_autocmd("User", {
 
 
 
+
+vim.lsp.config("lua_ls", {
+	settings = {
+		Lua = {
+			workspace = {
+				library = {
+					vim.fn.getcwd() .. "/lua",
+					vim.fn.getcwd()
+				},
+				maxPreload = 100000,
+				preloadFileSize = 10000,
+			},
+		},
+	},
+})
+
 return {}
 
