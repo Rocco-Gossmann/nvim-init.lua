@@ -14,7 +14,8 @@ return {
 		"folke/zen-mode.nvim",
 		opts = {
 			window = {
-				width = 128
+				backdrop = 1,
+				width = 196
 			}
 			-- your configuration comes here
 			-- or leave it empty to use the default settings
