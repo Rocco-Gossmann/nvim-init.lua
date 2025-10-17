@@ -102,7 +102,7 @@ whichkey.add({
 
 	-- Make
 	{ '<leader>m',       group = '[M]ake' },
-	{ '<leader>mm',      mappfunc.tmuxMakeDefault,           desc = '(default)',                               mode = 'n' },
+	{ '<leader>mm',      mappfunc.tmuxMakeDefault,                          desc = '(default)',                               mode = 'n' },
 	{ '<leader>mr',      mappfunc.tmuxMakeRun,                              desc = '[R]un',                                   mode = 'n' },
 	{ '<leader>md',      mappfunc.tmuxMakeDev,                              desc = '[D]ev/[D]ebug',                           mode = 'n' },
 	{ '<leader>mc',      '<cmd>!make clean<cr>',                            desc = '[c]lean',                                 mode = 'n' },
