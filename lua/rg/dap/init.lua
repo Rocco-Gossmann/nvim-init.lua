@@ -6,8 +6,17 @@ local env = require("rg.env");
 --==============================================================================
 dap.adapters.php = {
 	type = 'executable',
+	command = vim.fn.stdpath("data") .. '/mason/bin/php-debug-adapter',
+	-- args = { env.confdir .. '/lua/rg/dap/vscode-php-debug/out/phpDebug.js' }
+}
+
+--==============================================================================
+-- BM: PHP - DAP
+--==============================================================================
+dap.adapters["local-lua"] = {
+	type = 'executable',
 	command = 'node',
-	args = { env.confdir .. '/lua/rg/dap/vscode-php-debug/out/phpDebug.js' }
+	args = { vim.fn.stdpath("data") .. '/mason/packages/local-lua-debugger-vscode/extension/extension/debugAdapter.js' }
 }
 
 --==============================================================================
@@ -32,6 +41,7 @@ dap.configurations.c = {
 }
 
 dap.configurations.cpp = dap.configurations.c
+
 
 --==============================================================================
 -- BM: GO - AutoFormat and DAP
