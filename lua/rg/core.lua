@@ -1,12 +1,17 @@
 local function customFileExtension(pattern, filetype, onBufEnter)
-	vim.api.nvim_create_autocmd("BufAdd", {
+	vim.api.nvim_create_autocmd("BufEnter", {
 
 		pattern = pattern,
 
 		callback = function(args)
-			vim.cmd.set("filetype=" .. filetype)
 
-			if (type(onBufEnter) == "function" and onBufEnter(args)) then
+			if type(onBufEnter) == "function" then
+
+				if onBufEnter(args) then
+					vim.cmd.set("filetype=" .. filetype)
+				end
+
+			else
 
 				vim.cmd.set("filetype=" .. filetype)
 
@@ -14,8 +19,9 @@ local function customFileExtension(pattern, filetype, onBufEnter)
 
 		end,
 	})
+
 end
 
 return {
-	customFileExtension = customFileExtension
+	customFileExtension = customFileExtension,
 }
