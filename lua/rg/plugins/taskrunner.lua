@@ -58,6 +58,18 @@ return {
 			action = createFileInFolder("./.vscode", "launch.json"),
 		})
 
+		table.insert(tasks, {
+			label = "move function parameters to separate lines",
+			action = function()
+
+				vim.cmd('normal cib\r\rkp0v$')
+				vim.cmd("stopinsert")
+				vim.cmd("s/,/&\\r/g");
+				vim.cmd('normal =')
+
+			end
+		})
+
 		require("nvim-taskrunner").setup(tasks)
 
 	end,
