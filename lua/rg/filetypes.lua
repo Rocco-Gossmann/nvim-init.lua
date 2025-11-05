@@ -11,7 +11,7 @@ vim.filetype.add({ extension = { sql = "mysql" } })
 -- Handle certain unknown file extensions
 --============================================================================]]
 
-rgcore.customFileExtension({ "*.tpl" }, "html");
+rgcore.customFileExtension({ "*.tpl" }, "html"); -- example: treat tpl files as HTML
 rgcore.customFileExtension({ "*.toml" }, "ini");
 
 --[[============================================================================
@@ -19,6 +19,7 @@ rgcore.customFileExtension({ "*.toml" }, "ini");
 --============================================================================]]
 mappfunc.lspRestart({ "*.php" }, "phpactor")
 mappfunc.lspRestart({ "*.js", "*.ts" }, "ts_ls")
+mappfunc.lspRestart({ "*.lua" }, "lua_ls")
 mappfunc.lspRestart({ "dockerfile" }, "dockerls")
 mappfunc.lspRestart({ "*.yml" }, "docker_compose_language_service")
 

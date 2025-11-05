@@ -48,9 +48,9 @@ return {
 		gs.blame_line { full = false }
 	end,
 
-	tmuxMakeRun         = "<cmd>!tmux split-window -v -p25 \'make run\'<cr>",
-	tmuxMakeDev         = "<cmd>!tmux new-window \'make dev\'<cr>",
-	tmuxMakeDefault     = "<cmd>!tmux new-window \'make\'<cr>",
+	tmuxMakeRun         = "<cmd>wa<cr><cmd>!tmux split-window -v -p25 \'make run\'<cr>",
+	tmuxMakeDev         = "<cmd>wa<cr><cmd>!tmux new-window \'make dev\'<cr>",
+	tmuxMakeDefault     = "<cmd>wa<cr><cmd>!tmux new-window \'make\'<cr>",
 
 	start_debugger      = function()
 		if (debuggerUIOpen == false) then
