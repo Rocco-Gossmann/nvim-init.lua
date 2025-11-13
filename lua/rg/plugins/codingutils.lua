@@ -22,6 +22,12 @@ return {
 			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
 		}
-	}
+	},
 
+	{
+		"danymat/neogen",
+		config = true,
+		-- Uncomment next line if you want to follow only stable versions
+		-- version = "*"
+	}
 }
