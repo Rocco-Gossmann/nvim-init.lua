@@ -19,28 +19,12 @@ local function createFileInFolder(folder, filename)
 	end
 end
 
-return {
+local function restartTaskRunner()
 
-	"rocco-gossmann/nvim-taskrunner",
-
-	dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
-
-	init = function()
-
-		local tasks = require("rg.env").doFileIfExists("./.nvim/tasks.lua") or {}
+		local tasks = require("rg.env").doFileIfExists("./.nvim/tasks.lua")
 
 		if type(tasks) ~= "table" then
 			tasks = {}
-		end
-
-		if vim.fn.finddir(confPath .. "/lua/rg/dap/vscode-php-debug") == "" then
-			table.insert(tasks, {
-				label = "install PHP-Debug-Adapter",
-				action = function()
-					vim.cmd("cd " .. confPath)
-					vim.cmd("!" .. confPath .. "/install-php-dap.sh")
-				end,
-			})
 		end
 
 		table.insert(tasks, {
@@ -70,8 +54,26 @@ return {
 			end
 		})
 
+		table.insert(tasks, {
+			label = "Restart TaskRunner",
+			action = function()
+
+				vim.api.nvim_del_user_command("TR")
+				restartTaskRunner()
+
+			end
+		})
+
 		require("nvim-taskrunner").setup(tasks)
 
-	end,
+end
+
+return {
+
+	"rocco-gossmann/nvim-taskrunner",
+
+	dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+
+	init = restartTaskRunner
 
 }
