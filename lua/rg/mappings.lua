@@ -206,4 +206,6 @@ vim.cmd [[
 
 	inoremap <C-d> <C-k>
 
+	noremap <PageDown> gT
+	noremap <PageUp> gt
 ]]
