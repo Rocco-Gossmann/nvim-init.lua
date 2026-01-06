@@ -1,12 +1,12 @@
-local dap = require("dap");
-local env = require("rg.env");
+local dap = require("dap")
+local env = require("rg.env")
 
 --==============================================================================
 -- BM: PHP - DAP
 --==============================================================================
 dap.adapters.php = {
-	type = 'executable',
-	command = vim.fn.stdpath("data") .. '/mason/bin/php-debug-adapter',
+	type = "executable",
+	command = vim.fn.stdpath("data") .. "/mason/bin/php-debug-adapter",
 	-- args = { env.confdir .. '/lua/rg/dap/vscode-php-debug/out/phpDebug.js' }
 }
 
@@ -14,18 +14,18 @@ dap.adapters.php = {
 -- BM: PHP - DAP
 --==============================================================================
 dap.adapters["local-lua"] = {
-	type = 'executable',
-	command = 'node',
-	args = { vim.fn.stdpath("data") .. '/mason/packages/local-lua-debugger-vscode/extension/extension/debugAdapter.js' }
+	type = "executable",
+	command = "node",
+	args = { vim.fn.stdpath("data") .. "/mason/packages/local-lua-debugger-vscode/extension/extension/debugAdapter.js" },
 }
 
 --==============================================================================
 -- BM: C / C++ - DAP
 --==============================================================================
 dap.adapters.lldb = {
-	type = 'executable',
-	command = '/opt/homebrew/opt/llvm/bin/lldb-vscode', -- adjust as needed, must be absolute path
-	name = 'lldb'
+	type = "executable",
+	command = "/opt/homebrew/opt/llvm/bin/lldb-vscode", -- adjust as needed, must be absolute path
+	name = "lldb",
 }
 
 dap.configurations.c = {
@@ -36,32 +36,31 @@ dap.configurations.c = {
 		program = vim.fn.getcwd() .. "/debug.run",
 		cwd = "${workspaceFolder}",
 		stopOnEntry = false,
-		args = {}
+		args = {},
 	},
 }
 
 dap.configurations.cpp = dap.configurations.c
 
-
 --==============================================================================
 -- BM: GO - AutoFormat and DAP
 --==============================================================================
 dap.adapters.go = function(callback, config)
-	if config.mode == 'remote' and config.request == 'attach' then
+	if config.mode == "remote" and config.request == "attach" then
 		callback({
-			type = 'server',
-			host = config.host or '127.0.0.1',
-			port = config.port or '38697'
+			type = "server",
+			host = config.host or "127.0.0.1",
+			port = config.port or "38697",
 		})
 	else
 		callback({
-			type = 'server',
-			port = '${port}',
+			type = "server",
+			port = "${port}",
 			executable = {
-				command = 'dlv',
-				args = { 'dap', '-l', '127.0.0.1:${port}', '--log', '--log-output=dap' },
+				command = "dlv",
+				args = { "dap", "-l", "127.0.0.1:${port}", "--log", "--log-output=dap" },
 				detached = vim.fn.has("win32") == 0,
-			}
+			},
 		})
 	end
 end
@@ -73,7 +72,7 @@ dap.configurations.go = {
 		name = "Launch Package",
 		type = "go",
 		request = "launch",
-		program = "${workspaceFolder}"
+		program = "${workspaceFolder}",
 	},
 
 	{
@@ -82,12 +81,9 @@ dap.configurations.go = {
 		request = "attach",
 		mode = "remote",
 		host = "127.0.0.1",
-		port = "38697"
+		port = "38697",
 	},
-
 }
-
-
 
 -- https://github.com/go-delve/delve/blob/master/Documentation/usage/dlv_dap.md
 --dap.configurations.go = {
@@ -99,23 +95,23 @@ dap.configurations.go = {
 --  },
 --}
 
-vim.cmd [[
+vim.cmd([[
 
 let NERDTreeIgnore=["_templ.go"]
 
-]]
-
+]])
 
 --==============================================================================
 -- Intelephense
 --==============================================================================
 if vim.lsp.intelephense then
-	vim.lsp.intelephense.setup {
+	vim.lsp.intelephense.setup({
 		settings = {
 			intelephense = {
+
 				environment = {
 					includePaths = {
-						"/Users/st/.local/bin/programs/phpunit"
+						"/Users/st/.local/bin/programs/phpunit",
 					},
 				},
 
@@ -147,7 +143,8 @@ if vim.lsp.intelephense then
 				inlayHint = {
 					returnTypes = false
 				}
-			}
-		}
-	}
+
+			},
+		},
+	})
 end
