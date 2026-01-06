@@ -117,6 +117,35 @@ if vim.lsp.intelephense then
 					includePaths = {
 						"/Users/st/.local/bin/programs/phpunit"
 					},
+				},
+
+				diagnostics = {
+					argumentCount = false,
+					deprecated = false,
+					duplicateSymbols = false,
+					embeddedLanguages = false,
+					enable = false,
+					implementationErrors = false,
+					languageConstraints = false,
+					memberAccess = false,
+					noMixedTypeCheck = false,
+					relaxedTypeCheck = false,
+					run = "onType",
+					typeErrors = false,
+					undefinedClassConstants = false,
+					undefinedConstants = false,
+					undefinedFunctions = false,
+					undefinedMethods = false,
+					undefinedProperties = false,
+					undefinedSymbols = false,
+					undefinedTypes = false,
+					undefinedVariables = false,
+					unexpectedTokens = false,
+					unusedSymbols = false,
+				},
+
+				inlayHint = {
+					returnTypes = false
 				}
 			}
 		}
