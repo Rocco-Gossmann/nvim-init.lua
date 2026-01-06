@@ -56,7 +56,7 @@ mappfunc.filetypeKeymap({ "*.md", "*.html", "*.js", ".ts", ".css", "*.scss", "*.
 })
 
 mappfunc.filetypeKeymap({ "*.lua", "*.go", "*.php" }, {
-	{ '<leader>cf', vim.lsp.buf.format, desc = '[C]ode [F]ormat', mode = "n" },
+	{ '<leader>cf', vim.lsp.buf.format, desc = '[C]ode [F]ormat', mode = "nv" },
 })
 
 
