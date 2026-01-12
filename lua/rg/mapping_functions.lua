@@ -74,8 +74,15 @@ return {
 		dapui.eval();
 	end,
 
-	tmuxLazyGit         = "<cmd>!tmux new-window \'lazygit\'<cr>",
-	tmuxLazyDocker      = "<cmd>!tmux new-window \'lazydocker\'<cr>",
+	tmuxLazyGit         = function()
+		vim.cmd("!tmux-kill-window-in-session \'lazygit\'")
+		vim.cmd("!tmux new-window  \'lazygit\'")
+	end,
+	tmuxLazyDocker         = function()
+		vim.cmd("!tmux-kill-window-in-session \'lazydocker\'")
+		vim.cmd("!tmux new-window  \'lazydocker\'")
+	end,
+
 	tmuxLazySQL         = "<cmd>!tmux new-window \'lazysql\'<cr>",
 	tmuxRanger          = "<cmd>!tmux new-window \'ranger\'<cr>",
 
