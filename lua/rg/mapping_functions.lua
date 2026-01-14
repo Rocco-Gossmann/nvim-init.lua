@@ -86,6 +86,18 @@ return {
 	tmuxLazySQL         = "<cmd>!tmux new-window \'lazysql\'<cr>",
 	tmuxRanger          = "<cmd>!tmux new-window \'ranger\'<cr>",
 
+	tmuxLlama           = function()
+
+		local filename = vim.api.nvim_buf_get_name(0);
+
+		if filename == "" then
+			vim.cmd('!tmux new-window zsh -i -c "qwen"')
+		else
+			vim.cmd('!tmux new-window zsh -i -c "qwen -p \\"/read '..filename..'\\""')
+		end
+
+	end,
+
 	lspRestart          = function(pattern, lspnames)
 		filetypeKeymap(pattern, {
 			{
