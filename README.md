@@ -6,134 +6,198 @@
 
 ## Keymaps
 
-These are the most important ones though.
-
 ### Exiting NeoVim
 
 typing `:q!` or `:qwa!` to close buffers or vim is slow. These shortcuts are an alternative to that.
 (all sequences here require `shift` to be held)
 
-| Sequence | Description                        |
-| :------- | :--------------------------------- |
-| `ZZ`     | as per default: closes a buffer    |
-| `ZD`     | delete the current buffer (`:bd!`) |
-| `ZW`     | write/save and close all Buffers   |
-| `ZA`     | close all buffers, without saving  |
+| Key | Group | Description | Mode |
+|-----|-------|-------------|------|
+| `Z` | `Close` | - | - |
+| `ZZ` | - | `Close current buffer (warn if not saved)` | `n` |
+| `ZD` | - | `remove current buffer (ignore unsaved)` | `n` |
+| `ZW` | - | `close all buffers (save all files)` | `n` |
+| `ZA` | - | `close all buffers (ignore unsaved)` | `n` |
 
-### Leader based maps
+### Macros
 
-the leader key is `<space>` as per [Kickstart.nvim's](https://github.com/nvim-lua/kickstart.nvim). default.
+You can create your own macros on a per project basis.
+just type `<leader>tr` to get a variaty of options.
+"the .nvim/tasks.lua configures your macros"
 
-most of these can be be figured out, thanks to the Which-Key plugin.
-So I'm not going to list every single one here.
-
-#### Leader Leader
-
-pressing `<leader>` twice opens a list of all current buffers.
-
-#### Leader T => Toggle
-
-| Sequence     | Description                                                                |
-| :----------- | :------------------------------------------------------------------------- |
-| `<leader>tz` | [T]oggle [Z]en-Mode (maximizes current buffer and brings it to the center) |
-| `<leader>tt` | [T]oggle [T]wighlight (gray out everything but the current text block)     |
-| `<leader>tl` | [T]oggle Monokai ([L]ight and Dark-Mode)                                   |
-| `<leader>tb` | [T]o [B]ookmark-list                                                       |
-| `<leader>tr` | [T]ask [R]unner (List of Tasks/Macros)                                     |
-
-#### Leader P => Project
-
-| Sequence     | Description                        |
-| :----------- | :--------------------------------- |
-| `<leader>p`  | execute action on a project level  |
-| `<leader>pf` | [P]roject open [F]ile              |
-| `<leader>ps` | [P]roject find [S]tring            |
-| `<leader>pw` | [P]roject find [W]ord under cursor |
-| `<leader>pt` | [P]roject find [T]ag (aka. Symbol) |
-
-#### Leader G => Git
-
-| Sequence     | Description                        |
-| :----------- | :--------------------------------- |
-| `<leader>gf` | [G]it list [F]iles                 |
-| `<leader>gb` | [G]it [B]lame                      |
-| `<leader>gn` | [G]it [N]ext changed Block         |
-| `<leader>gp` | [G]it [P]revious changed Block     |
-| `<leader>gd` | [G]it show [D]iff of changed Block |
-| `<leader>gs` | [G]it [S]tage changed Block        |
-
-#### Leader F => Anything that has to do with [F]iles or [F]inding stuff
-
-Which-key will show you what is available here 😉.
-A few interresting mappings are:
-
-| Sequence     | Description                                      |
-| :----------- | :----------------------------------------------- |
-| `<leader>fh` | [F]ind [H]elp                                    |
-| `<leader>fm` | [F]ind [M]apping                                 |
-| `<leader>fr` | [F]ind [R]esume (resume the last search you did) |
-| `<leader>fg` | [F]ind [G]rep (alternative to vims "/" - search) |
-| `<leader>fe` | [F]ind current file in [E]xplorer                |
-| ...          |                                                  |
-
-#### Leader q => some convenient [Q]uicklist manipulations.
-
-Which-key will show you what is available here 😉.
-
-#### Leader s => handeling window [S]plits
-
-| Sequence     | Description                                                    |
-| :----------- | :------------------------------------------------------------- |
-| `<leader>sh` | [S]plit [H]orizontal (new split below)                         |
-| `<leader>sv` | [S]plit [V]ertical (new split to the right)                    |
-| `<leader>sb` | [S]plit [B]alance (make all splits roughtly the same size)     |
-| `<leader>sm` | [S]plit [M]aximize (make the current split as big as possible) |
-
-#### Leader c => anything, that has to do with [C]ode
-
-| Sequence      | Description                                                                                                     |
-| :------------ | :-------------------------------------------------------------------------------------------------------------- |
-| `<leader>cf`  | [C]ode [F]ormat                                                                                                 |
-| `<leader>cd`  | [C]ode [D]ocblock (try to create one if the LSP allows it)                                                      |
-| `<leader>cr`  | [C]ode [R]ename (try to rename the current symbol, if the LSP allows it)                                        |
-| `<leader>ca`  | [C]ode [A]ctions (if the LSP allows it, list available actions)                                                 |
-| `<leader>clr` | [C]ode [L]anguageserver [R]estart (some Languageservers, like tsserver need to be restarted from time to time ) |
-
-#### Leader m => [M]akefile/[M]ake actions (requires vim to be run in a TMUX-Session)
-
-Makefiles can be handy, if a project needs to run certain shell scripts.
-If the Makefile defines a `run`, `clean` or `dev` task, you can trigger them from within the editor
-(or you can just run plain `make`, to run the first task found in the Makefile)
-
-| Sequence     | Description            |
-| :----------- | :--------------------- |
-| `<leader>mm` | [M]ake (just run make) |
-| `<leader>mr` | [M]ake [R]un           |
-| `<leader>mc` | [M]ake [C]lean         |
-| `<leader>md` | [M]ake [D]ev           |
-
-### Debugger keys
-
-| Sequence | Description                 |
-| :------- | :-------------------------- |
-| `<f9>`   | toggle breakpoint           |
-| `<f5>`   | start debugger              |
-| `<f6>`   | evalueate item under cursor |
-| `<f11>`  | step into                   |
-| `<f10>`  | step over                   |
-| `<f12>`  | step out                    |
-| `<f8>`   | stop debugger               |
+| Key | Group | Description | Mode |
+|-----|-------|-------------|------|
+| `<leader>tr` | - | `Task Runner` | `n` |
 
 
-### Markdown / `*.todo` files specific actions
+### TMUX - Integration 
+| Key | Group | Description | Mode |
+|-----|-------|-------------|------|
+| `<C-h>` | `TMUX-Navigations` | `Navigate left` | `n` |
+| `<C-j>` | `TMUX-Navigations` | `Navigate down` | `n` |
+| `<C-k>` | `TMUX-Navigations` | `Navigate up` | `n` |
+| `<C-l>` | `TMUX-Navigations` | `Navigate right` | `n` |
 
-| Sequence     | description                              |
-| ------------ | ---------------------------------------- |
-| `<leader>j ` | [J]obs / Todos                           |
-| `<leader>jn` | convert line to Todo                     |
-| `<leader>js` | mark todo as started                     |
-| `<leader>jc` | mark todo as canceled                    |
-| `<leader>jr` | remove/reset all Todo-Metadata from line |
+
+### Code Actions
+| Key | Group | Description | Mode |
+|-----|-------|-------------|------|
+| `<leader>c` | `[C]ode` | - | `n` |
+| `<leader>cr` | `[C]ode` | `[R]ename` | `n` |
+| `<leader>cd` | `[C]ode` | `Document` | `n` |
+| `<leader>ca` | `[C]ode` | `Action` | `n, x` |
+| `<leader>cc` | `[C]ode` | `Comment` | `n, x` |
+| `<leader>cl` | `[C]ode [L]sp` | `[L]sp [R]estart` | `n` |
+
+### QuickList
+| Key | Group | Description | Mode |
+|-----|-------|-------------|------|
+| `<leader>q` | `[Q]uicklist` | - | `n` |
+| `<leader>qd` | `[Q]uicklist` | `alt+tab files` | `n` |
+| `<leader>qn` | `[Q]uicklist` | `Quicklist [N]ext` | `n` |
+| `<leader>qp` | `[Q]uicklist` | `Quicklist [P]revious` | `n` |
+| `<leader>qc` | `[Q]uicklist` | `Quicklist [C]lose` | `n` |
+| `q` | `[Q]uicklist` | - | `n` |
+| `qd` | `[Q]uicklist` | `alt+tab files` | `n` |
+| `qn` | `[Q]uicklist` | `Quicklist [N]ext` | `n` |
+| `qp` | `[Q]uicklist` | `Quicklist [P]revious` | `n` |
+| `qc` | `[Q]uicklist` | `Quicklist [C]lose` | `n` |
+
+### Explorer (NertTree)
+| Key | Group | Description | Mode |
+|-----|-------|-------------|------|
+| `<C-n>` | `[E]xplorer` | `NERDTreeToggle` | `n` |
+| `E` | `[E]xplorer` | - | `n` |
+| `EE` | `[E]xplorer` | `Explorer in place` | `n` |
+| `EL` | `[E]xplorer` | `Explorer right` | `n` |
+| `EH` | `[E]xplorer` | `Explorer left` | `n` |
+| `EJ` | `[E]xplorer` | `Explorer bottom` | `n` |
+| `EK` | `[E]xplorer` | `Explorer top` | `n` |
+| `ET` | `[E]xplorer` | `Explorer [T]ab` | `n` |
+
+### Project-Dir actions
+| Key | Group | Description | Mode |
+|-----|-------|-------------|------|
+| `<leader>p` | `[P]roject` | - | `n` |
+| `<leader>pf` | `[P]roject` | `Project [F]iles` | `n` |
+| `<leader>ps` | `[P]roject` | `Project find [S]tring` | `n` |
+| `<leader>pw` | `[P]roject` | `Project find [W]ord` | `n` |
+| `<leader>pt` | `[P]roject` | `Project find [T]ag` | `n` |
+
+### Filespecific actions 
+| Key | Group | Description | Mode |
+|-----|-------|-------------|------|
+| `<leader>f` | `[F]ile` | `Find [F]ile` | `n` |
+| `<leader>ff` | `[F]ile` | `Find [F]ile` | `n` |
+| `<leader>fo` | `[F]ile` | `Find [O]lder File` | `n` |
+| `<leader>fh` | `[F]ile` | `Find [H]elp` | `n` |
+| `<leader>fm` | `[F]ile` | `Find [M]appings` | `n` |
+| `<leader>fr` | `[F]ile` | `Find [R]esume` | `n` |
+| `<leader>ft` | `[F]ile` | `Find file [T]ags` | `n` |
+| `<leader>fe` | `[F]ile` | `File show in [E]xplorer` | `n` |
+| `<leader>fd` | `[F]ile` | `File [D]Diagnose` | `n` |
+| `<leader>fg` | `[F]ile` | `File [G]rep` | `n` |
+| `<leader>fn` | `[F]ile` | `files ([N]erdTree)` | `n` |
+
+### Git specific actions
+| Key | Group | Description | Mode |
+|-----|-------|-------------|------|
+| `<leader>g` | `[G]it` | - | `n` |
+| `<leader>gf` | `[G]it` | `Search [F]iles` | `n` |
+| `<leader>gb` | `[G]it` | `Blame line` | `n` |
+| `<leader>gn` | `[G]it` | `Next changed Block` | `n` |
+| `<leader>gp` | `[G]it` | `Previous changed Block` | `n` |
+| `<leader>gd` | `[G]it` | `Diff Changed Block` | `n` |
+| `<leader>gs` | `[G]it` | `Stage Hunk` | `n` |
+| `<leader>gl` | `[G]it` | `Lazygit` | `n` |
+
+### Launch Terminal Apps in TMUX
+| Key | Group | Description | Mode |
+|-----|-------|-------------|------|
+| `<leader>l` | `[L]aunch` | - | `n` |
+| `<leader>lg` | `[L]aunch` | `Lazy[G]it` | `n` |
+| `<leader>ld` | `[L]aunch` | `Lazy[D]ocker` | `n` |
+| `<leader>ls` | `[L]aunch` | `Lazy[S]QL` | `n` |
+| `<leader>lr` | `[L]aunch` | `Ranger` | `n` |
+| `<leader>ll` | `[L]aunch` | `LLM - Server (Llama.cpp)` | `n` |
+
+### Makefile Actions
+| Key | Group | Description | Mode |
+|-----|-------|-------------|------|
+| `<leader>m` | `[M]ake` | - | `n` |
+| `<leader>mm` | `[M]ake` | `(default)` | `n` |
+| `<leader>mr` | `[M]ake` | `Run` | `n` |
+| `<leader>md` | `[M]ake` | `Dev/[D]ebug` | `n` |
+| `<leader>mc` | `[M]ake` | `clean` | `n` |
+
+### Vim window splits
+| Key | Group | Description | Mode |
+|-----|-------|-------------|------|
+| `<leader>s` | `[S]plit` | - | `n` |
+| `<leader>sh` | `[S]plit` | `Vertical` | `n` |
+| `<leader>sv` | `[S]plit` | `Horizontal` | `n` |
+| `<leader>sb` | `[S]plit` | `Balance` | `n` |
+| `<leader>sm` | `[S]plit` | `Maximize` | `n` |
+| `<M-Down>` | `[S]plit` | `Decrease Split height` | `n` |
+| `<M-Up>` | `[S]plit` | `Increase Split height` | `n` |
+| `<M-Right>` | `[S]plit` | `Increase Split width` | `n` |
+| `<M-Left>` | `[S]plit` | `Decrease Split width` | `n` |
+
+### Debugger
+| Key | Group | Description | Mode |
+|-----|-------|-------------|------|
+| `<F6>` | `[D]ebugger` | `Debugger Evaluate` | `n` |
+| `<F5>` | `[D]ebugger` | `Debugger Start` | `n` |
+| `<F9>` | `[D]ebugger` | `Breakpoint` | `n` |
+| `<F10>` | `[D]ebugger` | `StepOver` | `n` |
+| `<F11>` | `[D]ebugger` | `StepInto` | `n` |
+| `<F12>` | `[D]ebugger` | `StepOut` | `n` |
+| `<F8>` | `[D]ebugger` | `Stop` | `n` |
+
+### Template files
+| Key | Group | Description | Mode |
+|-----|-------|-------------|------|
+| `§` | `Templates` | - | `n` |
+| `§w` | `Templates` | `TMUX-[W]orkspace` | `n` |
+
+### Toggles
+| Key | Group | Description | Mode |
+|-----|-------|-------------|------|
+| `<leader>t` | `[T]oggle [L]ight/Dark` | `Toggle [L]ight/Dark` | `n` |
+| `<leader>tld` | `[T]oggle [D]ark` | `Toggle [D]ark` | `n` |
+| `<leader>tll` | `[T]oggle [L]ight` | `Toggle [L]ight` | `n` |
+
+### LSP Actions
+| Key | Group | Description | Mode |
+|-----|-------|-------------|------|
+| `<S-h>` | `LSP` | `Hover Documentation` | `n` |
+| `gh` | `LSP` | `Hover Documentation` | `n` |
+| `<S-k>` | `LSP` | `Signature Documentation` | `n` |
+| `gs` | `LSP` | `Signature Documentation` | `n` |
+| `gd` | `LSP` | `Go to Definition` | `n` |
+| `gr` | `LSP` | `Go to References` | `n` |
+| `gi` | `LSP` | `Go to Implementation` | `n` |
+| `gD` | `LSP` | `Go to Type Definition` | `n` |
+
+### Misc. 
+| Key | Group | Description | Mode |
+|-----|-------|-------------|------|
+| `<leader>e` | `[E]rrors` | `show [E]rrors and Warnings` | `n` |
+| `<leader>#` | - | `alt+tab files` | `n` |
+| `<leader><space>` | `Misc` | `Find existing buffers` | `n` |
+| `J` | `Visual Mode Helpers` | `Move lines down` | `x` |
+| `K` | `Visual Mode Helpers` | `Move lines up` | `x` |
+| `<leader>p` | `Visual Mode Helpers` | `Paste without yank` | `x` |
+| `<C-r>` | `Visual Mode Helpers` | `Replace with register` | `x` |
+| `<C-l>` | `Visual Mode Helpers` | `Remove leading whitespace` | `x` |
+| `n` | `Visual Mode Helpers` | `Keep cursor centered` | `v` |
+| `N` | `Visual Mode Helpers` | `Keep cursor centered` | `v` |
+| `<C-d>` | `Visual Mode Helpers` | `Keep cursor centered` | `v` |
+| `<C-u>` | `Visual Mode` | `Keep cursor centered` | `v` |
+| `<C-j>` | `Insert Mode Helpers` | `Show blink-cmp` | `i` |
+| `<C-h>` | `Insert Mode Helpers` | `Signature help` | `i` |
+| `<Esc><Esc>` | `Terminal Helpes` | `Exit terminal mode` | `t` |
+
 
 ## Some usefull lua scripts.
 
