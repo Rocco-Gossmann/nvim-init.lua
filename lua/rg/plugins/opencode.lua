@@ -57,7 +57,7 @@ vim.api.nvim_create_user_command("OCNewSession", function(args)
 end, {})
 
 
-vim.api.nvim_create_user_command("OCCopy", function(args)
+vim.api.nvim_create_user_command("OCReference", function(args)
 
 	-- env.printTable(args)
 	-- print(vim.api.nvim_get_current_line())
@@ -73,7 +73,29 @@ vim.api.nvim_create_user_command("OCCopy", function(args)
 
 	local content = "\n---<code>\n" .. table.concat(vim.api.nvim_buf_get_lines(0, args.line1-1, args.line2, true), "\n") .. "\n</code>";
 
-	ocPost('tui/append-prompt', { text = "@" .. vim.fn.expand("%") .. lines .. "\n\n" })
+	ocPost('tui/append-prompt', { text = "@" .. vim.fn.expand("%") .. lines })
+
+end, { range = true })
+
+vim.api.nvim_create_user_command("OCCopy", function()
+
+-- Save current register content
+	local old_reg = vim.fn.getreg('v')
+	local old_regtype = vim.fn.getregtype('v')
+
+	-- Yank the visual selection to register 'v'
+	vim.cmd('normal! gv"vy')
+	local selected_text = vim.fn.getreg('v')
+
+	-- Remove trailing spaces from empty lines
+	selected_text = selected_text:gsub("[ \t]+(\n)", "%1")
+
+	-- Restore the original register content
+	vim.fn.setreg('v', old_reg, old_regtype)
+
+	local content = "\n" .. selected_text .. "\n";
+
+	ocPost('tui/append-prompt', { text = content })
 
 end, { range = true })
 
