@@ -85,20 +85,6 @@ vim.api.nvim_create_user_command("CH", function()
 end, {
 });
 
-vim.api.nvim_create_user_command("OCCopy", function()
-
-	local text = vim.fn.getreg('*')
-	local data = { text = text }
-	local json_data = vim.json.encode(data)
-	local cmd = 'curl -X POST http://localhost:8080/tui/append-prompt -H "Content-Type: application/json" --data-raw \'' .. json_data .. '\''
-
-	print(cmd)
-
-    vim.fn.system(cmd)
-
-end, {})
-
-
 -- Telescope Border-Fix
 --=============================================================================
 vim.api.nvim_create_autocmd("User", {
@@ -121,9 +107,6 @@ vim.api.nvim_create_autocmd("User", {
 
   end,
 })
-
-
-
 
 vim.lsp.config("lua_ls", {
 	settings = {
