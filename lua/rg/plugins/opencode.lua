@@ -1,4 +1,4 @@
-local ocURL = "http://localhost:8080/"
+local ocURL = "http://localhost:8099/"
 local ocSession = ""
 
 local function ocPost(url, data)
@@ -67,11 +67,9 @@ vim.api.nvim_create_user_command("OCReference", function(args)
 
 	if args.range == 2 then
 
-		lines = "#L" .. args.line1 .. "-" .. args.line2
+		lines = "#" .. args.line1 .. "-" .. args.line2
 
 	end
-
-	local content = "\n---<code>\n" .. table.concat(vim.api.nvim_buf_get_lines(0, args.line1-1, args.line2, true), "\n") .. "\n</code>";
 
 	ocPost('tui/append-prompt', { text = "@" .. vim.fn.expand("%") .. lines })
 
