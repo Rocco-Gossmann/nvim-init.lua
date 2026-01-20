@@ -1,5 +1,6 @@
 local ocURL = "http://localhost:8099/"
 local ocSession = ""
+local paneId = nil
 
 local function ocPost(url, data)
 
@@ -29,23 +30,44 @@ local function ocPost(url, data)
 
 end
 
+local function focusTmuxPane()
+
+	print(paneId);
+	if paneId ~= nil then
+
+		local cmd = {'tmux', 'select-pane', '-t', paneId}
+		local result = vim.system(cmd):wait()
+
+		if result.code ~= 0 then
+			paneId = nil
+		else
+			return
+		end
+
+	end
+
+	if paneId == nil then
+
+		local cmd = {'tmux', 'split-window', '-h', '-l', '33%', '-P', '-F', '#{pane_id}', 'opencode --port 8099'}
+		local result = vim.system(cmd):wait()
+
+		if result.code == 0 then
+			paneId = result.stdout:gsub("%s+", "")
+		else
+			error("Failed to create tmux split: " .. (result.stderr or "Unknown error"))
+		end
+
+	end
+
+end
+
+vim.api.nvim_create_user_command("OCTmuxPane", focusTmuxPane, {})
+
 vim.api.nvim_create_user_command("OCNewSession", function(args)
 
+	focusTmuxPane()
 
 	local response = ocPost('session');
-
-	--[[
-
-	title = New session - 2026-01-18T12:17:00.544Z
-	slug = crisp-knight
-		updated = 1768738620544
-		created = 1768738620544
-	projectID = 4c4096cf30acace7bf3cf5a0a4b6c5346a0d5a59
-	version = 1.1.23
-	directory = /Users/st/.config/nvim
-	id = ses_42ef67b7fffetPF633RN6HGG61
-
-	--]]
 
 	ocSession = response.id;
 
@@ -53,15 +75,12 @@ vim.api.nvim_create_user_command("OCNewSession", function(args)
 
 	print(ocSession);
 
-	--
 end, {})
 
 
 vim.api.nvim_create_user_command("OCReference", function(args)
 
-	-- env.printTable(args)
-	-- print(vim.api.nvim_get_current_line())
-	-- print(args.line1, args.line2, args.range)
+	focusTmuxPane()
 
 	local lines = "";
 
@@ -71,13 +90,17 @@ vim.api.nvim_create_user_command("OCReference", function(args)
 
 	end
 
+	vim.cmd("OCTmuxPane")
+
 	ocPost('tui/append-prompt', { text = "@" .. vim.fn.expand("%") .. lines })
 
 end, { range = true })
 
 vim.api.nvim_create_user_command("OCCopy", function()
 
--- Save current register content
+	focusTmuxPane()
+
+	-- Save current register content
 	local old_reg = vim.fn.getreg('v')
 	local old_regtype = vim.fn.getregtype('v')
 

@@ -86,12 +86,6 @@ return {
 	tmuxLazySQL         = "<cmd>!tmux new-window \'lazysql\'<cr>",
 	tmuxRanger          = "<cmd>!tmux new-window \'ranger\'<cr>",
 
-	tmuxLaunchOpencode	= function()
-
-		vim.cmd('!tmux split-window -h -l 33\\% opencode --port 8099')
-
-	end,
-
 	lspRestart          = function(pattern, lspnames)
 		filetypeKeymap(pattern, {
 			{

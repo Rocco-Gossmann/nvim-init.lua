@@ -96,7 +96,7 @@ whichkey.add({
 	{ '<leader>ld',      mappfunc.tmuxLazyDocker,                           desc = 'Lazy[D]ocker',                            mode = 'n' },
 	{ '<leader>ls',      mappfunc.tmuxLazySQL,                              desc = 'Lazy[S]QL',                               mode = 'n' },
 	{ '<leader>lr',      mappfunc.tmuxRanger,                               desc = '[R]anger',                                mode = 'n' },
-	{ '<leader>ll',      mappfunc.tmuxLaunchOpencode,                       desc = '[L]LM - Server (Ollama)',                 mode = 'n' },
+	{ '<leader>ll',      "<cmd>OCTmuxPane<cr>",                             desc = '[L]LM - Server (Ollama)',                 mode = 'n' },
 
 	-- Make
 	{ '<leader>m',       group = '[M]ake' },
