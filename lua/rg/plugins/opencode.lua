@@ -3,7 +3,7 @@ local ocSession = ""
 
 local function ocPost(url, data)
 
-	local request_data = "";
+	local cmd = {'curl', '--silent', '-X', 'POST', ocURL..url}
 
 	if data ~= nil then
 
@@ -12,13 +12,20 @@ local function ocPost(url, data)
 			{ escape_slash = false }
 		)
 
-		request_data = ' -H "Content-Type: application/json" --data-raw ' .. vim.fn.shellescape(json_data)
+		table.insert(cmd, '-H')
+		table.insert(cmd, 'Content-Type: application/json')
+		table.insert(cmd, '--data-raw')
+		table.insert(cmd, json_data)
 
 	end
 
-	local cmd = 'curl --silent -X POST '..ocURL..url..request_data..' -w "" ';
+	local result = vim.system(cmd):wait()
 
-	return vim.json.decode(vim.fn.system(cmd));
+	if result.code ~= 0 then
+		error("HTTP request failed: " .. (result.stderr or "Unknown error"))
+	end
+
+	return vim.json.decode(result.stdout)
 
 end
 
@@ -60,9 +67,11 @@ vim.api.nvim_create_user_command("OCCopy", function(args)
 
 	if args.range == 2 then
 
-		lines = ":" .. args.line1 .. "-" .. args.line2 .. "\n---<code>\n" .. table.concat(vim.api.nvim_buf_get_lines(0, args.line1-1, args.line2, true), "\n") .. "\n</code>"
+		lines = "#L" .. args.line1 .. "-" .. args.line2
 
 	end
+
+	local content = "\n---<code>\n" .. table.concat(vim.api.nvim_buf_get_lines(0, args.line1-1, args.line2, true), "\n") .. "\n</code>";
 
 	ocPost('tui/append-prompt', { text = "@" .. vim.fn.expand("%") .. lines .. "\n\n" })
 
