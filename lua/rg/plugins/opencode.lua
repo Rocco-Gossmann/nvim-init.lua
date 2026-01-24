@@ -30,9 +30,22 @@ local function ocPost(url, data)
 
 end
 
+local neoVideBuffer = nil;
 local function focusTmuxPane()
 
-	print(paneId);
+	if vim.g.vscode then
+		print("TODO: implement focusing vscode OC Terminal")
+		require("vscode").call("workbench.action.terminal.focus")
+		return
+	end
+
+	if vim.g.neovide then
+
+		print("TODO: Implement")
+		return
+
+	end
+
 	if paneId ~= nil then
 
 		local cmd = {'tmux', 'select-pane', '-t', paneId}
