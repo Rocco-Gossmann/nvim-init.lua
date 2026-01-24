@@ -10,3 +10,15 @@ require "rg.filetypes"
 require "rg.tweaks"
 
 require("rg.env").doFileIfExists("./.nvim/init.lua");
+
+if vim.g.neovide then
+
+	vim.api.nvim_set_current_dir(vim.env.PWD)
+
+	vim.g.neovide_scale_factor = 1.25
+	vim.o.guifont="JetBrainsMono Nerd Font Mono:h16"
+
+	vim.g.neovide_opacity = 0.85
+	vim.g.neovide_window_blurred = true
+
+end
