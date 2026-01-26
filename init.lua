@@ -21,4 +21,6 @@ if vim.g.neovide then
 	vim.g.neovide_opacity = 0.85
 	vim.g.neovide_window_blurred = true
 
+	vim.g.neovide_input_macos_option_key_is_meta = true
+
 end

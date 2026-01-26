@@ -14,7 +14,7 @@ local telescope_builtin = require('telescope.builtin');
 --============================================================================]]
 --
 if vim.g.neovide then
-    -- Put anything you want to happen only in Neovide here
+
 	whichkey.add({
 		-- Launch
 		{ '<leader>l',       group = '[L]aunch' },
@@ -24,7 +24,16 @@ if vim.g.neovide then
 		{ '<leader>ls',      "<cmd>tabnew term://zsh -i -c nvim -c DBUI<cr>",	desc = 'Database ([S]torage)',                    mode = 'n' },
 		{ '<leader>ll',      "<cmd>OCTmuxPane<cr>",                             desc = '[L]LM - Server (Ollama)',                 mode = 'n' },
 	})
-	--
+
+	vim.cmd [[
+
+		nnoremap <M-right> <C-w>>
+		nnoremap <M-left> <C-w><
+		nnoremap <M-up> <C-w>-
+		nnoremap <M-down> <C-w>+
+
+	]]
+
 else
 
 	whichkey.add({
