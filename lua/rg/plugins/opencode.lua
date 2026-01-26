@@ -41,8 +41,19 @@ local function focusTmuxPane()
 
 	if vim.g.neovide then
 
-		print("TODO: Implement")
-		return
+		if vim.fn.bufexists(vim.g.neovide_buffer) == 1 then
+			vim.api.nvim_set_current_buf(vim.g.neovide_buffer)
+		else
+			vim.g.neovide_buffer = nil
+			print("Neovide buffer closed, resetting buffer reference")
+		end
+
+		if vim.g.neovide_buffer == nil then
+			vim.cmd("vs term://zsh -i -c 'opencode --port 8099'")
+			vim.g.neovide_buffer = vim.api.nvim_get_current_buf()
+		end
+
+		return -- Exit function after Neovide buffer handling
 
 	end
 
@@ -78,7 +89,6 @@ vim.api.nvim_create_user_command("OCTmuxPane", focusTmuxPane, {})
 
 vim.api.nvim_create_user_command("OCNewSession", function(args)
 
-	focusTmuxPane()
 
 	local response = ocPost('session');
 
@@ -86,14 +96,12 @@ vim.api.nvim_create_user_command("OCNewSession", function(args)
 
 	ocPost('tui/select-session', { sessionID = ocSession });
 
-	print(ocSession);
+	focusTmuxPane()
 
 end, {})
 
 
 vim.api.nvim_create_user_command("OCReference", function(args)
-
-	focusTmuxPane()
 
 	local lines = "";
 
@@ -103,15 +111,14 @@ vim.api.nvim_create_user_command("OCReference", function(args)
 
 	end
 
-	vim.cmd("OCTmuxPane")
-
 	ocPost('tui/append-prompt', { text = "@" .. vim.fn.expand("%") .. lines })
+
+	focusTmuxPane()
 
 end, { range = true })
 
 vim.api.nvim_create_user_command("OCCopy", function()
 
-	focusTmuxPane()
 
 	-- Save current register content
 	local old_reg = vim.fn.getreg('v')
@@ -130,6 +137,8 @@ vim.api.nvim_create_user_command("OCCopy", function()
 	local content = "\n" .. selected_text .. "\n";
 
 	ocPost('tui/append-prompt', { text = content })
+
+	focusTmuxPane()
 
 end, { range = true })
 
