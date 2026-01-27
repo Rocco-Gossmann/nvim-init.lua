@@ -19,6 +19,7 @@ local function doFileIfExists(fileName)
 end
 
 local confdir = home .. "/.config/" .. appname;
+local statedir = home .. "/.local/state/" .. appname;
 local tpldir = confdir .. "/lua/rg/templates/";
 
 
@@ -86,6 +87,7 @@ return {
 	appname = appname,
 	home = home,
 	confdir = confdir,
+	statedir = statedir,
 
 	doFileIfExists = doFileIfExists,
 
