@@ -52,7 +52,7 @@ mappfunc.filetypeKeymap({ "*.php" }, {
 -- Code-Formatting
 -- -----------------------------------------------------------------------------
 mappfunc.filetypeKeymap({ "*.md", "*.html", "*.js", ".ts", ".css", "*.scss", "*.json", "*.jsx" }, {
-	{ '<leader>cf', '<cmd>Prettier<cr>', desc = '[C]ode [F]ormat', mode = "n" },
+	{ '<leader>cf', '<cmd>w<cr><cmd>silent !deno fmt %<cr>', desc = '[C]ode [F]ormat', mode = "n" },
 })
 
 mappfunc.filetypeKeymap({ "*.lua", "*.go", "*.php" }, {
