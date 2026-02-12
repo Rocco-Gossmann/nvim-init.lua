@@ -71,11 +71,11 @@ vim.opt.grepprg = "rg -n -s --ignore-file .rgignore $* /dev/null"
 vim.opt.conceallevel = 1
 vim.opt.wrap = false
 
--- Decrease update time
-vim.opt.updatetime = 16
+-- Decrease update time for better responsiveness
+vim.opt.updatetime = 8
 
--- Decrease mapped sequence wait time
-vim.opt.timeoutlen = 300
+-- Decrease mapped sequence wait time for snappier mappings
+vim.opt.timeoutlen = 200
 
 -- Configure how new splits should be opened
 vim.opt.splitright = true
@@ -94,6 +94,14 @@ vim.opt.scrolloff = 4
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.opt.confirm = true
+
+-- Smoothness optimizations
+vim.opt.lazyredraw = true         -- Don't redraw while executing macros
+vim.opt.ttyfast = true           -- Fast terminal connection
+vim.opt.laststatus = 3           -- Global status line
+vim.opt.pumheight = 10           -- Limit popup menu height
+vim.opt.winminheight = 0         -- Minimum window height
+vim.opt.winwidth = 10            -- Minimum window width
 
 
 
