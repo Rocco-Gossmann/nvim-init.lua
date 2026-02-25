@@ -20,52 +20,55 @@ local function createFileInFolder(folder, filename)
 end
 
 local function restartTaskRunner()
+	local tasks = require("rg.env").doFileIfExists("./.nvim/tasks.lua")
 
-		local tasks = require("rg.env").doFileIfExists("./.nvim/tasks.lua")
+	if type(tasks) ~= "table" then
+		tasks = {}
+	end
 
-		if type(tasks) ~= "table" then
-			tasks = {}
+	table.insert(tasks, {
+		label = "create / open .nvim/tasks.lua",
+		action = createFileInFolder("./.nvim", "tasks.lua"),
+	})
+
+	table.insert(tasks, {
+		label = "create / open .nvim/init.lua",
+		action = createFileInFolder("./.nvim", "init.lua"),
+	})
+
+	table.insert(tasks, {
+		label = "create / open .vscode/launch.json",
+		action = createFileInFolder("./.vscode", "launch.json"),
+	})
+
+	table.insert(tasks, {
+		label = "move function parameters to separate lines",
+		action = function()
+			vim.cmd('normal cib\r\rkp0v$')
+			vim.cmd("stopinsert")
+			vim.cmd("s/,/&\\r/g");
+			vim.cmd('normal =')
 		end
+	})
 
-		table.insert(tasks, {
-			label = "create / open .nvim/tasks.lua",
-			action = createFileInFolder("./.nvim", "tasks.lua"),
-		})
+	table.insert(tasks, {
+		label = "Restart TaskRunner",
+		action = function()
+			vim.api.nvim_del_user_command("TR")
+			restartTaskRunner()
+		end
+	})
 
-		table.insert(tasks, {
-			label = "create / open .nvim/init.lua",
-			action = createFileInFolder("./.nvim", "init.lua"),
-		})
+	table.insert(tasks, {
+		label = "Align Array",
+		action = function()
+			local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+			local aligned = require('mini.align').align_strings(lines, { split_pattern = '=>' })
+			vim.api.nvim_buf_set_lines(0, 0, -1, false, aligned)
+		end
+	})
 
-		table.insert(tasks, {
-			label = "create / open .vscode/launch.json",
-			action = createFileInFolder("./.vscode", "launch.json"),
-		})
-
-		table.insert(tasks, {
-			label = "move function parameters to separate lines",
-			action = function()
-
-				vim.cmd('normal cib\r\rkp0v$')
-				vim.cmd("stopinsert")
-				vim.cmd("s/,/&\\r/g");
-				vim.cmd('normal =')
-
-			end
-		})
-
-		table.insert(tasks, {
-			label = "Restart TaskRunner",
-			action = function()
-
-				vim.api.nvim_del_user_command("TR")
-				restartTaskRunner()
-
-			end
-		})
-
-		require("nvim-taskrunner").setup(tasks)
-
+	require("nvim-taskrunner").setup(tasks)
 end
 
 return {

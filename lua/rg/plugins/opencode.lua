@@ -72,7 +72,7 @@ local function focusTmuxPane()
 
 	if paneId == nil then
 
-		local cmd = {'tmux', 'split-window', '-h', '-l', '33%', '-P', '-F', '#{pane_id}', 'opencode --port 8099'}
+		local cmd = {'tmux', 'split-window', '-h', '-l', '33%', '-P', '-F', '#{pane_id}', 'killall opencode ; opencode --port 8099 ; exit'}
 		local result = vim.system(cmd):wait()
 
 		if result.code == 0 then

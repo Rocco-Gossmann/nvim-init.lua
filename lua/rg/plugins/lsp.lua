@@ -84,10 +84,14 @@ return {
 						client
 						and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf)
 					then
-						map("<leader>th", function()
+						vim.lsp.inlay_hint.enable(true)
+						map("<leader>ti", function()
 							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 						end, "[T]oggle Inlay [H]ints")
 					end
+
+
+
 				end,
 			})
 
@@ -144,7 +148,6 @@ return {
 				-- But for many setups, the LSP (`ts_ls`) will work just fine
 				-- ts_ls = {},
 				--
-
 				lua_ls = {
 					-- cmd = { ... },
 					-- filetypes = { ... },
@@ -165,13 +168,95 @@ return {
 						},
 					},
 				},
+
+				intelephense = {
+
+				}
 			}
 
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
-				"stylua", -- Used to format Lua code
+				"stylua",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+
+			vim.lsp.config("ts_ls", {
+				settings = {
+					typescript = {
+						inlayHints = {
+							includeInlayParameterNameHints = 'all',
+							includeInlayParameterNameHintsWhenArgumentMatchesName =  true,
+							includeInlayFunctionParameterTypeHints =  true,
+							includeInlayVariableTypeHints =  true,
+							includeInlayVariableTypeHintsWhenTypeMatchesName =  true,
+							includeInlayPropertyDeclarationTypeHints =  true,
+							includeInlayFunctionLikeReturnTypeHints =  true,
+							includeInlayEnumMemberValueHints =  true,
+						},
+					},
+					javascript = {
+						inlayHints = {
+							includeInlayParameterNameHints = 'all',
+							includeInlayParameterNameHintsWhenArgumentMatchesName =  true,
+							includeInlayFunctionParameterTypeHints =  true,
+							includeInlayVariableTypeHints =  true,
+							includeInlayVariableTypeHintsWhenTypeMatchesName =  true,
+							includeInlayPropertyDeclarationTypeHints =  true,
+							includeInlayFunctionLikeReturnTypeHints =  true,
+							includeInlayEnumMemberValueHints =  true,
+						},
+					}
+				},
+			})
+
+			vim.lsp.config("intelephense", {
+
+				init_options = {
+					licenceKey = "/opt/licenses/intelephense.txt",
+				},
+
+				settings = {
+					intelephense = {
+
+						environment = {
+							includePaths = {
+								"/var/lib/phpunit",
+							},
+						},
+
+						diagnostics = {
+							enable = true,
+							argumentCount = true,
+							deprecated = true,
+							duplicateSymbols = true,
+							embeddedLanguages = true,
+							implementationErrors = true,
+							languageConstraints = true,
+							memberAccess = false,
+							noMixedTypeCheck = true,
+							relaxedTypeCheck = true,
+							run = "onType",
+							typeErrors = true,
+							undefinedClassConstants = true,
+							undefinedConstants = true,
+							undefinedFunctions = true,
+							undefinedMethods = true,
+							undefinedProperties = true,
+							undefinedSymbols = true,
+							undefinedTypes = true,
+							undefinedVariables = true,
+							unexpectedTokens = true,
+							unusedSymbols = true,
+						},
+
+						inlayHint = {
+							returnTypes = true
+						}
+
+					},
+				},
+
+			})
 
 			require("mason-lspconfig").setup({
 				ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)

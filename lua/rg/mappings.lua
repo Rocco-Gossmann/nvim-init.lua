@@ -167,7 +167,7 @@ whichkey.add({
 	-- Toggle
 	{ '<leader>t',       group = "[T]toggle / [T]ab / [T]ask" },
 	{ '<leader>tn',      '<cmd>tabnew<cr>',                                 desc = "[T]ab [N]ew",                             mode = 'n' },
-	{ '<leader>tr',      '<cmd>TR<cr>',                                     desc = '[T]ask [R]unner',                         mode = 'n' },
+	{ '<leader>tr',      '<cmd>TR<cr>',                                     desc = '[T]ask [R]unner',                         mode = {'n', 'v', 'x'} },
 	{ '<leader>tb',      '<cmd>BM<cr>',                                     desc = '[T]o [B]ookmarks',                        mode = 'n' },
 	{ '<leader>tz',      '<cmd>ZenMode<cr>',                                desc = '[T]oggle [Z]en-mode',                     mode = 'n' },
 

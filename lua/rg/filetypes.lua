@@ -17,7 +17,7 @@ rgcore.customFileExtension({ "*.toml" }, "ini");
 --[[============================================================================
 -- LanguageServer restart per Filetype
 --============================================================================]]
-mappfunc.lspRestart({ "*.php" }, "phpactor")
+mappfunc.lspRestart({ "*.php" }, "intelephense")
 mappfunc.lspRestart({ "*.js", "*.ts" }, "ts_ls")
 mappfunc.lspRestart({ "*.lua" }, "lua_ls")
 mappfunc.lspRestart({ "dockerfile" }, "dockerls")
@@ -52,7 +52,7 @@ mappfunc.filetypeKeymap({ "*.php" }, {
 -- Code-Formatting
 -- -----------------------------------------------------------------------------
 mappfunc.filetypeKeymap({ "*.md", "*.html", "*.js", ".ts", ".css", "*.scss", "*.json", "*.jsx" }, {
-	{ '<leader>cf', '<cmd>Prettier<cr>', desc = '[C]ode [F]ormat', mode = "n" },
+	{ '<leader>cf', '<cmd>w<cr><cmd>silent !deno fmt %<cr>', desc = '[C]ode [F]ormat', mode = "n" },
 })
 
 mappfunc.filetypeKeymap({ "*.lua", "*.go", "*.php" }, {
