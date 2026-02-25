@@ -19,6 +19,14 @@ local function createFileInFolder(folder, filename)
 	end
 end
 
+local function alignSeparator(separator)
+	return function()
+		local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+		local aligned = require("mini.align").align_strings(lines, { split_pattern = separator })
+		vim.api.nvim_buf_set_lines(0, 0, -1, false, aligned)
+	end
+end
+
 local function restartTaskRunner()
 	local tasks = require("rg.env").doFileIfExists("./.nvim/tasks.lua")
 
@@ -44,11 +52,11 @@ local function restartTaskRunner()
 	table.insert(tasks, {
 		label = "move function parameters to separate lines",
 		action = function()
-			vim.cmd('normal cib\r\rkp0v$')
+			vim.cmd("normal cib\r\rkp0v$")
 			vim.cmd("stopinsert")
-			vim.cmd("s/,/&\\r/g");
-			vim.cmd('normal =')
-		end
+			vim.cmd("s/,/&\\r/g")
+			vim.cmd("normal =")
+		end,
 	})
 
 	table.insert(tasks, {
@@ -56,20 +64,27 @@ local function restartTaskRunner()
 		action = function()
 			vim.api.nvim_del_user_command("TR")
 			restartTaskRunner()
-		end
+		end,
 	})
 
-	table.insert(tasks, {
-		label = "Align Array",
-		action = function()
-			local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
-			local aligned = require('mini.align').align_strings(lines, { split_pattern = '=>' })
-			vim.api.nvim_buf_set_lines(0, 0, -1, false, aligned)
-		end
-	})
+	if vim.bo.filetype == "php" then
+		table.insert(tasks, {
+			label = "Align Array",
+			action = alignSeparator("=>")
+		})
+
+		table.insert(tasks, {
+			label = "Align comments",
+			action = alignSeparator("//")
+		})
+	end
 
 	require("nvim-taskrunner").setup(tasks)
 end
+
+vim.api.nvim_create_autocmd("BufEnter", {
+	callback = restartTaskRunner,
+})
 
 return {
 
@@ -77,6 +92,5 @@ return {
 
 	dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
 
-	init = restartTaskRunner
-
+	init = restartTaskRunner,
 }
