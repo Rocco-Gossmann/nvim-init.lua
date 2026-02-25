@@ -3,6 +3,12 @@ return {
 	'Matt-A-Bennett/vim-surround-funk',
 	'tpope/vim-repeat',
 
+	{
+		"echasnovski/mini.align",
+		version = "*",
+		config = true,
+	},
+
 	-- [[----------------------------------------------------------------------
 	-- Highlight for
 	-- TODO:
