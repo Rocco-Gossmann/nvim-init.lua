@@ -20,6 +20,41 @@ local function filetypeKeymap(pattern, maps)
 	})
 end
 
+local function focusTerminalBuffer(termName, startCmd)
+	return function()
+		-- if a tab with this name is open, then focus that
+		for _, tab in ipairs(vim.api.nvim_list_tabpages()) do
+			local win = vim.api.nvim_tabpage_get_win(tab)
+			local buf = vim.api.nvim_win_get_buf(win)
+			local name = vim.api.nvim_buf_get_name(buf)
+			if name:match(termName) then
+				vim.api.nvim_set_current_tabpage(tab)
+				vim.fn.feedkeys("i", "i")
+				return;
+			end
+		end
+
+		-- if a buffer with this name already exists => create a new tab using it
+		for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+			local bufname = vim.api.nvim_buf_get_name(buf)
+			if bufname:match(termName) then
+				vim.cmd.tabnew()
+				vim.api.nvim_win_set_buf(0, buf)
+				vim.fn.feedkeys("i", "i")
+				return
+			end
+		end
+
+		-- if neither buffer nor tab already exist => create new tab, with new Terminal
+
+		vim.cmd.tabnew("term://" .. startCmd);
+		vim.defer_fn(function()
+			vim.cmd("file " .. termName);
+			vim.fn.feedkeys("i", "i")
+		end, 100)
+	end
+end
+
 
 return {
 
@@ -48,10 +83,6 @@ return {
 		gs.blame_line { full = false }
 	end,
 
-	tmuxMakeRun         = "<cmd>wa<cr><cmd>!tmux split-window -v -p25 \'make run\'<cr>",
-	tmuxMakeDev         = "<cmd>wa<cr><cmd>!tmux new-window \'make dev\'<cr>",
-	tmuxMakeDefault     = "<cmd>wa<cr><cmd>!tmux new-window \'make\'<cr>",
-
 	start_debugger      = function()
 		if (debuggerUIOpen == false) then
 			dapui.open();
@@ -74,18 +105,6 @@ return {
 		dapui.eval();
 	end,
 
-	tmuxLazyGit         = function()
-		vim.cmd("!tmux-kill-window-in-session \'lazygit\'")
-		vim.cmd("!tmux new-window  \'lazygit\'")
-	end,
-	tmuxLazyDocker         = function()
-		vim.cmd("!tmux-kill-window-in-session \'lazydocker\'")
-		vim.cmd("!tmux new-window  \'lazydocker\'")
-	end,
-
-	tmuxLazySQL         = "<cmd>!tmux new-window \'lazysql\'<cr>",
-	tmuxRanger          = "<cmd>!tmux new-window \'ranger\'<cr>",
-
 	lspRestart          = function(pattern, lspnames)
 		filetypeKeymap(pattern, {
 			{
@@ -98,4 +117,7 @@ return {
 	end,
 
 	filetypeKeymap      = filetypeKeymap,
+
+	focusTerminalBuffer = focusTerminalBuffer
+
 }

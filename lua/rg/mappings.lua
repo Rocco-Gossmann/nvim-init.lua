@@ -5,6 +5,7 @@ local whichkey = require("which-key")
 local mappfunc = require("rg.mapping_functions");
 local templates = require("rg.template");
 local telescope_builtin = require('telescope.builtin');
+local focusTerminalBuffer = mappfunc.focusTerminalBuffer
 
 --[[============================================================================
 -- Common Keymaps:
@@ -13,39 +14,29 @@ local telescope_builtin = require('telescope.builtin');
 -- other way
 --============================================================================]]
 --
-if vim.g.neovide then
 
-	whichkey.add({
-		-- Launch
-		{ '<leader>l',       group = '[L]aunch' },
-		{ '<leader>lg',      "<cmd>tabnew term://zsh -i -c lazygit<cr>",		desc = 'Lazy[G]it',                               mode = 'n' },
-		{ '<leader>ld',      "<cmd>tabnew term://zsh -i -c lazydocker<cr>",     desc = 'Lazy[D]ocker',                            mode = 'n' },
-		{ '<leader>lr',      "<cmd>tabnew term://zsh -i -c ranger<cr>",			desc = 'Lazy[D]ocker',                            mode = 'n' },
-		{ '<leader>ls',      "<cmd>tabnew term://zsh -i -c nvim -c DBUI<cr>",	desc = 'Database ([S]torage)',                    mode = 'n' },
-		{ '<leader>ll',      "<cmd>OCTmuxPane<cr>",                             desc = '[L]LM - Server (Ollama)',                 mode = 'n' },
-	})
 
-	vim.cmd [[
+whichkey.add({
 
-		nnoremap <M-right> <C-w>>
-		nnoremap <M-left> <C-w><
-		nnoremap <M-up> <C-w>-
-		nnoremap <M-down> <C-w>+
+	-- Launch
+	{ '<leader>l',  group = '[L]aunch' },
+	{ '<leader>lg', focusTerminalBuffer("LazyGit", "lazygit"),                                                    desc = 'Lazy[G]it',               mode = 'n' },
+	{ '<leader>lt', focusTerminalBuffer("Terminal", "zsh"),                                                       desc = '[T]erminal',              mode = 'n' },
+	{ '<leader>ld', focusTerminalBuffer("LazyDocker", "lazydocker"),                                              desc = 'Lazy[D]ocker',            mode = 'n' },
+	{ '<leader>lr', focusTerminalBuffer("Ranger", "ranger"),                                                      desc = '[R]anger',                mode = 'n' },
+	{ '<leader>ls', focusTerminalBuffer("Database", "nvim -c DBUI"),                                              desc = 'Database ([S]torage)',    mode = 'n' },
+	{ '<leader>ll', focusTerminalBuffer("OpenCode", "lsof -ti:8099 | xargs kill -9 && zsh -i -c oc --port 8099"), desc = '[L]LM - Server (Ollama)', mode = 'n' },
 
-	]]
+})
 
-else
+vim.cmd [[
 
-	whichkey.add({
-		-- Launch
-		{ '<leader>l',       group = '[L]aunch' },
-		{ '<leader>lg',      mappfunc.tmuxLazyGit,                              desc = 'Lazy[G]it',                               mode = 'n' },
-		{ '<leader>ld',      mappfunc.tmuxLazyDocker,                           desc = 'Lazy[D]ocker',                            mode = 'n' },
-		{ '<leader>lr',      mappfunc.tmuxRanger,                               desc = '[R]anger',                                mode = 'n' },
-		{ '<leader>ll',      "<cmd>OCTmuxPane<cr>",                             desc = '[L]LM - Server (Ollama)',                 mode = 'n' },
-	})
+	nnoremap <C-S-right> <C-w>>
+	nnoremap <C-S-left> <C-w><
+	nnoremap <C-S-up> <C-w>-
+	nnoremap <C-S-down> <C-w>+
 
-end
+]]
 
 whichkey.add({
 
@@ -122,14 +113,14 @@ whichkey.add({
 	{ '<leader>gp',      '<cmd>Gitsigns prev_hunk<cr>',                     desc = '[P]revious changed Block',                mode = 'n' },
 	{ '<leader>gd',      '<cmd>Gitsigns preview_hunk_inline<cr>',           desc = '[D]iff Changed Block',                    mode = 'n' },
 	{ '<leader>gs',      '<cmd>Gitsigns stage_hunk<cr>',                    desc = '[S]tage Hunk',                            mode = 'n' },
-	{ '<leader>gl',      mappfunc.tmuxLazyGit,                              desc = '[L]azygit',                               mode = 'n' },
+	{ '<leader>gl',      focusTerminalBuffer("LazyGit", "lazygit"),         desc = 'Lazy[G]it',                               mode = 'n' },
 
 
 	-- Make
 	{ '<leader>m',       group = '[M]ake' },
-	{ '<leader>mm',      mappfunc.tmuxMakeDefault,                          desc = '(default)',                               mode = 'n' },
-	{ '<leader>mr',      mappfunc.tmuxMakeRun,                              desc = '[R]un',                                   mode = 'n' },
-	{ '<leader>md',      mappfunc.tmuxMakeDev,                              desc = '[D]ev/[D]ebug',                           mode = 'n' },
+	{ '<leader>mm',      focusTerminalBuffer("MakeDefault", "make"),        desc = '(default)',                               mode = 'n' },
+	{ '<leader>mr',      focusTerminalBuffer("MakeRun", "make run"),        desc = '[R]un',                                   mode = 'n' },
+	{ '<leader>md',      focusTerminalBuffer("MakeRun", "make dev"),        desc = '[D]ev/[D]ebug',                           mode = 'n' },
 	{ '<leader>mc',      '<cmd>!make clean<cr>',                            desc = '[c]lean',                                 mode = 'n' },
 
 	-- Split
@@ -167,7 +158,7 @@ whichkey.add({
 	-- Toggle
 	{ '<leader>t',       group = "[T]toggle / [T]ab / [T]ask" },
 	{ '<leader>tn',      '<cmd>tabnew<cr>',                                 desc = "[T]ab [N]ew",                             mode = 'n' },
-	{ '<leader>tr',      '<cmd>TR<cr>',                                     desc = '[T]ask [R]unner',                         mode = {'n', 'v', 'x'} },
+	{ '<leader>tr',      '<cmd>TR<cr>',                                     desc = '[T]ask [R]unner',                         mode = { 'n', 'v', 'x' } },
 	{ '<leader>tb',      '<cmd>BM<cr>',                                     desc = '[T]o [B]ookmarks',                        mode = 'n' },
 	{ '<leader>tz',      '<cmd>ZenMode<cr>',                                desc = '[T]oggle [Z]en-mode',                     mode = 'n' },
 
@@ -187,28 +178,28 @@ whichkey.add({
 	{ 'gD',              telescope_builtin.lsp_type_definitions,            desc = '[G]oto type-[D]efinition',                mode = 'n' },
 
 	-- Visual Mode Helpers
-	{ "J",               ":m '>+1<CR>gv=gv",                                mode = 'x',                                       noremap = true,     silent = true },
-	{ "K",               ":m '<-2<CR>gv=gv",                                mode = 'x',                                       noremap = true,     silent = true },
-	{ '<leader>p',       '"_dP',                                            mode = 'x',                                       noremap = true,     silent = true },
+	{ "J",               ":m '>+1<CR>gv=gv",                                mode = 'x',                                       noremap = true,          silent = true },
+	{ "K",               ":m '<-2<CR>gv=gv",                                mode = 'x',                                       noremap = true,          silent = true },
+	{ '<leader>p',       '"_dP',                                            mode = 'x',                                       noremap = true,          silent = true },
 	{ "<C-r>",           ":s///g<Left><Left><Left>",                        mode = 'x',                                       noremap = true },
 	{ "<C-l>",           ":s/^\\(\\s\\{-\\}\\)//g<Left><Left><Left><Left>", mode = 'x',                                       noremap = true },
 	{ "<C-y>",           '"+yy',                                            mode = 'x' },
 
 	--      keep cursor centered
-	{ "n",               "nzz",                                             mode = "v",                                       noremap = true,     silent = true },
-	{ "N",               "Nzz",                                             mode = "v",                                       noremap = true,     silent = true },
-	{ "<C-d>",           "<C-d>zz",                                         mode = "v",                                       noremap = true,     silent = true },
-	{ "<C-u>",           "<C-u>zz",                                         mode = "v",                                       noremap = true,     silent = true },
+	{ "n",               "nzz",                                             mode = "v",                                       noremap = true,          silent = true },
+	{ "N",               "Nzz",                                             mode = "v",                                       noremap = true,          silent = true },
+	{ "<C-d>",           "<C-d>zz",                                         mode = "v",                                       noremap = true,          silent = true },
+	{ "<C-u>",           "<C-u>zz",                                         mode = "v",                                       noremap = true,          silent = true },
 
 	-- Insert Mode Helpers
-	{ "<C-j>",           function() require("blink-cmp").show() end,        mode = { "i" },                                   noremap = true,     silent = true },
-	{ "<C-h>",           function() vim.lsp.buf.signature_help() end,       mode = { "i" },                                   noremap = true,     silent = true },
+	{ "<C-j>",           function() require("blink-cmp").show() end,        mode = { "i" },                                   noremap = true,          silent = true },
+	{ "<C-h>",           function() vim.lsp.buf.signature_help() end,       mode = { "i" },                                   noremap = true,          silent = true },
 
 	-- TMUX-Navigations
-	{ "<C-h>",           "<cmd>TmuxNavigateLeft<cr>",                       mode = "n",                                       noremap = true,     silent = true },
-	{ "<C-j>",           "<cmd>TmuxNavigateDown<cr>",                       mode = "n",                                       noremap = true,     silent = true },
-	{ "<C-k>",           "<cmd>TmuxNavigateUp<cr>",                         mode = "n",                                       noremap = true,     silent = true },
-	{ "<C-l>",           "<cmd>TmuxNavigateRight<cr>",                      mode = "n",                                       noremap = true,     silent = true },
+	{ "<C-h>",           "<cmd>TmuxNavigateLeft<cr>",                       mode = "n",                                       noremap = true,          silent = true },
+	{ "<C-j>",           "<cmd>TmuxNavigateDown<cr>",                       mode = "n",                                       noremap = true,          silent = true },
+	{ "<C-k>",           "<cmd>TmuxNavigateUp<cr>",                         mode = "n",                                       noremap = true,          silent = true },
+	{ "<C-l>",           "<cmd>TmuxNavigateRight<cr>",                      mode = "n",                                       noremap = true,          silent = true },
 
 	-- Terminal Helpes
 	{ '<Esc><Esc>',      '<C-\\><C-n>',                                     desc = "Exit terminal mode",                      mode = "t" },
@@ -221,6 +212,10 @@ whichkey.add({
 -- these are some rempas, that, for some reason don't work when configured any
 -- other way
 --============================================================================]]
+--
+vim.keymap.set('n', '<PageUp>', 'gt')
+vim.keymap.set('n', '<PageDown>', 'gT')
+
 vim.cmd [[
 
 	nnoremap M m
@@ -234,6 +229,7 @@ vim.cmd [[
 
 	inoremap <C-d> <C-k>
 
-	noremap <PageDown> gT
-	noremap <PageUp> gt
+
+	tnoremap <Esc><Esc> <C-\><C-n>
+
 ]]
