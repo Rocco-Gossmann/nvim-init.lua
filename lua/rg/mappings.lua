@@ -13,41 +13,15 @@ local telescope_builtin = require('telescope.builtin');
 -- other way
 --============================================================================]]
 --
-if vim.g.neovide then
-
-	whichkey.add({
-		-- Launch
-		{ '<leader>l',       group = '[L]aunch' },
-		{ '<leader>lg',      "<cmd>tabnew term://zsh -i -c lazygit<cr>",		desc = 'Lazy[G]it',                               mode = 'n' },
-		{ '<leader>ld',      "<cmd>tabnew term://zsh -i -c lazydocker<cr>",     desc = 'Lazy[D]ocker',                            mode = 'n' },
-		{ '<leader>lr',      "<cmd>tabnew term://zsh -i -c ranger<cr>",			desc = 'Lazy[D]ocker',                            mode = 'n' },
-		{ '<leader>ls',      "<cmd>tabnew term://zsh -i -c nvim -c DBUI<cr>",	desc = 'Database ([S]torage)',                    mode = 'n' },
-		{ '<leader>ll',      "<cmd>OCTmuxPane<cr>",                             desc = '[L]LM - Server (Ollama)',                 mode = 'n' },
-	})
-
-	vim.cmd [[
-
-		nnoremap <M-right> <C-w>>
-		nnoremap <M-left> <C-w><
-		nnoremap <M-up> <C-w>-
-		nnoremap <M-down> <C-w>+
-
-	]]
-
-else
-
-	whichkey.add({
-		-- Launch
-		{ '<leader>l',       group = '[L]aunch' },
-		{ '<leader>lg',      mappfunc.tmuxLazyGit,                              desc = 'Lazy[G]it',                               mode = 'n' },
-		{ '<leader>ld',      mappfunc.tmuxLazyDocker,                           desc = 'Lazy[D]ocker',                            mode = 'n' },
-		{ '<leader>lr',      mappfunc.tmuxRanger,                               desc = '[R]anger',                                mode = 'n' },
-		{ '<leader>ll',      "<cmd>OCTmuxPane<cr>",                             desc = '[L]LM - Server (Ollama)',                 mode = 'n' },
-	})
-
-end
 
 whichkey.add({
+
+	-- Launch
+	{ '<leader>l',       group = '[L]aunch' },
+	{ '<leader>lg',      mappfunc.tmuxLazyGit,                              desc = 'Lazy[G]it',                               mode = 'n' },
+	{ '<leader>ld',      mappfunc.tmuxLazyDocker,                           desc = 'Lazy[D]ocker',                            mode = 'n' },
+	{ '<leader>lr',      mappfunc.tmuxRanger,                               desc = '[R]anger',                                mode = 'n' },
+	{ '<leader>ll',      "<cmd>OCTmuxPane<cr>",                             desc = '[L]LM - Server (Ollama)',                 mode = 'n' },
 
 	-- Code
 	{ '<leader>c',       group = '[C]ode' },
