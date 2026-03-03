@@ -15,30 +15,15 @@ local focusTerminalBuffer = mappfunc.focusTerminalBuffer
 --============================================================================]]
 --
 
-
 whichkey.add({
-
 	-- Launch
-	{ '<leader>l',  group = '[L]aunch' },
-	{ '<leader>lg', focusTerminalBuffer("LazyGit", "lazygit"),                                                    desc = 'Lazy[G]it',               mode = 'n' },
-	{ '<leader>lt', focusTerminalBuffer("Terminal", "zsh"),                                                       desc = '[T]erminal',              mode = 'n' },
-	{ '<leader>ld', focusTerminalBuffer("LazyDocker", "lazydocker"),                                              desc = 'Lazy[D]ocker',            mode = 'n' },
-	{ '<leader>lr', focusTerminalBuffer("Ranger", "ranger"),                                                      desc = '[R]anger',                mode = 'n' },
-	{ '<leader>ls', focusTerminalBuffer("Database", "nvim -c DBUI"),                                              desc = 'Database ([S]torage)',    mode = 'n' },
-	{ '<leader>ll', focusTerminalBuffer("OpenCode", "lsof -ti:8099 | xargs kill -9 && zsh -i -c oc --port 8099"), desc = '[L]LM - Server (Ollama)', mode = 'n' },
-
-})
-
-vim.cmd [[
-
-	nnoremap <C-S-right> <C-w>>
-	nnoremap <C-S-left> <C-w><
-	nnoremap <C-S-up> <C-w>-
-	nnoremap <C-S-down> <C-w>+
-
-]]
-
-whichkey.add({
+	{ '<leader>l',       group = '[L]aunch' },
+	{ '<leader>lg',      focusTerminalBuffer("LazyGit", "lazygit"),         desc = 'Lazy[G]it',                               mode = 'n' },
+	{ '<leader>lt',      focusTerminalBuffer("Terminal", ""),               desc = '[T]erminal',                              mode = 'n' },
+	{ '<leader>ld',      focusTerminalBuffer("LazyDocker", "lazydocker"),   desc = 'Lazy[D]ocker',                            mode = 'n' },
+	{ '<leader>lr',      focusTerminalBuffer("Ranger", "ranger"),           desc = '[R]anger',                                mode = 'n' },
+	{ '<leader>ls',      focusTerminalBuffer("Database", "nvim -c DBUI"),   desc = 'Database ([S]torage)',                    mode = 'n' },
+	{ '<leader>ll',      vim.cmd.OCTmuxPane,                                       desc = '[L]LM - Server (Ollama)',                 mode = 'n' },
 
 	-- Code
 	{ '<leader>c',       group = '[C]ode' },

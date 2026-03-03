@@ -20,38 +20,18 @@ local function filetypeKeymap(pattern, maps)
 	})
 end
 
+
 local function focusTerminalBuffer(termName, startCmd)
 	return function()
-		-- if a tab with this name is open, then focus that
-		for _, tab in ipairs(vim.api.nvim_list_tabpages()) do
-			local win = vim.api.nvim_tabpage_get_win(tab)
-			local buf = vim.api.nvim_win_get_buf(win)
-			local name = vim.api.nvim_buf_get_name(buf)
-			if name:match(termName) then
-				vim.api.nvim_set_current_tabpage(tab)
-				vim.fn.feedkeys("i", "i")
-				return;
-			end
+
+		local noTerm = vim.fn.system('tmux list-windows -F "#W:#I" | grep "' ..  termName .. '"') == ''
+
+		if noTerm then
+			vim.fn.system(string.format('tmux new-window -n "%s" "%s"', termName, termName, startCmd))
+		else
+			vim.fn.system(string.format('tmux select-window -t "%s"', termName))
 		end
 
-		-- if a buffer with this name already exists => create a new tab using it
-		for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-			local bufname = vim.api.nvim_buf_get_name(buf)
-			if bufname:match(termName) then
-				vim.cmd.tabnew()
-				vim.api.nvim_win_set_buf(0, buf)
-				vim.fn.feedkeys("i", "i")
-				return
-			end
-		end
-
-		-- if neither buffer nor tab already exist => create new tab, with new Terminal
-
-		vim.cmd.tabnew("term://" .. startCmd);
-		vim.defer_fn(function()
-			vim.cmd("file " .. termName);
-			vim.fn.feedkeys("i", "i")
-		end, 100)
 	end
 end
 
