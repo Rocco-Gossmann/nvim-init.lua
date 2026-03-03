@@ -13,6 +13,8 @@ return {
 		},
 	},
 
+	{ "shadowwa/smarty.vim" },
+
 	{
 		-- Main LSP Configuration
 		"neovim/nvim-lspconfig",

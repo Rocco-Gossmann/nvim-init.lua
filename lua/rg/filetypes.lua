@@ -11,7 +11,6 @@ vim.filetype.add({ extension = { sql = "mysql" } })
 -- Handle certain unknown file extensions
 --============================================================================]]
 
-rgcore.customFileExtension({ "*.tpl" }, "html"); -- example: treat tpl files as HTML
 rgcore.customFileExtension({ "*.toml" }, "ini");
 
 --[[============================================================================
