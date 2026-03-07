@@ -6,6 +6,7 @@ local mappfunc = require("rg.mapping_functions");
 local templates = require("rg.template");
 local telescope_builtin = require('telescope.builtin');
 local focusTerminalBuffer = mappfunc.focusTerminalBuffer
+local focusDBTab = mappfunc.focusDBTab
 
 --[[============================================================================
 -- Common Keymaps:
@@ -22,8 +23,9 @@ whichkey.add({
 	{ '<leader>lt',      focusTerminalBuffer("Terminal", ""),               desc = '[T]erminal',                              mode = 'n' },
 	{ '<leader>ld',      focusTerminalBuffer("LazyDocker", "lazydocker"),   desc = 'Lazy[D]ocker',                            mode = 'n' },
 	{ '<leader>lr',      focusTerminalBuffer("Ranger", "ranger"),           desc = '[R]anger',                                mode = 'n' },
-	{ '<leader>ls',      focusTerminalBuffer("Database", "nvim -c DBUI"),   desc = 'Database ([S]torage)',                    mode = 'n' },
-	{ '<leader>ll',      vim.cmd.OCTmuxPane,                                       desc = '[L]LM - Server (Ollama)',                 mode = 'n' },
+
+	{ '<leader>ls',      focusDBTab,                                        desc = 'Database ([S]torage)',                    mode = 'n' },
+	{ '<leader>ll',      vim.cmd.OCTmuxPane,                                desc = '[L]LM - Server (Ollama)',                 mode = 'n' },
 
 	-- Code
 	{ '<leader>c',       group = '[C]ode' },

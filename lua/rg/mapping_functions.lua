@@ -36,6 +36,40 @@ local function focusTerminalBuffer(termName, startCmd)
 end
 
 
+local function focusDBTab()
+
+  local dbTab = nil
+
+  for _, tab in ipairs(vim.api.nvim_list_tabpages()) do
+    for _, win in ipairs(vim.api.nvim_tabpage_list_wins(tab)) do
+
+      local name = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(win))
+      if name:lower():find('dbui', 1, true) then
+        dbTab = tab
+        break
+      end
+
+    end
+
+    if dbTab then break end
+
+  end
+
+  if dbTab then
+
+    vim.api.nvim_set_current_tabpage(dbTab)
+
+  else
+
+    vim.cmd('tabnew')
+    vim.cmd('DBUI')
+
+  end
+
+end
+
+
+
 return {
 
 	codeAction          = function()
@@ -98,6 +132,8 @@ return {
 
 	filetypeKeymap      = filetypeKeymap,
 
-	focusTerminalBuffer = focusTerminalBuffer
+	focusTerminalBuffer = focusTerminalBuffer,
+
+	focusDBTab = focusDBTab
 
 }
