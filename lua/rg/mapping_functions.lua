@@ -27,7 +27,7 @@ local function focusTerminalBuffer(termName, startCmd)
 		local noTerm = vim.fn.system('tmux list-windows -F "#W:#I" | grep "' ..  termName .. '"') == ''
 
 		if noTerm then
-			vim.fn.system(string.format('tmux new-window -n "%s" "%s"', termName, termName, startCmd))
+			vim.fn.system(string.format('tmux new-window -n "%s" "%s"', termName, startCmd))
 		else
 			vim.fn.system(string.format('tmux select-window -t "%s"', termName))
 		end
