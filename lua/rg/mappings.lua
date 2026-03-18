@@ -17,6 +17,13 @@ local focusDBTab = mappfunc.focusDBTab
 --
 
 whichkey.add({
+
+	-- Surround
+	{'<leader>y',       group = 'Surround' },
+	{'<leader>ys', '<Plug>Ysurround', desc = 'new [S]urround'},
+	{'<leader>yc', '<Plug>Csurround', desc = '[C]hange Surrounding'},
+	{'<leader>yd', '<Plug>Dsurround', desc = '[D]elete Surrounding'},
+
 	-- Launch
 	{ '<leader>l',       group = '[L]aunch' },
 	{ '<leader>lg',      focusTerminalBuffer("LazyGit", "lazygit"),              desc = 'Lazy[G]it',                               mode = 'n' },
