@@ -75,7 +75,7 @@ vim.opt.wrap = false
 vim.opt.updatetime = 8
 
 -- Decrease mapped sequence wait time for snappier mappings
-vim.opt.timeoutlen = 200
+vim.opt.timeoutlen = 300
 
 -- Configure how new splits should be opened
 vim.opt.splitright = true
