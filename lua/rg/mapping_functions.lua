@@ -5,19 +5,21 @@ local dapui = require("dapui");
 local debuggerUIOpen = false
 
 local function filetypeKeymap(pattern, maps)
-	vim.api.nvim_create_autocmd("BufAdd", {
-		pattern = pattern,
-		callback = function(args)
-			local newMaps = {}
 
-			for _, v in pairs(maps) do
-				v.buffer = args.buf
-				table.insert(newMaps, v)
-			end
+	local callback = function(args)
+		local newMaps = {}
 
-			require("which-key").add(newMaps)
+		for _, v in pairs(maps) do
+			v.buffer = args.buf
+			table.insert(newMaps, v)
 		end
-	})
+
+		require("which-key").add(newMaps)
+	end
+
+	vim.api.nvim_create_autocmd("BufAdd", { pattern = pattern, callback =callback })
+	vim.api.nvim_create_autocmd("VimEnter", { pattern = pattern, callback =callback })
+
 end
 
 

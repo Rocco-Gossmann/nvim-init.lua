@@ -226,3 +226,5 @@ vim.cmd [[
 	tnoremap <Esc><Esc> <C-\><C-n>
 
 ]]
+
+require "rg.filetypes"
