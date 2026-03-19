@@ -35,27 +35,6 @@ return {
 		config = true,
 		-- Uncomment next line if you want to follow only stable versions
 		-- version = "*"
-	},
-
-	{
-		"3rd/image.nvim",
-		build = false, -- so that it doesn't build the rock https://github.com/3rd/image.nvim/issues/91#issuecomment-2453430239
-		ft = { "markdown" },
-		opts = {
-			processor = "magick_cli",
-		}
-	},
-
-	{
-		"toppair/peek.nvim",
-		event = { "VeryLazy" },
-		build = "deno task --quiet build:fast",
-		config = function()
-			require("peek").setup()
-			vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
-			vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
-		end,
-	},
-
+	}
 
 }
