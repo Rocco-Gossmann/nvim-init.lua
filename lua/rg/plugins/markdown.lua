@@ -39,7 +39,7 @@ return {
 					return ('%d.'):format(index > 1 and index or ctx.index)
 				end,
 				left_pad = 1,
-				right_pad = 1,
+				right_pad = 0,
 				highlight = 'RenderMarkdownBullet',
 				scope_highlight = {},
 				scope_priority = nil,
@@ -67,6 +67,8 @@ return {
 			disable_frontmatter = true,
 
 			external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
+
+			ui = { enable = false },
 
 			workspaces = {
 				{
