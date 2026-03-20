@@ -92,7 +92,14 @@ whichkey.add({
 	{ '<leader>fh',      telescope_builtin.help_tags,                            desc = '[F]ind [H]elp',                           mode = 'n' },
 	{ '<leader>fm',      '<cmd>Telescope keymaps<cr>',                           desc = '[F]ind [M]appings',                       mode = 'n' },
 	{ '<leader>fr',      telescope_builtin.resume,                               desc = '[F]ind [R]esume',                         mode = 'n' },
-	{ '<leader>ft',      telescope_builtin.lsp_document_symbols,                 desc = '[F]ind file [T]ags',                      mode = 'n' },
+
+	{ '<leader>ft',      function()
+		telescope_builtin.lsp_document_symbols({
+			show_line = false,
+			symbol_width = 60
+		})
+	end,                 desc = '[F]ind file [T]ags',                      mode = 'n' },
+
 	{ '<leader>fe',      '<cmd>NERDTreeFind<cr>',                                desc = '[F]ile show in [E]xplorer',               mode = 'n' },
 	{ '<leader>fd',      telescope_builtin.diagnostics,                          desc = '[F]ile [D]Diagnose',                      mode = 'n' },
 	{ '<leader>fg',      mappfunc.fuzzySearchInBuffer,                           desc = '[F]ile [G]rep',                           mode = 'n' },
