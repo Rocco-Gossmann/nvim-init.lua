@@ -70,12 +70,7 @@ return {
 
 			ui = { enable = false },
 
-			workspaces = {
-				{
-					name = "project-docs",
-					path = "./docs",
-				},
-			},
+			workspaces = vim.g.obsidianworkspaces,
 
 			-- see below for full list of options 👇
 		},
