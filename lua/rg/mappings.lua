@@ -18,11 +18,17 @@ local focusDBTab = mappfunc.focusDBTab
 
 whichkey.add({
 
+	-- Obisidian
+	{ '<leader>o',       group = 'Obisidan' },
+	{ '<leader>ow',      '<cmd>ObsidianWorkspace<cr>',                           desc = '[W]workspace' },
+	{ '<leader>of',      '<cmd>ObsidianSearch<cr>',                              desc = '[F]ind (alias for [S]earch)' },
+	{ '<leader>os',      '<cmd>ObsidianSearch<cr>',                              desc = '[S]earch' },
+
 	-- Surround
-	{'<leader>y',       group = 'Surround' },
-	{'<leader>ys', '<Plug>Ysurround', desc = 'new [S]urround'},
-	{'<leader>yc', '<Plug>Csurround', desc = '[C]hange Surrounding'},
-	{'<leader>yd', '<Plug>Dsurround', desc = '[D]elete Surrounding'},
+	{ '<leader>y',       group = 'Surround' },
+	{ '<leader>ys',      '<Plug>Ysurround',                                      desc = 'new [S]urround' },
+	{ '<leader>yc',      '<Plug>Csurround',                                      desc = '[C]hange Surrounding' },
+	{ '<leader>yd',      '<Plug>Dsurround',                                      desc = '[D]elete Surrounding' },
 
 	-- Launch
 	{ '<leader>l',       group = '[L]aunch' },
