@@ -6,6 +6,35 @@ return {
 		ft = { "markdown" },
 		opts = {
 			processor = "magick_cli",
+			tmux_show_only_in_active_window = true,
+			max_width = nil,
+			max_height = nil,
+			max_width_window_percentage = 90,
+			max_height_window_percentage = 90, -- default 50
+			integrations = {
+				markdown = {
+					enabled = true,
+					clear_in_insert_mode = true,
+					download_remote_images = true,
+					only_render_image_at_cursor = false,
+					only_render_image_at_cursor_mode = "inline", -- or "inline"
+					floating_windows = true,     -- if true, images will be rendered in floating markdown windows
+					filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
+				},
+				html = {
+					enabled = true,
+					clear_in_insert_mode = true,
+					only_render_image_at_cursor = false,
+					only_render_image_at_cursor_mode = "popup", -- or "inline"
+				},
+				css = {
+					enabled = true,
+					clear_in_insert_mode = true,
+					only_render_image_at_cursor = false,
+					only_render_image_at_cursor_mode = "popup", -- or "inline"
+				}
+			}
+
 		}
 	},
 
@@ -53,7 +82,15 @@ return {
 		version = "*", -- recommended, use latest release instead of latest commit
 		lazy = true,
 		ft = "markdown",
-		cmd = { "ObsidianSearch", "ObsidianWorkspace" },
+		cmd = {
+			"ObsidianSearch",
+			"ObsidianQuickSearch",
+			"ObsidianWorkspace",
+			"ObsidianTags",
+			"ObsidianPasteImg",
+			"ObsidianTOC"
+		},
+
 
 		-- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
 		-- event = {
@@ -67,7 +104,9 @@ return {
 		opts = {
 			preferred_link_style = "markdown",
 			disable_frontmatter = true,
-
+			attachments = {
+				img_folder = "./~attachments"
+			},
 			external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
 
 			ui = { enable = false },
@@ -75,6 +114,34 @@ return {
 			workspaces = vim.g.obsidianworkspaces,
 
 			-- see below for full list of options 👇
+		},
+	},
+	{
+		"HakonHarnes/img-clip.nvim",
+		event = "VeryLazy",
+		opts = {
+			default = {
+				-- file and directory options
+				dir_path = "./~attachments", ---@type string | fun(): string
+				extension = "png", ---@type string | fun(): string
+				file_name = "%Y-%m-%d-%H-%M-%S", ---@type string | fun(): string
+				use_absolute_path = false, ---@type boolean | fun(): boolean
+				relative_to_current_file = true, ---@type boolean | fun(): boolean
+				prompt_for_file_name = false
+			},
+
+			filetypes = {
+				markdown = {
+					url_encode_path = true, ---@type boolean | fun(): boolean
+					template = "![$CURSOR](./$FILE_PATH)", ---@type string | fun(context: table): string
+					download_images = true, ---@type boolean | fun(): boolean
+				}
+			}
+
+		},
+		keys = {
+			-- suggested keymap
+			-- { "<leader>oii", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
 		},
 	}
 

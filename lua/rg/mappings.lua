@@ -21,8 +21,14 @@ whichkey.add({
 	-- Obisidian
 	{ '<leader>o',       group = 'Obisidan' },
 	{ '<leader>ow',      '<cmd>ObsidianWorkspace<cr>',                           desc = '[W]workspace' },
-	{ '<leader>of',      '<cmd>ObsidianSearch<cr>',                              desc = '[F]ind (alias for [S]earch)' },
+	{ '<leader>of',      '<cmd>ObsidianQuickSearch<cr>',                         desc = '[F]ind (quicksearch)' },
+	{ '<leader>ot',      '<cmd>ObsidianTags<cr>',                                desc = '[T]ags' },
 	{ '<leader>os',      '<cmd>ObsidianSearch<cr>',                              desc = '[S]earch' },
+	{ '<leader>op',      '<cmd>PeekClose<cr><cmd>PeekOpen<cr>',                  desc = '[P]eek' },
+
+	{ '<leader>oi',      group = "Insert" },
+	{ '<leader>oii',     '<cmd>PasteImage<cr>',                            desc = '[I]mage' },
+	{ '<leader>oit',     '<cmd>ObsidianTOC<cr>',                                 desc = '[T]able of contents' },
 
 	-- Surround
 	{ '<leader>y',       group = 'Surround' },
