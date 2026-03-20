@@ -84,7 +84,7 @@ return {
 		ft = "markdown",
 		cmd = {
 			"ObsidianSearch",
-			"ObsidianQuickSearch",
+			"ObsidianQuickSwitch",
 			"ObsidianWorkspace",
 			"ObsidianTags",
 			"ObsidianPasteImg",
