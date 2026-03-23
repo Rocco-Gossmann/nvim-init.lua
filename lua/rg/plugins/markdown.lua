@@ -7,8 +7,8 @@ return {
 		opts = {
 			processor = "magick_cli",
 			tmux_show_only_in_active_window = true,
-			max_width = nil,
-			max_height = nil,
+			max_width = 4320,
+			max_height = 30720,
 			max_width_window_percentage = 90,
 			max_height_window_percentage = 90, -- default 50
 			integrations = {
@@ -113,9 +113,9 @@ return {
 
 			workspaces = vim.g.obsidianworkspaces,
 
-			-- see below for full list of options 👇
 		},
 	},
+
 	{
 		"HakonHarnes/img-clip.nvim",
 		event = "VeryLazy",
