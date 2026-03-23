@@ -60,7 +60,7 @@ return {
 
 			bullet = {
 				enabled = true,
-				render_modes = false,
+				render_modes = { "n", "c" },
 				icons = { '●', '○', '◆', '◇' },
 				ordered_icons = function(ctx)
 					local value = vim.trim(ctx.value)
