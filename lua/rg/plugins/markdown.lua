@@ -1,3 +1,4 @@
+local diagnostic = require "vim.diagnostic"
 return {
 
 	{
@@ -110,6 +111,7 @@ return {
 			external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
 
 			ui = { enable = false },
+			diagnostic = { enabled = false },
 
 			workspaces = vim.g.obsidianworkspaces,
 
