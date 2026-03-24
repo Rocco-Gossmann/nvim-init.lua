@@ -50,8 +50,12 @@ mappfunc.filetypeKeymap({ "*.php" }, {
 
 -- Code-Formatting
 -- -----------------------------------------------------------------------------
-mappfunc.filetypeKeymap({ "*.md", "*.html", "*.js", ".ts", ".css", "*.scss", "*.json", "*.jsx" }, {
+mappfunc.filetypeKeymap({ "*.html", "*.js", ".ts", ".css", "*.scss", "*.json", "*.jsx" }, {
 	{ '<leader>cf', '<cmd>w<cr><cmd>silent !deno fmt %<cr>', desc = '[C]ode [F]ormat', mode = "n" },
+})
+
+mappfunc.filetypeKeymap({ "*.md" }, {
+	{ '<leader>cf', '<cmd>w<cr><cmd>silent !deno fmt --options-prose-wrap=preserve %<cr>', desc = '[C]ode [F]ormat', mode = "n" },
 })
 
 mappfunc.filetypeKeymap({ "*.lua", "*.go", "*.php" }, {

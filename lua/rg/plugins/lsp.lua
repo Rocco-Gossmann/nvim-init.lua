@@ -263,7 +263,12 @@ return {
 			})
 
 			require("mason-lspconfig").setup({
-				ensure_installed = {"marksman", "lua_ls"}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+				ensure_installed = {
+					"marksman",
+					"markdown_oxide",
+					"lua_ls"
+				}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+
 				automatic_installation = false,
 				handlers = {
 					function(server_name)
