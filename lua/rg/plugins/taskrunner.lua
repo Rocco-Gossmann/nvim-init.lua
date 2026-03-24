@@ -84,6 +84,17 @@ local function restartTaskRunner()
 		})
 	end
 
+	if vim.bo.filetype == "markdown" then
+		table.insert(tasks, {
+			label = "Edit 'Peek' Window-CSS",
+			action = function()
+
+				vim.cmd.tabnew(require("rg.env").home .. "/.local/share/nvim/lazy/peek.nvim/public/style.css");
+
+			end
+		})
+	end
+
 	require("nvim-taskrunner").setup(tasks)
 end
 
