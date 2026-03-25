@@ -104,7 +104,7 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {
 			preferred_link_style = "markdown",
-			disable_frontmatter = true,
+			disable_frontmatter = not vim.g.obsidianfrontmatter,
 			attachments = {
 				img_folder = "./~attachments"
 			},
