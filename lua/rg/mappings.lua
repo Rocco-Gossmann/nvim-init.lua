@@ -6,6 +6,7 @@ local mappfunc = require("rg.mapping_functions");
 local templates = require("rg.template");
 local telescope_builtin = require('telescope.builtin');
 local focusTerminalBuffer = mappfunc.focusTerminalBuffer
+local openTerminalPopup = mappfunc.openTerminalPopup
 local focusDBTab = mappfunc.focusDBTab
 
 --[[============================================================================
@@ -43,6 +44,7 @@ whichkey.add({
 	{ '<leader>lr',  focusTerminalBuffer("Ranger", "ranger"),                desc = '[R]anger',                                mode = 'n' },
 	{ '<leader>ls',  focusTerminalBuffer("Database (DBUI)", "nvim -c DBUI"), desc = 'Database ([s]torage)',                    mode = 'n' },
 	{ '<leader>ll',  vim.cmd.OCTmuxPane,                                     desc = '[L]LM - Server (Ollama)',                 mode = 'n' },
+	{ '<leader>lo',  openTerminalPopup("nvim -c \\\"Oil %dirname%\\\""),     desc = '[O]il (at current files Dirname)',        mode = 'n' },
 
 	-- Code
 	{ '<leader>c',   group = '[C]ode' },

@@ -22,6 +22,14 @@ local function filetypeKeymap(pattern, maps)
 
 end
 
+local function openTerminalPopup(shellCommand)
+	return function()
+
+		shellCommand = string.gsub(shellCommand, "%%dirname%%", vim.fn.expand("%:p:h"))
+		vim.fn.system(string.format('tmux display-popup -E "%s"', shellCommand))
+
+	end
+end
 
 local function focusTerminalBuffer(termName, startCmd)
 	return function()
@@ -29,6 +37,7 @@ local function focusTerminalBuffer(termName, startCmd)
 		local noTerm = vim.fn.system('tmux list-windows -F "#W:#I" | grep "' ..  termName .. '"') == ''
 
 		if noTerm then
+			startCmd = string.gsub(startCmd, "%dirname%", vim.fn.expand("%:p:h"))
 			vim.fn.system(string.format('tmux new-window -n "%s" "%s"', termName, startCmd))
 		else
 			vim.fn.system(string.format('tmux select-window -t "%s"', termName))
@@ -135,7 +144,7 @@ return {
 	filetypeKeymap      = filetypeKeymap,
 
 	focusTerminalBuffer = focusTerminalBuffer,
-
+	openTerminalPopup = openTerminalPopup,
 	focusDBTab = focusDBTab
 
 }
