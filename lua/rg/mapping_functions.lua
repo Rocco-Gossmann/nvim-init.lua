@@ -25,7 +25,7 @@ end
 local function openTerminalPopup(shellCommand)
 	return function()
 
-		shellCommand = string.gsub(shellCommand, "%%dirname%%", vim.fn.expand("%:p:h"))
+		local shellCommand = string.gsub(shellCommand, "%%dirname%%", vim.fn.expand("%:p:h"))
 		vim.fn.system(string.format('tmux display-popup -E "%s"', shellCommand))
 
 	end
@@ -37,7 +37,8 @@ local function focusTerminalBuffer(termName, startCmd)
 		local noTerm = vim.fn.system('tmux list-windows -F "#W:#I" | grep "' ..  termName .. '"') == ''
 
 		if noTerm then
-			startCmd = string.gsub(startCmd, "%dirname%", vim.fn.expand("%:p:h"))
+
+			local startCmd = string.gsub(startCmd, "%%dirname%%", vim.fn.expand("%:p:h"))
 			vim.fn.system(string.format('tmux new-window -n "%s" "%s"', termName, startCmd))
 		else
 			vim.fn.system(string.format('tmux select-window -t "%s"', termName))
@@ -45,41 +46,6 @@ local function focusTerminalBuffer(termName, startCmd)
 
 	end
 end
-
-
-local function focusDBTab()
-
-  local dbTab = nil
-
-  for _, tab in ipairs(vim.api.nvim_list_tabpages()) do
-    for _, win in ipairs(vim.api.nvim_tabpage_list_wins(tab)) do
-
-      local name = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(win))
-      if name:lower():find('dbui', 1, true) then
-        dbTab = tab
-        break
-      end
-
-    end
-
-    if dbTab then break end
-
-  end
-
-  if dbTab then
-
-    vim.api.nvim_set_current_tabpage(dbTab)
-
-  else
-
-    vim.cmd('tabnew')
-    vim.cmd('DBUI')
-
-  end
-
-end
-
-
 
 return {
 
@@ -136,7 +102,7 @@ return {
 				'<leader>clr',
 				'<cmd>LspRestart ' .. lspnames .. '<cr>',
 				mode = 'n',
-				desc = '[C]ode [L]sp [R]estart'
+				desc = '[R]estart'
 			}
 		})
 	end,
@@ -144,7 +110,6 @@ return {
 	filetypeKeymap      = filetypeKeymap,
 
 	focusTerminalBuffer = focusTerminalBuffer,
-	openTerminalPopup = openTerminalPopup,
-	focusDBTab = focusDBTab
+	openTerminalPopup = openTerminalPopup
 
 }
