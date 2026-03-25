@@ -7,7 +7,6 @@ local templates = require("rg.template");
 local telescope_builtin = require('telescope.builtin');
 local focusTerminalBuffer = mappfunc.focusTerminalBuffer
 local openTerminalPopup = mappfunc.openTerminalPopup
-local focusDBTab = mappfunc.focusDBTab
 
 --[[============================================================================
 -- Common Keymaps:
@@ -23,12 +22,14 @@ whichkey.add({
 	{ '<leader>o',   group = 'Obisidan' },
 	{ '<leader>ow',  '<cmd>ObsidianWorkspace<cr>',                           desc = '[W]workspace' },
 	{ '<leader>of',  '<cmd>ObsidianQuickSwitch<cr>',                         desc = '[F]ind (quicksearch)' },
-	{ '<leader>ot',  '<cmd>ObsidianTOC<cr>',                                 desc = '[T]ags' },
+	{ '<leader>ot',  '<cmd>ObsidianTOC<cr>',                                 desc = '[T]able of contents' },
 	{ '<leader>os',  '<cmd>ObsidianTags<cr>',                                desc = '[S]earch' },
 	{ '<leader>op',  '<cmd>PeekClose<cr><cmd>PeekOpen<cr>',                  desc = '[P]eek' },
 
 	{ '<leader>oi',  group = "Insert" },
 	{ '<leader>oii', '<cmd>PasteImage<cr>',                                  desc = '[I]mage' },
+	{ '<leader>oin', '<cmd>ObsidianNewFromTemplate<cr>',                     desc = '[N]ew Note from Template' },
+	{ '<leader>oit', '<cmd>ObsidianTemplate<cr>',                            desc = '[T]emplate' },
 
 	-- Surround
 	{ '<leader>y',   group = 'Surround' },
@@ -41,7 +42,7 @@ whichkey.add({
 	{ '<leader>lg',  focusTerminalBuffer("LazyGit", "lazygit"),              desc = 'Lazy[G]it',                               mode = 'n' },
 	{ '<leader>lt',  focusTerminalBuffer("Terminal", ""),                    desc = '[T]erminal',                              mode = 'n' },
 	{ '<leader>ld',  focusTerminalBuffer("LazyDocker", "lazydocker"),        desc = 'Lazy[D]ocker',                            mode = 'n' },
-	{ '<leader>lr',  focusTerminalBuffer("Ranger", "ranger"),                desc = '[R]anger',                                mode = 'n' },
+	{ '<leader>lr',  focusTerminalBuffer("Ranger", "yazi %dirname%"),        desc = 'Files (formerly [R]anger)',               mode = 'n' },
 	{ '<leader>ls',  focusTerminalBuffer("Database (DBUI)", "nvim -c DBUI"), desc = 'Database ([s]torage)',                    mode = 'n' },
 	{ '<leader>ll',  vim.cmd.OCTmuxPane,                                     desc = '[L]LM - Server (Ollama)',                 mode = 'n' },
 	{ '<leader>lo',  openTerminalPopup("nvim -c \\\"Oil %dirname%\\\""),     desc = '[O]il (at current files Dirname)',        mode = 'n' },
@@ -54,15 +55,15 @@ whichkey.add({
 	{ '<leader>cc',  '<cmd>norm gcc<cr>',                                    desc = '[C]omment',                               mode = { 'n' } },
 	{ '<leader>cc',  '<cmd>norm gc<cr>',                                     desc = '[C]omment',                               mode = { 'x' } },
 
-	{ '<leader>cl',  group = '[C]ode [L]sp' },
-	{ '<leader>clr', '<cmd>LspRestart<cr>',                                  desc = '[L]sp [R]estart',                         mode = 'n' },
+	{ '<leader>cl',  group = '[L]sp' },
+	{ '<leader>clr', '<cmd>LspRestart<cr>',                                  desc = '[R]estart',                               mode = 'n' },
 
 	-- Qucklist
 	{ '<leader>q',   group = '[Q]uicklist' },
-	{ '<leader>qd',  vim.diagnostic.setloclist,                              desc = '[Q]uicklist [D]iagnostics' },
-	{ '<leader>qn',  '<cmd>cnext<cr>',                                       desc = '[Q]uicklist [N]ext' },
-	{ '<leader>qp',  '<cmd>cprevious<cr>',                                   desc = '[Q]uicklist [P]revious' },
-	{ '<leader>qc',  '<cmd>cclose<cr>',                                      desc = '[Q]uicklist [C]lose' },
+	{ '<leader>qd',  vim.diagnostic.setloclist,                              desc = '[D]iagnostics' },
+	{ '<leader>qn',  '<cmd>cnext<cr>',                                       desc = '[N]ext' },
+	{ '<leader>qp',  '<cmd>cprevious<cr>',                                   desc = '[P]revious' },
+	{ '<leader>qc',  '<cmd>cclose<cr>',                                      desc = '[C]lose' },
 
 	{ 'q',           group = '[Q]uicklist' },
 	{ 'qd',          vim.diagnostic.setloclist,                              desc = '[Q]uicklist [D]iagnostics' },
