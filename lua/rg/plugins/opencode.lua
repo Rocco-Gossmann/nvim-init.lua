@@ -32,7 +32,6 @@ end
 
 local function focusTmuxPane()
 
-
 	if paneId ~= nil then
 
 		local cmd = {'tmux', 'select-pane', '-t', paneId}
@@ -67,10 +66,15 @@ vim.api.nvim_create_user_command("OCReference", function(args)
 
 	local lines = "";
 
-	if args.range == 2 then
+	if args.range > 0 then
 
-		lines = "#" .. args.line1 .. "-" .. args.line2
+		lines = "#" .. args.line1
 
+		if args.line2 > args.line1 then
+
+			lines = lines .. "-" .. args.line2
+
+		end
 	end
 
 	ocPost('tui/append-prompt', { text = "@" .. vim.fn.expand("%") .. lines })
