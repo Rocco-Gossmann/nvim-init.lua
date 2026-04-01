@@ -13,7 +13,7 @@ return {
 		},
 	},
 
-	{ "shadowwa/smarty.vim" },
+	{ "shadowwa/smarty.vim", ft = { "smarty" } },
 
 	{
 		-- Main LSP Configuration
@@ -263,7 +263,11 @@ return {
 			})
 
 			require("mason-lspconfig").setup({
-				ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+				ensure_installed = {
+					"markdown_oxide",
+					"lua_ls"
+				}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+
 				automatic_installation = false,
 				handlers = {
 					function(server_name)
@@ -281,7 +285,6 @@ return {
 
 	{
 		"S1M0N38/love2d.nvim",
-		event = "VeryLazy",
 		version = "2.*",
 		opts = {},
 		keys = {

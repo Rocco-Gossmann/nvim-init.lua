@@ -40,8 +40,13 @@ local function restartTaskRunner()
 	})
 
 	table.insert(tasks, {
-		label = "create / open .nvim/init.lua",
-		action = createFileInFolder("./.nvim", "init.lua"),
+		label = "create / open .nvim/postinit.lua",
+		action = createFileInFolder("./.nvim", "postinit.lua"),
+	})
+
+	table.insert(tasks, {
+		label = "create / open .nvim/preinit.lua",
+		action = createFileInFolder("./.nvim", "preinit.lua"),
 	})
 
 	table.insert(tasks, {
@@ -76,6 +81,17 @@ local function restartTaskRunner()
 		table.insert(tasks, {
 			label = "Align comments",
 			action = alignSeparator("//")
+		})
+	end
+
+	if vim.bo.filetype == "markdown" then
+		table.insert(tasks, {
+			label = "Edit 'Peek' Window-CSS",
+			action = function()
+
+				vim.cmd.tabnew(require("rg.env").home .. "/.local/share/nvim/lazy/peek.nvim/public/style.css");
+
+			end
 		})
 	end
 

@@ -1,6 +1,6 @@
 # My NVIM - Config
 
-> [!Attention]\
+> [!Attention]
 > this is config expects NeoVim 0.11 or higher. try lower versions at your own
 > risk
 

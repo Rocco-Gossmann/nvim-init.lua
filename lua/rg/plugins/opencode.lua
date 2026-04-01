@@ -30,32 +30,7 @@ local function ocPost(url, data)
 
 end
 
-local neoVideBuffer = nil;
 local function focusTmuxPane()
-
-	if vim.g.vscode then
-		print("TODO: implement focusing vscode OC Terminal")
-		require("vscode").call("workbench.action.terminal.focus")
-		return
-	end
-
-	if vim.g.neovide then
-
-		if vim.fn.bufexists(vim.g.neovide_buffer) == 1 then
-			vim.api.nvim_set_current_buf(vim.g.neovide_buffer)
-		else
-			vim.g.neovide_buffer = nil
-			print("Neovide buffer closed, resetting buffer reference")
-		end
-
-		if vim.g.neovide_buffer == nil then
-			vim.cmd("vs term://zsh -i -c 'opencode --port 8099'")
-			vim.g.neovide_buffer = vim.api.nvim_get_current_buf()
-		end
-
-		return -- Exit function after Neovide buffer handling
-
-	end
 
 	if paneId ~= nil then
 
@@ -72,7 +47,7 @@ local function focusTmuxPane()
 
 	if paneId == nil then
 
-		local cmd = {'tmux', 'split-window', '-h', '-l', '33%', '-P', '-F', '#{pane_id}', 'killall opencode ; opencode --port 8099 ; exit'}
+		local cmd = {'tmux', 'split-window', '-h', '-l', '38%', '-P', '-F', '#{pane_id}', 'lsof -ti :8099 | xargs kill -9 ; opencode --port 8099 ; exit'}
 		local result = vim.system(cmd):wait()
 
 		if result.code == 0 then
@@ -87,28 +62,19 @@ end
 
 vim.api.nvim_create_user_command("OCTmuxPane", focusTmuxPane, {})
 
-vim.api.nvim_create_user_command("OCNewSession", function(args)
-
-
-	local response = ocPost('session');
-
-	ocSession = response.id;
-
-	ocPost('tui/select-session', { sessionID = ocSession });
-
-	focusTmuxPane()
-
-end, {})
-
-
 vim.api.nvim_create_user_command("OCReference", function(args)
 
 	local lines = "";
 
-	if args.range == 2 then
+	if args.range > 0 then
 
-		lines = "#" .. args.line1 .. "-" .. args.line2
+		lines = "#" .. args.line1
 
+		if args.line2 > args.line1 then
+
+			lines = lines .. "-" .. args.line2
+
+		end
 	end
 
 	ocPost('tui/append-prompt', { text = "@" .. vim.fn.expand("%") .. lines })
