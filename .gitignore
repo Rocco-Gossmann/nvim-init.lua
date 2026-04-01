@@ -1,2 +1,3 @@
 lua/rg/dap/vscode-php-debug
 lua/rg/dap/vscode-php-debug/out
+/lazy-lock.json
