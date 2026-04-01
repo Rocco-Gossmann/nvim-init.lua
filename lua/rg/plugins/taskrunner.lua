@@ -28,6 +28,7 @@ local function alignSeparator(separator)
 end
 
 local function restartTaskRunner()
+
 	local tasks = require("rg.env").doFileIfExists("./.nvim/tasks.lua")
 
 	if type(tasks) ~= "table" then
@@ -96,11 +97,10 @@ local function restartTaskRunner()
 	end
 
 	require("nvim-taskrunner").setup(tasks)
+
 end
 
-vim.api.nvim_create_autocmd("BufEnter", {
-	callback = restartTaskRunner,
-})
+-- vim.api.nvim_create_autocmd("BufEnter", { callback = restartTaskRunner, })
 
 return {
 
@@ -109,4 +109,5 @@ return {
 	dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
 
 	init = restartTaskRunner,
+
 }

@@ -180,7 +180,8 @@ return {
 			vim.list_extend(ensure_installed, {
 				"intelephense",
 				"php-debug-adapter",
-				"jq"
+				"jq",
+				"deno"
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
