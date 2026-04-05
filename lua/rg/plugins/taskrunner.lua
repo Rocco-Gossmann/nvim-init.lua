@@ -28,7 +28,6 @@ local function alignSeparator(separator)
 end
 
 local function restartTaskRunner()
-
 	local tasks = require("rg.env").doFileIfExists("./.nvim/tasks.lua")
 
 	if type(tasks) ~= "table" then
@@ -86,11 +85,36 @@ local function restartTaskRunner()
 	end
 
 	if vim.bo.filetype == "markdown" then
+
 		table.insert(tasks, {
 			label = "Edit 'Peek' Window-CSS",
 			action = function()
-
 				vim.cmd.tabnew(require("rg.env").home .. "/.local/share/nvim/lazy/peek.nvim/public/style.css");
+			end
+		})
+
+		local replLine = function(repl)
+			vim.cmd.norm("yyp")
+			local old_line = vim.api.nvim_get_current_line();
+			local line = old_line:gsub("[^|]", repl)
+			vim.api.nvim_set_current_line(line);
+		end
+
+		table.insert(tasks, {
+			label = "start Markdown Table Header",
+			action = function()
+
+				replLine("-")
+				replLine(" ")
+
+			end
+		})
+
+		table.insert(tasks, {
+			label = "add Markdown Table Row",
+			action = function()
+
+				replLine(" ")
 
 			end
 		})
@@ -100,7 +124,7 @@ local function restartTaskRunner()
 
 end
 
--- vim.api.nvim_create_autocmd("BufEnter", { callback = restartTaskRunner, })
+vim.api.nvim_create_autocmd("BufEnter", { callback = restartTaskRunner, })
 
 return {
 
