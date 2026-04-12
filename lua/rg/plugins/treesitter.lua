@@ -5,22 +5,22 @@ return { -- Highlight, edit, and navigate code
 
 	opts = {
 		ensure_installed = {
-			'bash',
-			'c',
-			'diff',
-			'html',
-			'lua',
-			'luadoc',
-			'markdown',
-			'markdown_inline',
-			'query',
-			'vim',
-			'vimdoc',
-			'php',
-			'go',
-			'css',
-			'javascript',
-			'yaml',
+			"bash",
+			"c",
+			"diff",
+			"html",
+			"lua",
+			"luadoc",
+			"markdown",
+			"markdown_inline",
+			"query",
+			"vim",
+			"vimdoc",
+			"php",
+			"go",
+			"css",
+			"javascript",
+			"yaml"
 		},
 		-- Autoinstall languages that are not installed
 		auto_install = true,
@@ -31,6 +31,11 @@ return { -- Highlight, edit, and navigate code
 			--  the list of additional_vim_regex_highlighting and disabled languages for indent.
 			additional_vim_regex_highlighting = { 'ruby' },
 		},
+		folds = { enable = true },
 		indent = { enable = true, disable = { 'ruby' } },
 	},
+
+	config = function(_, opts)
+	  require("nvim-treesitter").setup(opts)
+	end,
 }

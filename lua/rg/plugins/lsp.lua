@@ -181,7 +181,8 @@ return {
 				"intelephense",
 				"php-debug-adapter",
 				"jq",
-				"deno"
+				"deno",
+				"tree-sitter-cli",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 

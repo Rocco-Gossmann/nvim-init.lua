@@ -166,7 +166,8 @@ vim.lsp.config("lua_ls", {
 -- Nvim 0.12
 --==============================================================================
 -- enable new UI
-require("vim._core.ui2").enable({})
+-- FIXME: this was a mistake. This UI breaks all things related to Treesitter 😔
+-- require("vim._core.ui2").enable({})
 
 
 return {}
