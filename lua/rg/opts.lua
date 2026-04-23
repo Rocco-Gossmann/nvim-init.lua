@@ -31,8 +31,6 @@ vim.opt.shiftwidth = 4
 vim.opt.showmode = false
 vim.opt.winborder = "bold"
 
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.

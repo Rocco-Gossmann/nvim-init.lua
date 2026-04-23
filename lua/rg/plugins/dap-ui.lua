@@ -1,11 +1,12 @@
 -- [[==========================================================================
 -- Debug-Adapter-Protocoll
 -- ==========================================================================]]
-return {
-	"rcarriga/nvim-dap-ui",
-	dependencies = { 'nvim-neotest/nvim-nio', 'mfussenegger/nvim-dap' },
-	config = function ()
-		require("dapui").setup()
-	end
-}
 
+vim.pack.add({
+
+	"https://github.com/rcarriga/nvim-dap-ui",
+	"https://github.com/nvim-neotest/nvim-nio",
+	"https://github.com/mfussenegger/nvim-dap"
+})
+
+require("dapui").setup()

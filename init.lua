@@ -4,11 +4,16 @@ require "rg.opts"
 
 require("rg.env").doFileIfExists("./.nvim/preinit.lua");
 
-require "rg.plugins.lazy"
+require "rg.plugins.ui"
+require "rg.plugins.dap-ui"
+require "rg.plugins.lsp"
+require "rg.plugins.whichkey"
 
-require "rg.dap"
 
-require "rg.mappings"
+
+-- require "rg.plugins.lazy"
+-- require "rg.dap"
+
 require "rg.tweaks"
 
 require("rg.env").doFileIfExists("./.nvim/postinit.lua");
