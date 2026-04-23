@@ -7,6 +7,8 @@ require("rg.env").doFileIfExists("./.nvim/preinit.lua");
 require "rg.plugins.ui"
 require "rg.plugins.dap-ui"
 require "rg.plugins.lsp"
+require "rg.plugins.dbui"
+
 require "rg.plugins.whichkey"
 
 

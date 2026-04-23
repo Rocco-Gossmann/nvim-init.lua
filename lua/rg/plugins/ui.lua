@@ -4,20 +4,30 @@
 
 vim.pack.add({
 
+	-- Dependencies:
+	"https://github.com/nvim-lua/plenary.nvim",
+
 	-- Misc
-	"https://github.com/preservim/nerdtree",
+	"https://github.com/preservim/nerdtree", -- better explorer
+	"https://github.com/christoomey/vim-tmux-navigator", -- integrate nvim to tmux
+
+	-- Theme
 	"https://github.com/rose-pine/neovim",
 	"https://github.com/folke/zen-mode.nvim",
 	"https://github.com/karb94/neoscroll.nvim",
-	"https://github.com/christoomey/vim-tmux-navigator",
+	"https://github.com/folke/todo-comments.nvim",
 
 	-- Telescope
-	"https://github.com/nvim-lua/plenary.nvim",
 	"https://github.com/nvim-telescope/telescope-fzf-native.nvim",
 	"https://github.com/nvim-telescope/telescope-ui-select.nvim",
 	"https://github.com/nvim-tree/nvim-web-devicons",
-	"https://github.com/nvim-telescope/telescope.nvim"
+	"https://github.com/nvim-telescope/telescope.nvim",
 
+	-- Extra Functions
+	"https://github.com/tpope/vim-surround",
+	"https://github.com/tpope/vim-repeat",
+	"https://github.com/Matt-A-Bennett/vim-surround-funk",
+	"https://github.com/echasnovski/mini.align"
 
 });
 

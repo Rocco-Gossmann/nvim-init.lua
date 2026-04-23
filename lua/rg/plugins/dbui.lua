@@ -1,28 +1,38 @@
+vim.pack.add({
+	"https://github.com/tpope/vim-dadbod",
+	"https://github.com/kristijanhusak/vim-dadbod-completion",
+	"https://github.com/nvim-neotest/nvim-nio",
+	"https://github.com/kristijanhusak/vim-dadbod-ui",
+})
+
+vim.g.db_ui_use_nerd_fonts = 1
+
+
+
+
 -- [[==========================================================================
 -- Database UI
 -- ==========================================================================]]
 return {
-	'kristijanhusak/vim-dadbod-ui',
-	dependencies = {
-
-		{ 'tpope/vim-dadbod',                     lazy = true },
-
-		{ 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
-
-		{ "nvim-neotest/nvim-nio" },
-
-	},
-
-	cmd = {
-		'DBUI',
-		'DBUIToggle',
-		'DBUIAddConnection',
-		'DBUIFindBuffer',
-	},
-
-	init = function()
-		-- Your DBUI configuration
-		vim.g.db_ui_use_nerd_fonts = 1
-	end,
-
+	-- dependencies = {
+	--
+	-- 	{ ,                     lazy = true },
+	--
+	-- 	{ , ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
+	--
+	-- 	{  },
+	--
+	-- },
+	--
+	-- cmd = {
+	-- 	'DBUI',
+	-- 	'DBUIToggle',
+	-- 	'DBUIAddConnection',
+	-- 	'DBUIFindBuffer',
+	-- },
+	--
+	-- init = function()
+	--	vim.g.db_ui_use_nerd_fonts = 1
+	-- end,
+	--
 }
