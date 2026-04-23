@@ -5,7 +5,7 @@
 vim.pack.add({
 
 	-- Misc
-	"preservim/nerdtree",
+	"https://github.com/preservim/nerdtree",
 	"https://github.com/rose-pine/neovim",
 	"https://github.com/folke/zen-mode.nvim",
 	"https://github.com/karb94/neoscroll.nvim",
