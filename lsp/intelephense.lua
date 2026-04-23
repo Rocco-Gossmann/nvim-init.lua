@@ -2,6 +2,8 @@ return {
 
 	ft = { "php" },
 
+	root_markers = { ".git", "." },
+
 	init_options = {
 		licenceKey = "/opt/licenses/intelephense.txt",
 	},

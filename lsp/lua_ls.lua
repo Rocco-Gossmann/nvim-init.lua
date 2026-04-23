@@ -2,6 +2,8 @@ return {
 
 	ft = { "lua", "p8" },
 
+	root_markers = { ".git", "." },
+
 	settings = {
 		typescript = {
 			inlayHints = {

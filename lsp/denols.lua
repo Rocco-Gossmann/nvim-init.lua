@@ -2,6 +2,8 @@ return {
 
 	ft = { "js", "ts" },
 
+	root_markers = { ".git", "." },
+
 	settings = {
 		typescript = {
 			inlayHints = {
