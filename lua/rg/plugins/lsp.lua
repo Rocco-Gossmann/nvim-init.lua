@@ -220,119 +220,57 @@ end
 
 -- local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-local servers = {
-
-	lua_ls = {
-		-- cmd = { ... },
-		-- filetypes = { ... },
-		-- capabilities = {},
-		settings = {
-			Lua = {
-				completion = {
-					callSnippet = "Replace",
-				},
-
-				workspace = {
-					vim.fn.getcwd() .. "/lua",
-					vim.fn.getcwd(),
-				},
-
-				-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-				-- diagnostics = { disable = { 'missing-fields' } },
-			},
-		},
-	}
-
-}
-
--- local ensure_installed = vim.tbl_keys(servers or {})
--- vim.list_extend(ensure_installed, {
--- 	"intelephense",
--- 	"php-debug-adapter",
--- 	"jq",
--- 	"deno",
--- 	"tree-sitter-cli",
--- })
 
 -- require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
-vim.lsp.config("ts_ls", {
-	settings = {
-		typescript = {
-			inlayHints = {
-				includeInlayParameterNameHints = 'all',
-				includeInlayParameterNameHintsWhenArgumentMatchesName =  true,
-				includeInlayFunctionParameterTypeHints =  true,
-				includeInlayVariableTypeHints =  true,
-				includeInlayVariableTypeHintsWhenTypeMatchesName =  true,
-				includeInlayPropertyDeclarationTypeHints =  true,
-				includeInlayFunctionLikeReturnTypeHints =  true,
-				includeInlayEnumMemberValueHints =  true,
-			},
-		},
-		javascript = {
-			inlayHints = {
-				includeInlayParameterNameHints = 'all',
-				includeInlayParameterNameHintsWhenArgumentMatchesName =  true,
-				includeInlayFunctionParameterTypeHints =  true,
-				includeInlayVariableTypeHints =  true,
-				includeInlayVariableTypeHintsWhenTypeMatchesName =  true,
-				includeInlayPropertyDeclarationTypeHints =  true,
-				includeInlayFunctionLikeReturnTypeHints =  true,
-				includeInlayEnumMemberValueHints =  true,
-			},
-		}
-	},
-})
-
-vim.lsp.config("intelephense", {
-
-	init_options = {
-		licenceKey = "/opt/licenses/intelephense.txt",
-	},
-
-	settings = {
-		intelephense = {
-
-			environment = {
-				includePaths = {
-					"/var/lib/phpunit",
-				},
-			},
-
-			diagnostics = {
-				enable = true,
-				argumentCount = true,
-				deprecated = true,
-				duplicateSymbols = true,
-				embeddedLanguages = true,
-				implementationErrors = true,
-				languageConstraints = true,
-				memberAccess = false,
-				noMixedTypeCheck = true,
-				relaxedTypeCheck = true,
-				run = "onType",
-				typeErrors = true,
-				undefinedClassConstants = true,
-				undefinedConstants = true,
-				undefinedFunctions = true,
-				undefinedMethods = true,
-				undefinedProperties = true,
-				undefinedSymbols = true,
-				undefinedTypes = true,
-				undefinedVariables = true,
-				unexpectedTokens = true,
-				unusedSymbols = true,
-			},
-
-			inlayHint = {
-				returnTypes = true
-			}
-
-		},
-	},
-
-})
+-- vim.lsp.config("intelephense", {
+--
+-- 	init_options = {
+-- 		licenceKey = "/opt/licenses/intelephense.txt",
+-- 	},
+--
+-- 	settings = {
+-- 		intelephense = {
+--
+-- 			environment = {
+-- 				includePaths = {
+-- 					"/var/lib/phpunit",
+-- 				},
+-- 			},
+--
+-- 			diagnostics = {
+-- 				enable = true,
+-- 				argumentCount = true,
+-- 				deprecated = true,
+-- 				duplicateSymbols = true,
+-- 				embeddedLanguages = true,
+-- 				implementationErrors = true,
+-- 				languageConstraints = true,
+-- 				memberAccess = false,
+-- 				noMixedTypeCheck = true,
+-- 				relaxedTypeCheck = true,
+-- 				run = "onType",
+-- 				typeErrors = true,
+-- 				undefinedClassConstants = true,
+-- 				undefinedConstants = true,
+-- 				undefinedFunctions = true,
+-- 				undefinedMethods = true,
+-- 				undefinedProperties = true,
+-- 				undefinedSymbols = true,
+-- 				undefinedTypes = true,
+-- 				undefinedVariables = true,
+-- 				unexpectedTokens = true,
+-- 				unusedSymbols = true,
+-- 			},
+--
+-- 			inlayHint = {
+-- 				returnTypes = true
+-- 			}
+--
+-- 		},
+-- 	},
+--
+-- })
 
 
 
