@@ -10,6 +10,7 @@ vim.pack.add({
 	-- Misc
 	"https://github.com/preservim/nerdtree", -- better explorer
 	"https://github.com/christoomey/vim-tmux-navigator", -- integrate nvim to tmux
+	"https://github.com/lewis6991/gitsigns.nvim", -- showing git changes in gutter
 
 	-- Theme
 	"https://github.com/rose-pine/neovim",
@@ -43,6 +44,23 @@ require("rose-pine").setup({
 
 vim.cmd 'colorscheme rose-pine'
 vim.cmd 'hi Whitespace guifg=#282828'
+
+
+require("gitsigns").setup({
+
+	signs = {
+		add = { text = '⌂' },
+		change = { text = '↔' },
+		delete = { text = 'χ' },
+		topdelete = { text = 'χ' },
+		changedelete = { text = 'χ' },
+	},
+
+	numhl = true,
+
+})
+
+
 
 -- Zen-Mode
 -------------------------------------------------------------------------------
