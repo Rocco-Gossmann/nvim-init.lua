@@ -1,0 +1,275 @@
+--[[ TODO: Implement these later
+
+	{ '<leader>j',  group = '[J]ob / Task' },
+	{ '<leader>js', vim.cmd.TaskStart,     mode = 'n', desc = '[S]tart' },
+	{ '<leader>jn', vim.cmd.TaskNew,       mode = 'n', desc = '[N]ew' },
+	{ '<leader>jc', vim.cmd.TaskCancel,    mode = 'n', desc = '[C]ancel' },
+	{ '<leader>jd', vim.cmd.TaskDone,      mode = 'n', desc = '[D]one' },
+	{ '<leader>jr', vim.cmd.TaskReset,     mode = 'n', desc = '[R]eset' },
+
+--]]
+
+
+return {
+
+	load = function()
+
+		vim.pack.add({
+
+			-- Dependencies
+			"https://github.com/nvim-lua/plenary.nvim",
+			"https://github.com/nvim-treesitter/nvim-treesitter",
+			"https://github.com/nvim-mini/mini.nvim",
+
+			-- Packages
+			"https://github.com/3rd/image.nvim",
+			"https://github.com/HakonHarnes/img-clip.nvim",
+			"https://github.com/toppair/peek.nvim",
+			"https://github.com/epwalsh/obsidian.nvim",
+			"https://github.com/MeanderingProgrammer/render-markdown.nvim",
+
+		})
+
+		require("image").setup({
+
+			backend = "sixel",
+			-- processor = "magick_cli",
+			tmux_show_only_in_active_window = true,
+			max_width = 4320,
+			max_height = 30720,
+			max_width_window_percentage = 90,
+			max_height_window_percentage = 90, -- default 50
+			integrations = {
+				markdown = {
+					enabled = true,
+					clear_in_insert_mode = true,
+					download_remote_images = true,
+					only_render_image_at_cursor = true,
+					only_render_image_at_cursor_mode = "inline", -- or "inline"
+					floating_windows = false,          -- if true, images will be rendered in floating markdown windows
+					filetypes = { "markdown", "vimwiki", "todo" }, -- markdown extensions (ie. quarto) can go here
+				},
+				html = { enabled = false },
+				css = { enabled = false }
+			}
+
+		})
+
+		require("img-clip").setup({
+			default = {
+				-- file and directory options
+				dir_path = "./~attachments", ---@type string | fun(): string
+				extension = "png", ---@type string | fun(): string
+				file_name = "%Y-%m-%d-%H-%M-%S", ---@type string | fun(): string
+				use_absolute_path = false, ---@type boolean | fun(): boolean
+				relative_to_current_file = true, ---@type boolean | fun(): boolean
+				prompt_for_file_name = false
+			},
+
+			filetypes = {
+				markdown = {
+					url_encode_path = true, ---@type boolean | fun(): boolean
+					template = "![$CURSOR](./$FILE_PATH)", ---@type string | fun(context: table): string
+					download_images = true, ---@type boolean | fun(): boolean
+				}
+			}
+		})
+
+		require("render-markdown").setup({
+
+			bullet = {
+				enabled = true,
+				render_modes = { "n", "c" },
+				icons = { '●', '○', '◆', '◇' },
+				ordered_icons = function(ctx)
+					local value = vim.trim(ctx.value)
+					local index = tonumber(value:sub(1, #value - 1))
+					return ('%d.'):format(index > 1 and index or ctx.index)
+				end,
+				left_pad = 1,
+				right_pad = 0,
+				highlight = 'RenderMarkdownBullet',
+				scope_highlight = {},
+				scope_priority = nil,
+			},
+
+			code = {
+				-- Turn on / off code block & inline code rendering.
+				enabled = true,
+				-- Additional modes to render code blocks.
+				render_modes = false,
+				-- Turn on / off sign column related rendering.
+				sign = true,
+				-- Whether to conceal nodes at the top and bottom of code blocks.
+				conceal_delimiters = true,
+				-- Turn on / off language heading related rendering.
+				language = true,
+				-- Determines where language icon is rendered.
+				-- | center | center of code block |
+				-- | right  | right of code block  |
+				-- | left   | left of code block   |
+				position = 'left',
+				-- Whether to include the language icon above code blocks.
+				language_icon = true,
+				-- Whether to include the language name above code blocks.
+				language_name = true,
+				-- Whether to include the language info above code blocks.
+				language_info = true,
+				-- Amount of padding to add around the language.
+				-- If a float < 1 is provided it is treated as a percentage of available window space.
+				language_pad = 1,
+				-- A list of language names for which rendering will be disabled.
+				disable = { "markdown" },
+				-- A list of language names for which background highlighting will be disabled.
+				-- Likely because that language has background highlights itself.
+				-- Use a boolean to make behavior apply to all languages.
+				-- Borders above & below blocks will continue to be rendered.
+				disable_background = { 'diff' },
+				-- Width of the code block background.
+				-- | block | width of the code block  |
+				-- | full  | full width of the window |
+				width = 'block',
+				-- Amount of margin to add to the left of code blocks.
+				-- If a float < 1 is provided it is treated as a percentage of available window space.
+				-- Margin available space is computed after accounting for padding.
+				left_margin = 0,
+				-- Amount of padding to add to the left of code blocks.
+				-- If a float < 1 is provided it is treated as a percentage of available window space.
+				left_pad = 2,
+				-- Amount of padding to add to the right of code blocks when width is 'block'.
+				-- If a float < 1 is provided it is treated as a percentage of available window space.
+				right_pad = 2,
+				-- Minimum width to use for code blocks when width is 'block'.
+				min_width = 0,
+				-- Determines how the top / bottom of code block are rendered.
+				-- | none  | do not render a border                               |
+				-- | thick | use the same highlight as the code body              |
+				-- | thin  | when lines are empty overlay the above & below icons |
+				-- | hide  | conceal lines unless language name or icon is added  |
+				border = 'thin',
+				-- Used above code blocks to fill remaining space around language.
+				language_border = '█',
+				-- Added to the left of language.
+				language_left = '█',
+				-- Added to the right of language.
+				language_right = '',
+				-- Used above code blocks for thin border.
+				above = '▄',
+				-- Used below code blocks for thin border.
+				below = '▀',
+
+				-- Turn on / off inline code related rendering.
+				inline = false,
+				-- Icon to add to the left of inline code.
+				inline_left = '',
+				-- Icon to add to the right of inline code.
+				inline_right = '',
+				-- Padding to add to the left & right of inline code.
+				inline_pad = 0,
+				-- Priority to assign to code background highlight.
+				priority = 140,
+				-- Highlight for code blocks.
+				highlight = 'RenderMarkdownCode',
+				-- Highlight for code info section, after the language.
+				highlight_info = 'RenderMarkdownCodeInfo',
+				-- Highlight for language, overrides icon provider value.
+				highlight_language = nil,
+				-- Highlight for border, use false to add no highlight.
+				highlight_border = 'RenderMarkdownCodeBorder',
+				-- Highlight for language, used if icon provider does not have a value.
+				highlight_fallback = 'RenderMarkdownCodeFallback',
+				-- Highlight for inline code.
+				highlight_inline = 'RenderMarkdownCodeInline',
+				-- Determines how code blocks & inline code are rendered.
+				-- | none     | { enabled = false }                           |
+				-- | normal   | { language = false }                          |
+				-- | language | { disable_background = true, inline = false } |
+				-- | full     | uses all default values                       |
+				style = 'full',
+			},
+
+
+
+		})
+
+		require("obsidian").setup({
+
+			preferred_link_style = "markdown",
+			disable_frontmatter = not vim.g.obsidianfrontmatter,
+			new_notes_location = "notes_subdir",
+			notes_subdir = vim.g.obsidiannewnotesdir,
+			templates = {
+				folder = vim.g.obsidiantemplatesdir,
+				substitutions = {
+					["clipboard"] = function()
+						return vim.fn.getreg("+")
+					end
+				}
+			},
+			attachments = {
+				img_folder = "./~attachments"
+			},
+			external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
+
+			ui = { enable = false },
+			diagnostic = { enabled = false },
+
+			workspaces = vim.g.obsidianworkspaces,
+
+			mappings = {}
+
+
+		})
+
+		require('peek').setup({
+			auto_load = true,  -- whether to automatically load preview when
+			-- entering another markdown buffer
+			close_on_bdelete = true, -- close preview window on buffer delete
+
+			syntax = true,     -- enable syntax highlighting, affects performance
+
+			theme = 'dark',    -- 'dark' or 'light'
+
+			update_on_change = true,
+
+			app = 'webview', -- 'webview', 'browser', string or a table of strings
+			-- explained below
+
+			filetype = { 'markdown' }, -- list of filetypes to recognize as markdown
+
+			-- relevant if update_on_change is true
+			throttle_at = 200000, -- start throttling when file exceeds this
+			-- amount of bytes in size
+			throttle_time = 'auto', -- minimum amount of time in milliseconds
+			-- that has to pass before starting new render
+		})
+
+
+
+	end,
+
+	config = function(buf)
+
+		-- add mappings
+		require("which-key").add({
+
+			-- Obisidian
+			{ '<leader>o',   group = 'Obisidan',                                                      buffer = buf },
+			{ '<leader>ow',  '<cmd>ObsidianWorkspace<cr>',                                            desc = '[W]workspace',             mode = "n", buffer = buf },
+			{ '<leader>of',  '<cmd>ObsidianQuickSwitch<cr>',                                          desc = '[F]ind (quicksearch)',     mode = "n", buffer = buf },
+			{ '<leader>ot',  '<cmd>ObsidianTOC<cr>',                                                  desc = '[T]able of contents',      mode = "n", buffer = buf },
+			{ '<leader>os',  '<cmd>ObsidianTags<cr>',                                                 desc = '[S]earch',                 mode = "n", buffer = buf },
+			{ '<leader>op',  '<cmd>PeekClose<cr><cmd>PeekOpen<cr>',                                   desc = '[P]eek',                   mode = "n", buffer = buf },
+
+			{ '<leader>oi',  group = "Insert",                                                        buffer = buf },
+			{ '<leader>oii', '<cmd>PasteImage<cr>',                                                   desc = '[I]mage',                  mode = "n", buffer = buf },
+			{ '<leader>oin', '<cmd>ObsidianNewFromTemplate<cr>',                                      desc = '[N]ew Note from Template', mode = "n", buffer = buf },
+			{ '<leader>oit', '<cmd>ObsidianTemplate<cr>',                                             desc = '[T]emplate',               mode = "n", buffer = buf },
+
+			{ '<leader>cf',  '<cmd>w<cr><cmd>silent !deno fmt --options-prose-wrap=preserve "%"<cr>', desc = '[C]ode [F]ormat',          mode = "n", buffer = buf },
+
+		})
+
+	end
+
+}
