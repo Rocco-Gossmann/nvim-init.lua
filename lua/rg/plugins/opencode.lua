@@ -1,5 +1,4 @@
 local ocURL = "http://localhost:8099/"
-local ocSession = ""
 local paneId = nil
 
 local function ocPost(url, data)

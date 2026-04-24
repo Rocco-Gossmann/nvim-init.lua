@@ -11,6 +11,8 @@ require "rg.plugins.lsp"
 -- features
 require "rg.plugins.dbui"
 require "rg.plugins.markdown"
+require "rg.plugins.opencode"
+require "rg.plugins.taskrunner"
 
 -- keymaps
 require "rg.plugins.whichkey"

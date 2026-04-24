@@ -1,4 +1,8 @@
-local confPath = require("rg.env").confdir
+vim.pack.add({
+	"https://github.com/nvim-lua/plenary.nvim",
+	"https://github.com/nvim-telescope/telescope.nvim",
+	"https://github.com/rocco-gossmann/nvim-taskrunner",
+})
 
 local function createFileInFolder(folder, filename)
 	return function()
@@ -85,7 +89,6 @@ local function restartTaskRunner()
 	end
 
 	if vim.bo.filetype == "markdown" then
-
 		table.insert(tasks, {
 			label = "Edit 'Peek' Window-CSS",
 			action = function()
@@ -103,35 +106,23 @@ local function restartTaskRunner()
 		table.insert(tasks, {
 			label = "start Markdown Table Header",
 			action = function()
-
 				replLine("-")
 				replLine(" ")
-
 			end
 		})
 
 		table.insert(tasks, {
 			label = "add Markdown Table Row",
 			action = function()
-
 				replLine(" ")
-
 			end
 		})
 	end
 
 	require("nvim-taskrunner").setup(tasks)
-
 end
 
 vim.api.nvim_create_autocmd("BufEnter", { callback = restartTaskRunner, })
 
-return {
+restartTaskRunner()
 
-	"rocco-gossmann/nvim-taskrunner",
-
-	dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
-
-	init = restartTaskRunner,
-
-}
