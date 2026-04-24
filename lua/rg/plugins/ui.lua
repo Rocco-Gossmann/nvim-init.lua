@@ -1,112 +1,137 @@
 -- [[==========================================================================
 -- Everything related to NeoVims UI
 -- ==========================================================================]]
---
-return {
-	-- File-Explorer with Tree View  (<leader>n to open)
-	'preservim/nerdtree',
 
-	{
-		'stevearc/oil.nvim',
-		---@module 'oil'
-		---@type oil.SetupOpts
-		opts = {
+vim.pack.add({
 
-			default_file_explorer = false,
+	-- Dependencies:
+	"https://github.com/nvim-lua/plenary.nvim",
 
-			view_options = {
-				show_hidden = true,
-				case_insensitive = true
-			},
+	-- Misc
+	"https://github.com/preservim/nerdtree", -- better explorer
+	"https://github.com/christoomey/vim-tmux-navigator", -- integrate nvim to tmux
+	"https://github.com/lewis6991/gitsigns.nvim", -- showing git changes in gutter
 
-			keymaps = {
-				["g?"] = { "actions.show_help", mode = "n" },
-				["<CR>"] = "actions.select",
-				["<C-v>"] = { "actions.select", opts = { vertical = true } },
-				["<C-s>"] = { "actions.select", opts = { horizontal = true } },
-				["<C-t>"] = { "actions.select", opts = { tab = true } },
-				["<C-p>"] = "actions.preview",
-				["<C-c>"] = { "actions.close", mode = "n" },
-				-- ["<C-l>"] = "actions.refresh",
-				["-"] = { "actions.parent", mode = "n" },
-				["_"] = { "actions.open_cwd", mode = "n" },
-				["`"] = { "actions.cd", mode = "n" },
-				["g~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
-				["gs"] = { "actions.change_sort", mode = "n" },
-				["gx"] = "actions.open_external",
-				["g."] = { "actions.toggle_hidden", mode = "n" },
-				["g\\"] = { "actions.toggle_trash", mode = "n" },
-			},
+	-- Theme
+	"https://github.com/rose-pine/neovim",
+	"https://github.com/folke/zen-mode.nvim",
+	"https://github.com/karb94/neoscroll.nvim",
+	"https://github.com/folke/todo-comments.nvim",
 
-		},
-		-- Optional dependencies
-		dependencies = { { "nvim-mini/mini.icons", opts = {} } },
-		-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
-		-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
-		lazy = false,
+	-- Telescope
+	"https://github.com/nvim-telescope/telescope-fzf-native.nvim",
+	"https://github.com/nvim-telescope/telescope-ui-select.nvim",
+	"https://github.com/nvim-tree/nvim-web-devicons",
+	"https://github.com/nvim-telescope/telescope.nvim",
+
+	-- Extra Functions
+	"https://github.com/tpope/vim-surround",
+	"https://github.com/tpope/vim-repeat",
+	"https://github.com/Matt-A-Bennett/vim-surround-funk",
+	"https://github.com/echasnovski/mini.align"
+
+});
+
+-- Theme
+-------------------------------------------------------------------------------
+require("rose-pine").setup({
+	styles = {
+		bold = true,
+		italic = true,
+		transparency = true,
+	},
+})
+
+vim.cmd 'colorscheme rose-pine'
+vim.cmd 'hi Whitespace guifg=#282828'
+
+
+require("gitsigns").setup({
+
+	signs = {
+		add = { text = '⌂' },
+		change = { text = '↔' },
+		delete = { text = 'χ' },
+		topdelete = { text = 'χ' },
+		changedelete = { text = 'χ' },
 	},
 
-	-- unifys switching between NeoVim Splits and TMUX-Panes
-	-- (Press C-H/J/K/L to move between them)
-	'christoomey/vim-tmux-navigator',
+	numhl = true,
 
-	{
-		"folke/zen-mode.nvim",
-		opts = {
-			window = {
-				backdrop = 1,
-				width = 196
-			}
-			-- your configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration section below
-		}
-	},
+})
 
-	{
-		"karb94/neoscroll.nvim",
-		event = "VeryLazy",
-		config = function()
-			require('neoscroll').setup({
-				-- All these animations will be run at the same time
-				easing_function = "circular", -- Default easing function
-				-- Can be any of the following: "quadratic", "cubic", "quartic", "quintic", "exponential", "sine", "circular", "back"
-				hide_cursor = false, -- Hide cursor while scrolling
-				stop_eof = true,  -- Stop at <EOF> when scrolling downwards
-				respect_scrolloff = true, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-				cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-				easing = "circular",
-				scroll_duration = 100, -- Time it takes to scroll (in milliseconds) - reduced for snappier feel
-				pre_hook = nil,   -- Function to run before the scrolling animation starts
-				post_hook = nil,  -- Function to run after the scrolling animation ends
-				performance_mode = false, -- Disable "Performance Mode" on all buffers.
-			})
 
-			-- Key mappings for smooth scrolling
-			local keymap = {
-				["<C-u>"] = function() require('neoscroll').ctrl_u({ duration = 150 }) end,
-				["<C-d>"] = function() require('neoscroll').ctrl_d({ duration = 150 }) end,
-				["<C-b>"] = function() require('neoscroll').ctrl_b({ duration = 150 }) end,
-				["<C-f>"] = function() require('neoscroll').ctrl_f({ duration = 150 }) end,
-				["<C-y>"] = function() require('neoscroll').scroll(-0.1, { move_cursor = false, duration = 100 }) end,
-				["<C-e>"] = function() require('neoscroll').scroll(0.1, { move_cursor = false, duration = 100 }) end,
-				-- ["zt"]    = function() require('neoscroll').zt({ duration = 150 }) end,
-				-- ["zz"]    = function() require('neoscroll').zz({ duration = 150 }) end,
-				-- ["zb"]    = function() require('neoscroll').zb({ duration = 150 }) end,
-			}
 
-			for key, func in pairs(keymap) do
-				vim.keymap.set({ 'n', 'x' }, key, func)
-			end
-		end
+-- Zen-Mode
+-------------------------------------------------------------------------------
+require("zen-mode").setup({
+	window = {
+		backdrop = 1,
+		width = 196
 	}
-	-- {
-	-- 	"folke/twilight.nvim",
-	-- 	opts = {
-	-- 		-- your configuration comes here
-	-- 		-- or leave it empty to use the default settings
-	-- 		-- refer to the configuration section below
-	-- 	},
-	-- },
+})
 
+-- NeoScroll  Better Scrolling
+-------------------------------------------------------------------------------
+require("neoscroll").setup({
+
+	-- All these animations will be run at the same time
+	easing_function = "circular", -- Default easing function
+	-- Can be any of the following: "quadratic", "cubic", "quartic", "quintic", "exponential", "sine", "circular", "back"
+	hide_cursor = true, -- Hide cursor while scrolling
+	stop_eof = true,  -- Stop at <EOF> when scrolling downwards
+	respect_scrolloff = true, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+	cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+	easing = "circular",
+	scroll_duration = 100, -- Time it takes to scroll (in milliseconds) - reduced for snappier feel
+	pre_hook = nil,   -- Function to run before the scrolling animation starts
+	post_hook = nil,  -- Function to run after the scrolling animation ends
+	performance_mode = false, -- Disable "Performance Mode" on all buffers.
+
+})
+
+local keymap = {
+	["<C-u>"] = function() require('neoscroll').ctrl_u({ duration = 150 }) end,
+	["<C-d>"] = function() require('neoscroll').ctrl_d({ duration = 150 }) end,
+	["<C-b>"] = function() require('neoscroll').ctrl_b({ duration = 150 }) end,
+	["<C-f>"] = function() require('neoscroll').ctrl_f({ duration = 150 }) end,
+	["<C-y>"] = function() require('neoscroll').scroll(-0.1, { move_cursor = false, duration = 100 }) end,
+	["<C-e>"] = function() require('neoscroll').scroll(0.1, { move_cursor = false, duration = 100 }) end,
+	-- ["zt"]    = function() require('neoscroll').zt({ duration = 150 }) end,
+	-- ["zz"]    = function() require('neoscroll').zz({ duration = 150 }) end,
+	-- ["zb"]    = function() require('neoscroll').zb({ duration = 150 }) end,
 }
+
+for key, func in pairs(keymap) do
+	vim.keymap.set({ 'n', 'x' }, key, func)
+end
+
+
+
+-- Telescope
+-------------------------------------------------------------------------------
+require('telescope').setup({
+
+	extensions = {
+		['ui-select'] = {
+			require('telescope.themes').get_dropdown(),
+		},
+	},
+
+	defaults = {
+		mappings = {
+			n = {
+				['dd'] = require('telescope.actions').delete_buffer
+			},
+		},
+	}
+
+})
+
+-- Enable Telescope extensions if they are installed
+pcall(require('telescope').load_extension, 'fzf')
+pcall(require('telescope').load_extension, 'ui-select')
+
+
+
+
