@@ -42,10 +42,9 @@ whichkey.add({
 	{ '<leader>lg',  focusTerminalBuffer("LazyGit", "lazygit"),              desc = 'Lazy[G]it',                               mode = 'n' },
 	{ '<leader>lt',  focusTerminalBuffer("Terminal", ""),                    desc = '[T]erminal',                              mode = 'n' },
 	{ '<leader>ld',  focusTerminalBuffer("LazyDocker", "lazydocker"),        desc = 'Lazy[D]ocker',                            mode = 'n' },
-	{ '<leader>lr',  focusTerminalBuffer("Ranger", "yazi %dirname%"),        desc = 'Files (formerly [R]anger)',               mode = 'n' },
+	{ '<leader>lf',  focusTerminalBuffer("Files", "yazi %dirname%"),         desc = '[F]iles',                                 mode = 'n' },
 	{ '<leader>ls',  focusTerminalBuffer("Database (DBUI)", "nvim -c DBUI"), desc = 'Database ([s]torage)',                    mode = 'n' },
 	{ '<leader>ll',  vim.cmd.OCTmuxPane,                                     desc = '[L]LM - Server (Ollama)',                 mode = 'n' },
-	{ '<leader>lo',  openTerminalPopup("nvim -c \\\"Oil %dirname%\\\""),     desc = '[O]il (at current files Dirname)',        mode = 'n' },
 
 	-- Code
 	{ '<leader>c',   group = '[C]ode' },
