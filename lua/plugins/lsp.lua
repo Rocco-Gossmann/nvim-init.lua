@@ -1,12 +1,10 @@
-vim.pack.add({
-});
-
 require("mason").setup({})
 require("mason-lspconfig").setup({ })
 require("mason-tool-installer").setup({
 	ensure_installed = {
 		"markdown_oxide",
-		"lua_ls"
+		"lua_ls",
+		"deno"
 	}
 })
 

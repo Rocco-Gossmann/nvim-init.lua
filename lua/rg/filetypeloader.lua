@@ -2,46 +2,35 @@ local rgenv = require("rg.env")
 
 local loadedFileTypes = {}
 
-vim.api.nvim_create_autocmd({"VimEnter", "BufAdd"}, {
+vim.api.nvim_create_autocmd({ "VimEnter", "BufAdd" }, {
 
 	callback = vim.schedule_wrap(function(args)
-
 		local filetype = vim.o.filetype
+		local emTab = {};
 
-		if(filetype == "") then
+		if (filetype == "") then
 			return
 		end
 
-		if not (type(loadedFileTypes[filetype]) ==  "function") then
-
-			if not (vim.fn.findfile(rgenv.confdir .. "/lua/filetypes/" .. filetype .. ".lua")) then
-				return;
-			end
-
-			local ft = require("filetypes."..filetype);
-
-			if not type(ft) == "table" then
-				print("given file in " .. rgenv.confdir .. "/filetypes/" .. filetype .. ".lua does not return a Table")
-				return;
-			end
+		if not (type(loadedFileTypes[filetype]) == "function") then
+			local ft = rgenv.doFileIfExists(".nvim/" .. filetype .. ".lua");
+			local gft = rgenv.doFileIfExists(rgenv.confdir .. "/lua/filetypes/" .. filetype .. ".lua");
 
 			loadedFileTypes[filetype] = function(_) end;
 
-			rgenv.printTable(ft)
-
-			if type(ft.load) == "function" then
-				ft.load()
+			if type((gft or emTab).load) == "function" then
+				gft.load();
+			end
+			if type((ft or emTab).load) == "function" then
+				ft.load();
 			end
 
-			loadedFileTypes[filetype] = ft.config or loadedFileTypes[filetype];
+			ft = rgenv.extendTable(gft, ft);
 
+			loadedFileTypes[filetype] = ft.config or loadedFileTypes[filetype];
 		end
 
 		loadedFileTypes[filetype](args.buf);
-
-
 	end)
 
 })
-
-

@@ -3,8 +3,9 @@ local os = require "os"
 local home = os.getenv("HOME")
 
 local appname = os.getenv("NVIM_APPNAME")
-if appname == nil then appname='nvim' end
+if appname == nil then appname = 'nvim' end
 
+--- @return any
 local function doFileIfExists(fileName)
 	if vim.fn.findfile(fileName) ~= '' then
 		local ret = dofile(fileName);
@@ -29,7 +30,6 @@ local function readTemplate(filename)
 end
 
 local function printTable(tbl, depth)
-
 	if not tbl then return end
 
 	depth = depth or 0;
@@ -44,6 +44,29 @@ local function printTable(tbl, depth)
 	end
 end
 
+---@return table
+local function extendTable(origTable, extensionTable)
+	local extIsTable = type(extendTable) == "table"
+
+	if type(origTable) ~= "table" then
+		if extIsTable then
+			return extensionTable
+		else
+			return {}
+		end
+	end
+
+	if not extIsTable then
+		return origTable;
+	end
+
+	for k, v in ipairs(extensionTable) do
+		origTable[k] = v
+	end
+
+	return origTable
+end
+
 return {
 	appname = appname,
 	home = home,
@@ -54,5 +77,7 @@ return {
 
 	readTemplate = readTemplate,
 
-	printTable = printTable
+	printTable = printTable,
+
+	extendTable = extendTable
 }
