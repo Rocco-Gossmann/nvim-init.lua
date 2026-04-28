@@ -43,7 +43,7 @@ whichkey.add({
 	{ '<leader>cc',  '<cmd>norm gc<cr>',                                     desc = '[C]omment',                               mode = { 'x' } },
 
 	{ '<leader>cl',  group = '[L]sp' },
-	{ '<leader>clr', '<cmd>LspRestart<cr>',                                  desc = '[R]estart',                               mode = 'n' },
+	{ '<leader>clr', '<cmd>lsp restart<cr>',                                  desc = '[R]estart',                               mode = 'n' },
 
 	-- Qucklist
 	{ '<leader>q',   group = '[Q]uicklist' },
