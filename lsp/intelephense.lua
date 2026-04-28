@@ -43,6 +43,7 @@ return {
 			},
 
 			inlayHint = {
+				parameterNames = true,
 				returnTypes = true
 			}
 
