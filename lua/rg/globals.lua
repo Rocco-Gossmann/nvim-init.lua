@@ -15,3 +15,5 @@ vim.g.obsidianworkspaces = {
 		path = "."
 	}
 }
+
+vim.g.smarty_indent_block = 1

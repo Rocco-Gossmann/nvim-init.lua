@@ -81,19 +81,6 @@ return {
 		},
 	},
 
-	{ "shadowwa/smarty.vim", ft = { "smarty" } },
-
-	{
-		-- Main LSP Configuration
-		"neovim/nvim-lspconfig",
-		config = function()
-
-
-			-- Diagnostic Config
-			-- See :help vim.diagnostic.Opts
-		end,
-	},
-
 	{
 		"S1M0N38/love2d.nvim",
 		version = "2.*",
