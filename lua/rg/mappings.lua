@@ -158,6 +158,8 @@ whichkey.add({
 	{ '<leader>tb',      '<cmd>BM<cr>',                                     desc = '[T]o [B]ookmarks',          mode = 'n' },
 	{ '<leader>tz',      '<cmd>ZenMode<cr>',                                desc = '[T]oggle [Z]en-mode',       mode = 'n' },
 
+	{ '<leader>ti', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, desc = "[I]nlay Hints", mode = 'n' },
+
 	{ '<leader>tl',      group = '[T]oggle [L]ight/Dark' },
 	{ '<leader>tld',     '<cmd>colorscheme rose-pine-main<cr>',             desc = '[T]oggle [D]ark' },
 	{ '<leader>tll',     '<cmd>colorscheme rose-pine-dawn<cr>',             desc = '[T]oggle [L]ight' },
