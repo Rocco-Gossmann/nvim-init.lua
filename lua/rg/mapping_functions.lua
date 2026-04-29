@@ -1,5 +1,5 @@
 local telescope_builtin = require('telescope.builtin');
-local gs = package.loaded.gitsigns
+local gs = require("gitsigns")
 
 
 local function filetypeKeymap(pattern, maps)
@@ -70,6 +70,14 @@ return {
 
 	gitBlameLine        = function()
 		gs.blame_line { full = false }
+	end,
+
+	gitBlameFile        = function()
+		gs.blame { full = false }
+	end,
+
+	inlayHintsToggle = function()
+		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 	end,
 
 	lspRestart          = function(pattern, lspnames)

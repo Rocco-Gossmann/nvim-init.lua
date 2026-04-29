@@ -43,7 +43,7 @@ whichkey.add({
 	{ '<leader>cc',  '<cmd>norm gc<cr>',                                     desc = '[C]omment',                               mode = { 'x' } },
 
 	{ '<leader>cl',  group = '[L]sp' },
-	{ '<leader>clr', '<cmd>lsp restart<cr>',                                  desc = '[R]estart',                               mode = 'n' },
+	{ '<leader>clr', '<cmd>lsp restart<cr>',                                 desc = '[R]estart',                               mode = 'n' },
 
 	-- Qucklist
 	{ '<leader>q',   group = '[Q]uicklist' },
@@ -157,8 +157,9 @@ whichkey.add({
 	{ '<leader>tr',      '<cmd>TR<cr>',                                     desc = '[T]ask [R]unner',           mode = { 'n', 'v', 'x' } },
 	{ '<leader>tb',      '<cmd>BM<cr>',                                     desc = '[T]o [B]ookmarks',          mode = 'n' },
 	{ '<leader>tz',      '<cmd>ZenMode<cr>',                                desc = '[T]oggle [Z]en-mode',       mode = 'n' },
+	{ '<leader>tg',      mappfunc.gitBlameFile,                             desc = '[T]oggle [G]it-blame',      mode = 'n' },
 
-	{ '<leader>ti', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, desc = "[I]nlay Hints", mode = 'n' },
+	{ '<leader>ti',      mappfunc.inlayHintsToggle,                         desc = "[I]nlay Hints",             mode = 'n' },
 
 	{ '<leader>tl',      group = '[T]oggle [L]ight/Dark' },
 	{ '<leader>tld',     '<cmd>colorscheme rose-pine-main<cr>',             desc = '[T]oggle [D]ark' },

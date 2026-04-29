@@ -26,7 +26,9 @@ require("gitsigns").setup({
 		changedelete = { text = 'χ' },
 	},
 
+	signs_staged_enable = true,
 	numhl = true,
+	current_line_blame = false,
 
 })
 
@@ -48,15 +50,15 @@ require("neoscroll").setup({
 	-- All these animations will be run at the same time
 	easing_function = "circular", -- Default easing function
 	-- Can be any of the following: "quadratic", "cubic", "quartic", "quintic", "exponential", "sine", "circular", "back"
-	hide_cursor = true, -- Hide cursor while scrolling
-	stop_eof = true,  -- Stop at <EOF> when scrolling downwards
-	respect_scrolloff = true, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+	hide_cursor = true,        -- Hide cursor while scrolling
+	stop_eof = true,           -- Stop at <EOF> when scrolling downwards
+	respect_scrolloff = true,  -- Stop scrolling when the cursor reaches the scrolloff margin of the file
 	cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
 	easing = "circular",
-	scroll_duration = 100, -- Time it takes to scroll (in milliseconds) - reduced for snappier feel
-	pre_hook = nil,   -- Function to run before the scrolling animation starts
-	post_hook = nil,  -- Function to run after the scrolling animation ends
-	performance_mode = false, -- Disable "Performance Mode" on all buffers.
+	scroll_duration = 100,     -- Time it takes to scroll (in milliseconds) - reduced for snappier feel
+	pre_hook = nil,            -- Function to run before the scrolling animation starts
+	post_hook = nil,           -- Function to run after the scrolling animation ends
+	performance_mode = false,  -- Disable "Performance Mode" on all buffers.
 
 })
 
@@ -101,7 +103,3 @@ require('telescope').setup({
 -- Enable Telescope extensions if they are installed
 pcall(require('telescope').load_extension, 'fzf')
 pcall(require('telescope').load_extension, 'ui-select')
-
-
-
-
