@@ -173,10 +173,15 @@ whichkey.add({
 	{ 'gh',              function() vim.lsp.buf.hover() end,                desc = 'Hover Documentation',       mode = 'n' },
 	{ '<S-k>',           function() vim.lsp.buf.signature_help() end,       desc = 'Signature Documentation',   mode = 'n' },
 
-	{ 'gs',              function()
+	{ 'gs',       group = "[G]oto [S]plit" },
+	{ 'gsv',              function()
 		vim.cmd.vsplit()
 		telescope_builtin.lsp_definitions()
-	end,       desc = '[S]plit Definition',   mode = 'n' },
+	end,       desc = '[V]ertical',   mode = 'n' },
+	{ 'gsh',              function()
+		vim.cmd.split()
+		telescope_builtin.lsp_definitions()
+	end,       desc = '[H]orizontal',   mode = 'n' },
 
 	{ 'gd',              telescope_builtin.lsp_definitions,                 desc = '[G]oto [D]efinition',       mode = 'n' },
 	{ 'gr',              telescope_builtin.lsp_references,                  desc = '[G]oto [R]eferences',       mode = 'n' },
