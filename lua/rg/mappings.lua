@@ -182,6 +182,12 @@ whichkey.add({
 		vim.cmd.split()
 		telescope_builtin.lsp_definitions()
 	end,       desc = '[H]orizontal',   mode = 'n' },
+	{ 'gst',              function()
+		vim.cmd[[
+			tab sb
+		]]
+		telescope_builtin.lsp_definitions()
+	end,       desc = '[T]ab',   mode = 'n' },
 
 	{ 'gd',              telescope_builtin.lsp_definitions,                 desc = '[G]oto [D]efinition',       mode = 'n' },
 	{ 'gr',              telescope_builtin.lsp_references,                  desc = '[G]oto [R]eferences',       mode = 'n' },
