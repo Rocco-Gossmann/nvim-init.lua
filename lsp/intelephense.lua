@@ -41,9 +41,7 @@ return {
 				unexpectedTokens = true,
 				unusedSymbols = true,
 				exclude = {
-					["*"] = {
-						"P1132"
-					}
+					"P1132"
 				}
 			},
 
