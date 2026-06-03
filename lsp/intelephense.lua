@@ -40,6 +40,11 @@ return {
 				undefinedVariables = true,
 				unexpectedTokens = true,
 				unusedSymbols = true,
+				exclude = {
+					["*"] = {
+						"P1132"
+					}
+				}
 			},
 
 			inlayHint = {
