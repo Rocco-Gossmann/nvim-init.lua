@@ -27,6 +27,7 @@ whichkey.add({
 	{ '<leader>jn',  focusTerminalBuffer("Jujutsu-New", "JJ_PAGER=less\\ -RX jj new"),       desc = "[N]ew",                                   mode = 'n' },
 	{ '<leader>ju',  focusTerminalBuffer("Jujutsu-Undo", "JJ_PAGER=less\\ -RX jj undo"),     desc = "[U]ndo",                                  mode = 'n' },
 	{ '<leader>jz',  focusTerminalBuffer("Jujutsu-ZSH", "jj log --no-pager && zsh"),         desc = "[Z]sh-Shell",                             mode = 'n' },
+	{ '<leader>jz',  focusTerminalBuffer("Jujutsu-ZSH", "jj log --no-pager --reversed && zsh"), desc = "[Z]sh-Shell",                             mode = 'n' },
 
 	-- Obisidian
 	{ '<leader>o',   group = '[O]bisidan' },
