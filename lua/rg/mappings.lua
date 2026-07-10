@@ -20,8 +20,8 @@ whichkey.add({
 
 	-- Jujutus
 	{ '<leader>j',   group = "[J]ujutsu" },
-	{ '<leader>jj',  focusTerminalBuffer("Jujutsu-Log", "JJ_PAGER=less\\ -RX jj"),              desc = "[J]ujutsu",                               mode = 'n' },
-	{ '<leader>jl',  focusTerminalBuffer("Jujutsu-Log", "JJ_PAGER=less\\ -RX jj log"),          desc = "[L]og",                                   mode = 'n' },
+	{ '<leader>jj',  focusTerminalBuffer("Jujutsu-Log", "JJ_PAGER=less\\ -RX\\ +G jj"),              desc = "[J]ujutsu",                               mode = 'n' },
+	{ '<leader>jl',  focusTerminalBuffer("Jujutsu-Log", "JJ_PAGER=less\\ -RX\\ +G jj"),          desc = "[L]og",                                   mode = 'n' },
 	{ '<leader>jc',  focusTerminalBuffer("Jujutsu-Commit", "JJ_PAGER=less\\ -RX jj commit"),    desc = "[C]ommit",                                mode = 'n' },
 	{ '<leader>jd',  focusTerminalBuffer("Jujutsu-Diff", "JJ_PAGER=less\\ -RX jj diff"),        desc = "[D]iff",                                  mode = 'n' },
 	{ '<leader>jn',  focusTerminalBuffer("Jujutsu-New", "JJ_PAGER=less\\ -RX jj new"),          desc = "[N]ew",                                   mode = 'n' },
@@ -49,7 +49,7 @@ whichkey.add({
 
 	-- Launch
 	{ '<leader>l',   group = '[L]aunch' },
-	{ '<leader>lj',  focusTerminalBuffer("Jujutsu-ZSH", "jj log --no-pager && zsh"),            desc = "[J]ujutsu-Shell",                         mode = 'n' },
+	{ '<leader>lj',  focusTerminalBuffer("Jujutsu-ZSH", "jj --no-pager && zsh"),            desc = "[J]ujutsu-Shell",                         mode = 'n' },
 	{ '<leader>lg',  focusTerminalBuffer("LazyGit", "lazygit"),                                 desc = 'Lazy[G]it',                               mode = 'n' },
 	{ '<leader>lt',  focusTerminalBuffer("Terminal", ""),                                       desc = '[T]erminal',                              mode = 'n' },
 	{ '<leader>ld',  focusTerminalBuffer("LazyDocker", "lazydocker"),                           desc = 'Lazy[D]ocker',                            mode = 'n' },
