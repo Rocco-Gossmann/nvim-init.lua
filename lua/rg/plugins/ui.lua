@@ -50,10 +50,14 @@ return {
 				["<C-d>"] = function() require('neoscroll').ctrl_d({ duration = scroll_duration }) end,
 				["<C-b>"] = function() require('neoscroll').ctrl_b({ duration = scroll_duration }) end,
 				["<C-f>"] = function() require('neoscroll').ctrl_f({ duration = scroll_duration }) end,
-				["<C-y>"] = function() require('neoscroll').scroll(-0.1,
-						{ move_cursor = false, duration = scroll_duration }) end,
-				["<C-e>"] = function() require('neoscroll').scroll(0.1,
-						{ move_cursor = false, duration = scroll_duration }) end,
+				["<C-y>"] = function()
+					require('neoscroll').scroll(-0.1,
+						{ move_cursor = false, duration = scroll_duration })
+				end,
+				["<C-e>"] = function()
+					require('neoscroll').scroll(0.1,
+						{ move_cursor = false, duration = scroll_duration })
+				end,
 				-- ["zt"]    = function() require('neoscroll').zt({ duration = 150 }) end,
 				-- ["zz"]    = function() require('neoscroll').zz({ duration = 150 }) end,
 				-- ["zb"]    = function() require('neoscroll').zb({ duration = 150 }) end,
@@ -66,9 +70,7 @@ return {
 	},
 
 	{
-
 		'Bekaboo/dropbar.nvim',
-		-- optional, but required for fuzzy finder support
 		dependencies = {
 			'nvim-telescope/telescope-fzf-native.nvim',
 			build = 'make'
