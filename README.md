@@ -1,13 +1,13 @@
 # My NVIM - Config
 
-> [!Attention]
+> [!WARNING]
 > this is config expects NeoVim 0.11.x. It will break from 0.12.x onwards.
 >
 > Why 0.11 ? Because 0.12.x LSP support is inferiour to what we have already.
 > If I have to install tons of plugins and config tweaks, to get the complete package anyways,
 > then I may as well stick with what I have.
 
-> [!Info]
+> [!NOTE]
 > First Launch can be a bit rocky, due to Lazy installing everything all at once 
 > and me not caring about it.
 > You only have to go through this once anyways.
