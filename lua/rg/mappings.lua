@@ -57,7 +57,6 @@ whichkey.add({
 	{ '<leader>lr',  focusTerminalBuffer("Ranger", "yazi %dirname%"),                             desc = 'Files (formerly [R]anger)',               mode = 'n' },
 	{ '<leader>ls',  focusTerminalBuffer("Database (DBUI)", "nvim -c DBUI"),                      desc = 'Database ([s]torage)',                    mode = 'n' },
 	{ '<leader>ll',  vim.cmd.OCTmuxPane,                                                          desc = '[L]LM - Server (Ollama)',                 mode = 'n' },
-	{ '<leader>lo',  openTerminalPopup("nvim -c \\\"Oil %dirname%\\\""),                          desc = '[O]il (at current files Dirname)',        mode = 'n' },
 
 	-- Code
 	{ '<leader>c',   group = '[C]ode' },
