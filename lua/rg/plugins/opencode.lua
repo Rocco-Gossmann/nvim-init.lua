@@ -2,31 +2,22 @@ local ocURL = "http://localhost:8099/"
 local ocSession = ""
 local paneId = nil
 
-local function ocPost(url, data)
+local function ocPost(data)
 
-	local cmd = {'curl', '--silent', '-X', 'POST', ocURL..url}
-
-	if data ~= nil then
-
-		local json_data = vim.json.encode(
-			data,
-			{ escape_slash = false }
-		)
-
-		table.insert(cmd, '-H')
-		table.insert(cmd, 'Content-Type: application/json')
-		table.insert(cmd, '--data-raw')
-		table.insert(cmd, json_data)
-
+	if not paneId then
+		print("no opencode pane found")
+		return
 	end
+
+	local cmd = {'tmux', 'send-keys', '-t', paneId, data }
 
 	local result = vim.system(cmd):wait()
 
-	if result.code ~= 0 then
-		error("HTTP request failed: " .. (result.stderr or "Unknown error"))
+	if result.code == 0 then
+		print("message send");
+	else
+		error("Failed to create tmux split: " .. (result.stderr or "Unknown error"))
 	end
-
-	return vim.json.decode(result.stdout)
 
 end
 
@@ -47,7 +38,7 @@ local function focusTmuxPane()
 
 	if paneId == nil then
 
-		local cmd = {'tmux', 'split-window', '-h', '-l', '38%', '-P', '-F', '#{pane_id}', 'lsof -ti :8099 | xargs kill -9 ; opencode --port 8099 ; exit'}
+		local cmd = {'tmux', 'split-window', '-h', '-l', '38%', '-P', '-F', '#{pane_id}', vim.g.opencodestartcommand}
 		local result = vim.system(cmd):wait()
 
 		if result.code == 0 then
@@ -61,6 +52,12 @@ local function focusTmuxPane()
 end
 
 vim.api.nvim_create_user_command("OCTmuxPane", focusTmuxPane, {})
+
+vim.api.nvim_create_user_command("OCWrite", function (args)
+
+	ocPost(args.args);
+
+end, { range = true })
 
 vim.api.nvim_create_user_command("OCReference", function(args)
 
@@ -77,7 +74,7 @@ vim.api.nvim_create_user_command("OCReference", function(args)
 		end
 	end
 
-	ocPost('tui/append-prompt', { text = "@" .. vim.fn.expand("%") .. lines })
+	ocPost("@" .. vim.fn.expand("%") .. lines )
 
 	focusTmuxPane()
 
@@ -102,7 +99,7 @@ vim.api.nvim_create_user_command("OCCopy", function()
 
 	local content = "\n" .. selected_text .. "\n";
 
-	ocPost('tui/append-prompt', { text = content })
+	ocPost( content )
 
 	focusTmuxPane()
 

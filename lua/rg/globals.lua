@@ -15,3 +15,5 @@ vim.g.obsidianworkspaces = {
 		path = "."
 	}
 }
+
+vim.g.opencodestartcommand = "lsof -ti :8099 | xargs kill -9 ; opencode --port 8099 ; exit"
