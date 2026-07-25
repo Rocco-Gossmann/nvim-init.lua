@@ -32,19 +32,55 @@ local function openTerminalPopup(shellCommand)
 end
 
 local function focusTerminalBuffer(termName, startCmd)
+
 	return function()
 
-		local noTerm = vim.fn.system('tmux list-windows -F "#W:#I" | grep "' ..  termName .. '"') == ''
+		local startCmd = string.gsub(startCmd, "%%dirname%%", vim.fn.expand("%:p:h"))
 
-		if noTerm then
+		if vim.env.TMUX_PANE ~= nil then
 
-			local startCmd = string.gsub(startCmd, "%%dirname%%", vim.fn.expand("%:p:h"))
-			vim.fn.system(string.format('tmux new-window -n "%s" "%s"', termName, startCmd))
+			local noTerm = vim.fn.system('tmux list-windows -F "#W:#I" | grep "' ..  termName .. '"') == ''
+
+			if noTerm then
+				vim.fn.system(string.format('tmux new-window -n "%s" "%s"', termName, startCmd))
+			else
+				vim.fn.system(string.format('tmux select-window -t "%s"', termName))
+			end
+
+		elseif vim.env.HERDR_PANE_ID ~= nil then
+
+			local tablist = vim.fn.system('herdr tab list')
+			local tabs = vim.json.decode(tablist)
+
+			local target = nil
+			for _, tab in ipairs(tabs.result.tabs) do
+				if tab.label == termName then
+					target = tab
+					break
+				end
+			end
+
+			if not target then
+
+				target = vim.json.decode(vim.fn.system(string.format('herdr tab create --label \"%s\"', termName))).result;
+
+				vim.fn.system(string.format("herdr pane run \"%s\" \"%s ; exit;\"", target.root_pane.pane_id, startCmd));
+
+				target = target.tab
+
+			end
+
+			require("rg.env").printTable(target)
+
+			vim.fn.system(string.format('herdr tab focus \"%s\"', target.tab_id))
+
 		else
-			vim.fn.system(string.format('tmux select-window -t "%s"', termName))
-		end
 
+			print("you are neither in a TMUX- nor a HERDR-Session")
+
+		end
 	end
+
 end
 
 return {
