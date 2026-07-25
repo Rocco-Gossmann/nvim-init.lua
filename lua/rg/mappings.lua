@@ -226,13 +226,14 @@ whichkey.add({
 	{ "<C-h>",           function() vim.lsp.buf.signature_help() end,       mode = { "i" },                     noremap = true,          silent = true },
 
 	-- TMUX-Navigations
+	-- TMUX / Herdf-Navigations
 	{ "<C-h>",           "<cmd>TmuxNavigateLeft<cr>",                       mode = "n",                         noremap = true,          silent = true },
 	{ "<C-j>",           "<cmd>TmuxNavigateDown<cr>",                       mode = "n",                         noremap = true,          silent = true },
 	{ "<C-k>",           "<cmd>TmuxNavigateUp<cr>",                         mode = "n",                         noremap = true,          silent = true },
 	{ "<C-l>",           "<cmd>TmuxNavigateRight<cr>",                      mode = "n",                         noremap = true,          silent = true },
 
 	-- Terminal Helpes
-	{ '<Esc><Esc>',      '<C-\\><C-n>',                                     desc = "Exit terminal mode",        mode = "t" },
+	{ '<Esc><Esc>', '<C-\\><C-n>',               desc = "Exit terminal mode", mode = "t" },
 
 })
 
