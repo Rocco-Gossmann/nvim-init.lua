@@ -10,8 +10,7 @@ vim.filetype.add({ extension = { sql = "mysql" } })
 --[[============================================================================
 -- Handle certain unknown file extensions
 --============================================================================]]
-
-rgcore.customFileExtension({ "*.toml" }, "ini");
+-- rgcore.customFileExtension({ "*.toml" }, "ini");
 
 --[[============================================================================
 -- LanguageServer restart per Filetype

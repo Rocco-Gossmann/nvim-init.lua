@@ -19,10 +19,6 @@ vim.opt.foldlevelstart = 99
 vim.opt.foldmethod = "marker"
 vim.opt.foldmarker = "{,}"
 
--- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
--- vim.opt.foldmethod = "expr"
--- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
@@ -30,8 +26,6 @@ vim.opt.shiftwidth = 4
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 vim.opt.winborder = "bold"
-
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.

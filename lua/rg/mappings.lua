@@ -225,7 +225,6 @@ whichkey.add({
 	{ "<C-j>",           function() require("blink-cmp").show() end,        mode = { "i" },                     noremap = true,          silent = true },
 	{ "<C-h>",           function() vim.lsp.buf.signature_help() end,       mode = { "i" },                     noremap = true,          silent = true },
 
-	-- TMUX-Navigations
 	-- TMUX / Herdf-Navigations
 	{ "<C-h>",           "<cmd>TmuxNavigateLeft<cr>",                       mode = "n",                         noremap = true,          silent = true },
 	{ "<C-j>",           "<cmd>TmuxNavigateDown<cr>",                       mode = "n",                         noremap = true,          silent = true },
