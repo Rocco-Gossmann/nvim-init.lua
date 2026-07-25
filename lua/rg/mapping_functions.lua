@@ -52,13 +52,13 @@ local function focusTerminalBuffer(termName, startCmd)
 			local tablist = vim.fn.system('herdr tab list')
 			local tabs = vim.json.decode(tablist)
 
-			local target = nil
-			for _, tab in ipairs(tabs.result.tabs) do
-				if tab.label == termName then
-					target = tab
-					break
-				end
-			end
+			local target = require("rg.herdr_helpers")
+				.findTargetWithValue(
+					"tab",
+					"tabs",
+					"label",
+					termName
+				);
 
 			if not target then
 
