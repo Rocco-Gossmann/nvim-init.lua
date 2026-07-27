@@ -1,0 +1,3 @@
+#!/bin/bash
+
+herdr-workspace "NeoVim-Config" "editor" -c "nvim && zsh"
