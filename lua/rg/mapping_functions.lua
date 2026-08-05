@@ -136,7 +136,7 @@ return {
 		filetypeKeymap(pattern, {
 			{
 				'<leader>clr',
-				'<cmd>LspRestart ' .. lspnames .. '<cr>',
+				'<cmd>lsp restart ' .. lspnames .. '<cr>',
 				mode = 'n',
 				desc = '[R]estart'
 			}
