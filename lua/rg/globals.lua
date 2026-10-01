@@ -18,4 +18,4 @@ vim.g.obsidianworkspaces = {
 
 vim.g.opencodestartcommand = "lsof -ti :8099 | xargs kill -9 ; opencode --port 8099 ; exit"
 
-vim.g.CsharpDebugTargetDLL = nil
+vim.g.CsharpDebugTargetProcess = "";

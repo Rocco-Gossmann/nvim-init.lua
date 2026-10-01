@@ -45,20 +45,42 @@ end
 
 
 dap.configurations.cs = {
-	{
-		type = "coreclr",
-		name = "launch - netcoredbg",
-		request = "launch",
 
-		program = function()
-			if not (vim.g.CsharpDebugTargetDLL) then
-				vim.notify("please define a vim.g.CsharpDebugTargetDLL in your .nvim/postinit.lua");
-			else
-				return vim.fs.joinpath(vim.fn.getcwd(), vim.fs.normalize(vim.g.CsharpDebugTargetDLL))
-			end
-		end,
-	},
+	{
+		name = "NVIM: attach to Process",
+		type = "coreclr",
+		request = "attach",
+        processId = function()
+
+            if vim.g.CsharpDebugTargetProcessSearch == nil then
+                vim.g.CsharpDebugTargetProcessSearch = ""
+            end
+
+            local dapUtils = require('dap.utils');
+
+            local procs = dapUtils
+                .get_processes( { filter = vim.g.CsharpDebugTargetProcessSearch });
+
+            if #procs == 1 then
+                return procs[1].pid
+
+            elseif #procs > 1 then
+                return dapUtils
+                    .pick_process( { filter = vim.g.CsharpDebugTargetProcessSearch });
+
+            else
+                vim.notify("no running processes found");
+
+            end
+
+            return -1;
+
+        end
+
+	}
+
 }
+
 
 --==============================================================================
 -- BM: C / C++ - DAP
