@@ -10,8 +10,12 @@ dap.adapters.php = {
 	-- args = { env.confdir .. '/lua/rg/dap/vscode-php-debug/out/phpDebug.js' }
 }
 
+
+
+
+
 --==============================================================================
--- BM: PHP - DAP
+-- BM: LUA
 --==============================================================================
 dap.adapters["local-lua"] = {
 	type = "executable",
@@ -22,28 +26,40 @@ dap.adapters["local-lua"] = {
 --==============================================================================
 -- BM: C# / DotNet / .NET
 --==============================================================================
-dap.adapters.coreclr = {
-  type = 'executable',
-  command =  vim.fn.stdpath("data") .. "/mason/packages/netcoredbg/netcoredbg",
-  args = {'--interpreter=vscode'}
-}
+print(vim.fn.stdpath("config"))
+if string.sub(vim.env.OSTYPE,1,string.len("darwin"))=="darwin" then
+
+	-- install netcoredbg via csharp-dap install script
+	dap.adapters.coreclr = {
+		type = 'executable',
+		command = vim.fn.stdpath("config") .. "/lua/rg/dap/netcoredbg-macOS-arm64.nvim/netcoredbg/netcoredbg",
+		args = { '--interpreter=vscode' }
+	}
+
+else
+	-- install netcoredbg via Mason
+	dap.adapters.coreclr = {
+		type = 'executable',
+		command = vim.fn.stdpath("data") .. "/mason/packages/netcoredbg/netcoredbg",
+		args = { '--interpreter=vscode' }
+	}
+end
+
 
 dap.configurations.cs = {
-  {
-    type = "coreclr",
-    name = "launch - netcoredbg",
-    request = "launch",
+	{
+		type = "coreclr",
+		name = "launch - netcoredbg",
+		request = "launch",
 
-    program = function()
-
-		if not(vim.g.CsharpDebugTargetDLL) then
-			vim.notify("please define a vim.g.CsharpDebugTargetDLL in your .nvim/postinit.lua");
-		else
-			return vim.fs.joinpath(vim.fn.getcwd(), vim.fs.normalize(vim.g.CsharpDebugTargetDLL))
-		end
-
-    end,
-  },
+		program = function()
+			if not (vim.g.CsharpDebugTargetDLL) then
+				vim.notify("please define a vim.g.CsharpDebugTargetDLL in your .nvim/postinit.lua");
+			else
+				return vim.fs.joinpath(vim.fn.getcwd(), vim.fs.normalize(vim.g.CsharpDebugTargetDLL))
+			end
+		end,
+	},
 }
 
 --==============================================================================
@@ -127,4 +143,3 @@ vim.cmd([[
 let NERDTreeIgnore=["_templ.go"]
 
 ]])
-
