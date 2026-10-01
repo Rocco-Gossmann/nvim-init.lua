@@ -19,9 +19,7 @@ local function doFileIfExists(fileName)
 	end
 end
 
-local confdir = home .. "/.config/" .. appname;
-local statedir = home .. "/.local/state/" .. appname;
-local tpldir = confdir .. "/lua/rg/templates/";
+local tpldir = vim.fn.stdpath("config") .. "/lua/rg/templates/";
 
 local function readTemplate(filename)
 	local tplfile = tpldir .. filename
@@ -47,8 +45,6 @@ end
 return {
 	appname = appname,
 	home = home,
-	confdir = confdir,
-	statedir = statedir,
 
 	doFileIfExists = doFileIfExists,
 

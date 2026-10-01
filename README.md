@@ -269,18 +269,6 @@ pager = "less -FRX +G"
 default-command = ["log", "--reversed"]
 ```
 
-### PHP-Debugging
-
-```lua
-dap.adapters.php = {
-  type = 'executable',
-  command = 'node',
-  args = { env.confdir .. '/lua/rg/dap/vscode-php-debug/out/phpDebug.js' }
-}
-
-dap.defaults.php.exception_breakpoints = { "Notice", "Warning", "Error", "Exception" }
-```
-
 ### TaskRunner Scripts
 
 ```lua

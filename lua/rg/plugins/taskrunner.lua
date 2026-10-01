@@ -1,5 +1,3 @@
-local confPath = require("rg.env").confdir
-
 local function createFileInFolder(folder, filename)
 	return function()
 		local fullPath = folder .. "/" .. filename
@@ -89,7 +87,7 @@ local function restartTaskRunner()
 			label = "Edit 'Peek' Window-CSS",
 			action = function()
 
-				vim.cmd.tabnew(require("rg.env").home .. "/.local/share/nvim/lazy/peek.nvim/public/style.css");
+				vim.cmd.tabnew(vim.fn.stdpath("data") .. "/lazy/peek.nvim/public/style.css");
 
 			end
 		})

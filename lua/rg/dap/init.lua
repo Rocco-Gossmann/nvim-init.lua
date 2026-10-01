@@ -1,13 +1,12 @@
 local dap = require("dap")
-local env = require("rg.env")
 
 --==============================================================================
 -- BM: PHP - DAP
 --==============================================================================
 dap.adapters.php = {
+	-- install php-debug-adapter via Mason
 	type = "executable",
 	command = vim.fn.stdpath("data") .. "/mason/bin/php-debug-adapter",
-	-- args = { env.confdir .. '/lua/rg/dap/vscode-php-debug/out/phpDebug.js' }
 }
 
 
@@ -26,7 +25,6 @@ dap.adapters["local-lua"] = {
 --==============================================================================
 -- BM: C# / DotNet / .NET
 --==============================================================================
-print(vim.fn.stdpath("config"))
 if string.sub(vim.env.OSTYPE,1,string.len("darwin"))=="darwin" then
 
 	-- install netcoredbg via csharp-dap install script

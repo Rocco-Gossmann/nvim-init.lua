@@ -70,8 +70,6 @@ local function focusTerminalBuffer(termName, startCmd)
 
 			end
 
-			require("rg.env").printTable(target)
-
 			vim.fn.system(string.format('herdr tab focus \"%s\"', target.tab_id))
 
 		else
