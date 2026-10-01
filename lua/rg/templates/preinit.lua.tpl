@@ -1,6 +1,9 @@
 -- changes to `vim.g` or `vim.opt` go here:
 
 -- Options are:
+
+-- vim.g.enableFormatOnSave = false
+
 -- vim.g.obsidiantemplatesdir = nil
 -- vim.g.obsidiannewnotesdir = "./"
 -- vim.g.obsidianfrontmatter = false

@@ -1,12 +1,13 @@
 local telescope_builtin = require('telescope.builtin');
+local inspect           = require('vim.inspect')
 local gs = package.loaded.gitsigns
 local dapui = require("dapui");
 
 local debuggerUIOpen = false
 
 local function filetypeKeymap(pattern, maps)
-
 	local callback = function(args)
+
 		local newMaps = {}
 
 		for _, v in pairs(maps) do
@@ -15,40 +16,33 @@ local function filetypeKeymap(pattern, maps)
 		end
 
 		require("which-key").add(newMaps)
+
 	end
 
-	vim.api.nvim_create_autocmd("BufAdd", { pattern = pattern, callback =callback })
-	vim.api.nvim_create_autocmd("VimEnter", { pattern = pattern, callback =callback })
-
+	vim.api.nvim_create_autocmd("BufAdd", { pattern = pattern, callback = callback })
+	vim.api.nvim_create_autocmd("VimEnter", { pattern = pattern, callback = callback })
 end
 
 local function openTerminalPopup(shellCommand)
 	return function()
-
 		local shellCommand = string.gsub(shellCommand, "%%dirname%%", vim.fn.expand("%:p:h"))
 		vim.fn.system(string.format('tmux display-popup -E "%s"', shellCommand))
-
 	end
 end
 
 local function focusTerminalBuffer(termName, startCmd)
-
 	return function()
-
 		local startCmd = string.gsub(startCmd, "%%dirname%%", vim.fn.expand("%:p:h"))
 
 		if vim.env.TMUX_PANE ~= nil then
-
-			local noTerm = vim.fn.system('tmux list-windows -F "#W:#I" | grep "' ..  termName .. '"') == ''
+			local noTerm = vim.fn.system('tmux list-windows -F "#W:#I" | grep "' .. termName .. '"') == ''
 
 			if noTerm then
 				vim.fn.system(string.format('tmux new-window -n "%s" "%s"', termName, startCmd))
 			else
 				vim.fn.system(string.format('tmux select-window -t "%s"', termName))
 			end
-
 		elseif vim.env.HERDR_PANE_ID ~= nil then
-
 			local tablist = vim.fn.system('herdr tab list')
 			local tabs = vim.json.decode(tablist)
 
@@ -61,24 +55,19 @@ local function focusTerminalBuffer(termName, startCmd)
 				);
 
 			if not target then
-
-				target = vim.json.decode(vim.fn.system(string.format('herdr tab create --label \"%s\"', termName))).result;
+				target = vim.json.decode(vim.fn.system(string.format('herdr tab create --label \"%s\"', termName)))
+				.result;
 
 				vim.fn.system(string.format("herdr pane run \"%s\" \"%s ; exit;\"", target.root_pane.pane_id, startCmd));
 
 				target = target.tab
-
 			end
 
 			vim.fn.system(string.format('herdr tab focus \"%s\"', target.tab_id))
-
 		else
-
 			print("you are neither in a TMUX- nor a HERDR-Session")
-
 		end
 	end
-
 end
 
 return {
@@ -144,6 +133,6 @@ return {
 	filetypeKeymap      = filetypeKeymap,
 
 	focusTerminalBuffer = focusTerminalBuffer,
-	openTerminalPopup = openTerminalPopup
+	openTerminalPopup   = openTerminalPopup
 
 }

@@ -20,6 +20,7 @@ mappfunc.lspRestart({ "*.js", "*.ts" }, "ts_ls")
 mappfunc.lspRestart({ "*.lua" }, "lua_ls")
 mappfunc.lspRestart({ "dockerfile" }, "dockerls")
 mappfunc.lspRestart({ "*.yml" }, "docker_compose_language_service")
+mappfunc.lspRestart({ "*.cs" }, "roslyn_ls")
 
 --[[============================================================================
 -- BM: Keymaps, that differ per FileType
@@ -57,8 +58,8 @@ mappfunc.filetypeKeymap({ "*.md" }, {
 	{ '<leader>cf', '<cmd>w<cr><cmd>silent !deno fmt --options-prose-wrap=preserve "%"<cr>', desc = '[C]ode [F]ormat', mode = "n" },
 })
 
-mappfunc.filetypeKeymap({ "*.lua", "*.go", "*.php" }, {
-	{ '<leader>cf', vim.lsp.buf.format, desc = '[C]ode [F]ormat', mode = "nv" },
+mappfunc.filetypeKeymap({ "*.lua", "*.go", "*.php", "*.cs" }, {
+	{ '<leader>cf', function() vim.lsp.buf.format() end, desc = '[C]ode [F]ormat', mode = "nv" },
 })
 
 
@@ -66,28 +67,36 @@ mappfunc.filetypeKeymap({ "*.lua", "*.go", "*.php" }, {
 -- BM: Formating and Cleanup
 --============================================================================]]
 -- strip trailing whitespaces before save
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = { "*.php", "*.js", "*.css", "*.go", "*.sql", "*.lua", "*.tpl" },
-	callback = function()
-		vim.cmd.normal("Mz")
-		vim.cmd("%s/\\s\\+$//ge")
-		vim.cmd.normal("mz")
-	end
-})
+if not (not (vim.g.stripTrailingWhitespacesBeforeSave)) then
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		pattern = { "*.php", "*.js", "*.css", "*.go", "*.sql", "*.lua", "*.tpl", "*.cs" },
+		callback = function()
+			vim.cmd.normal("Mz")
+			vim.cmd("%s/\\s\\+$//ge")
+			vim.cmd.normal("mz")
+		end
+	})
+end
 
--- formate before save
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = { "*.go", "*.hpp", "*.h", "*.cpp", "*.c", "*.tmpl" },
-	callback = function()
-		vim.lsp.buf.format()
-	end
-})
-
--- auto import before save
+-- Mandatory formating on save ( this must be done for go or its stupid compiler throws errors)
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = { "*.go" },
 	callback = function()
+		vim.lsp.buf.format()
 		vim.lsp.buf.code_action { context = { only = { 'source.organizeImports' } }, apply = true }
 		vim.lsp.buf.code_action { context = { only = { 'source.fixAll' } }, apply = true }
-	end,
+	end
 })
+
+
+-- Optional formating on save ( this must be done for go or its stupid compiler throws errors)
+
+if not (not (vim.g.enableFormatOnSave)) then
+	-- formate before save
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		pattern = { "*.go", "*.hpp", "*.h", "*.cpp", "*.c", "*.tmpl", "*.cs" },
+		callback = function()
+			vim.lsp.buf.format()
+		end
+	})
+end
