@@ -108,6 +108,7 @@ whichkey.add({
 	{ '<leader>ps',  telescope_builtin.live_grep,                                                 desc = '[P]roject find [S]tring',                 mode = 'n' },
 	{ '<leader>pw',  telescope_builtin.grep_string,                                               desc = '[P]roject find [W]ord',                   mode = 'n' },
 	{ '<leader>pt',  telescope_builtin.lsp_dynamic_workspace_symbols,                             desc = '[P]roject find [T]ag',                    mode = 'n' },
+	{ '<leader>pd',  telescope_builtin.diagnostics,                                               desc = '[P]roject [D]Diagnose',                   mode = 'n' },
 
 	-- Files
 	{ '<leader>f',   group = '[F]ile' },
@@ -130,7 +131,7 @@ whichkey.add({
 	},
 
 	{ '<leader>fe',      '<cmd>NERDTreeFind<cr>',                           desc = '[F]ile show in [E]xplorer', mode = 'n' },
-	{ '<leader>fd',      telescope_builtin.diagnostics,                     desc = '[F]ile [D]Diagnose',        mode = 'n' },
+	{ '<leader>fd',      vim.diagnostic.setloclist,                         desc = '[F]ile [D]iagnostics' },
 	{ '<leader>fg',      mappfunc.fuzzySearchInBuffer,                      desc = '[F]ile [G]rep',             mode = 'n' },
 	{ '<leader>fn',      '<cmd>NERDTreeToggle<cr>',                         desc = '[F]files ([N]erdTree)',     mode = 'n' },
 
@@ -231,7 +232,7 @@ whichkey.add({
 	{ "<C-l>",           "<cmd>TmuxNavigateRight<cr>",                      mode = "n",                         noremap = true,          silent = true },
 
 	-- Terminal Helpes
-	{ '<Esc><Esc>', '<C-\\><C-n>',               desc = "Exit terminal mode", mode = "t" },
+	{ '<Esc><Esc>',      '<C-\\><C-n>',                                     desc = "Exit terminal mode",        mode = "t" },
 
 })
 

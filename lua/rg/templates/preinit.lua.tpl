@@ -3,6 +3,7 @@
 -- Options are:
 
 -- vim.g.enableFormatOnSave = false
+-- vim.g.stripTrailingWhitespacesBeforeSave = true
 
 -- vim.g.obsidiantemplatesdir = nil
 -- vim.g.obsidiannewnotesdir = "./"
