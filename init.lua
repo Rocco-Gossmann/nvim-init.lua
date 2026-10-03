@@ -1,3 +1,4 @@
+vim.cmd("language en_US");
 
 require "rg.globals"
 require "rg.opts"

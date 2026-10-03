@@ -91,9 +91,6 @@ return {
 							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 						end, "[T]oggle [I]nlay Hints")
 					end
-
-
-
 				end,
 			})
 
@@ -128,54 +125,9 @@ return {
 
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-			-- Enable the following language servers
-			--  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
-			--
-			--  Add any additional override configuration in the following tables. Available keys are:
-			--  - cmd (table): Override the default command used to start the server
-			--  - filetypes (table): Override the default list of associated filetypes for the server
-			--  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
-			--  - settings (table): Override the default settings passed when initializing the server.
-			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
-			local servers = {
-				-- clangd = {},
-				-- gopls = {},
-				-- pyright = {},
-				-- rust_analyzer = {},
-				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-				--
-				-- Some languages (like typescript) have entire language plugins that can be useful:
-				--    https://github.com/pmizio/typescript-tools.nvim
-				--
-				-- But for many setups, the LSP (`ts_ls`) will work just fine
-				-- ts_ls = {},
-				--
-				lua_ls = {
-					-- cmd = { ... },
-					-- filetypes = { ... },
-					-- capabilities = {},
-					settings = {
-						Lua = {
-							completion = {
-								callSnippet = "Replace",
-							},
-
-							workspace = {
-								vim.fn.getcwd() .. "/lua",
-								vim.fn.getcwd(),
-							},
-
-							-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-							-- diagnostics = { disable = { 'missing-fields' } },
-						},
-					},
-				},
-
-				intelephense = {
-
-				}
-			}
-
+			--=================================================================
+			-- BM: Auto Install LSPs / Tools
+			--=================================================================
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"intelephense",
@@ -184,30 +136,63 @@ return {
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
+			--=================================================================
+			-- BM: Lsp Configuration
+			--=================================================================
+			vim.lsp.config("lua_ls", {
+				-- cmd = { ... },
+				-- filetypes = { ... },
+				-- capabilities = {},
+				settings = {
+					Lua = {
+						completion = {
+							callSnippet = "Replace",
+						},
+
+						workspace = {
+							vim.fn.getcwd() .. "/lua",
+							vim.fn.getcwd(),
+						},
+
+						-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+						-- diagnostics = { disable = { 'missing-fields' } },
+					},
+				},
+
+			})
+
+			vim.lsp.config("roslyn_ls", {
+				cmd_env = {
+					DOTNET_CLI_UI_LANGUAGE = "en",
+					LANG = "en_US.UTF-8",
+					LC_ALL = "en_US.UTF-8"
+				}
+			})
+
 			vim.lsp.config("ts_ls", {
 				settings = {
 					typescript = {
 						inlayHints = {
 							includeInlayParameterNameHints = 'all',
-							includeInlayParameterNameHintsWhenArgumentMatchesName =  true,
-							includeInlayFunctionParameterTypeHints =  true,
-							includeInlayVariableTypeHints =  true,
-							includeInlayVariableTypeHintsWhenTypeMatchesName =  true,
-							includeInlayPropertyDeclarationTypeHints =  true,
-							includeInlayFunctionLikeReturnTypeHints =  true,
-							includeInlayEnumMemberValueHints =  true,
+							includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+							includeInlayFunctionParameterTypeHints = true,
+							includeInlayVariableTypeHints = true,
+							includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+							includeInlayPropertyDeclarationTypeHints = true,
+							includeInlayFunctionLikeReturnTypeHints = true,
+							includeInlayEnumMemberValueHints = true,
 						},
 					},
 					javascript = {
 						inlayHints = {
 							includeInlayParameterNameHints = 'all',
-							includeInlayParameterNameHintsWhenArgumentMatchesName =  true,
-							includeInlayFunctionParameterTypeHints =  true,
-							includeInlayVariableTypeHints =  true,
-							includeInlayVariableTypeHintsWhenTypeMatchesName =  true,
-							includeInlayPropertyDeclarationTypeHints =  true,
-							includeInlayFunctionLikeReturnTypeHints =  true,
-							includeInlayEnumMemberValueHints =  true,
+							includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+							includeInlayFunctionParameterTypeHints = true,
+							includeInlayVariableTypeHints = true,
+							includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+							includeInlayPropertyDeclarationTypeHints = true,
+							includeInlayFunctionLikeReturnTypeHints = true,
+							includeInlayEnumMemberValueHints = true,
 						},
 					}
 				},
@@ -262,6 +247,10 @@ return {
 
 			})
 
+
+			--=================================================================
+			-- BM: more boilerplate
+			--=================================================================
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"markdown_oxide",

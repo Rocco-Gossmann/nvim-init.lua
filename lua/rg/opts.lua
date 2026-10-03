@@ -96,3 +96,7 @@ vim.opt.laststatus = 3           -- Global status line
 vim.opt.pumheight = 10           -- Limit popup menu height
 vim.opt.winminheight = 0         -- Minimum window height
 vim.opt.winwidth = 10            -- Minimum window width
+
+vim.cmd [[
+language en_US.UTF-8
+]]
