@@ -1,8 +1,6 @@
 local ocURL = "http://localhost:8099/"
 local ocSession = ""
 local paneId = nil
-local herdrPaneId = nil
-local herdr = require("rg.herdr_helpers")
 
 local function ocPost(data)
 
@@ -23,20 +21,9 @@ local function ocPost(data)
 			error("Failed to create tmux split: " .. (result.stderr or "Unknown error"))
 		end
 
-	elseif vim.env.HERDR_PANE_ID ~= nil then
-
-		if paneId and herdrPaneId then
-
-			print(herdrPaneId)
-
-			vim.fn.system(string.format("herdr pane send-text \"%s\" \"%s\"", herdrPaneId, data));
-			vim.fn.system(string.format("herdr tab focus \"%s\"", paneId));
-
-		end
-
 	else
 
-		print("you have neither a TMUX- nor a HERDR-Session");
+		print("you have no TMUX-Session");
 
 	end
 
@@ -70,40 +57,6 @@ local function focusTmuxPane()
 				error("Failed to create tmux split: " .. (result.stderr or "Unknown error"))
 			end
 
-		end
-
-	elseif vim.env.HERDR_PANE_ID ~= nil then
-
-		local pane = nil;
-
-		if paneId ~= nil then
-
-			pane = herdr.findTargetWithValue(
-				"pane",
-				"panes",
-				"pane_id",
-				herdrPaneId
-			)
-
-
-		end
-
-		if not pane then
-
-			pane = vim.json.decode(vim.fn.system("herdr pane split --direction right --focus")).result.pane;
-
-			vim.fn.system(string.format("herdr pane rename \"%s\" \"%s\"", pane.pane_id, "Nvim-LLM"));
-			vim.fn.system(string.format("herdr pane run \"%s\" \"%s ; exit\"", pane.pane_id, vim.g.opencodestartcommand));
-
-			paneId = pane.tab_id;
-			herdrPaneId = pane.pane_id;
-
-		end
-
-		paneId = pane.tab_id;
-
-		if paneId then
-			vim.fn.system(string.format("herdr tab focus \"%s\"", paneId));
 		end
 
 	end

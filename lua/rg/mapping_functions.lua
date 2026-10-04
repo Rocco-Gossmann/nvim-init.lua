@@ -42,30 +42,8 @@ local function focusTerminalBuffer(termName, startCmd)
 			else
 				vim.fn.system(string.format('tmux select-window -t "%s"', termName))
 			end
-		elseif vim.env.HERDR_PANE_ID ~= nil then
-			local tablist = vim.fn.system('herdr tab list')
-			local tabs = vim.json.decode(tablist)
-
-			local target = require("rg.herdr_helpers")
-				.findTargetWithValue(
-					"tab",
-					"tabs",
-					"label",
-					termName
-				);
-
-			if not target then
-				target = vim.json.decode(vim.fn.system(string.format('herdr tab create --label \"%s\"', termName)))
-				.result;
-
-				vim.fn.system(string.format("herdr pane run \"%s\" \"%s ; exit;\"", target.root_pane.pane_id, startCmd));
-
-				target = target.tab
-			end
-
-			vim.fn.system(string.format('herdr tab focus \"%s\"', target.tab_id))
 		else
-			print("you are neither in a TMUX- nor a HERDR-Session")
+			print("you are not in a TMUX-Panel")
 		end
 	end
 end
