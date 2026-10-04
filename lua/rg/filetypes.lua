@@ -42,6 +42,11 @@ mappfunc.filetypeKeymap({ "*.cpp", "*.c", "*.h" }, {
 	{ '§h', '<esc>:lua require("rg.template").handleC_H()<cr>', mode = "n", noremap = true },
 })
 
+mappfunc.filetypeKeymap({ "*.cs" }, {
+	{ '§s', '<esc>:lua require("rg.template").handleCSSummary()<cr>', mode = "n", noremap = true, desc = "add C# <Summary> - Tag" },
+})
+
+
 mappfunc.filetypeKeymap({ "*.php" }, {
 	{ "§c", function() templates.handlePHP("class") end,     mode = { "n" }, desc = "PHP-Class" },
 	{ "§t", function() templates.handlePHP("trait") end,     mode = { "n" }, desc = "PHP-Trait" },
