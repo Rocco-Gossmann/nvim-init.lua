@@ -41,7 +41,7 @@ return {
 
 	{
 		"HakonHarnes/img-clip.nvim",
-		event = "VeryLazy",
+		ft = "markdown",
 		opts = {
 			default = {
 				-- file and directory options
@@ -72,8 +72,12 @@ return {
 
 	{
 		"toppair/peek.nvim",
-		event = { "VeryLazy" },
 		build = "deno task --quiet build:fast",
+		ft = { "markdown" },
+		cmd = {
+			"PeekOpen",
+			"PeekClose"
+		},
 		config = function()
 			require("peek").setup()
 			vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
@@ -82,6 +86,7 @@ return {
 	},
 
 	{
+
 		'MeanderingProgrammer/render-markdown.nvim',
 		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' }, -- if you use the mini.nvim suite
 		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
@@ -203,6 +208,8 @@ return {
 
 
 		},
+
+		ft = { "markdown" },
 	},
 
 	{
@@ -256,10 +263,11 @@ return {
 
 	{
 		"3rd/diagram.nvim",
+		ft = { "markdown" },
 		dependencies = {
 			{ "3rd/image.nvim" }, -- you'd probably want to configure image.nvim manually instead of doing this
 		},
-		opts = {                     -- you can just pass {}, defaults below
+		opts = {         -- you can just pass {}, defaults below
 			events = {
 				render_buffer = { "InsertLeave", "BufWinEnter", "TextChanged" },
 				clear_buffer = { "BufLeave" },

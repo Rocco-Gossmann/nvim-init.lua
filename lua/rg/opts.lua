@@ -90,7 +90,6 @@ vim.opt.scrolloff = 4
 vim.opt.confirm = true
 
 -- Smoothness optimizations
-vim.opt.lazyredraw = true         -- Don't redraw while executing macros
 vim.opt.ttyfast = true           -- Fast terminal connection
 vim.opt.laststatus = 3           -- Global status line
 vim.opt.pumheight = 10           -- Limit popup menu height
