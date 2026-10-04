@@ -1,4 +1,3 @@
-local diagnostic = require "vim.diagnostic"
 return {
 
 	{
