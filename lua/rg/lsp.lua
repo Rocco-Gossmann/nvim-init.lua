@@ -54,7 +54,7 @@ function M.Config()
 	--=================================================================
 	-- BM: Lsp Configuration - Roslyn C#
 	--=================================================================
-
+	vim.lsp.config("roslyn_ls", {
 		cmd_env = {
 			DOTNET_CLI_UI_LANGUAGE = "en",
 			LANG = "en_US.UTF-8",
