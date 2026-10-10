@@ -56,6 +56,7 @@ vim.api.nvim_create_user_command("BM", function()
 
         local ln = choice:match('(%d+):');
         vim.cmd.norm(ln.."gg<cr>");
+        vim.cmd.norm("zz");
 	end)
 
 end, { });
