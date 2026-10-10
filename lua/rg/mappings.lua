@@ -179,14 +179,15 @@ whichkey.add({
 	{ "<F8>",            mappfunc.stop_debugger,                            desc = "[D]ebugger Stop" },
 
 	-- BM: Templates
+	-- (see: rg/filetypes.lua for for more templates)
 	{ '§',               group = "Templates" },
 	{ '§w',              templates.newTmuxWorkspace,                        desc = 'TMUX-[W]orkspace',          mode = 'n' },
 
-	-- Misc
+	-- BM: Misc
 	{ '<leader><space>', telescope_builtin.buffers,                         desc = '[ ] Find existing buffers', mode = 'n' },
 	-- { '<leader>n',       '<cmd>NERDTreeToggle<cr>',              desc = 'Files',                              mode = 'n' },
 
-	-- Toggle
+	-- BM: Toggle
 	{ '<leader>t',       group = "[T]toggle / [T]ab / [T]ask" },
 	{ '<leader>tn',      '<cmd>tabnew<cr>',                                 desc = "[T]ab [N]ew",               mode = 'n' },
 	{ '<leader>tr',      '<cmd>TR<cr>',                                     desc = '[T]ask [R]unner',           mode = { 'n', 'v', 'x' } },
@@ -197,7 +198,7 @@ whichkey.add({
 	{ '<leader>tll',     '<cmd>colorscheme rose-pine-dawn<cr>',             desc = '[T]oggle [L]ight' },
 	-- { '<leader>tt',      '<cmd>Twilight<cr>',                               desc = '[T]oggle [T]wilight',                     mode = 'n' },
 
-	-- LSP
+	-- BM: LSP
 	{ '<S-h>',           function() vim.lsp.buf.hover() end,                desc = 'Hover Documentation',       mode = 'n' },
 	{ 'gh',              function() vim.lsp.buf.hover() end,                desc = 'Hover Documentation',       mode = 'n' },
 	{ '<S-k>',           function() vim.lsp.buf.signature_help() end,       desc = 'Signature Documentation',   mode = 'n' },
@@ -207,7 +208,7 @@ whichkey.add({
 	{ 'gi',              telescope_builtin.lsp_implementations,             desc = '[G]oto [I]mplementation',   mode = 'n' },
 	{ 'gD',              telescope_builtin.lsp_type_definitions,            desc = '[G]oto type-[D]efinition',  mode = 'n' },
 
-	-- Visual Mode Helpers
+	-- BM: Visual Mode Helpers
 	{ "J",               ":m '>+1<CR>gv=gv",                                mode = 'x',                         noremap = true,          silent = true },
 	{ "K",               ":m '<-2<CR>gv=gv",                                mode = 'x',                         noremap = true,          silent = true },
 	{ '<leader>p',       '"_dP',                                            mode = 'x',                         noremap = true,          silent = true },
@@ -221,7 +222,7 @@ whichkey.add({
 	{ "<C-d>",           "<C-d>zz",                                         mode = "v",                         noremap = true,          silent = true },
 	{ "<C-u>",           "<C-u>zz",                                         mode = "v",                         noremap = true,          silent = true },
 
-	-- Insert Mode Helpers
+	-- BM: Insert Mode Helpers
 	{ "<C-j>",           function() require("blink-cmp").show() end,        mode = { "i" },                     noremap = true,          silent = true },
 	{ "<C-h>",           function() vim.lsp.buf.signature_help() end,       mode = { "i" },                     noremap = true,          silent = true },
 
@@ -237,7 +238,7 @@ whichkey.add({
 })
 
 --[[============================================================================
--- Native Vim Tweaks
+-- BM: Native Vim Tweaks
 -- -----------------------------------------------------------------------------
 -- these are some rempas, that, for some reason don't work when configured any
 -- other way
