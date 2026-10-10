@@ -7,9 +7,6 @@ local M = {}
 -- BM: Mason-AutoInstall-Tools
 --------------------------------------------------------------------------------
 M.MasonAutoInstallTools = {
-	"intelephense",     -- NOTE: appearently Intelephense does not ocunt as LSP,
-	                    --       but as Tool
-						--       or maybe it uses a tool. IDK.
 	"php-debug-adapter",
 	"jq"
 }
@@ -17,6 +14,7 @@ M.MasonAutoInstallTools = {
 -- BM: Mason-AutoInstall-Tools
 --------------------------------------------------------------------------------
 M.MasonAutoInstallLSPs = {
+	"intelephense",
 	"markdown_oxide",
 	"lua_ls"
 }

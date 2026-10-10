@@ -142,12 +142,12 @@ return {
 			--=================================================================
 			-- BM: Auto Install LSPs / Tools
 			--=================================================================
-			require("mason-tool-installer").setup({ ensure_installed = rglsp.MasonAutoInstall })
+			require("mason-tool-installer").setup({ ensure_installed = rglsp.MasonAutoInstallTools })
 
 			rglsp.Config()
 
 			require("mason-lspconfig").setup({
-				ensure_installed = rglsp.MasonAutoInstallTools,
+				ensure_installed = rglsp.MasonAutoInstallLSPs,
 				automatic_installation = false,
 				handlers = {
 					function(server_name)
