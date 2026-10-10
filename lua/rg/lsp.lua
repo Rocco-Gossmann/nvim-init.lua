@@ -7,6 +7,9 @@ local M = {}
 -- BM: Mason-AutoInstall-Tools
 --------------------------------------------------------------------------------
 M.MasonAutoInstallTools = {
+	"intelephense",     -- NOTE: appearently Intelephense does not ocunt as LSP,
+	                    --       but as Tool
+						--       or maybe it uses a tool. IDK.
 	"php-debug-adapter",
 	"jq"
 }
@@ -14,7 +17,6 @@ M.MasonAutoInstallTools = {
 -- BM: Mason-AutoInstall-Tools
 --------------------------------------------------------------------------------
 M.MasonAutoInstallLSPs = {
-	"intelephense",
 	"markdown_oxide",
 	"lua_ls"
 }
@@ -52,7 +54,7 @@ function M.Config()
 	--=================================================================
 	-- BM: Lsp Configuration - Roslyn C#
 	--=================================================================
-	vim.lsp.config("roslyn_ls", {
+
 		cmd_env = {
 			DOTNET_CLI_UI_LANGUAGE = "en",
 			LANG = "en_US.UTF-8",
