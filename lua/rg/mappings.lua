@@ -18,14 +18,12 @@ local openTerminalPopup = mappfunc.openTerminalPopup
 
 whichkey.add({
 
-	-- Jujutus
-	{ '<leader>j',   group = "[J]ust (Makefile replacement)" },
-	{ '<leader>jj',  focusTerminalBuffer("Just", "just | less"),                        desc = "[J]ust (default action)",                 mode = 'n' },
-	{ '<leader>jr',  focusTerminalBuffer("Run", "just run | less"),                    desc = "[R]un",                                   mode = 'n' },
-	{ '<leader>jb',  focusTerminalBuffer("Build", "just build | less"),                  desc = "[B]uild",                                 mode = 'n' },
-	{ '<leader>jc',  focusTerminalBuffer("Clean", "just clean | less"),                  desc = "[C]lean",                                 mode = 'n' },
+	-- BM: Bookmark
+	{ '<leader>b',   "<cmd>BM<cr>",                                              desc = "Bookmark",                                mode = "n" },
+	{ '<leader>tb',  '<cmd>BM<cr>',                                              desc = '[T]o [B]ookmarks',                        mode = 'n' },
 
-	-- Obisidian
+
+	-- BM: Obisidian
 	{ '<leader>o',   group = '[O]bisidan' },
 	{ '<leader>ow',  '<cmd>ObsidianWorkspace<cr>',                               desc = '[W]workspace',                            mode = 'n' },
 	{ '<leader>of',  '<cmd>ObsidianQuickSwitch<cr>',                             desc = '[F]ind (quicksearch)',                    mode = 'n' },
@@ -38,13 +36,13 @@ whichkey.add({
 	{ '<leader>oin', '<cmd>ObsidianNewFromTemplate<cr>',                         desc = '[N]ew Note from Template',                mode = 'n' },
 	{ '<leader>oit', '<cmd>ObsidianTemplate<cr>',                                desc = '[T]emplate',                              mode = 'n' },
 
-	-- Surround
+	-- BM: Surround
 	{ '<leader>y',   group = 'Surround' },
 	{ '<leader>ys',  '<Plug>Ysurround',                                          desc = 'new [S]urround',                          mode = 'n' },
 	{ '<leader>yc',  '<Plug>Csurround',                                          desc = '[C]hange Surrounding',                    mode = 'n' },
 	{ '<leader>yd',  '<Plug>Dsurround',                                          desc = '[D]elete Surrounding',                    mode = 'n' },
 
-	-- Launch
+	-- BM: Launch
 	{ '<leader>l',   group = '[L]aunch' },
 	{ '<leader>lj',  focusTerminalBuffer("Jujutsu-ZSH", "jj --no-pager && zsh"), desc = "[J]ujutsu-Shell",                         mode = 'n' },
 	{ '<leader>lg',  focusTerminalBuffer("LazyGit", "lazygit"),                  desc = 'Lazy[G]it',                               mode = 'n' },
@@ -54,7 +52,7 @@ whichkey.add({
 	{ '<leader>ls',  focusTerminalBuffer("Database (DBUI)", "nvim -c DBUI"),     desc = 'Database ([s]torage)',                    mode = 'n' },
 	{ '<leader>ll',  vim.cmd.OCTmuxPane,                                         desc = '[L]LM - Server (Ollama)',                 mode = 'n' },
 
-	-- Code
+	-- BM: Code
 	{ '<leader>c',   group = '[C]ode' },
 	{ '<leader>cr',  vim.lsp.buf.rename,                                         desc = '[R]ename',                                mode = 'n' },
 	{ '<leader>cd',  '<cmd>Neogen<cr>',                                          desc = '[D]ocument',                              mode = 'n' },
@@ -64,7 +62,7 @@ whichkey.add({
 
 	{ '<leader>cl',  group = '[L]sp' },
 
-	-- Qucklist
+	-- BM: Qucklist
 	{ '<leader>q',   group = '[Q]uicklist' },
 	{ '<leader>qd',  vim.diagnostic.setloclist,                                  desc = '[D]iagnostics' },
 	{ '<leader>qn',  '<cmd>cnext<cr>',                                           desc = '[N]ext' },
@@ -77,7 +75,7 @@ whichkey.add({
 	{ 'qp',          '<cmd>cprevious<cr>',                                       desc = '[Q]uicklist [P]revious' },
 	{ 'qc',          '<cmd>cclose<cr>',                                          desc = '[Q]uicklist [C]lose' },
 
-	-- Exlorer
+	-- BM: Explorer
 	{ '<C-n>',       '<cmd>NERDTreeToggle<cr>',                                  mode = 'n' },
 	{ 'E',           desc = "Explorer",                                          group = '[E]xplorer' },
 	{ 'EE',          '<cmd>e .<cr>',                                             desc = '[E]xplorer in place',                     mode = 'n' },
@@ -87,7 +85,7 @@ whichkey.add({
 	{ 'EK',          '<cmd>sp .<cr>',                                            desc = 'top',                                     mode = 'n' },
 	{ 'ET',          '<cmd>tabnew .<cr>',                                        desc = 'Explorer [t]ab',                          mode = 'n' },
 
-	-- Close commands
+	-- BM: Close commands
 	-- ZZ => Close current (default mapping)
 	{ 'Z',           group = 'Close' },
 	{ 'ZZ',          '<cmd>q<cr>',                                               desc = 'Close current buffer (warn if not saved)' },
@@ -98,7 +96,7 @@ whichkey.add({
 	{ '<leader>e',   vim.diagnostic.open_float,                                  desc = 'show [E]rrors and Warnings',              mode = 'n' },
 	{ '<leader>#',   '<cmd>e#<cr>',                                              desc = 'alt+tab files',                           mode = 'n' },
 
-	-- Project
+	-- BM: Project
 	{ '<leader>p',   group = '[P]roject' },
 	{ '<leader>pf',  telescope_builtin.find_files,                               desc = '[P]roject [F]iles',                       mode = 'n' },
 	{ '<leader>ps',  telescope_builtin.live_grep,                                desc = '[P]roject find [S]tring',                 mode = 'n' },
@@ -106,7 +104,7 @@ whichkey.add({
 	{ '<leader>pt',  telescope_builtin.lsp_dynamic_workspace_symbols,            desc = '[P]roject find [T]ag',                    mode = 'n' },
 	{ '<leader>pd',  telescope_builtin.diagnostics,                              desc = '[P]roject [D]Diagnose',                   mode = 'n' },
 
-	-- Files
+	-- BM: File
 	{ '<leader>f',   group = '[F]ile' },
 	{ '<leader>ff',  telescope_builtin.find_files,                               desc = '[F]ind [F]ile',                           mode = 'n' },
 	{ '<leader>fo',  telescope_builtin.oldfiles,                                 desc = '[F]ind [O]lder File',                     mode = 'n' },
@@ -131,7 +129,7 @@ whichkey.add({
 	{ '<leader>fg',      mappfunc.fuzzySearchInBuffer,                      desc = '[F]ile [G]rep',             mode = 'n' },
 	{ '<leader>fn',      '<cmd>NERDTreeToggle<cr>',                         desc = '[F]files ([N]erdTree)',     mode = 'n' },
 
-	-- Git
+	-- BM: Git
 	{ '<leader>g',       group = '[G]it' },
 	{ '<leader>gf',      telescope_builtin.git_files,                       desc = 'Search [F]iles',            mode = 'n' },
 	{ '<leader>gb',      mappfunc.gitBlameLine,                             desc = '[B]lame line',              mode = 'n' },
@@ -141,15 +139,22 @@ whichkey.add({
 	{ '<leader>gs',      '<cmd>Gitsigns stage_hunk<cr>',                    desc = '[S]tage Hunk',              mode = 'n' },
 	{ '<leader>gl',      focusTerminalBuffer("LazyGit", "lazygit"),         desc = 'Lazy[G]it',                 mode = 'n' },
 
+	-- BM: Just (Make but better)
+	{ '<leader>j',   group = "[J]ust (Makefile replacement)" },
+	{ '<leader>jj',  focusTerminalBuffer("Just", "just | less"),                 desc = "[J]ust (default action)",                 mode = 'n' },
+	{ '<leader>jr',  focusTerminalBuffer("Run", "just run | less"),              desc = "[R]un",                                   mode = 'n' },
+	{ '<leader>jb',  focusTerminalBuffer("Build", "just build | less"),          desc = "[B]uild",                                 mode = 'n' },
+	{ '<leader>jc',  focusTerminalBuffer("Clean", "just clean | less"),          desc = "[C]lean",                                 mode = 'n' },
 
-	-- Make
+	-- BM: Make
 	{ '<leader>m',       group = '[M]ake' },
 	{ '<leader>mm',      focusTerminalBuffer("MakeDefault", "make"),        desc = '(default)',                 mode = 'n' },
 	{ '<leader>mr',      focusTerminalBuffer("MakeRun", "make run"),        desc = '[R]un',                     mode = 'n' },
 	{ '<leader>md',      focusTerminalBuffer("MakeRun", "make dev"),        desc = '[D]ev/[D]ebug',             mode = 'n' },
 	{ '<leader>mc',      '<cmd>!make clean<cr>',                            desc = '[c]lean',                   mode = 'n' },
 
-	-- Split
+
+	-- BM: Split
 	{ '<leader>s',       group = "[S]plit" },
 	{ '<leader>sh',      '<cmd>sp<cr>',                                     desc = '[V]ertical',                mode = 'n' },
 	{ '<leader>sv',      '<cmd>vs<cr>',                                     desc = '[H]orizontal',              mode = 'n' },
@@ -162,7 +167,7 @@ whichkey.add({
 	{ '<M-Left>',        '2<C-w><',                                         desc = "Decrease Split width",      mode = 'n' },
 
 
-	-- Debugger
+	-- BM: Debugger
 	-- { '<leader>d',       group = "[D]ebugger" },
 	-- { "<leader>db",      vim.cmd.DapToggleBreakpoint,                       desc = "[D]ebugger [B]reakpoint Toggle" },
 	{ "<F6>",            mappfunc.debugger_evaluate,                        desc = "[D]ebugger Evaluate" },
@@ -173,7 +178,7 @@ whichkey.add({
 	{ "<F12>",           vim.cmd.DapStepOut,                                desc = "[D]ebugger StepOut" },
 	{ "<F8>",            mappfunc.stop_debugger,                            desc = "[D]ebugger Stop" },
 
-	-- Templates
+	-- BM: Templates
 	{ '§',               group = "Templates" },
 	{ '§w',              templates.newTmuxWorkspace,                        desc = 'TMUX-[W]orkspace',          mode = 'n' },
 
@@ -185,7 +190,6 @@ whichkey.add({
 	{ '<leader>t',       group = "[T]toggle / [T]ab / [T]ask" },
 	{ '<leader>tn',      '<cmd>tabnew<cr>',                                 desc = "[T]ab [N]ew",               mode = 'n' },
 	{ '<leader>tr',      '<cmd>TR<cr>',                                     desc = '[T]ask [R]unner',           mode = { 'n', 'v', 'x' } },
-	{ '<leader>tb',      '<cmd>BM<cr>',                                     desc = '[T]o [B]ookmarks',          mode = 'n' },
 	{ '<leader>tz',      '<cmd>ZenMode<cr>',                                desc = '[T]oggle [Z]en-mode',       mode = 'n' },
 
 	{ '<leader>tl',      group = '[T]oggle [L]ight/Dark' },

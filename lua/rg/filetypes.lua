@@ -1,20 +1,15 @@
 local mappfunc = require("rg.mapping_functions");
 local rgcore = require("rg.core");
 
---[[============================================================================
--- Map File Extension => Filetype
---============================================================================]]
+--=============================================================================
+-- BM: Map File Extension => Filetype
+--=============================================================================
 vim.filetype.add({ extension = { templ = "templ" } })
 vim.filetype.add({ extension = { sql = "mysql" } })
 
---[[============================================================================
--- Handle certain unknown file extensions
---============================================================================]]
--- rgcore.customFileExtension({ "*.toml" }, "ini");
-
---[[============================================================================
--- LanguageServer restart per Filetype
---============================================================================]]
+--=============================================================================
+-- BM: LanguageServer Restart (<leader>clr)
+--=============================================================================
 mappfunc.lspRestart({ "*.php" }, "intelephense")
 mappfunc.lspRestart({ "*.js", "*.ts" }, "ts_ls")
 mappfunc.lspRestart({ "*.lua" }, "lua_ls")
@@ -22,10 +17,10 @@ mappfunc.lspRestart({ "dockerfile" }, "dockerls")
 mappfunc.lspRestart({ "*.yml" }, "docker_compose_language_service")
 mappfunc.lspRestart({ "*.cs" }, "roslyn_ls")
 
---[[============================================================================
--- BM: Keymaps, that differ per FileType
---============================================================================]]
--- Todo-Lists
+--=============================================================================
+-- Keymaps, that differ per FileType
+--=============================================================================
+-- Todo-Lists for Markdown
 -- -----------------------------------------------------------------------------
 mappfunc.filetypeKeymap({ "*.todo", "*.md" }, {
 	{ '<leader>j',  group = '[J]ob / Task' },
@@ -35,9 +30,9 @@ mappfunc.filetypeKeymap({ "*.todo", "*.md" }, {
 	{ '<leader>jd', vim.cmd.TaskDone,      mode = 'n', desc = '[D]one' },
 	{ '<leader>jr', vim.cmd.TaskReset,     mode = 'n', desc = '[R]eset' },
 });
-
--- loading Tempaltes
--- -----------------------------------------------------------------------------
+--=============================================================================
+-- BM: Templates
+--=============================================================================
 mappfunc.filetypeKeymap({ "*.cpp", "*.c", "*.h" }, {
 	{ '§h', '<esc>:lua require("rg.template").handleC_H()<cr>', mode = "n", noremap = true },
 })
@@ -53,8 +48,9 @@ mappfunc.filetypeKeymap({ "*.php" }, {
 	{ "§i", function() templates.handlePHP("interface") end, mode = { "n" }, desc = "PHP-Interface" },
 })
 
--- Code-Formatting
--- -----------------------------------------------------------------------------
+--=============================================================================
+-- BM: Manual code formatting
+--=============================================================================
 mappfunc.filetypeKeymap({ "*.html", "*.js", ".ts", ".css", "*.scss", "*.json", "*.jsx" }, {
 	{ '<leader>cf', '<cmd>w<cr><cmd>silent !deno fmt "%"<cr>', desc = '[C]ode [F]ormat', mode = "n" },
 })
@@ -67,11 +63,11 @@ mappfunc.filetypeKeymap({ "*.lua", "*.go", "*.php", "*.cs" }, {
 	{ '<leader>cf', function() vim.lsp.buf.format() end, desc = '[C]ode [F]ormat', mode = "nv" },
 })
 
-
---[[============================================================================
--- BM: Formating and Cleanup
---============================================================================]]
--- strip trailing whitespaces before save
+--=============================================================================
+-- BM: Auto-Formating and PreSave-Cleanup
+--=============================================================================
+-- BM: strip trailing whitespaces before save
+--------------------------------------------------------------------------------
 if not (not (vim.g.stripTrailingWhitespacesBeforeSave)) then
 	vim.api.nvim_create_autocmd("BufWritePre", {
 		pattern = { "*.php", "*.js", "*.css", "*.go", "*.sql", "*.lua", "*.tpl", "*.cs" },
@@ -83,7 +79,9 @@ if not (not (vim.g.stripTrailingWhitespacesBeforeSave)) then
 	})
 end
 
--- Mandatory formating on save ( this must be done for go or its stupid compiler throws errors)
+-- BM: Mandatory formating on save
+-- ( this must be done for go or its stupid compiler throws errors)
+--------------------------------------------------------------------------------
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = { "*.go" },
 	callback = function()
@@ -94,12 +92,12 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 
--- Optional formating on save ( this must be done for go or its stupid compiler throws errors)
-
+-- BM: Optional formating on save
+--------------------------------------------------------------------------------
 if not (not (vim.g.enableFormatOnSave)) then
 	-- formate before save
 	vim.api.nvim_create_autocmd("BufWritePre", {
-		pattern = { "*.go", "*.hpp", "*.h", "*.cpp", "*.c", "*.tmpl", "*.cs" },
+		pattern = {  "*.hpp", "*.h", "*.cpp", "*.c", "*.tmpl", "*.cs" },
 		callback = function()
 			vim.lsp.buf.format()
 		end
