@@ -1,5 +1,11 @@
+local rglsp = require("rg.lsp");
+
 return {
 
+
+	--==========================================================================
+	-- BM: Extra Plugins - Lua
+	--==========================================================================
 	{
 		-- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
 		-- used for completion, annotations and signatures of Neovim apis
@@ -13,8 +19,16 @@ return {
 		},
 	},
 
+	--==========================================================================
+	-- BM: Extra Plugins - PHP => Smarty
+	--==========================================================================
 	{ "shadowwa/smarty.vim", ft = { "smarty" } },
 
+	--==========================================================================
+	-- BM: General Mason + LSP-Config - Setup
+	----------------------------------------------------------------------------
+	-- check rg/lsp.lua for fine tuning lsp installs
+	--==========================================================================
 	{
 		-- Main LSP Configuration
 		"neovim/nvim-lspconfig",
@@ -128,139 +142,16 @@ return {
 			--=================================================================
 			-- BM: Auto Install LSPs / Tools
 			--=================================================================
-			local ensure_installed = vim.tbl_keys(servers or {})
-			vim.list_extend(ensure_installed, {
-				"intelephense",
-				"php-debug-adapter",
-				"jq"
-			})
-			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+			require("mason-tool-installer").setup({ ensure_installed = rglsp.MasonAutoInstall })
 
-			--=================================================================
-			-- BM: Lsp Configuration
-			--=================================================================
-			vim.lsp.config("lua_ls", {
-				-- cmd = { ... },
-				-- filetypes = { ... },
-				-- capabilities = {},
-				settings = {
-					Lua = {
-						completion = {
-							callSnippet = "Replace",
-						},
+			rglsp.Config()
 
-						workspace = {
-							vim.fn.getcwd() .. "/lua",
-							vim.fn.getcwd(),
-						},
-
-						-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-						-- diagnostics = { disable = { 'missing-fields' } },
-					},
-				},
-
-			})
-
-			vim.lsp.config("roslyn_ls", {
-				cmd_env = {
-					DOTNET_CLI_UI_LANGUAGE = "en",
-					LANG = "en_US.UTF-8",
-					LC_ALL = "en_US.UTF-8"
-				}
-			})
-
-			vim.lsp.config("ts_ls", {
-				settings = {
-					typescript = {
-						inlayHints = {
-							includeInlayParameterNameHints = 'all',
-							includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-							includeInlayFunctionParameterTypeHints = true,
-							includeInlayVariableTypeHints = true,
-							includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-							includeInlayPropertyDeclarationTypeHints = true,
-							includeInlayFunctionLikeReturnTypeHints = true,
-							includeInlayEnumMemberValueHints = true,
-						},
-					},
-					javascript = {
-						inlayHints = {
-							includeInlayParameterNameHints = 'all',
-							includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-							includeInlayFunctionParameterTypeHints = true,
-							includeInlayVariableTypeHints = true,
-							includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-							includeInlayPropertyDeclarationTypeHints = true,
-							includeInlayFunctionLikeReturnTypeHints = true,
-							includeInlayEnumMemberValueHints = true,
-						},
-					}
-				},
-			})
-
-			vim.lsp.config("intelephense", {
-
-				init_options = {
-					licenceKey = "/opt/licenses/intelephense.txt",
-				},
-
-				settings = {
-					intelephense = {
-
-						environment = {
-							includePaths = {
-								"/var/lib/phpunit",
-							},
-						},
-
-						diagnostics = {
-							enable = true,
-							argumentCount = true,
-							deprecated = true,
-							duplicateSymbols = true,
-							embeddedLanguages = true,
-							implementationErrors = true,
-							languageConstraints = true,
-							memberAccess = false,
-							noMixedTypeCheck = true,
-							relaxedTypeCheck = true,
-							run = "onType",
-							typeErrors = true,
-							undefinedClassConstants = true,
-							undefinedConstants = true,
-							undefinedFunctions = true,
-							undefinedMethods = true,
-							undefinedProperties = true,
-							undefinedSymbols = true,
-							undefinedTypes = true,
-							undefinedVariables = true,
-							unexpectedTokens = true,
-							unusedSymbols = true,
-						},
-
-						inlayHint = {
-							returnTypes = true
-						}
-
-					},
-				},
-
-			})
-
-
-			--=================================================================
-			-- BM: more boilerplate
-			--=================================================================
 			require("mason-lspconfig").setup({
-				ensure_installed = {
-					"markdown_oxide",
-					"lua_ls"
-				}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
-
+				ensure_installed = rglsp.MasonAutoInstallTools,
 				automatic_installation = false,
 				handlers = {
 					function(server_name)
-						local server = servers[server_name] or {}
+						local server = {}
 						-- This handles overriding only values explicitly passed
 						-- by the server configuration above. Useful when disabling
 						-- certain features of an LSP (for example, turning off formatting for ts_ls)
@@ -270,6 +161,7 @@ return {
 				},
 			})
 		end,
-	}
+	},
+
 
 }
