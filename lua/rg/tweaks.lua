@@ -85,13 +85,14 @@ vim.api.nvim_create_user_command("BM", function()
         end
     end
 
-    env.basicTelescopePick(lines, function(choice)
+	vim.ui.select(lines, { prompt = "What Bookmark?", }, function(choice)
+		if choice == nil then return; end
+
         local ln = choice:match('(%d+):');
         vim.cmd.norm(ln.."gg<cr>");
-    end, "What Bookmark? ");
+	end)
 
-end, {
-});
+end, { });
 
 
 vim.api.nvim_create_user_command("CH", function()
