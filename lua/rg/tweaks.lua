@@ -4,40 +4,6 @@ local conf = require("telescope.config").values
 local actions = require("telescope.actions")
 local actions_state = require("telescope.actions.state")
 
-local function basicTelescopePick(optList, optHandler, prompt)
-	pick.new({}, {
-		prompt_title = prompt,
-		finder = finders.new_table { results = optList, },
-		sorter = conf.generic_sorter({}),
-
-		entry_maker = function(opt)
-			return {
-				value = opt,
-				display = vim.inspect(opt),
-				ordinal = vim.inspect(opt)
-			}
-		end,
-
-		attach_mappings = function(promptBuffer, _)
-			actions.select_default:replace(function()
-				-- make sure to close telescope first
-				actions.close(promptBuffer)
-
-				-- Grab, what was selected
-				local choice = actions_state.get_selected_entry();
-
-				if choice ~= nil and choice[1] ~= "" then
-					optHandler(choice[1])
-				end
-			end)
-
-			-- Confirm, that we want ot change the Telescope action
-			return true;
-		end
-	}):find({})
-end
-
-
 -- Highlight when yanking (copying) text
 --  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -96,6 +62,7 @@ end, { });
 
 
 vim.api.nvim_create_user_command("CH", function()
+
     local files = scan.scan_dir('.', { hidden = false, depth = 6 });
     local opts = {}
 
@@ -108,7 +75,9 @@ vim.api.nvim_create_user_command("CH", function()
         end
     end
 
-    env.basicTelescopePick(opts, function(choice)
+	vim.ui.select(opts, { prompt = "What H - File?" }, function(choice)
+		if choice == nil then return; end
+
         local cppfile = choice .. ".cpp";
         local cfile = choice .. ".c";
         local hfile = choice .. ".h";
@@ -122,9 +91,8 @@ vim.api.nvim_create_user_command("CH", function()
         else
             vim.cmd.tabnew(hfile);
         end
-    end, "What H - File?")
-end, {
-});
+    end)
+end, { });
 
 -- Telescope Border-Fix
 --=============================================================================
@@ -147,21 +115,6 @@ vim.api.nvim_create_autocmd("User", {
     })
 
   end,
-})
-
-vim.lsp.config("lua_ls", {
-	settings = {
-		Lua = {
-			workspace = {
-				library = {
-					vim.fn.getcwd() .. "/lua",
-					vim.fn.getcwd()
-				},
-				maxPreload = 100000,
-				preloadFileSize = 10000,
-			},
-		},
-	},
 })
 
 return {}
