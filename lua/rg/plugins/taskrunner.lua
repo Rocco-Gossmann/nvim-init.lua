@@ -53,6 +53,11 @@ local function restartTaskRunner()
 	})
 
 	table.insert(tasks, {
+		label = "new Bookmark",
+		action = "0O0i78A=yypO0i BM: kVjj ccVjj=jA "
+	})
+
+	table.insert(tasks, {
 		label = "move function parameters to separate lines",
 		action = function()
 			vim.cmd("normal cib\r\rkp0v$")
