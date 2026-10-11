@@ -55,7 +55,6 @@ whichkey.add({
 	-- BM: Code
 	{ '<leader>c',   group = '[C]ode' },
 	{ '<leader>cr',  vim.lsp.buf.rename,                                         desc = '[R]ename',                                mode = 'n' },
-	{ '<leader>cd',  '<cmd>Neogen<cr>',                                          desc = '[D]ocument',                              mode = 'n' },
 	{ '<leader>ca',  mappfunc.codeAction,                                        desc = '[A]ction',                                mode = { 'n', 'x' } },
 	{ '<leader>cc',  '<cmd>norm gcc<cr>',                                        desc = '[C]omment',                               mode = { 'n' } },
 	{ '<leader>cc',  '<cmd>norm gc<cr>',                                         desc = '[C]omment',                               mode = { 'x' } },
