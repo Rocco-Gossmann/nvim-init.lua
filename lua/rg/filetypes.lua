@@ -63,6 +63,20 @@ mappfunc.filetypeKeymap({ "*.lua", "*.go", "*.php", "*.cs" }, {
 	{ '<leader>cf', function() vim.lsp.buf.format() end, desc = '[C]ode [F]ormat', mode = "nv" },
 })
 
+-- ==============================================================================
+--  BM: Documenting
+-- ==============================================================================
+mappfunc.filetypeKeymap({ "*.cs" }, {
+	{
+		'<leader>cd',
+		[[ :s/\s\(.\{-} \)\{1}\(\(.\{-}\)\(.\{-}\)\),*\(\s=.*\)*$/\/\/\/ <param name="\2"><\/param>/g ]],
+		mode = "v",
+		desc = '[C]ode [D]ocument (arrange function params one per line, select them first)',
+	},
+})
+
+
+
 --=============================================================================
 -- BM: Auto-Formating and PreSave-Cleanup
 --=============================================================================
@@ -97,7 +111,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 if not (not (vim.g.enableFormatOnSave)) then
 	-- formate before save
 	vim.api.nvim_create_autocmd("BufWritePre", {
-		pattern = {  "*.hpp", "*.h", "*.cpp", "*.c", "*.tmpl", "*.cs" },
+		pattern = { "*.hpp", "*.h", "*.cpp", "*.c", "*.tmpl", "*.cs" },
 		callback = function()
 			vim.lsp.buf.format()
 		end
