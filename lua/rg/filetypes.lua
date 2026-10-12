@@ -38,7 +38,8 @@ mappfunc.filetypeKeymap({ "*.cpp", "*.c", "*.h" }, {
 })
 
 mappfunc.filetypeKeymap({ "*.cs" }, {
-	{ '§s', '<esc>:lua require("rg.template").handleCSSummary()<cr>', mode = "n", noremap = true, desc = "add C# <Summary> - Tag" },
+	{ '§s', '<esc>:lua require("rg.template").handleCSSummary("summary")<cr>', mode = "n", noremap = true, desc = "add C# <Summary> - Tag" },
+	{ '§r', '<esc>:lua require("rg.template").handleCSSummary("remarks")<cr>', mode = "n", noremap = true, desc = "add C# <remark> - Tag" }
 })
 
 

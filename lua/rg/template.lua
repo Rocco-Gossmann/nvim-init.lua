@@ -34,14 +34,16 @@ local function newTmuxWorkspace()
     vim.cmd("norm ggdd");
 end
 
-local function handleCSSummary()
+local function handleCSSummary(tag)
 
     local text = vim.fn.input("Description: ");
 	if string.len(text) == 0 then return; end
 
     vim.cmd("norm k");
-    env.readTemplate("csharp_summary.cs")
-    vim.cmd("%s/___SUMMARY_TEXT___/" .. text .. "/g")
+	env.readTemplate("csharp_summary.cs")
+	vim.cmd("%s/___SUMMARY_TAG___/" .. tag .. "/g")
+	vim.cmd("%s/___SUMMARY_TEXT___/" .. text .. "/g")
+    vim.cmd("norm kVjj=j");
 
 end
 

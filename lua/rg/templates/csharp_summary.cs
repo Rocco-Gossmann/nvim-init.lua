@@ -1,3 +1,3 @@
-///<summary>
+/// <___SUMMARY_TAG___>
 /// ___SUMMARY_TEXT___
-///</summary>
+/// </___SUMMARY_TAG___>
