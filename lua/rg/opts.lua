@@ -1,9 +1,4 @@
--- [[ Setting options ]]
--- See `:help vim.opt`
---     `:help option-list`
-
--- Make line numbers default
---
+-- Line Numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
 
@@ -24,7 +19,7 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 
 -- Don't show the mode, since it's already in the status line
-vim.opt.showmode = false
+vim.opt.showmode = true
 vim.opt.winborder = "bold"
 
 -- Sync clipboard between OS and Neovim.
@@ -46,7 +41,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = false
 
 -- Highlight search results
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 -- Preview substitutions live, as you type!
