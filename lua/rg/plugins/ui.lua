@@ -95,6 +95,24 @@ return {
 					["vim.lsp.util.stylize_markdown"] = true,
 					["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
 				},
+
+				-- NOTE: need to disable it. This "Help" is to big and often just
+				-- covers the function I'm currently writing. Dev has no intention to fix this.
+				-- (see: https://github.com/folke/noice.nvim/issues/930)
+				signature = { enabled = false },
+
+				-- documentation = {
+				-- 	view = "hover",
+				-- 	---@type NoiceViewOptions
+				-- 	opts = {
+				-- 		lang = "markdown",
+				-- 		replace = true,
+				-- 		render = "plain",
+				-- 		format = { "{message}" },
+				-- 		win_options = { concealcursor = "n", conceallevel = 3 },
+				-- 	},
+				-- },
+
 			},
 			-- you can enable a preset for easier configuration
 			presets = {
