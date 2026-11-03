@@ -15,7 +15,7 @@ return {
 		opts = {
 			window = {
 				backdrop = 2,
-				width = 124
+				width = vim.g.ZenModeWidth
 			}
 			-- your configuration comes here
 			-- or leave it empty to use the default settings
