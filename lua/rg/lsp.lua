@@ -7,7 +7,9 @@ local M = {}
 --------------------------------------------------------------------------------
 M.MasonAutoInstallTools = {
 	"php-debug-adapter",
-	"jq"
+	"jq",
+	-- Roslyn language server (custom Crashdummyy registry), used by roslyn.nvim
+	"roslyn"
 }
 
 -- BM: Mason-AutoInstall-Tools
@@ -15,7 +17,10 @@ M.MasonAutoInstallTools = {
 M.MasonAutoInstallLSPs = {
 	"intelephense",
 	"markdown_oxide",
-	"lua_ls"
+	"lua_ls",
+	-- HTML language server used by roslyn.nvim for Razor/CSHTML co-hosting
+	-- (lspconfig name for the Mason package "html-lsp")
+	"html"
 }
 
 --==============================================================================
@@ -52,7 +57,7 @@ function M.Config()
 	--=================================================================
 	-- BM: Lsp Configuration - Roslyn C#
 	--=================================================================
-	vim.lsp.config("roslyn_ls", {
+	vim.lsp.config("roslyn", {
 		cmd_env = {
 			DOTNET_CLI_UI_LANGUAGE = "en",
 			LANG = "en_US.UTF-8",

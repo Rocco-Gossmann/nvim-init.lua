@@ -20,6 +20,14 @@ return {
 	},
 
 	--==========================================================================
+	-- BM: Extra Plugins - C# => Roslyn (Razor/CSHTML co-hosting)
+	--==========================================================================
+	{
+		"seblyng/roslyn.nvim",
+		opts = {},
+	},
+
+	--==========================================================================
 	-- BM: Extra Plugins - PHP => Smarty
 	--==========================================================================
 	{ "shadowwa/smarty.vim", ft = { "smarty" } },
@@ -47,6 +55,13 @@ return {
 			"saghen/blink.cmp",
 		},
 		config = function()
+			require("mason").setup({
+				registries = {
+					"github:mason-org/mason-registry",
+					"github:Crashdummyy/mason-registry",
+				},
+			})
+
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 				callback = function(event)
@@ -149,6 +164,9 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = rglsp.MasonAutoInstallLSPs,
 				automatic_installation = false,
+				-- OmniSharp does not support Razor and crashes on null responses.
+				-- C#/Razor is handled by roslyn.nvim instead.
+				automatic_enable = { exclude = { "omnisharp" } },
 				handlers = {
 					function(server_name)
 						local server = {}

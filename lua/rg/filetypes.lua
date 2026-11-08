@@ -15,7 +15,7 @@ mappfunc.lspRestart({ "*.js", "*.ts" }, "ts_ls")
 mappfunc.lspRestart({ "*.lua" }, "lua_ls")
 mappfunc.lspRestart({ "dockerfile" }, "dockerls")
 mappfunc.lspRestart({ "*.yml" }, "docker_compose_language_service")
-mappfunc.lspRestart({ "*.cs" }, "roslyn_ls")
+mappfunc.lspRestart({ "*.cs", "*.razor", "*.cshtml" }, "roslyn")
 
 --=============================================================================
 -- Keymaps, that differ per FileType
