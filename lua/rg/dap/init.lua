@@ -45,28 +45,27 @@ end
 
 
 dap.configurations.cs = {
-
 	{
 		name = "NVIM: attach to Process",
 		type = "coreclr",
 		request = "attach",
         processId = function()
 
-            if vim.g.CsharpDebugTargetProcessSearch == nil then
-                vim.g.CsharpDebugTargetProcessSearch = ""
+            if vim.g.CsharpDebugTargetProcess == nil then
+                vim.g.CsharpDebugTargetProcess = ""
             end
 
             local dapUtils = require('dap.utils');
 
             local procs = dapUtils
-                .get_processes( { filter = vim.g.CsharpDebugTargetProcessSearch });
+                .get_processes( { filter = vim.g.CsharpDebugTargetProcess });
 
             if #procs == 1 then
                 return procs[1].pid
 
             elseif #procs > 1 then
                 return dapUtils
-                    .pick_process( { filter = vim.g.CsharpDebugTargetProcessSearch });
+                    .pick_process( { filter = vim.g.CsharpDebugTargetProcess });
 
             else
                 vim.notify("no running processes found");
@@ -80,6 +79,9 @@ dap.configurations.cs = {
 	}
 
 }
+
+dap.configurations.razor = dap.configurations.cs;
+dap.configurations.cshtml = dap.configurations.cs;
 
 
 --==============================================================================
