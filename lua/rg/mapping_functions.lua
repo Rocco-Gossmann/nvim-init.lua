@@ -48,6 +48,19 @@ local function focusTerminalBuffer(termName, startCmd)
 	end
 end
 
+local function tmuxSplit(startCmd)
+	return function()
+
+		local startCmd = string.gsub(startCmd, "%%dirname%%", vim.fn.expand("%:p:h"))
+
+		if vim.env.TMUX_PANE ~= nil then
+				vim.fn.system(string.format('tmux split-pane "%s"', startCmd))
+		else
+			print("you are not in a TMUX-Panel")
+		end
+	end
+end
+
 return {
 
 	codeAction          = function()
@@ -111,6 +124,7 @@ return {
 	filetypeKeymap      = filetypeKeymap,
 
 	focusTerminalBuffer = focusTerminalBuffer,
+	tmuxSplit = tmuxSplit,
 	openTerminalPopup   = openTerminalPopup
 
 }
