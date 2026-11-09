@@ -1,10 +1,13 @@
 local telescope_builtin = require('telescope.builtin');
-local gs = require("gitsigns")
+local inspect           = require('vim.inspect')
+local gs = package.loaded.gitsigns
+local dapui = require("dapui");
 
+local debuggerUIOpen = false
 
 local function filetypeKeymap(pattern, maps)
-
 	local callback = function(args)
+
 		local newMaps = {}
 
 		for _, v in pairs(maps) do
@@ -13,35 +16,48 @@ local function filetypeKeymap(pattern, maps)
 		end
 
 		require("which-key").add(newMaps)
+
 	end
 
-	vim.api.nvim_create_autocmd("BufAdd", { pattern = pattern, callback =callback })
-	vim.api.nvim_create_autocmd("VimEnter", { pattern = pattern, callback =callback })
-
+	vim.api.nvim_create_autocmd("BufAdd", { pattern = pattern, callback = callback })
+	vim.api.nvim_create_autocmd("VimEnter", { pattern = pattern, callback = callback })
 end
 
 local function openTerminalPopup(shellCommand)
 	return function()
-
 		local shellCommand = string.gsub(shellCommand, "%%dirname%%", vim.fn.expand("%:p:h"))
 		vim.fn.system(string.format('tmux display-popup -E "%s"', shellCommand))
-
 	end
 end
 
 local function focusTerminalBuffer(termName, startCmd)
 	return function()
+		local startCmd = string.gsub(startCmd, "%%dirname%%", vim.fn.expand("%:p:h"))
 
-		local noTerm = vim.fn.system('tmux list-windows -F "#W:#I" | grep "' ..  termName .. '"') == ''
+		if vim.env.TMUX_PANE ~= nil then
+			local noTerm = vim.fn.system('tmux list-windows -F "#W:#I" | grep "' .. termName .. '"') == ''
 
-		if noTerm then
-
-			local startCmd = string.gsub(startCmd, "%%dirname%%", vim.fn.expand("%:p:h"))
-			vim.fn.system(string.format('tmux new-window -n "%s" "%s"', termName, startCmd))
+			if noTerm then
+				vim.fn.system(string.format('tmux new-window -n "%s" "%s"', termName, startCmd))
+			else
+				vim.fn.system(string.format('tmux select-window -t "%s"', termName))
+			end
 		else
-			vim.fn.system(string.format('tmux select-window -t "%s"', termName))
+			print("you are not in a TMUX-Panel")
 		end
+	end
+end
 
+local function tmuxSplit(startCmd)
+	return function()
+
+		local startCmd = string.gsub(startCmd, "%%dirname%%", vim.fn.expand("%:p:h"))
+
+		if vim.env.TMUX_PANE ~= nil then
+				vim.fn.system(string.format('tmux split-pane "%s"', startCmd))
+		else
+			print("you are not in a TMUX-Panel")
+		end
 	end
 end
 
@@ -72,19 +88,33 @@ return {
 		gs.blame_line { full = false }
 	end,
 
-	gitBlameFile        = function()
-		gs.blame { full = false }
+	start_debugger      = function()
+		if (debuggerUIOpen == false) then
+			dapui.open();
+			debuggerUIOpen = true;
+		end
+
+		vim.cmd.DapContinue();
 	end,
 
-	inlayHintsToggle = function()
-		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+	stop_debugger       = function()
+		if (debuggerUIOpen) then
+			dapui.close();
+			debuggerUIOpen = false;
+		end
+
+		vim.cmd.DapTerminate()
+	end,
+
+	debugger_evaluate   = function()
+		dapui.eval();
 	end,
 
 	lspRestart          = function(pattern, lspnames)
 		filetypeKeymap(pattern, {
 			{
 				'<leader>clr',
-				'<cmd>LspRestart ' .. lspnames .. '<cr>',
+				'<cmd>lsp restart ' .. lspnames .. '<cr>',
 				mode = 'n',
 				desc = '[R]estart'
 			}
@@ -94,6 +124,7 @@ return {
 	filetypeKeymap      = filetypeKeymap,
 
 	focusTerminalBuffer = focusTerminalBuffer,
-	openTerminalPopup = openTerminalPopup
+	tmuxSplit = tmuxSplit,
+	openTerminalPopup   = openTerminalPopup
 
 }

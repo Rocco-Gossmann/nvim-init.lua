@@ -16,4 +16,9 @@ vim.g.obsidianworkspaces = {
 	}
 }
 
-vim.g.smarty_indent_block = 1
+vim.g.opencodestartcommand = "lsof -ti :8099 | xargs kill -9 ; opencode --port 8099 ; exit"
+
+vim.g.CsharpDebugTargetProcess = "";
+
+vim.g.enableFormatOnSave = nil
+vim.g.stripTrailingWhitespacesBeforeSave = true

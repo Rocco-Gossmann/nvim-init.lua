@@ -1,3 +1,9 @@
+local pick = require("telescope.pickers")
+local finders = require("telescope.finders")
+local conf = require("telescope.config").values
+local actions = require("telescope.actions")
+local actions_state = require("telescope.actions.state")
+
 -- Highlight when yanking (copying) text
 --  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -45,16 +51,19 @@ vim.api.nvim_create_user_command("BM", function()
         end
     end
 
-    env.basicTelescopePick(lines, function(choice)
+	vim.ui.select(lines, { prompt = "What Bookmark?", }, function(choice)
+		if choice == nil then return; end
+
         local ln = choice:match('(%d+):');
         vim.cmd.norm(ln.."gg<cr>");
-    end, "What Bookmark? ");
+        vim.cmd.norm("zz");
+	end)
 
-end, {
-});
+end, { });
 
 
 vim.api.nvim_create_user_command("CH", function()
+
     local files = scan.scan_dir('.', { hidden = false, depth = 6 });
     local opts = {}
 
@@ -67,7 +76,9 @@ vim.api.nvim_create_user_command("CH", function()
         end
     end
 
-    env.basicTelescopePick(opts, function(choice)
+	vim.ui.select(opts, { prompt = "What H - File?" }, function(choice)
+		if choice == nil then return; end
+
         local cppfile = choice .. ".cpp";
         local cfile = choice .. ".c";
         local hfile = choice .. ".h";
@@ -81,9 +92,8 @@ vim.api.nvim_create_user_command("CH", function()
         else
             vim.cmd.tabnew(hfile);
         end
-    end, "What H - File?")
-end, {
-});
+    end)
+end, { });
 
 -- Telescope Border-Fix
 --=============================================================================
@@ -107,34 +117,6 @@ vim.api.nvim_create_autocmd("User", {
 
   end,
 })
-
-vim.lsp.config("lua_ls", {
-	settings = {
-		Lua = {
-			runtime = {
-				version = "LuaJIT",
-			},
-			diagnostics = {
-				globals = { "vim" }
-			},
-			workspace = {
-
-				library = vim.api.nvim_get_runtime_file("", true),
-
-				telemetry = { enable = false },
-
-				maxPreload = 100000,
-				preloadFileSize = 10000,
-
-			},
-		},
-	},
-})
-
--- Nvim 0.12
---==============================================================================
--- enable new UI
-require("vim._core.ui2").enable({})
 
 return {}
 

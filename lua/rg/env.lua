@@ -3,9 +3,8 @@ local os = require "os"
 local home = os.getenv("HOME")
 
 local appname = os.getenv("NVIM_APPNAME")
-if appname == nil then appname = 'nvim' end
+if appname == nil then appname='nvim' end
 
---- @return any
 local function doFileIfExists(fileName)
 	if vim.fn.findfile(fileName) ~= '' then
 		local ret = dofile(fileName);

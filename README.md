@@ -115,6 +115,36 @@ get a variaty of options. "the .nvim/tasks.lua configures your macros"
 | `<leader>gs` | `[G]it` | `Stage Hunk`             | `n`  |
 | `<leader>gl` | `[G]it` | `Lazygit`                | `n`  |
 
+### JuJutsu
+
+| Key          | Group       | Description        | Mode |
+| ------------ | ----------- | ------------------ | ---- |
+| `<leader>j`  | `[J]ujutsu` | -                  | `n`  |
+| `<leader>jj` | `[J]ujutsu` | `Log view`         | `n`  |
+| `<leader>jl` | `[J]ujutsu` | `[L]og`            | `n`  |
+| `<leader>jc` | `[J]ujutsu` | `[C]ommit`         | `n`  |
+| `<leader>js` | `[J]ujutsu` | `[S]plit/[S]elect` | `n`  |
+| `<leader>jd` | `[J]ujutsu` | `[D]iff`           | `n`  |
+| `<leader>jn` | `[J]ujutsu` | `[N]ew`            | `n`  |
+| `<leader>ju` | `[J]ujutsu` | `[U]ndo`           | `n`  |
+| `<leader>jz` | `[J]ujutsu` | `[Z]sh-Shell`      | `n`  |
+| `<leader>lj` | `[L]aunch`  | `[J]ujutsu-Shell`  | `n`  |
+
+### Obsidian
+
+| Key           | Group                 | Description                | Mode |
+| ------------- | --------------------- | -------------------------- | ---- |
+| `<leader>o`   | `[O]bsidian`          | -                          | `n`  |
+| `<leader>ow`  | `[O]bsidian`          | `[W]orkspace`              | `n`  |
+| `<leader>of`  | `[O]bsidian`          | `[F]ind (quicksearch)`     | `n`  |
+| `<leader>ot`  | `[O]bsidian`          | `[T]able of contents`      | `n`  |
+| `<leader>os`  | `[O]bsidian`          | `[S]earch`                 | `n`  |
+| `<leader>op`  | `[O]bsidian`          | `[P]eek`                   | `n`  |
+| `<leader>oi`  | `[O]bsidian [I]nsert` | -                          | `n`  |
+| `<leader>oii` | `[O]bsidian [I]nsert` | `[I]mage`                  | `n`  |
+| `<leader>oin` | `[O]bsidian [I]nsert` | `[N]ew Note from Template` | `n`  |
+| `<leader>oit` | `[O]bsidian [I]nsert` | `[T]emplate`               | `n`  |
+
 ### Launch Terminal Apps in TMUX
 
 | Key          | Group      | Description               | Mode |
@@ -213,16 +243,17 @@ get a variaty of options. "the .nvim/tasks.lua configures your macros"
 
 ## Some usefull lua scripts.
 
-### PHP-Debugging
+### Optional: Jujutus
 
-```lua
-dap.adapters.php = {
-  type = 'executable',
-  command = 'node',
-  args = { env.confdir .. '/lua/rg/dap/vscode-php-debug/out/phpDebug.js' }
-}
+This config offers shortcuts for the use of Jujutsu-vcs.
+For the best possible experience with that, use the following `~/.config/jj/config.toml`
 
-dap.defaults.php.exception_breakpoints = { "Notice", "Warning", "Error", "Exception" }
+```toml
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+
+[ui]
+pager = "less -FRX +G"
+default-command = ["log", "--reversed"]
 ```
 
 ### TaskRunner Scripts

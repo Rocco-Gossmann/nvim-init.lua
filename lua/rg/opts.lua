@@ -1,9 +1,4 @@
--- [[ Setting options ]]
--- See `:help vim.opt`
---     `:help option-list`
-
--- Make line numbers default
---
+-- Line Numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
 
@@ -19,16 +14,12 @@ vim.opt.foldlevelstart = 99
 vim.opt.foldmethod = "marker"
 vim.opt.foldmarker = "{,}"
 
--- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
--- vim.opt.foldmethod = "expr"
--- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 
 -- Don't show the mode, since it's already in the status line
-vim.opt.showmode = false
+vim.opt.showmode = true
 vim.opt.winborder = "bold"
 
 -- Sync clipboard between OS and Neovim.
@@ -46,11 +37,11 @@ vim.opt.breakindent = true
 vim.opt.undofile = true
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-vim.opt.ignorecase = false
+vim.opt.ignorecase = true
 vim.opt.smartcase = false
 
 -- Highlight search results
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 -- Preview substitutions live, as you type!
@@ -94,7 +85,6 @@ vim.opt.scrolloff = 4
 vim.opt.confirm = true
 
 -- Smoothness optimizations
-vim.opt.lazyredraw = true         -- Don't redraw while executing macros
 vim.opt.ttyfast = true           -- Fast terminal connection
 vim.opt.laststatus = 3           -- Global status line
 vim.opt.pumheight = 10           -- Limit popup menu height
