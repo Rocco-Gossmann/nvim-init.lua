@@ -1,3 +1,4 @@
+local roslynDedupeDiagnostics = require("rg.core").roslynDedupeDiagnostics
 local M = {}
 
 --==============================================================================
@@ -8,7 +9,6 @@ local M = {}
 M.MasonAutoInstallTools = {
 	"php-debug-adapter",
 	"jq",
-	-- Roslyn language server (custom Crashdummyy registry), used by roslyn.nvim
 	"roslyn"
 }
 
@@ -18,8 +18,6 @@ M.MasonAutoInstallLSPs = {
 	"intelephense",
 	"markdown_oxide",
 	"lua_ls",
-	-- HTML language server used by roslyn.nvim for Razor/CSHTML co-hosting
-	-- (lspconfig name for the Mason package "html-lsp")
 	"html"
 }
 
@@ -62,6 +60,9 @@ function M.Config()
 			DOTNET_CLI_UI_LANGUAGE = "en",
 			LANG = "en_US.UTF-8",
 			LC_ALL = "en_US.UTF-8"
+		},
+		handlers = {
+			["textDocument/diagnostic"] = roslynDedupeDiagnostics
 		}
 	})
 
