@@ -1,5 +1,5 @@
 local mappfunc = require("rg.mapping_functions");
-local rgcore = require("rg.core");
+local template = require("rg.template");
 
 --=============================================================================
 -- BM: Map File Extension => Filetype
@@ -44,9 +44,9 @@ mappfunc.filetypeKeymap({ "*.cs" }, {
 
 
 mappfunc.filetypeKeymap({ "*.php" }, {
-	{ "§c", function() templates.handlePHP("class") end,     mode = { "n" }, desc = "PHP-Class" },
-	{ "§t", function() templates.handlePHP("trait") end,     mode = { "n" }, desc = "PHP-Trait" },
-	{ "§i", function() templates.handlePHP("interface") end, mode = { "n" }, desc = "PHP-Interface" },
+	{ "§c", function() template.handlePHP("class") end,     mode = { "n" }, desc = "PHP-Class" },
+	{ "§t", function() template.handlePHP("trait") end,     mode = { "n" }, desc = "PHP-Trait" },
+	{ "§i", function() template.handlePHP("interface") end, mode = { "n" }, desc = "PHP-Interface" },
 })
 
 --=============================================================================
@@ -85,7 +85,7 @@ mappfunc.filetypeKeymap({ "*.cs" }, {
 --------------------------------------------------------------------------------
 if not (not (vim.g.stripTrailingWhitespacesBeforeSave)) then
 	vim.api.nvim_create_autocmd("BufWritePre", {
-		pattern = { "*.php", "*.js", "*.css", "*.go", "*.sql", "*.lua", "*.tpl", "*.cs" },
+		pattern = { "*.php", "*.js", "*.css", "*.go", "*.sql", "*.lua", "*.tpl", "*.cs", "*.razor" },
 		callback = function()
 			vim.cmd.normal("Mz")
 			vim.cmd("%s/\\s\\+$//ge")
