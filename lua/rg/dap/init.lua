@@ -42,7 +42,7 @@ else
 		args = { '--interpreter=vscode' }
 	}
 end
-dap.defaults.coreclr.exception_breakpoints = { "all" }
+dap.defaults.coreclr.exception_breakpoints = { "uncaught" }
 
 
 dap.configurations.cs = {
