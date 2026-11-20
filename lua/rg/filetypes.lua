@@ -60,7 +60,7 @@ mappfunc.filetypeKeymap({ "*.md" }, {
 	{ '<leader>cf', '<cmd>w<cr><cmd>silent !deno fmt --options-prose-wrap=preserve "%"<cr>', desc = '[C]ode [F]ormat', mode = "n" },
 })
 
-mappfunc.filetypeKeymap({ "*.lua", "*.go", "*.php", "*.cs" }, {
+mappfunc.filetypeKeymap({ "*.lua", "*.go", "*.php", "*.cs", "*.razor" }, {
 	{ '<leader>cf', function() vim.lsp.buf.format() end, desc = '[C]ode [F]ormat', mode = "nv" },
 })
 

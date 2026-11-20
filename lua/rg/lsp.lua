@@ -9,7 +9,8 @@ local M = {}
 M.MasonAutoInstallTools = {
 	"php-debug-adapter",
 	"jq",
-	"roslyn"
+	"roslyn",
+	"luafmt"
 }
 
 -- BM: Mason-AutoInstall-Tools
