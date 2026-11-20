@@ -7,6 +7,7 @@ local templates = require("rg.template");
 local telescope_builtin = require('telescope.builtin');
 local focusTerminalBuffer = mappfunc.focusTerminalBuffer
 local tmuxSplit = mappfunc.tmuxSplit
+local tmuxWindow = mappfunc.tmuxWindow
 local openTerminalPopup = mappfunc.openTerminalPopup
 
 --[[============================================================================
@@ -141,16 +142,23 @@ whichkey.add({
 
 	-- BM: Just (Make but better)
 	{ '<leader>j',       group = "[J]ust (Makefile replacement)" },
-	{ '<leader>jj',      focusTerminalBuffer("Just", "just | less"),        desc = "[J]ust (default action)",   mode = 'n' },
-	{ '<leader>jr',      focusTerminalBuffer("Run", "just run | less"),     desc = "[R]un",                     mode = 'n' },
-	{ '<leader>jb',      focusTerminalBuffer("Build", "just build | less"), desc = "[B]uild",                   mode = 'n' },
-	{ '<leader>jc',      focusTerminalBuffer("Clean", "just clean | less"), desc = "[C]lean",                   mode = 'n' },
+	{ '<leader>jj',      "<cmd>silent !just<cr>",                                    desc = "[J]ust (default action)",   mode = 'n' },
+	{ '<leader>jr',      "<cmd>silent !just run<cr>",                                desc = "[R]un",                     mode = 'n' },
+	{ '<leader>jb',      "<cmd>silent !just build<cr>",                              desc = "[B]uild",                   mode = 'n' },
+	{ '<leader>jc',      "<cmd>silent !just clean<cr>",                              desc = "[C]lean",                   mode = 'n' },
 
 	{ '<leader>jp',      group = "[J]ust [P]anel" },
-	{ '<leader>jpj',     tmuxSplit("just"),          desc = "[J]ust (default action)",   mode = 'n' },
-	{ '<leader>jpr',     tmuxSplit("just run"),      desc = "[R]un",                     mode = 'n' },
-	{ '<leader>jpb',     tmuxSplit("just build"),    desc = "[B]uild",                   mode = 'n' },
-	{ '<leader>jpc',     tmuxSplit("just clean"),    desc = "[C]lean",                   mode = 'n' },
+	{ '<leader>jpj',     tmuxSplit("just"),                                 desc = "[J]ust (default action)",   mode = 'n' },
+	{ '<leader>jpr',     tmuxSplit("just run"),                             desc = "[R]un",                     mode = 'n' },
+	{ '<leader>jpb',     tmuxSplit("just build"),                           desc = "[B]uild",                   mode = 'n' },
+	{ '<leader>jpc',     tmuxSplit("just clean"),                           desc = "[C]lean",                   mode = 'n' },
+
+	{ '<leader>jw',      group = "[J]ust [W]indow" },
+	{ '<leader>jwj',     tmuxWindow("just"),                                 desc = "[J]ust (default action)",   mode = 'n' },
+	{ '<leader>jwr',     tmuxWindow("just run"),                             desc = "[R]un",                     mode = 'n' },
+	{ '<leader>jwb',     tmuxWindow("just build"),                           desc = "[B]uild",                   mode = 'n' },
+	{ '<leader>jwc',     tmuxWindow("just clean"),                           desc = "[C]lean",                   mode = 'n' },
+
 
 	-- BM: Make
 	{ '<leader>m',       group = '[M]ake' },

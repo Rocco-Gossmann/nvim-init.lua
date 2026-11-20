@@ -51,10 +51,23 @@ end
 local function tmuxSplit(startCmd)
 	return function()
 
-		local startCmd = string.gsub(startCmd, "%%dirname%%", vim.fn.expand("%:p:h"))
+		startCmd = string.gsub(startCmd, "%%dirname%%", vim.fn.expand("%:p:h"))
 
 		if vim.env.TMUX_PANE ~= nil then
 				vim.fn.system(string.format('tmux split-pane "%s"', startCmd))
+		else
+			print("you are not in a TMUX-Panel")
+		end
+	end
+end
+
+local function tmuxWindow(startCmd)
+	return function()
+
+		startCmd = string.gsub(startCmd, "%%dirname%%", vim.fn.expand("%:p:h"))
+
+		if vim.env.TMUX_PANE ~= nil then
+			vim.fn.system(string.format('tmux new-window "%s"', startCmd))
 		else
 			print("you are not in a TMUX-Panel")
 		end
@@ -125,6 +138,7 @@ return {
 
 	focusTerminalBuffer = focusTerminalBuffer,
 	tmuxSplit = tmuxSplit,
+	tmuxWindow = tmuxWindow,
 	openTerminalPopup   = openTerminalPopup
 
 }
